@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.cache/
+public
+.DS_Store
+Thumbs.db
+.env
+
+/.vscode
+.vscode/*
+.history/
