@@ -11,7 +11,8 @@ export default function PolityaPrywatnosci({ data }) {
 export const query = graphql`
     query polityka ($id: String!) {
         wpPage(id: {eq: $id}){
-            id
+            title
+            content
         }
     }
 `
