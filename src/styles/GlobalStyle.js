@@ -78,7 +78,7 @@ const GlobalStyle = createGlobalStyle`
     font-size: clamp(${36/16}rem, ${54/7.68}vw, ${54/16}rem);
   }
   h2 {
-    font-size: clamp(${28/16}rem, ${40/7.68}vw, ${40/16}rem);
+    font-size: clamp(${28/16}rem, ${40/13.66}vw, ${40/16}rem);
   }
   h3 {
     font-size: clamp(${18/16}rem, ${24/10.24}vw, ${24/16}rem);

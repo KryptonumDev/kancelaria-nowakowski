@@ -2,14 +2,16 @@ import { graphql } from "gatsby"
 import * as React from "react"
 import Hero from "../components/sections/Home/Hero"
 import StepsSection from "../components/sections/Home/StepsSection";
+import Rules from "../components/sections/Home/Rules";
+
 
 export default function Homepage({ data }) {
-  const {heroHome} = data.wpPage.homepage;
-  const {stepsSection} = data.wpPage.homepage;
+  const {heroHome, stepsSection, sectionWithImgOnRightHome} = data.wpPage.homepage;
   return (
     <main>
       <Hero data={heroHome} />
       <StepsSection data={stepsSection} />
+      <Rules data={sectionWithImgOnRightHome} />
     </main>
   )
 }
