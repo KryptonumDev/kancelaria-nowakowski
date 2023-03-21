@@ -3,7 +3,8 @@ import * as React from "react"
 
 export default function Homepage({ data }) {
     return (
-        <></>
+        <>
+        </>
     )
 }
 
