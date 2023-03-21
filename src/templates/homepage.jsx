@@ -4,11 +4,14 @@ import * as React from "react"
 export default function Homepage({ data }) {
   return (
     <>
+      <h1>Siemanko</h1>
     </>
   )
 }
 
 export const query = graphql`
+  query homepage ($id: String!) {
+    wpPage(id: {eq: $id}){
   query homepage($id: String!) {
     global : wpPage(id: {eq: "cG9zdDoxNjg="}) {
       global {
@@ -64,6 +67,17 @@ export const query = graphql`
             localFile {
               childImageSharp {
                 gatsbyImageData
+              }
+            }
+          }
+          rightImage {
+            altText
+            localFile {
+              childImageSharp {
+                gatsbyImageData
+              }
+            }
+          }
               }
             }
           }

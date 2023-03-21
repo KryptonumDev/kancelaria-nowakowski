@@ -16,6 +16,7 @@ const GlobalStyle = createGlobalStyle`
     -webkit-tap-highlight-color: transparent;
     overflow-x: hidden;
     min-width: 320px;
+    font-family: 'Lato', sans-serif;
   }
   button, select {
     cursor: pointer;
@@ -32,6 +33,14 @@ const GlobalStyle = createGlobalStyle`
   a {
     color: inherit;
     text-decoration: none;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Literata', serif;
+  }
+  .max-width {
+    width: calc(100% - 34px);
+    max-width: 1580px;
+    margin: 0 auto;
   }
 `
 
