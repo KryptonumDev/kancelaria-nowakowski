@@ -5,9 +5,9 @@ import Hero from "../components/sections/Home/Hero"
 export default function Homepage({ data }) {
   const {heroHome} = data.home.homepage;
   return (
-    <>
+    <main>
       <Hero data={heroHome} />
-    </>
+    </main>
   )
 }
 

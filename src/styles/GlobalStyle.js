@@ -74,18 +74,18 @@ const GlobalStyle = createGlobalStyle`
     color: var(--primary-900);
     line-height: 1.22;
   }
-  .max-width {
+
+  main, .max-width {
     width: calc(100% - 80px);
-    @media (max-width: 1366px){
-      width: calc(100% - 40px);
-    }
-    @media (max-width: 768px){
+
+    @media (max-width: 768px){  
       width: calc(100% - 34px);
     }
-    max-width: 1580px;
+    max-width: 1366px;
     margin: 0 auto;
     height: 100%;
   }
+
   .cta-primary,
   .cta-secondary {
     font-family: var(--serif);
