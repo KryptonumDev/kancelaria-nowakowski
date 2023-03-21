@@ -28,3 +28,14 @@ export const Logo = () => (
     ></path>
   </svg>
 )
+
+export const DropDown = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none">
+    <path
+      stroke="currentColor"
+      strokeLinecap="square"
+      strokeWidth="1.5"
+      d="M8 13.334V2.667M4.226 9.56C6.166 9.56 8 11.27 8 13.335m3.773-3.775C9.833 9.56 8 11.27 8 13.335"
+    ></path>
+  </svg>
+)
