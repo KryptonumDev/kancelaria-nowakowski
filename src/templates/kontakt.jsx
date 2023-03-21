@@ -10,8 +10,26 @@ export default function Kontakt({ data }) {
 
 export const query = graphql`
     query kontakt ($id: String!) {
+        global : wpPage(id: {eq: "cG9zdDoxNjg="}) {
+          global {
+            sectionContact {
+              sectionTitle
+              contentUnderTitle
+            }
+          }
+        }
         wpPage(id: {eq: $id}){
-            id
+            ...SEO
+            contact {
+              sectionCtaContact {
+                titleAboveButton
+                link {
+                  target
+                  title
+                  url
+                }
+              }
+            }
         }
     }
 `

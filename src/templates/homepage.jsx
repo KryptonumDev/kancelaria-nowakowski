@@ -10,7 +10,35 @@ export default function Homepage({ data }) {
 
 export const query = graphql`
   query homepage($id: String!) {
+    global : wpPage(id: {eq: "cG9zdDoxNjg="}) {
+      global {
+        sectionContact {
+          sectionTitle
+          contentUnderTitle
+        }
+        sectionBlog {
+          sectionTitle
+          leftTextUnderTitle
+          rightTextUnderTitle
+          callToAction {
+            leftTitle
+            leftLink {
+              target
+              title
+              url
+            }
+            rightTitle
+            rightLink {
+              target
+              title
+              url
+            }
+          }
+        }
+      }
+    }
     wpPage(id: {eq: $id}) {
+      ...SEO
       homepage {
         heroHome {
           pageTitle
@@ -94,29 +122,6 @@ export const query = graphql`
               }
             }
           }
-        }
-        blogSectionHome {
-          sectionTitle
-          leftTextUnderTitle
-          rightTextUnderTitle
-        }
-        sectionCtaHome {
-          leftTitle
-          leftLink {
-            target
-            title
-            url
-          }
-          rightTitle
-          rightLink {
-            target
-            title
-            url
-          }
-        }
-        sectionContactHome {
-          sectionTitle
-          contentUnderTitle
         }
       }
     }
