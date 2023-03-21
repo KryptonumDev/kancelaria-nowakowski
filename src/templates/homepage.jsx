@@ -1,17 +1,17 @@
 import { graphql } from "gatsby"
 import * as React from "react"
+import Hero from "../components/sections/Home/Hero"
 
 export default function Homepage({ data }) {
+  const {heroHome} = data.home.homepage;
   return (
     <>
-      <h1>Siemanko</h1>
+      <Hero data={heroHome} />
     </>
   )
 }
 
 export const query = graphql`
-  query homepage ($id: String!) {
-    wpPage(id: {eq: $id}){
   query homepage($id: String!) {
     global : wpPage(id: {eq: "cG9zdDoxNjg="}) {
       global {
@@ -67,17 +67,6 @@ export const query = graphql`
             localFile {
               childImageSharp {
                 gatsbyImageData
-              }
-            }
-          }
-          rightImage {
-            altText
-            localFile {
-              childImageSharp {
-                gatsbyImageData
-              }
-            }
-          }
               }
             }
           }
