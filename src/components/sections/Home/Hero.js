@@ -45,9 +45,6 @@ const StyledHero = styled.section`
     }
     width: 50%;
     max-width: ${627 / 13.66}vw;
-    h1 {
-      font-size: clamp(${36 / 16}rem, ${54 / 13.66}vw, ${54 / 16}rem);
-    }
     p {
       margin: ${48 / 16}rem 0;
       font-size: clamp(${18 / 16}rem, ${24 / 13.66}vw, ${24 / 16}rem);

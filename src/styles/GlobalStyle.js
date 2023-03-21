@@ -74,6 +74,15 @@ const GlobalStyle = createGlobalStyle`
     color: var(--primary-900);
     line-height: 1.22;
   }
+  h1 {
+    font-size: clamp(${36/16}rem, ${54/7.68}vw, ${54/16}rem);
+  }
+  h2 {
+    font-size: clamp(${28/16}rem, ${40/7.68}vw, ${40/16}rem);
+  }
+  h3 {
+    font-size: clamp(${18/16}rem, ${24/10.24}vw, ${24/16}rem);
+  }
 
   main, .max-width {
     width: calc(100% - 80px);
