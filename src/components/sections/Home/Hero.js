@@ -41,6 +41,10 @@ const StyledHero = styled.section`
     justify-content: space-between;
   }
   header {
+    svg {
+      width: 100%;
+      height: auto;
+    }
     width: 50%;
     max-width: ${627/13.66}vw;
     h1 {
