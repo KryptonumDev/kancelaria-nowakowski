@@ -8,6 +8,8 @@ export default function Specializacja({ data }) {
   )
 }
 
+export { Head } from "./../components/sections/seo"
+
 export const query = graphql`
   query specializacja ($id: String!) {
       global : wpPage(id: {eq: "cG9zdDoxNjg="}) {

@@ -3,13 +3,15 @@ import * as React from "react"
 import Hero from "../components/sections/Home/Hero"
 
 export default function Homepage({ data }) {
-  const {heroHome} = data.wpPage.homepage;
+  const { heroHome } = data.wpPage.homepage;
   return (
     <main>
       <Hero data={heroHome} />
     </main>
   )
 }
+
+export { Head } from "./../components/sections/seo"
 
 export const query = graphql`
   query homepage($id: String!) {

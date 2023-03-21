@@ -8,6 +8,8 @@ export default function SpecializacjaArchiwum({ data }) {
     )
 }
 
+export { Head } from "./../components/sections/seo"
+
 export const query = graphql`
     query archiwum ($id: String!) {
         wpPage(id: {eq: $id}){

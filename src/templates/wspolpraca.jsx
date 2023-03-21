@@ -8,6 +8,8 @@ export default function Wspolpraca({ data }) {
     )
 }
 
+export { Head } from "./../components/sections/seo"
+
 export const query = graphql`
     query wspolpraca ($id: String!) {
         wpPage(id: {eq: $id}){

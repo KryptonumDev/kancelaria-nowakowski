@@ -8,6 +8,8 @@ export default function PolityaPrywatnosci({ data }) {
     )
 }
 
+export { Head } from "./../components/sections/seo"
+
 export const query = graphql`
     query polityka ($id: String!) {
         wpPage(id: {eq: $id}){

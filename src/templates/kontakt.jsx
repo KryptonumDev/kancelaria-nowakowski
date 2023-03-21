@@ -8,6 +8,8 @@ export default function Kontakt({ data }) {
     )
 }
 
+export { Head } from "./../components/sections/seo"
+
 export const query = graphql`
     query kontakt ($id: String!) {
         global : wpPage(id: {eq: "cG9zdDoxNjg="}) {
