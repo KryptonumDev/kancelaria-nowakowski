@@ -10,8 +10,18 @@ module.exports = {
     resolve: 'gatsby-source-filesystem',
     options: {
       "name": "images",
-      "path": "./resources/images/"
+      "path": "./src/resources/images/"
     },
     __key: "images"
-  }]
+  },
+  {
+    resolve: 'gatsby-source-wordpress',
+    options: {
+      schema: {
+        timeout: 3000000,
+      },
+      "url": "https://kancelaria.headlesshub.com/graphql"
+    }
+  },
+]
 };
