@@ -1,5 +1,5 @@
 import React from 'react';
-import Layout from "./src/components/sections/Layout"
+import Layout from "./src/components/layout/Layout"
 import CorinthiaRegular from "./src/resources/fonts/Corinthia-Regular.woff2"
 import LatoRegular from "./src/resources/fonts/Lato-Regular.woff2"
 import LatoBold from "./src/resources/fonts/Lato-Bold.woff2"
