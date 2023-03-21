@@ -10,8 +10,6 @@ export default function Homepage({ data }) {
 }
 
 export const query = graphql`
-  query homepage ($id: String!) {
-    wpPage(id: {eq: $id}){
   query homepage($id: String!) {
     global : wpPage(id: {eq: "cG9zdDoxNjg="}) {
       global {
@@ -67,17 +65,6 @@ export const query = graphql`
             localFile {
               childImageSharp {
                 gatsbyImageData
-              }
-            }
-          }
-          rightImage {
-            altText
-            localFile {
-              childImageSharp {
-                gatsbyImageData
-              }
-            }
-          }
               }
             }
           }
