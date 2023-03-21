@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import GlobalStyle from "../../styles/GlobalStyle";
+import Nav from "../organisms/Nav";
 
 const Layout = ({children}) => {
   useEffect(() => {
@@ -14,6 +15,7 @@ const Layout = ({children}) => {
   return (
     <>
       <GlobalStyle />
+      <Nav />
       {children}
     </>
   );
