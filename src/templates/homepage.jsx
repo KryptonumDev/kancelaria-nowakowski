@@ -48,19 +48,19 @@ export const query = graphql`
                   }
                 }
               }
-            }
-            stepsSection {
-              sectionTitle
-              textOnTheRight
-              steps {
-                stepText
-              }
-              textOnTheLeftUnderSteps
-              titleAboveButtonUnderSteps
-              linkUnderSteps {
-                url
-                title
-                target
+              stepsSection {
+                sectionTitle
+                textOnTheRight
+                steps {
+                  stepText
+                }
+                textOnTheLeftUnderSteps
+                titleAboveButtonUnderSteps
+                linkUnderSteps {
+                  url
+                  title
+                  target
+                }
               }
             }
         }
