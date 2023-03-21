@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import GlobalStyle from "../../styles/GlobalStyle";
 import Nav from "../organisms/Nav";
+import BreadCrumbs from './breadcrumbs';
 
 const Layout = ({children}) => {
   useEffect(() => {
@@ -16,6 +17,7 @@ const Layout = ({children}) => {
     <>
       <GlobalStyle />
       <Nav />
+      <BreadCrumbs/>
       {children}
     </>
   );

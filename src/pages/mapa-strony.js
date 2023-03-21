@@ -1,11 +1,39 @@
+import { graphql } from "gatsby"
 import * as React from "react"
+import { Ornament } from "../components/atoms/Icons"
 
-const MapaStrony = () => {
+const MapaStrony = ({ data }) => {
+  const { allWpPage, allWpPost, allWpSpecjalizacja } = data
+
   return (
-    <h1>Not found</h1>
+    <main>
+      <Ornament/>
+      <h1>Mapa strony.</h1>
+    </main>
   )
 }
 
 export default MapaStrony
 
-export const Head = () => <title>Mapa strony</title>
+export const query = graphql`
+  query map {
+  allWpPage {
+    nodes {
+      uri
+      title
+    }
+  }
+  allWpPost {
+    nodes {
+      title
+      uri
+    }
+  }
+  allWpSpecjalizacja {
+    nodes {
+      uri
+      title
+    }
+  }
+  }
+`

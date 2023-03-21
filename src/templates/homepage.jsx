@@ -3,7 +3,7 @@ import * as React from "react"
 import Hero from "../components/sections/Home/Hero"
 
 export default function Homepage({ data }) {
-  const {heroHome} = data.home.homepage;
+  const {heroHome} = data.wpPage.homepage;
   return (
     <main>
       <Hero data={heroHome} />

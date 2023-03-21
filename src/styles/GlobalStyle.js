@@ -47,9 +47,9 @@ const GlobalStyle = createGlobalStyle`
     min-width: 320px;
     font-family: 'Lato', sans-serif;
     color: var(--primary-800);
-    margin-top: 105px;
+    margin-top: 137px;
     @media (max-width: 1149px) {
-      margin-top: 89px;
+      margin-top: 113px;
     }
   }
   button, select {
@@ -75,7 +75,7 @@ const GlobalStyle = createGlobalStyle`
     line-height: 1.22;
   }
 
-  main, .max-width {
+  #___gatsby, .max-width {
     width: calc(100% - 80px);
 
     @media (max-width: 768px){  
