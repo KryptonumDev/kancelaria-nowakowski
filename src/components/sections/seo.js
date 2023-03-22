@@ -35,12 +35,12 @@ export function Head({ data, pageContext }) {
       <meta property="og:description" content={seo.metaDesc || siteMetadata.description} />
 
       <meta property="og:image" content={
-        seo.opengraphImage.localFile.publicURL
+        seo?.opengraphImage?.localFile?.publicURL
           ? siteMetadata.siteUrl + seo.opengraphImage.localFile.publicURL
           : siteMetadata.image}
       />
       <meta property="twitter:image" content={
-        seo.opengraphImage.localFile.publicURL
+        seo?.opengraphImage?.localFile?.publicURL
           ? siteMetadata.siteUrl + seo.opengraphImage.localFile.publicURL
           : siteMetadata.image}
       />
