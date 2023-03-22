@@ -5,7 +5,6 @@ import styled from "styled-components";
 import { OrnamentLogo } from "../../atoms/Icons";
 
 const Rules = ({data}) => {
-  console.log(data);
   return (
     <StyledSection>
       <OrnamentLogo className="ornament-logo" />
