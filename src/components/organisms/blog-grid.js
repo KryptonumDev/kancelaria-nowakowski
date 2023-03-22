@@ -11,11 +11,9 @@ export default function Grid({ currentPage, posts }) {
     setScrollProgresValue(latest)
   })
 
-  const mocposts = [{}, {}, {},{}, {}, {},{}, {}, {},{}, {}, {},]
-
   return (
     <Wrapper>
-      {mocposts.map((el, index) => {
+      {posts.map((el, index) => {
         if (
           index >= 11 * (currentPage - 1) + (currentPage - 1) &&
           index <= 11 * currentPage + (currentPage - 1)

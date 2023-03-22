@@ -72,42 +72,11 @@ exports.createPages = async ({
     })
 
     //  Create blog pagination
-    for (let i = 0; i < Math.ceil(postsCount / 12); i++) {
-      let page = i + 2
-      createPage({
-        path: pageData.uri + page + '/',
-        component: path.resolve(`src/templates/${TEMPLATE_FILE_NAME}`),
-        context: {
-          id: pageData.id,
-          slug: pageData.slug,
-          uri: pageData.uri,
-          page: page,
-          category: null
-        },
-        ownerNodeId: pageData.id
-      })
-    }
-
-    categories.forEach(pageData => {
-      //  Create category page
-      createPage({
-        path: `/blog/${pageData.slug}/`,
-        component: path.resolve(`src/templates/${TEMPLATE_FILE_NAME}`),
-        context: {
-          id: pageData.id,
-          slug: pageData.slug,
-          uri: pageData.uri,
-          page: 1,
-          category: null
-        },
-        ownerNodeId: pageData.id
-      })
-
-      //  Create category pagination
-      for (let i = 0; i < Math.ceil(pageData.count / 12); i++) {
+    if (postsCount > 12) {
+      for (let i = 0; i < Math.ceil(postsCount / 12); i++) {
         let page = i + 2
         createPage({
-          path: `/blog/${pageData.slug}/${page}`,
+          path: pageData.uri + page + '/',
           component: path.resolve(`src/templates/${TEMPLATE_FILE_NAME}`),
           context: {
             id: pageData.id,
@@ -118,6 +87,41 @@ exports.createPages = async ({
           },
           ownerNodeId: pageData.id
         })
+      }
+    }
+
+    categories.forEach(categoryData => {
+      //  Create category page
+      createPage({
+        path: `/blog/${categoryData.slug}/`,
+        component: path.resolve(`src/templates/${TEMPLATE_FILE_NAME}`),
+        context: {
+          id: pageData.id,
+          slug: categoryData.slug,
+          uri: categoryData.uri,
+          page: 1,
+          category: null
+        },
+        ownerNodeId: categoryData.id
+      })
+
+      //  Create category pagination
+      if (categoryData.count > 12) {
+        for (let i = 0; i < Math.ceil(categoryData.count / 12); i++) {
+          let page = i + 2
+          createPage({
+            path: `/blog/${categoryData.slug}/${page}`,
+            component: path.resolve(`src/templates/${TEMPLATE_FILE_NAME}`),
+            context: {
+              id: categoryData.id,
+              slug: categoryData.slug,
+              uri: categoryData.uri,
+              page: page,
+              category: null
+            },
+            ownerNodeId: pageData.id
+          })
+        }
       }
 
     })
