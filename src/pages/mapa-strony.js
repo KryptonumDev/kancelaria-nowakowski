@@ -31,7 +31,7 @@ const MapaStrony = ({ data }) => {
     })
 
     return arr
-  }, [])
+  }, [allWpPage, allWpPost, allWpSpecjalizacja])
 
   return (
     <Wrapper>
@@ -85,6 +85,7 @@ const Wrapper = styled.main`
     max-width: fit-content;
   }
   h1{
+    font-size: clamp(${36 / 16}rem, ${54 / 13.66}vw, ${54 / 16}rem);
     position: relative;
     display: block;
     width: fit-content;

@@ -81,13 +81,14 @@ const GlobalStyle = createGlobalStyle`
     @media (max-width: 768px){  
       width: calc(100% - 34px);
     }
-    max-width: 1366px;
+    max-width: 1286px;
     margin: 0 auto;
     height: 100%;
   }
 
   .cta-primary,
-  .cta-secondary {
+  .cta-secondary,
+  .cta-white {
     font-family: var(--serif);
     font-size: clamp(${18/16}rem, ${24/13.66}vw, ${24/16}rem);
     padding: ${16/24}em ${32/24}em;
@@ -102,6 +103,10 @@ const GlobalStyle = createGlobalStyle`
   .cta-secondary {
     box-shadow: inset 0 0 0 2px var(--primary-800);
     color: var(--primary-800);
+  }
+  .cta-white{
+    background: #ECFFFC;
+    color: #0F3730;
   }
 `
 
