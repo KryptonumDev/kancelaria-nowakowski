@@ -8,7 +8,7 @@ export default function Pagination({ defaultUrl, currentPage, itemCount }) {
 
   const pagesCount = useMemo(() => {
     let count = itemCount - 10
-    return (Math.ceil(count / 9)) + 1
+    return (Math.ceil(count / 12)) + 1
   }, [itemCount])
 
   for (let i = 0; i < pagesCount; i++) {
@@ -35,7 +35,7 @@ export default function Pagination({ defaultUrl, currentPage, itemCount }) {
             href = defaultUrl
           }
           return (
-            <Button className="not-link" to={href} activeClassName='active' >
+            <Button to={href} activeClassName='active' >
               <span>{el}</span>
             </Button>
           )

@@ -3,7 +3,6 @@ import React, { useState } from "react"
 import styled from "styled-components"
 import Card from "../moleculas/blog-card"
 
-
 export default function Grid({ currentPage, posts }) {
   const { scrollYProgress } = useScroll()
   const [scrollProgresValue, setScrollProgresValue] = useState(0)
@@ -12,9 +11,11 @@ export default function Grid({ currentPage, posts }) {
     setScrollProgresValue(latest)
   })
 
+  const mocposts = [{}, {}, {},{}, {}, {},{}, {}, {},{}, {}, {},]
+
   return (
     <Wrapper>
-      {posts.map((el, index) => {
+      {mocposts.map((el, index) => {
         if (
           index >= 11 * (currentPage - 1) + (currentPage - 1) &&
           index <= 11 * currentPage + (currentPage - 1)
@@ -30,9 +31,7 @@ export default function Grid({ currentPage, posts }) {
             />
           )
         }
-
         return null
-
       })}
     </Wrapper>
   )

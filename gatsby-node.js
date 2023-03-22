@@ -27,6 +27,102 @@ exports.createPages = async ({
     })
   }
 
+  const createBlogInstance = async (TEMPLATE_FILE_NAME, PAGE_ID) => {
+    const { data: {
+      wpPage: pageData,
+      allWpPost: {
+        totalCount: postsCount
+      },
+      allWpCategory: {
+        nodes: categories
+      }
+    } } = await graphql(`
+            query getPageData ($id: String!){
+                wpPage(id: {eq: $id})  {
+                    slug
+                    id
+                    uri
+                }
+                allWpPost {
+                  totalCount
+                }
+                allWpCategory(filter: {count: {gt: 0}}) {
+                  nodes {
+                    slug
+                    count
+                    id
+                    uri
+                  }
+                }
+            }
+        `, { id: PAGE_ID })
+
+    //  Create blog page
+    createPage({
+      path: pageData.uri,
+      component: path.resolve(`src/templates/${TEMPLATE_FILE_NAME}`),
+      context: {
+        id: pageData.id,
+        slug: pageData.slug,
+        uri: pageData.uri,
+        page: 1,
+        category: null
+      },
+      ownerNodeId: pageData.id
+    })
+
+    //  Create blog pagination
+    for (let i = 0; i < Math.ceil(postsCount / 12); i++) {
+      let page = i + 2
+      createPage({
+        path: pageData.uri + page + '/',
+        component: path.resolve(`src/templates/${TEMPLATE_FILE_NAME}`),
+        context: {
+          id: pageData.id,
+          slug: pageData.slug,
+          uri: pageData.uri,
+          page: page,
+          category: null
+        },
+        ownerNodeId: pageData.id
+      })
+    }
+
+    categories.forEach(pageData => {
+      //  Create category page
+      createPage({
+        path: `/blog/${pageData.slug}/`,
+        component: path.resolve(`src/templates/${TEMPLATE_FILE_NAME}`),
+        context: {
+          id: pageData.id,
+          slug: pageData.slug,
+          uri: pageData.uri,
+          page: 1,
+          category: null
+        },
+        ownerNodeId: pageData.id
+      })
+
+      //  Create category pagination
+      for (let i = 0; i < Math.ceil(pageData.count / 12); i++) {
+        let page = i + 2
+        createPage({
+          path: `/blog/${pageData.slug}/${page}`,
+          component: path.resolve(`src/templates/${TEMPLATE_FILE_NAME}`),
+          context: {
+            id: pageData.id,
+            slug: pageData.slug,
+            uri: pageData.uri,
+            page: page,
+            category: null
+          },
+          ownerNodeId: pageData.id
+        })
+      }
+
+    })
+  }
+
   // create pages 
 
   createPageInstance('homepage.jsx', 'cG9zdDoxOQ==')
@@ -35,7 +131,8 @@ exports.createPages = async ({
   createPageInstance('wspolpraca.jsx', 'cG9zdDo3NA==')
   createPageInstance('polityka-prywatnosci.jsx', 'cG9zdDo3Nw==')
   createPageInstance('kancelaria.jsx', 'cG9zdDo3MQ==')
-  createPageInstance('blog.jsx', 'cG9zdDo4Mw==')
+
+  createBlogInstance('blog.jsx', 'cG9zdDo4Mw==')
 
   // create specialisations
 
@@ -48,7 +145,7 @@ exports.createPages = async ({
           uri
         }
       }
-    }
+    } 
   `)
 
   allWpSpecjalizacja.nodes.forEach(el => {

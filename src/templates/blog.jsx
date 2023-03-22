@@ -3,12 +3,12 @@ import * as React from "react"
 import Content from "../components/sections/blog-content"
 import CallToAction from "../components/sections/cta-one-button"
 
-export default function Blog({ data }) {
+export default function Blog({ pageContext, data }) {
   const { blogContent, callToActionBlog } = data.wpPage.blog
   return (
     <main>
-      <Content data={blogContent}/>
-      <CallToAction data={callToActionBlog}/>
+      <Content categories={data.allWpCategory.nodes} posts={data.allWpPost.nodes} page={pageContext.page} data={blogContent} />
+      <CallToAction data={callToActionBlog} />
     </main>
   )
 }
@@ -17,6 +17,20 @@ export { Head } from "./../components/sections/seo"
 
 export const query = graphql`
   query blog ($id: String!) {
+    allWpCategory(filter: {count: {gt: 0}}) {
+      nodes {
+        slug
+        count
+        name
+      }
+    }
+    allWpPost {
+      nodes {
+        slug
+        title
+        id
+      }
+    }
     wpPage(id: {eq: $id}){
       ...SEO
       blog {
