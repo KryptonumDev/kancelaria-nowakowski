@@ -1,4 +1,5 @@
 import { Link } from "gatsby"
+import { StaticImage } from "gatsby-plugin-image"
 import * as React from "react"
 import styled from "styled-components"
 import { Ornament } from "../components/atoms/Icons"
@@ -7,9 +8,10 @@ const NotFoundPage = () => {
   return (
     <Wrapper>
       <div>
+        <StaticImage className="image" src='./../resources/images/404.jpg' alt='obrazek dekoracyjny' />
         <Ornament />
         <h1>
-          Niestety nie znaleźliśmy<br/>
+          Niestety nie znaleźliśmy
           strony.
         </h1>
         <div className="line">
@@ -31,13 +33,49 @@ const Wrapper = styled.main`
   display: flex;
   gap: 32px;
 
+  >div{
+    position: relative;
+    max-width: 50%;
+
+    @media (max-width: 924px){
+      max-width: unset;
+    }
+
+    svg{
+      width: 100%;
+
+      @media (max-width: 924px){
+        max-width: fit-content
+      }
+    }
+  }
+  .image{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: -32px;
+    transform: translateX(100%);
+    aspect-ratio: 1/1;
+
+    @media (max-width: 924px) {
+      position: relative;
+      transform: unset;
+      aspect-ratio: unset;
+      right: unset;
+      top: unset;
+      width: 100%;
+      margin-bottom: 32px;
+      min-height: 468px;
+    }
+  }
+
   h1{
-    margin-top: 16px;
+    margin-top: clamp(0px, ${16 / 768 * 100}vw, 16px);
     font-size: clamp(${36 / 16}rem, ${54 / 13.66}vw, ${54 / 16}rem);
   }
 
   p{
-    margin-top: 32px;
+    margin-top: clamp(16px, ${24 / 768 * 100}vw, 32px);
     font-size: clamp(${18 / 16}rem, ${24 / 13.66}vw, ${24 / 16}rem);
     font-family: 'Literata';
     max-width: 500px;
@@ -72,9 +110,17 @@ const Wrapper = styled.main`
   }
 
   .flex{
-    margin-top: 40px;
+    margin-top: clamp(12px, ${24 / 768 * 100}vw, 40px);
     display: flex;
     align-items: center;
     gap: 32px;
+
+    @media (max-width: 420px) {
+      flex-direction: column;
+      gap: 8px;
+      a{
+        width: 100%;
+      }
+    }
   }
 `

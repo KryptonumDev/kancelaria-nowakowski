@@ -26,7 +26,7 @@ export function Head({ data, pageContext }) {
       <link rel="canonical" href={canonical} />
       <meta property="og:url" content={canonical} />
 
-      <title>{seo.title || siteMetadata.title}</title> // TODO: TEST if || work here properly
+      <title>{seo.title || siteMetadata.title}</title>
       <meta property="twitter:title" content={seo.title || siteMetadata.title} />
       <meta property="og:title" content={seo.title || siteMetadata.title} />
 
