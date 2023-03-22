@@ -11,9 +11,10 @@ export default function Grid({ currentPage, posts }) {
     setScrollProgresValue(latest)
   })
 
+  const mockposts = [{},{},{},{},{},{},{},{},{},{},{},{},]
   return (
     <Wrapper>
-      {posts.map((el, index) => {
+      {mockposts.map((el, index) => {
         if (
           index >= 11 * (currentPage - 1) + (currentPage - 1) &&
           index <= 11 * currentPage + (currentPage - 1)
