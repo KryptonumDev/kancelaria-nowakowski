@@ -3,15 +3,20 @@ import * as React from "react"
 import Hero from "../components/sections/Home/Hero"
 import StepsSection from "../components/sections/Home/StepsSection";
 import Rules from "../components/sections/Home/Rules";
+import Testimonials from "../components/sections/Home/Testimonials";
+import CallToActionTwoBtns from "../components/sections/CallToActionTwoBtns";
 
 
 export default function Homepage({ data }) {
-  const {heroHome, stepsSection, sectionWithImgOnRightHome} = data.wpPage.homepage;
+  const {heroHome, stepsSection, sectionWithImgOnRightHome, sectionWithCommentsHome} = data.wpPage.homepage;
+  const {callToActionBlog} = data.wpPage.blog;
   return (
     <main>
       <Hero data={heroHome} />
       <StepsSection data={stepsSection} />
       <Rules data={sectionWithImgOnRightHome} />
+      <Testimonials data={sectionWithCommentsHome} />
+      <CallToActionTwoBtns data={callToActionBlog} />
     </main>
   )
 }
@@ -129,6 +134,18 @@ export const query = graphql`
                 childImageSharp {
                   gatsbyImageData
                 }
+              }
+            }
+          }
+        }
+      }
+      blog {
+        callToActionBlog {
+          backgroundImage {
+            altText
+            localFile {
+              childImageSharp {
+                gatsbyImageData(quality: 90)
               }
             }
           }
