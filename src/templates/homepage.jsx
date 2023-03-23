@@ -5,6 +5,7 @@ import StepsSection from "../components/sections/Home/StepsSection";
 import Rules from "../components/sections/Home/Rules";
 import Testimonials from "../components/sections/Home/Testimonials";
 import CallToActionTwoBtns from "../components/sections/CallToActionTwoBtns";
+import ContactUs from "../components/sections/ContactUs";
 
 
 export default function Homepage({ data }) {
@@ -17,6 +18,7 @@ export default function Homepage({ data }) {
       <Rules data={sectionWithImgOnRightHome} />
       <Testimonials data={sectionWithCommentsHome} />
       <CallToActionTwoBtns data={callToActionBlog} />
+      <ContactUs />
     </main>
   )
 }
