@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import GlobalStyle from "../../styles/GlobalStyle";
 import Nav from "../organisms/Nav";
+import Footer from "../organisms/Footer";
 import BreadCrumbs from './breadcrumbs';
 
 const Layout = ({children}) => {
@@ -19,6 +20,7 @@ const Layout = ({children}) => {
       <Nav />
       <BreadCrumbs/>
       {children}
+      <Footer />
     </>
   );
 }
