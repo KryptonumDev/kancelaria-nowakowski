@@ -4,21 +4,23 @@ import mark from './../../resources/images/blog-ul-mark.svg'
 import { slugTransform } from './../../helpers/slug-transform'
 
 export default function Content({ headings, content }) {
-  
+
   return (
     <Wrapper>
-      <Navigation>
-        <svg width="116" height="97" viewBox="0 0 116 97" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect width="85" height="81" transform="translate(15.5 8)" fill="white" />
-          <path d="M89.5448 17.0039V59.6749H68.5153V38.3329H47.4922V17.0039H89.5448Z" fill="#3BBD9A" />
-          <path d="M89.5412 81H26.4688V17L47.4887 38.329V59.6677H68.5118L89.5412 81Z" fill="#15957E" />
-        </svg>
-        <div>
-          {headings.map(el => (
-            <a href={'#' + slugTransform(el.innerText)}>{el.innerText}</a>
-          ))}
-        </div>
-      </Navigation>
+      {headings.length > 1 && (
+        <Navigation>
+          <svg width="116" height="97" viewBox="0 0 116 97" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="85" height="81" transform="translate(15.5 8)" fill="white" />
+            <path d="M89.5448 17.0039V59.6749H68.5153V38.3329H47.4922V17.0039H89.5448Z" fill="#3BBD9A" />
+            <path d="M89.5412 81H26.4688V17L47.4887 38.329V59.6677H68.5118L89.5412 81Z" fill="#15957E" />
+          </svg>
+          <div>
+            {headings.map(el => (
+              <a href={'#' + slugTransform(el.innerText)}>{el.innerText}</a>
+            ))}
+          </div>
+        </Navigation>
+      )}
       <PostContent dangerouslySetInnerHTML={{ __html: content }} />
     </Wrapper>
   )
