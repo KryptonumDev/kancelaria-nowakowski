@@ -2,9 +2,8 @@ import { motion, useMotionValue } from "framer-motion"
 import { Link } from "gatsby"
 import React, { useCallback, useEffect, useState } from "react"
 import styled from "styled-components"
-import { Left, Right } from "../atoms/arrows"
 
-export default function Filter({ categories }) {
+export default function Filter({ postsCount, categories }) {
 
   const x = useMotionValue(0)
 
@@ -63,8 +62,11 @@ export default function Filter({ categories }) {
       </div>
       <SliderWrapper id='control-wrap'>
         <Slider style={{ x }} drag='x' dragConstraints={{ left: maxButtonsTransform > 0 ? -maxButtonsTransform : 0, right: 0 }} maxButtonsTransform={maxButtonsTransform} id='control'>
+          <Link activeClassName="active" to='/blog/'>
+            Wszystkie ({postsCount})
+          </Link>
           {categories.map(el => (
-            <Link>
+            <Link activeClassName="active" to={el.uri}>
               {el.name} ({el.count})
             </Link>
           ))}
@@ -95,6 +97,10 @@ const Wrapper = styled.div`
     line-height: 30px;
     font-family: 'Lato';
     color: #0F3730;
+
+    &.active{
+      background-color: #51C6B1;
+    }
   }
 
 `

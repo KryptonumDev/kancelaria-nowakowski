@@ -93,7 +93,7 @@ exports.createPages = async ({
     categories.forEach(categoryData => {
       //  Create category page
       createPage({
-        path: `/blog/${categoryData.slug}/`,
+        path: categoryData.uri,
         component: path.resolve(`src/templates/${TEMPLATE_FILE_NAME}`),
         context: {
           id: pageData.id,
@@ -110,7 +110,7 @@ exports.createPages = async ({
         for (let i = 0; i < Math.ceil(categoryData.count / 12); i++) {
           let page = i + 2
           createPage({
-            path: `/blog/${categoryData.slug}/${page}`,
+            path: categoryData.uri + page + '/',
             component: path.resolve(`src/templates/${TEMPLATE_FILE_NAME}`),
             context: {
               id: categoryData.id,
@@ -123,11 +123,10 @@ exports.createPages = async ({
           })
         }
       }
-
     })
   }
 
-  // create pages 
+  // create pages  
 
   createPageInstance('homepage.jsx', 'cG9zdDoxOQ==')
   createPageInstance('kontakt.jsx', 'cG9zdDo0NA==')

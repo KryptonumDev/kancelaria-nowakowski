@@ -3,19 +3,25 @@ import { Link } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 import React from "react"
 import styled from "styled-components"
-import { Right } from "../atoms/arrows"
 
 export default function Card({ data, scrollProgresValue }) {
   return (
-    <Wrapper transition={{ type: "spring", stiffness: 10 }} style={{ y: scrollProgresValue }}>
+    <Wrapper initial={{ y: scrollProgresValue }} transition={{ type: "spring", stiffness: 10 }} style={{ y: scrollProgresValue }}>
+      <Link tabIndex='-1' className="link" to={data.uri} />
       <Image>
-        <GatsbyImage image='' alt='' />
-        {/* categories */}
+        <GatsbyImage className="image" image={data.featuredImage.node.localFile.childImageSharp.gatsbyImageData} alt={data.featuredImage.node.altText} />
+        <Categories>
+          {data.categories.nodes.map(el => (
+            <div>
+              {el.name}
+            </div>
+          ))} 
+        </Categories>
       </Image>
       <Information>
         <p className="title">{data.title}</p>
-        <p className="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lectus senectus mauris, aliquet nam feugiat netus augue aliquam ut.</p>
-        <Link to='/'>
+        <div className="description" dangerouslySetInnerHTML={{ __html: data.excerpt }} />
+        <Link to={`/${data.slug}/`} >
           <span>Czytaj więcej</span>
           <svg width="33" height="33" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M27.1641 16.0801L5.83105 16.0801" stroke="#0F3730" stroke-width="1.5" stroke-linecap="square" />
@@ -30,12 +36,41 @@ export default function Card({ data, scrollProgresValue }) {
 
 const Wrapper = styled(motion.div)`
   height: 100%;
+  position: relative;
+
+  .link{
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+  }
+`
+
+const Categories = styled.div`
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+
+  div{
+    padding: 4px 20px;
+    font-size: 20px;
+    line-height: 150%;
+    display: flex;
+    align-items: center;
+    color: #0F3730;
+    background-color: #D8E1E3;
+  }
 `
 
 const Image = styled.div`
   position: relative;
-  height: 305px;
-  background-color: gray;
+  .image{
+    height: 300px;
+  }
 `
 
 const Information = styled.div`
@@ -63,5 +98,6 @@ const Information = styled.div`
     color: #12433A;
     display: flex;
     align-items: center;
+    width: fit-content;
   }
 `
