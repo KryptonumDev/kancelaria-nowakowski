@@ -8,7 +8,7 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
   :root {
-    --primary-100: #E3F5F2;
+    --primary-100: #ECFFFC;
     --primary-200: #C6EBE4;
     --primary-300: #AAE0D7;
     --primary-400: #8DD6C9;
@@ -73,6 +73,15 @@ const GlobalStyle = createGlobalStyle`
     font-weight: 400;
     color: var(--primary-900);
     line-height: 1.22;
+  }
+  h1 {
+    font-size: clamp(${36/16}rem, ${54/7.68}vw, ${54/16}rem);
+  }
+  h2 {
+    font-size: clamp(${28/16}rem, ${40/13.66}vw, ${40/16}rem);
+  }
+  h3 {
+    font-size: clamp(${18/16}rem, ${24/10.24}vw, ${24/16}rem);
   }
 
   #___gatsby, .max-width {
