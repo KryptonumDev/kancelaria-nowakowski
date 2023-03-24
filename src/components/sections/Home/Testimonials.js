@@ -2,7 +2,6 @@ import React, { useRef, useState } from "react"
 import styled from "styled-components"
 import { motion, AnimatePresence } from "framer-motion"
 import { GatsbyImage, StaticImage } from "gatsby-plugin-image"
-import Background from './../../../resources/images/backogrund-comment.jpg'
 
 const Testimonials = ({ data }) => {
   const constraintsRef = useRef(null)

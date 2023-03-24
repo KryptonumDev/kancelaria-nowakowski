@@ -50,8 +50,13 @@ const Wrapper = styled.section`
     grid-template-columns: 1fr 1fr;
     grid-gap: 32px;
 
+    @media (max-width: 900px) {
+      grid-template-columns: 1fr;
+      grid-gap: 16px;
+    }
+
     p{
-      font-size: clamp(${18 / 16}rem, ${24 / 7.68}vw, ${24 / 16}rem);
+      font-size: clamp(${22 / 16}rem, ${24 / 7.68}vw, ${24 / 16}rem);
       font-family: 'Literata';
       line-height: 160%; 
       color: #12433A;
@@ -66,4 +71,9 @@ const Grid = styled.div`
   grid-gap: 32px;
   margin-top: 40px;
   padding-bottom: 120px;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr;
+    padding-bottom: 0;
+  }
 `

@@ -42,6 +42,20 @@ const Wrapper = styled(motion.div)`
   height: 100%;
   position: relative;
 
+  @media (max-width: 1024px){
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    max-width: 900px;
+    transform: unset !important;
+  }
+
+  @media (max-width: 680px){
+    display: block;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
   .link{
     position: absolute;
     inset: 0;
@@ -74,11 +88,20 @@ const Image = styled.div`
   position: relative;
   .image{
     height: 300px;
+
+    @media (max-width: 1024px) {
+      height: 100%;
+      min-width: 314px;
+    }
   }
 `
 
 const Information = styled.div`
   margin-top: 20px;
+
+  @media (max-width: 1024px){
+    margin-top: 0;
+  }
 
   .title{
     font-size: 24px;
