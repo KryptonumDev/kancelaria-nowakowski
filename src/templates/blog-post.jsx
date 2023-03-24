@@ -1,34 +1,22 @@
 import { graphql } from "gatsby"
 import * as React from "react"
-import Content from "../components/sections/post-content"
+import Content from "../components/sections/gutenberg-content"
 import Hero from "../components/sections/post-hero"
 import { slugTransform } from "../helpers/slug-transform"
+import useHeadings from "../hooks/create-headings"
 
 
 export default function Post({ data }) {
-    const { content, categories, title, excerpt, featuredImage } = data.wpPost
+  const { content, categories, title, excerpt, featuredImage } = data.wpPost
 
-    const headings = React.useMemo(() => {
-        if(typeof document === 'undefined'){
-            return []
-        }
-        const htmlObject = document.createElement('div')
-        htmlObject.innerHTML = content
-        const titles = htmlObject.querySelectorAll("h2")
+  const headings = useHeadings(content)
 
-        // for (var i = 0; i < titles.length; i++){
-        //     titles[i].id = 'abc-' + i;
-        // }
-
-        return Array.from(titles)
-    }, [content])
-
-    return (
-        <main>
-            <Hero categories={categories} title={title} excerpt={excerpt} featuredImage={featuredImage} />
-            <Content content={content} headings={headings} />
-        </main>
-    )
+  return (
+    <main>
+      <Hero categories={categories} title={title} excerpt={excerpt} featuredImage={featuredImage} />
+      <Content content={content} headings={headings} />
+    </main>
+  )
 }
 
 export { Head } from "./../components/sections/seo"

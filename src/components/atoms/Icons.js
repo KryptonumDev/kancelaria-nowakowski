@@ -56,7 +56,7 @@ export const OrnamentLogo = () => (
 )
 
 export const Ornament = () => (
-  <OrnamentWrapper xmlns='http://www.w3.org/2000/svg' width='100%' height='auto' viewBox="0 0 627 91" fill='none'>
+  <OrnamentWrapper className="ornament" xmlns='http://www.w3.org/2000/svg' width='100%' height='auto' viewBox="0 0 627 91" fill='none'>
     <g fill='#4FD2BB'>
       <path d='M310.829 0l-45.552 45.5L310.829 91l45.553-45.5L310.829 0zm-43.657 45.5l43.657-43.607L354.487 45.5l-43.658 43.607L267.172 45.5z'></path>
       <path d='M326.233 0l-8.175 8.167a.666.666 0 000 .947.668.668 0 00.947 0l7.228-7.22L369.891 45.5l-44.132 44.08a.67.67 0 10.948.946L371.786 45.5 326.233 0zm-31.681 0L249 45.5 294.552 91l8.613-8.602a.669.669 0 10-.948-.946l-7.665 7.655L250.895 45.5l43.657-43.607 7.665 7.656a.67.67 0 10.948-.947L294.552 0z'></path>
