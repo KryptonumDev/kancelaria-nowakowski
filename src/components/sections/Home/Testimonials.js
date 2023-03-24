@@ -10,7 +10,7 @@ const Testimonials = ({ data }) => {
 
   const dragEndHandler = (event, info) => {
     const offset = info.offset.x
-    if (Math.abs(offset) > 20) {
+    if (Math.abs(offset) > 5) {
       const direction = offset < 0 ? 1 : -1
       let nextSlide = 0
       if (direction === 1) {
@@ -98,8 +98,24 @@ const Wrapper = styled.section`
 
   .item{
     display: grid;
+    align-items: center;
     grid-template-columns: 406fr 879fr;
     max-width: 1286px;
+    width: calc(100vw - 80px);
+
+    @media (max-width: 768px) {
+      width: calc(100vw - 34px);
+    }
+    @media (max-width: 520px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .image{
+    @media (max-width: 520px){
+      width: 30vw;
+      min-width: 102px;
+    }
   }
 
   img{
@@ -112,27 +128,54 @@ const Wrapper = styled.section`
 
   .content{
     /* max-width: 737px; */
-    padding: 32px;
-    position: relative;
+    padding: clamp(50px, ${50 / 520 * 100}vw, 80px) 32px;
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    position: relative;
+
+    @media (max-width: 520px){
+      padding: 50px 20px 40px 20px;
+    }
 
     h3{
       margin-bottom: 32px;
       font-family: 'Literata';
       font-weight: 400;
-      font-size: 32px;
+      font-size: clamp(24px, ${30 / 768 * 100}vw, 32px);
       line-height: 131%;
       letter-spacing: -0.005em;
       color: #0F3730;
       max-width: 535px;
+      position: relative;
+
+      &::before{
+        content: '“';
+        position: absolute;
+        font-family: 'Literata';
+        font-weight: 400;
+        font-size: 54px;
+        line-height: 111%;
+        letter-spacing: -0.01em;
+        color: #9CFFEE;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, -70%  );
+
+        @media(max-width: 1024px) {
+          left: 0;
+          transform: translateY(-70%);
+        }
+        @media (max-width: 640px){
+          transform: translateY(-60%);
+        }
+      }
     }
 
     p{
       font-family: 'Literata';
-      font-size: 24px;
+      font-size: clamp(18px, ${21 / 768 * 100}vw, 24px);
       line-height: 158%;
       color: #0F3730;
       max-width: 650px;
@@ -143,7 +186,7 @@ const Wrapper = styled.section`
       text-align: right;
       font-family: 'Corinthia';
       font-weight: 400;
-      font-size: 40px;
+      font-size: clamp(32px, ${40 / 768 * 100}vw, 40px);
       line-height: 120%;
       color: #12433A;
       max-width: 737px;
