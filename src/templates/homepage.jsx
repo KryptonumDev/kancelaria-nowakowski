@@ -5,18 +5,19 @@ import StepsSection from "../components/sections/Home/StepsSection";
 import Rules from "../components/sections/Home/Rules";
 import Testimonials from "../components/sections/Home/Testimonials";
 import CallToActionTwoBtns from "../components/sections/CallToActionTwoBtns";
+import Slider from "../components/sections/blog-slider";
 
 
 export default function Homepage({ data }) {
-  const {heroHome, stepsSection, sectionWithImgOnRightHome, sectionWithCommentsHome} = data.wpPage.homepage;
-  const {callToActionBlog} = data.wpPage.blog;
+  const { heroHome, stepsSection, sectionWithImgOnRightHome, sectionWithCommentsHome } = data.wpPage.homepage;
+  const { sectionBlog } = data.global.global;
   return (
     <main>
       <Hero data={heroHome} />
       <StepsSection data={stepsSection} />
       <Rules data={sectionWithImgOnRightHome} />
       <Testimonials data={sectionWithCommentsHome} />
-      <CallToActionTwoBtns data={callToActionBlog} />
+      <Slider posts={data.allWpPost.nodes} data={sectionBlog} />
     </main>
   )
 }
@@ -25,6 +26,30 @@ export { Head } from "./../components/sections/seo"
 
 export const query = graphql`
   query homepage($id: String!) {
+    allWpPost(limit: 3) {
+      nodes {
+        id
+        uri
+        title
+        excerpt
+        featuredImage {
+          node {
+            altText
+            localFile {
+              childImageSharp {
+                gatsbyImageData
+              }
+            }
+          }
+        }
+        categories {
+          nodes {
+            name
+            slug
+          }
+        }
+      }
+    }
     global : wpPage(id: {eq: "cG9zdDoxNjg="}) {
       global {
         sectionContact {
@@ -47,6 +72,14 @@ export const query = graphql`
               target
               title
               url
+            }
+            backgroundImage{
+              altText
+              localFile{
+                childImageSharp{
+                  gatsbyImageData
+                }
+              }
             }
           }
         }
@@ -134,18 +167,6 @@ export const query = graphql`
                 childImageSharp {
                   gatsbyImageData
                 }
-              }
-            }
-          }
-        }
-      }
-      blog {
-        callToActionBlog {
-          backgroundImage {
-            altText
-            localFile {
-              childImageSharp {
-                gatsbyImageData(quality: 90)
               }
             }
           }

@@ -143,7 +143,7 @@ exports.createPages = async ({
     query getSpecialisationData {
       allWpSpecjalizacja  {
         nodes{
-          slug
+          slug 
           id
           uri
         }

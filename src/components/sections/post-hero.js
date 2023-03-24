@@ -41,6 +41,10 @@ const Wrapper = styled.section`
     line-height: 160%; 
     color: #12433A;
   }
+
+  svg{
+    height: auto;
+  }
 `
 
 const Categories = styled.div`

@@ -20,11 +20,8 @@ export default function Grid({ currentPage, posts }) {
         ) {
           return (
             <Card
-              scrollProgresValue={
-                ((index + 2) % 3 === 0)
-                  ? 120 - (scrollProgresValue * 120)
-                  : 0 + (scrollProgresValue * 120)
-              }
+              index={index}
+              scrollProgresValue={scrollProgresValue}
               data={el}
             />
           )

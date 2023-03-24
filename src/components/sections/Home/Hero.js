@@ -10,12 +10,12 @@ const Hero = ({ data }) => {
       <header>
         <Ornament />
         <h1>{data.pageTitle}</h1>
-        <p>
+        <p className="flex">
           {data.linksToSubpages.map((link, i) => (
-            <span key={link.link.title + i}>
+            <span className="no-wrap" key={link.link.title + i}>
               <Link to={link.link.url} >{link.link.title}</Link>
               {i !== data.linksToSubpages.length - 1 && (
-                <> / </>
+                <>&nbsp;/&nbsp;</>
               )}
             </span>
           ))}
@@ -38,6 +38,14 @@ const StyledHero = styled.section`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  .flex{
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .no-wrap{
+    white-space: nowrap;
+    font-family: 'Literata';
+  }
   header {
     svg {
       width: 100%;

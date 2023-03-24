@@ -29,7 +29,6 @@ export const query = graphql`
       nodes {
         id
         uri
-        slug
         title
         excerpt
         featuredImage {

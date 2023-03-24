@@ -75,7 +75,7 @@ const Wrapper = styled.main`
   }
 
   p{
-    margin-top: clamp(16px, ${24 / 768 * 100}vw, 32px);
+    margin-top: clamp(1rem, ${24 / 768 * 100}vw, 2rem);
     font-size: clamp(${18 / 16}rem, ${24 / 13.66}vw, ${24 / 16}rem);
     font-family: 'Literata';
     max-width: 500px;

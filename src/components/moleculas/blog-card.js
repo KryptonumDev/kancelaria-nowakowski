@@ -4,9 +4,13 @@ import { GatsbyImage } from "gatsby-plugin-image"
 import React from "react"
 import styled from "styled-components"
 
-export default function Card({ data, scrollProgresValue }) {
+export default function Card({ index, data, scrollProgresValue }) {
+  const scrollValue = ((index + 2) % 3 === 0)
+    ? 120 - (scrollProgresValue * 120)
+    : 0 + (scrollProgresValue * 120)
+
   return (
-    <Wrapper initial={{ y: scrollProgresValue }} transition={{ type: "spring", stiffness: 10 }} style={{ y: scrollProgresValue }}>
+    <Wrapper initial={{ y: scrollValue }} transition={{ type: "spring", stiffness: 10 }} style={{ y: scrollValue }}>
       <Link tabIndex='-1' className="link" to={data.uri} />
       <Image>
         <GatsbyImage className="image" image={data.featuredImage.node.localFile.childImageSharp.gatsbyImageData} alt={data.featuredImage.node.altText} />
@@ -15,7 +19,7 @@ export default function Card({ data, scrollProgresValue }) {
             <div>
               {el.name}
             </div>
-          ))} 
+          ))}
         </Categories>
       </Image>
       <Information>
