@@ -11,7 +11,7 @@ export default function Content({ categories, posts, data, page }) {
     <Wrapper>
       <Ornament />
       <h1>{data.pageTitle}</h1>
-      <Filter categories={categories} />
+      <Filter postsCount={posts.length} categories={categories} />
       <Grid posts={posts} currentPage={page} />
       <Pagination defaultUrl='/blog/' currentPage={page} itemCount={posts.length} />
     </Wrapper>
@@ -20,7 +20,7 @@ export default function Content({ categories, posts, data, page }) {
 
 const Wrapper = styled.section`
   h1{
-    font-size: clamp(${36 / 16}rem, ${54 / 13.66}vw, ${54 / 16}rem);
+    font-size: clamp(${36 / 16}rem, ${50 / 7.68}vw, ${54 / 16}rem);
     position: relative;
     display: block;
     width: fit-content;

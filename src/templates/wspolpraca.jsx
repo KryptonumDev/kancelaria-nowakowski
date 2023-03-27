@@ -14,6 +14,7 @@ export const query = graphql`
     query wspolpraca ($id: String!) {
         wpPage(id: {eq: $id}){
             id
+            ...SEO
         }
     }
 `

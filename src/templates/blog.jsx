@@ -22,13 +22,31 @@ export const query = graphql`
         slug
         count
         name
+        uri
       }
     }
     allWpPost {
       nodes {
-        slug
-        title
         id
+        uri
+        title
+        excerpt
+        featuredImage {
+          node {
+            altText
+            localFile {
+              childImageSharp {
+                gatsbyImageData
+              }
+            }
+          }
+        }
+        categories {
+          nodes {
+            name
+            slug
+          }
+        }
       }
     }
     wpPage(id: {eq: $id}){

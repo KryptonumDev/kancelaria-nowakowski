@@ -11,22 +11,17 @@ export default function Grid({ currentPage, posts }) {
     setScrollProgresValue(latest)
   })
 
-  const mocposts = [{}, {}, {},{}, {}, {},{}, {}, {},{}, {}, {},]
-
   return (
     <Wrapper>
-      {mocposts.map((el, index) => {
+      {posts.map((el, index) => {
         if (
           index >= 11 * (currentPage - 1) + (currentPage - 1) &&
           index <= 11 * currentPage + (currentPage - 1)
         ) {
           return (
             <Card
-              scrollProgresValue={
-                ((index + 2) % 3 === 0)
-                  ? 120 - (scrollProgresValue * 120)
-                  : 0 + (scrollProgresValue * 120)
-              }
+              index={index}
+              scrollProgresValue={scrollProgresValue}
               data={el}
             />
           )

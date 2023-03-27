@@ -14,3 +14,33 @@ export const wpPageSeoFragment = graphql`
         }
     }
 `
+
+export const wpPostSeoFragment = graphql`
+    fragment PostSEO on WpPost {
+        seo {
+            title
+            metaDesc
+            opengraphSiteName
+            opengraphImage {
+                localFile {
+                    publicURL
+                }
+            }
+        }
+    }
+`
+
+export const wpSpecjalizacjaSeoFragment = graphql`
+    fragment specjalizacjaSEO on WpSpecjalizacja {
+        seo {
+            title
+            metaDesc
+            opengraphSiteName
+            opengraphImage {
+                localFile {
+                    publicURL
+                }
+            }
+        }
+    }
+`

@@ -15,6 +15,7 @@ export const query = graphql`
         wpPage(id: {eq: $id}){
             title
             content
+            ...SEO
         }
     }
 `

@@ -1,10 +1,18 @@
 import { graphql } from "gatsby"
 import * as React from "react"
+import Hero from "../components/sections/specjalizacja-hero"
+import Content from "../components/sections/gutenberg-content"
+import useHeadings from "../hooks/create-headings"
 
 export default function Specializacja({ data }) {
+  const { content, title, excerpt, featuredImage } = data.wpSpecjalizacja
+
+  const headings = useHeadings(content)
   return (
-    <>
-    </>
+    <main>
+      <Hero title={title} excerpt={excerpt} featuredImage={featuredImage} />
+      <Content headings={headings} content={content}/>
+    </main>
   )
 }
 
@@ -12,54 +20,21 @@ export { Head } from "./../components/sections/seo"
 
 export const query = graphql`
   query specializacja ($id: String!) {
-      global : wpPage(id: {eq: "cG9zdDoxNjg="}) {
-        global {
-          sectionContact {
-            sectionTitle
-            contentUnderTitle
-          }
-          sectionBlog {
-            sectionTitle
-            leftTextUnderTitle
-            rightTextUnderTitle
-            callToAction {
-              leftTitle
-              leftLink {
-                target
-                title
-                url
-              }
-              rightTitle
-              rightLink {
-                target
-                title
-                url
-              }
-            }
-          }
-        }
-      }
-      wpPage(id: {eq: $id}){
-          specjalizacje {
-            sectionGridSpecialisation {
-              pageTitle
-              linksToSubpages {
-                link {
-                  target
-                  title
-                  url
-                }
-                backgroundImage {
-                  altText
-                  localFile {
-                    childImageSharp {
-                      gatsbyImageData
-                    }
-                  }
+      wpSpecjalizacja(id: {eq: $id}){
+          ...specjalizacjaSEO
+          title
+          excerpt
+          featuredImage {
+            node {
+              altText
+              localFile {
+                childImageSharp {
+                  gatsbyImageData
                 }
               }
             }
           }
+          content
       }
   }
 `

@@ -14,6 +14,7 @@ export const query = graphql`
     query kancelaria ($id: String!) {
         wpPage(id: {eq: $id}){
             id
+            ...SEO
         }
     }
 `
