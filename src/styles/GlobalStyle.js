@@ -83,6 +83,16 @@ const GlobalStyle = createGlobalStyle`
   h3 {
     font-size: clamp(${18/16}rem, ${24/10.24}vw, ${24/16}rem);
   }
+  button[type="submit"] {
+    background-color: var(--primary-500);
+    color: var(--color-900);
+    font-size: clamp(${18/16}rem, ${21/7.68}vw, ${24/16}rem);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+    padding: 1rem 2rem;
+  }
 
   #___gatsby, .max-width {
     width: calc(100% - 80px);

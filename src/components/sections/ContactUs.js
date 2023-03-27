@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import DatePicker from "react-datepicker";
-import { InputBorder, Ornament } from "../atoms/Icons";
+import { InputBorder, Ornament, RightArrow, SelectDropdown } from "../atoms/Icons";
 import "react-datepicker/dist/react-datepicker.css";
 import { Link } from "gatsby";
 
@@ -10,9 +10,11 @@ const ContactUs = () => {
 
   return (
     <Wrapper>
-      <div className="info">
+      <header className="header">
         <Ornament />
         <h2>Skontaktuj się z nami.</h2>
+      </header>
+      <div className="content">
         <p>Potrzebujesz profesjonalnej porady prawnej? Jesteś zainteresowany stałą współpracą z naszą Kancelarią?</p>
         <h3>Wypełnij formularz kontaktowy, napisz lub zadzwoń. Jesteśmy do Twojej dyspozycji w poniedziałek od 9.00 do 18.00 wtorek - czwartek w godzinach od 9.00 do 17.00.  W piątek zapraszamy od 8.00 do 16.00.</h3>
         <ul>
@@ -69,6 +71,7 @@ const ContactUs = () => {
                   <option value="odszkodowania">Odszkodowania</option>
                 </select>
                 <InputBorder />
+                <SelectDropdown />
               </div>
             </label>
           </div>
@@ -87,6 +90,10 @@ const ContactUs = () => {
               <span>Wyrażam zgodę na przetwarzanie moich danych osobowych na zasadach określonych w <Link to="/polityka-prywatnosci">Polityce prywatności</Link></span>
             </label>
           </div>
+          <button type="submit">
+            <span>Wyślij</span>
+            <RightArrow />
+          </button>
         </form>
       </div>
     </Wrapper>
@@ -96,36 +103,91 @@ const ContactUs = () => {
 const Wrapper = styled.section`
   margin: clamp(${68/16}rem, ${98/7.68}vw, ${128/16}rem) 0;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: ${145/13.66}vw;
-  h2 + p {
-    margin: ${48/16}rem 0 ${24/16}rem;
-    & + h3 {
-      margin-bottom: 1rem;
+  grid-template-areas: "header form" "content form";
+  grid-template-columns: 1.2fr 1fr;
+  column-gap: ${140/13.66}vw;
+  .header {
+    grid-area: header;
+    h2 {
+      margin-top: ${32/16}rem;
     }
   }
-
-  form h3 {
-    &:first-of-type {
-      margin-top: 0;
-    }
-    margin: ${32/16}rem 0 ${12/16}rem 0;
-  }
-  .form-input {
-    width: 100%;
-    &:not(:last-child) {
-      margin-bottom: ${12/16}rem;
-    }
-    label {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      span:first-child {
-        font-size: ${20/16}rem;
-        margin: 0 0 ${4/16}rem ${4/16}rem;
+  .content {
+    grid-area: content;
+    p {
+      margin: ${48/16}rem 0 ${24/16}rem;
+      font-family: var(--serif);
+      font-size: clamp(${20/16}rem, ${24/13.66}vw, ${26/16}rem);
+      & + h3 {
+        margin-bottom: 1rem;
       }
-      span:last-child {
-        font-size: 1rem;
+    }
+    ul {
+      list-style-type: none;
+      font-size: clamp(${21/16}rem, ${21/7.68}vw, ${24/16}rem);
+      font-family: var(--serif);
+      li {
+        position: relative;
+        padding-left: 36px;
+        ::before {
+          content: '';
+          position: absolute;
+          left: 0;
+          top: 4px;
+          width: 32px;
+          height: 32px;
+          background: center / cover no-repeat;
+        }
+      }
+      > li {
+        &:not(:last-child) {
+          margin-bottom: 1rem;
+        }
+        &::before {
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='33' fill='none'%3E%3Cpath stroke='%230F3730' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M19.2 13.282a3.2 3.2 0 1 0-6.399-.002 3.2 3.2 0 0 0 6.4.002Z' clip-rule='evenodd'/%3E%3Cpath stroke='%230F3730' stroke-linecap='round' stroke-width='1.5' d='M16 29.814c0-4.804-9.364-8.958-9.6-16.568C6.235 7.902 10.697 3.147 16 3.147c5.302 0 9.763 4.755 9.6 10.099-.238 7.766-9.6 11.636-9.6 16.568Z' clip-rule='evenodd'/%3E%3C/svg%3E");
+        }
+        > ul {
+          margin-top: ${8/16}rem;
+          li {
+            &:not(:last-child) {
+              margin-bottom: ${8/16}rem;
+            }
+            &::before {
+              background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='33' fill='none'%3E%3Cpath stroke='%230F3730' stroke-linecap='square' stroke-width='1.5' d='M26.665 16.48H5.332M19.12 24.027c0-3.88 3.416-7.547 7.546-7.547M19.12 8.934c0 3.88 3.416 7.546 7.546 7.546'/%3E%3C/svg%3E");
+            }
+          }
+        }
+      }
+    }
+  }
+  .form  {
+    grid-area: form;
+    h3 {
+      font-size: ${24/16}rem;
+      margin: ${32/16}rem 0 ${12/16}rem 0;
+      &:first-of-type {
+        margin-top: 0;
+      }
+    }
+    .form-input {
+      &:nth-last-child(2) {
+        margin: 2rem 0 1rem;
+      }
+      width: 100%;
+      &:not(:last-child) {
+        margin-bottom: ${12/16}rem;
+      }
+      label {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        span:first-child {
+          font-size: ${20/16}rem;
+          margin: 0 0 ${4/16}rem ${4/16}rem;
+        }
+        span:last-child {
+          font-size: 1rem;
+        }
       }
       .input {
         width: 100%;
@@ -142,10 +204,16 @@ const Wrapper = styled.section`
             fill: #f90;
           }
         }
-        svg {
+        .border {
           position: absolute;
           right: -5px;
           top: -5px;
+        }
+        .dropdown {
+          position: absolute;
+          right: 10px;
+          top: 50%;
+          transform: translateY(-50%);
         }
       }
       input[type="checkbox"] {
@@ -165,6 +233,16 @@ const Wrapper = styled.section`
             text-decoration: underline;
           }
         }
+      }
+    }
+  }
+  @media (max-width: 768px){
+    grid-template-areas: "header" "form" "content";  
+    grid-template-columns: 1fr;
+    row-gap: ${42/16}rem;
+    .content {
+      p {
+        margin-top: 0;
       }
     }
   }
