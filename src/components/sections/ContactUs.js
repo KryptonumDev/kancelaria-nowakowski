@@ -1,12 +1,85 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import styled from "styled-components";
-import DatePicker from "react-datepicker";
 import { InputBorder, Ornament, RightArrow, SelectDropdown } from "../atoms/Icons";
-import "react-datepicker/dist/react-datepicker.css";
 import { Link } from "gatsby";
 
+let didSubmit = false;
 const ContactUs = () => {
-  const [startDate, setStartDate] = useState(new Date());
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    tel: '',
+    type: '',
+    message: '',
+    legal: false,
+    address: '',
+  });
+  const [formError, setFormError] = useState({
+    name: '',
+    email: '',
+    tel: '',
+    type: '',
+    message: '',
+    legal: '',
+    error: '',
+  })
+  const [formSent, setFormSent] = useState(false);
+  const [formIsSending, setFormIsSending] = useState(false);
+
+  const validateData = useCallback(() => {
+    let errors = {
+      name: formData.name.trim().length === 0 ? 'Pole wymagane' : '',
+      email:formData.email.trim().length === 0
+            ? ''
+            : (/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/).test(formData.email.toLowerCase())
+            ? ''
+            : 'Nieprawidłowy adres e-mail',
+      tel: (/^[+]?[(]?[0-9]{3}[)]?[-\s.]?[0-9]{3}[-\s.]?[0-9]{3,6}$/im).test(formData.tel.replaceAll(' ', '')) ? '' : 'Nieprawidłowy numer telefonu',
+      type: formData.type.length === 0 ? 'Pole wymagane' : '',
+      message: formData.message.trim().length === 0 ? 'Pole wymagane' : '',
+      legal: formData.legal === false ? 'Zgoda jest wymagana' : ''
+    }
+    setFormError(errors);
+    return errors;
+  }, [formData]);
+
+  const handleSubmit = (e) => {
+    didSubmit = true;
+    e.preventDefault();
+    const validate = validateData();
+    let isValidate = true;
+    Object.keys(validate).forEach(key => validate[key] && (isValidate = false));
+    if(isValidate){
+      setFormIsSending(true);
+      fetch(e.target.action, {
+        method: 'POST', 
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(formData)
+      })
+      .then(response => response.json())
+      .then(response => {
+        setFormIsSending(false);
+        if(response.success){
+          document.cookie = `formSent=true;max-age=60;path=/`;
+          setFormSent(true);
+        } else {
+          setFormError(prevState => ({...prevState, error: 'Błąd podczas wysyłania formularza, spróbuj ponownie później.'}))
+        }
+      })
+      .catch(() => {
+        setFormIsSending(false);
+        setFormError(prevState => ({...prevState, error: 'Błąd podczas wysyłania formularza, spróbuj ponownie później.'}))
+      })
+    }
+  }
+
+  useEffect(() => {
+    if(didSubmit){
+      validateData();
+    }
+  }, [formData, validateData])
 
   return (
     <Wrapper>
@@ -29,13 +102,21 @@ const ContactUs = () => {
         </ul>
       </div>
       <div className="form">
-        <form action="">
+        <form action="" onSubmit={handleSubmit}>
           <h3>Dane kontaktowe</h3>
           <div className="form-input">
             <label>
               <span>Imię i nazwisko</span>
+              <span className="error">{formError.name}</span>
               <div className="input">
-                <input type="text" name="name" />
+                <input
+                  type="text"
+                  name="name"
+                  onChange={e => setFormData({
+                    ...formData,
+                    [e.target.name]: e.target.value
+                  })}
+                />
                 <InputBorder />
               </div>
             </label>
@@ -43,9 +124,20 @@ const ContactUs = () => {
           <div className="form-input">
             <label>
               <span>Adres e-mail</span>
-              <span>(opcjonalne)</span>
+              {formError.email ? (
+                <span className="error">{formError.email}</span>
+              ) : (
+                <span>(opcjonalne)</span>
+              )}
               <div className="input">
-                <input type="email" name="email" />
+                <input
+                  type="email"
+                  name="email"
+                  onChange={e => setFormData({
+                    ...formData,
+                    [e.target.name]: e.target.value
+                  })}
+                />
                 <InputBorder />
               </div>
             </label>
@@ -53,8 +145,16 @@ const ContactUs = () => {
           <div className="form-input">
             <label>
               <span>Telefon</span>
+              <span className="error">{formError.tel}</span>
               <div className="input">
-                <input type="tel" name="tel" />
+                <input
+                  type="tel"
+                  name="tel"
+                  onChange={e => setFormData({
+                    ...formData,
+                    [e.target.name]: e.target.value
+                  })}
+                />
                 <InputBorder />
               </div>
             </label>
@@ -187,6 +287,17 @@ const Wrapper = styled.section`
         }
         span:last-child {
           font-size: 1rem;
+        }
+        .error:not(:empty) {
+          color:var(--error-800);
+          & + .input {
+            input {
+              border-color: var(--error-800);
+            } 
+            .ornament {
+              fill: var(--error-800);
+            }
+          }
         }
       }
       .input {
