@@ -152,10 +152,7 @@ const Wrapper = styled.footer`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 37px;
-    & > * {
-      width: 33.3%;
-    }
+    gap: 34px;
     span, svg {
       display: inline-block;
       vertical-align: middle;
