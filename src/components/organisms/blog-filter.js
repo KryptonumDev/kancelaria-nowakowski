@@ -44,17 +44,17 @@ export default function Filter({ postsCount, categories }) {
             <button onClick={() => { transform('left', x, maxButtonsTransform) }}>
               <svg width="49" height="49" viewBox="0 0 49 49" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect width="48" height="48" transform="translate(0.5 0.0800781)" fill="white" />
-                <path d="M8.5 24.0801L40.4995 24.0801" stroke="#0F3730" stroke-width="1.5" stroke-linecap="square" />
-                <path d="M19.8203 12.76C19.8203 18.5795 14.6952 24.0801 8.50022 24.0801" stroke="#0F3730" stroke-width="1.5" stroke-linecap="square" />
-                <path d="M19.8203 35.4002C19.8203 29.5807 14.6952 24.0801 8.50022 24.0801" stroke="#0F3730" stroke-width="1.5" stroke-linecap="square" />
+                <path d="M8.5 24.0801L40.4995 24.0801" stroke="#0F3730" strokeWidth="1.5" strokeLinecap="square" />
+                <path d="M19.8203 12.76C19.8203 18.5795 14.6952 24.0801 8.50022 24.0801" stroke="#0F3730" strokeWidth="1.5" strokeLinecap="square" />
+                <path d="M19.8203 35.4002C19.8203 29.5807 14.6952 24.0801 8.50022 24.0801" stroke="#0F3730" strokeWidth="1.5" strokeLinecap="square" />
               </svg>
             </button>
             <button onClick={() => { transform('right', x, maxButtonsTransform) }}>
               <svg width="49" height="49" viewBox="0 0 49 49" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect width="48" height="48" transform="translate(0.5 0.0800781)" fill="white" />
-                <path d="M40.5 24.0801L8.50048 24.0801" stroke="#0F3730" stroke-width="1.5" stroke-linecap="square" />
-                <path d="M29.1797 35.4002C29.1797 29.5807 34.3048 24.0801 40.4998 24.0801" stroke="#0F3730" stroke-width="1.5" stroke-linecap="square" />
-                <path d="M29.1797 12.76C29.1797 18.5795 34.3048 24.0801 40.4998 24.0801" stroke="#0F3730" stroke-width="1.5" stroke-linecap="square" />
+                <path d="M40.5 24.0801L8.50048 24.0801" stroke="#0F3730" strokeWidth="1.5" strokeLinecap="square" />
+                <path d="M29.1797 35.4002C29.1797 29.5807 34.3048 24.0801 40.4998 24.0801" stroke="#0F3730" strokeWidth="1.5" strokeLinecap="square" />
+                <path d="M29.1797 12.76C29.1797 18.5795 34.3048 24.0801 40.4998 24.0801" stroke="#0F3730" strokeWidth="1.5" strokeLinecap="square" />
               </svg>
             </button>
           </div>

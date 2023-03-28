@@ -70,6 +70,35 @@ const GlobalStyle = createGlobalStyle`
     color: inherit;
     text-decoration: none;
   }
+
+  h1 em, h2 em, h3 em, h4 em, h5 em, h6 em{
+    position: relative;
+    font-style: normal;
+    white-space: nowrap;
+    
+    &::after{
+      content: "";
+      position: absolute;
+      transform: translate(-50%, 50%) rotateZ(45deg);
+      left: 0;
+      bottom: -3px;
+      width: 6px;
+      height: 6px;
+      background-color: #4FD2BB;
+    }
+
+    &::before{
+      content: "";
+      position: absolute;
+      transform: translate(0, 50%);
+      left: 0;
+      bottom: -3px;
+      width: 100%;
+      height: 2px;
+      background-color: #4FD2BB;
+    }
+  }
+
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Literata', serif;
     font-weight: 400;
@@ -109,7 +138,8 @@ const GlobalStyle = createGlobalStyle`
 
   .cta-primary,
   .cta-secondary,
-  .cta-white {
+  .cta-white,
+  .wp-block-button a {
     font-family: var(--serif);
     font-size: clamp(${18/16}rem, ${24/13.66}vw, ${24/16}rem);
     padding: ${16/24}em ${32/24}em;
@@ -117,7 +147,7 @@ const GlobalStyle = createGlobalStyle`
     display: inline-block;
     text-align: center;
   }
-  .cta-primary {
+  .cta-primary, .wp-block-button a {
     background-color: var(--primary-500);
     color: var(--primary-900);
   }

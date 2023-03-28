@@ -16,7 +16,7 @@ const Footer = () => {
               altText
               localFile {
                 childImageSharp {
-                  gatsbyImageData(width: 152)
+                  gatsbyImageData
                 }
               }
             }

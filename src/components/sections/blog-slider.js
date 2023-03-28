@@ -11,7 +11,7 @@ export default function Slider({ posts, data }) {
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
     setScrollProgresValue(latest)
   })
-  
+
   return (
     <Wrapper>
       <h2>{data.sectionTitle}</h2>
@@ -26,6 +26,7 @@ export default function Slider({ posts, data }) {
       <Grid>
         {posts.map((el, index) => (
           <Card
+            key={el.title + index}
             index={index}
             scrollProgresValue={scrollProgresValue}
             data={el}

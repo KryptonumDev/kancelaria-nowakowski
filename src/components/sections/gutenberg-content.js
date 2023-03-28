@@ -61,4 +61,8 @@ const Wrapper = styled.section`
   display: grid;
   grid-gap: 32px;
   grid-template-columns: 408fr 848fr;
+
+  @media (max-width: 940px) {
+    grid-template-columns: 1fr;
+  }
 `

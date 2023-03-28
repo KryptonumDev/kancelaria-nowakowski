@@ -4,6 +4,7 @@ import mark from './../../resources/images/blog-ul-mark.svg'
 export const StyledContent = styled.div`
 > * {
     max-width: 737px;
+    width: 100%;
   }
   > * + * {
     margin-top: 64px;
@@ -13,11 +14,20 @@ export const StyledContent = styled.div`
     margin-top: 20px;
   }
 
+  p + p{
+    margin-top: 16px;
+  }
+
+  p em {
+    font-family: 'Literata';
+    font-style: normal;
+  }
+
   h2{
     margin-bottom: 32px;
     font-family: 'Literata';
     font-weight: 400;
-    font-size: 40px;
+    font-size: clamp(${28 / 16}rem, ${36 / 7.68}vw, ${40 / 16}rem);
     line-height: 130%;
     letter-spacing: -0.01em;
     color: #0F3730;
@@ -27,7 +37,7 @@ export const StyledContent = styled.div`
     margin-top: 32px;
     font-family: 'Literata';
     font-weight: 400;
-    font-size: 24px;
+    font-size: clamp(${22 / 16}rem, ${24 / 7.68}vw, ${24 / 16}rem);
     line-height: 158%;
     color: #12433A;
   }
@@ -44,7 +54,20 @@ export const StyledContent = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 32px;
-    width: fit-content;
+
+    @media (max-width: 480px) {
+      grid-template-columns: 1fr;
+      grid-gap: 24px;
+    }
+  }
+
+  figure{
+   height: auto;
+   width:100%;
+   img{
+    height: auto;
+    width:100%;
+   }
   }
 
   .wp-block-image{
@@ -116,7 +139,7 @@ export const StyledContent = styled.div`
     margin-top: 32px;
     counter-reset: my-awesome-counter;
 
-    li{
+    > li{
       padding: 32px;
       border: 2px solid #4FD2BB;
       position: relative;
@@ -127,6 +150,19 @@ export const StyledContent = styled.div`
       font-size: 24px;
       line-height: 158%;
       color: #12433A;
+
+      br{
+        content: "";
+        margin: 12px;
+        display: block;
+      }
+
+      strong{
+        font-weight: 400;
+    font-size: clamp(${24 / 16}rem, ${28 / 7.68}vw, ${32 / 16}rem);
+        line-height: 131%;
+        letter-spacing: -0.005em;
+      }
 
       &::before{
         content: "Krok";
@@ -147,6 +183,16 @@ export const StyledContent = styled.div`
         letter-spacing: -0.01em;
         color: #3DA290;
       }
+
+      ol,ul{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 12px;
+        
+        @media (max-width: 540px) {
+          grid-template-columns: 1fr;
+        }
+      }
     }
   }
 
@@ -160,6 +206,13 @@ export const StyledContent = styled.div`
     align-items: center;
     padding: 42px 32px 68px;
     overflow: hidden;
+
+
+    @media (max-width: 768px) {
+      width: calc(100% + 34px);
+      transform: translateX(-17px);
+    }
+
     .gatsby-image-wrapper{
         position: absolute !important;
         top: 0;
@@ -178,14 +231,14 @@ export const StyledContent = styled.div`
         text-align: center;
         font-family: 'Literata';
         font-weight: 400;
-        font-size: 24px;
+        font-size: clamp(${18 / 16}rem, ${21 / 7.68}vw, ${24 / 16}rem);
         line-height: 158%;
         color: #12433A;
         max-width: 600px;
       }
 
     .cta-secondary{
-        font-size: 24px;
+        font-size: clamp(${18 / 16}rem, ${21 / 7.68}vw, ${24 / 16}rem);
         padding: 16px 32px;
         white-space: nowrap;
         display: inline-block;
@@ -210,14 +263,14 @@ export const StyledContent = styled.div`
         h1,h2,h3,h4,h5,h6{
           font-family: 'Literata';
           font-weight: 400;
-          font-size: 40px;
+          font-size: clamp(${28 / 16}rem, ${36 / 7.68}vw, ${40 / 16}rem);
           line-height: 130%;
           letter-spacing: -0.01em;
           color: #0F3730;
         }
         p{
           font-family: 'Literata';
-          font-size: 24px;
+          font-size: clamp(${22 / 16}rem, ${24 / 7.68}vw, ${24 / 16}rem);
           line-height: 158%;
           color: #12433A;
         }
@@ -226,6 +279,10 @@ export const StyledContent = styled.div`
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-gap: 20px;
+
+        @media (max-width: 540px) {
+          grid-template-columns: 1fr;
+        }
       }
       li{
         font-family: 'Lato';
@@ -249,7 +306,7 @@ export const StyledContent = styled.div`
         *{
           font-family: 'Literata';
           font-weight: 400;
-          font-size: 40px;
+          font-size: clamp(${28 / 16}rem, ${36 / 7.68}vw, ${40 / 16}rem);
           line-height: 130%;
           text-align: center;
           letter-spacing: -0.01em;
@@ -260,6 +317,10 @@ export const StyledContent = styled.div`
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-gap: 20px;
+
+        @media (max-width: 540px) {
+          grid-template-columns: 1fr;
+        }
       }
       li{
         padding: 12px;
@@ -268,7 +329,7 @@ export const StyledContent = styled.div`
         font-size: 20px;
         line-height: 150%;
         color: #12433A;
-        padding-left: 0;
+        border: 1px solid #D8E1E3;
         &::before{
           display: none;
         }
@@ -308,11 +369,15 @@ export const StyledContent = styled.div`
         display: grid;
         grid-template-columns: 1fr 1fr;
 
+        @media (max-width: 540px) {
+          grid-template-columns: 1fr;
+        }
+
         button{
           padding: 24px 12px;
           font-family: 'Literata';
           font-weight: 400;
-          font-size: 24px;
+          font-size: clamp(${22 / 16}rem, ${24 / 7.68}vw, ${24 / 16}rem);
           line-height: 158%;
           text-align: center;
           color: #0F3730;
@@ -353,7 +418,7 @@ export const StyledContent = styled.div`
             padding-left: 32px;
             font-family: 'Literata';
             font-weight: 400;
-            font-size: 24px;
+            font-size: clamp(${22 / 16}rem, ${24 / 7.68}vw, ${24 / 16}rem);
             line-height: 138%;
             color: #0F3730;
             display: flex;
