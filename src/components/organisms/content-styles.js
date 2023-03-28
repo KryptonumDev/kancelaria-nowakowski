@@ -198,5 +198,72 @@ export const StyledContent = styled.div`
         position: relative;
         z-index: 2;
     }
-}
+
+  }
+
+  .custom-list-icons{
+      .custom-list-icons__title{
+        h1,h2,h3,h4,h5,h6{
+          font-family: 'Literata';
+          font-weight: 400;
+          font-size: 40px;
+          line-height: 130%;
+          letter-spacing: -0.01em;
+          color: #0F3730;
+        }
+        p{
+          font-family: 'Literata';
+          font-size: 24px;
+          line-height: 158%;
+          color: #12433A;
+        }
+      }
+      ul{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 20px;
+      }
+      li{
+        padding: 12px;
+        font-family: 'Lato';
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 150%;
+        color: #12433A;
+        &::before{
+          display: none;
+        }
+      }
+    }
+
+    
+    .custom-list{
+      .custom-list__title{
+        *{
+          font-family: 'Literata';
+          font-weight: 400;
+          font-size: 40px;
+          line-height: 130%;
+          text-align: center;
+          letter-spacing: -0.01em;
+          color: #0F3730;
+        }
+      }
+      ul{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 20px;
+      }
+      li{
+        padding: 12px;
+        font-family: 'Lato';
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 150%;
+        color: #12433A;
+        &::before{
+          display: none;
+        }
+      }
+    }
 `
