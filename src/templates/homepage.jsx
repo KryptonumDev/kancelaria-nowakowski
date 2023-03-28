@@ -147,7 +147,6 @@ export const query = graphql`
             title
             url
           }
-          buttonHint
           imageOnTheRight {
             altText
             localFile {

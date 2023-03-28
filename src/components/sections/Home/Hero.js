@@ -9,7 +9,7 @@ const Hero = ({ data }) => {
     <StyledHero className="hero">
       <header>
         <Ornament />
-        <h1>{data.pageTitle}</h1>
+        <div dangerouslySetInnerHTML={{__html: data.pageTitle}}></div>
         <p className="flex">
           {data.linksToSubpages.map((link, i) => (
             <span className="no-wrap" key={link.link.title + i}>
