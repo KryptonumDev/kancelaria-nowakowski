@@ -144,8 +144,6 @@ const Wrapper = styled.footer`
       }
     }
   }
-
-
   .footer-bottom {
     border-top: 1px solid var(--neutral-600);
     padding: ${26/16}rem 0 ${32/16}rem;

@@ -19,6 +19,9 @@ const Wrapper = styled.section`
   h3 {
     margin: clamp(${4/16}rem, ${16/7.68}vw, 1rem) 0 clamp(${8/16}rem, ${42/7.68}vw, ${20/16}rem);
   }
+  @media (max-width: 768px) {
+    margin: 0 -17px;
+  }
   @media (max-width: 499px){
     a {
       width: 100%;

@@ -36,6 +36,8 @@ const GlobalStyle = createGlobalStyle`
     --neutral-800: #AAA58B;
     --neutral-900: #9D977A;
 
+    --error-800: #8A4248;
+
     --sans-serif: 'Lato', sans-serif;
     --serif: 'Literata', serif;
   }
@@ -45,7 +47,7 @@ const GlobalStyle = createGlobalStyle`
     -webkit-tap-highlight-color: transparent;
     overflow-x: hidden;
     min-width: 320px;
-    font-family: 'Lato', sans-serif;
+    font-family: var(--sans-serif);
     color: var(--primary-800);
     margin-top: 137px;
     @media (max-width: 1149px) {
