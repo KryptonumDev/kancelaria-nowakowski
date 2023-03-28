@@ -6,10 +6,14 @@ export const StyledContent = styled.div`
     max-width: 737px;
   }
   > * + * {
-    margin-top: 16px;
+    margin-top: 64px;
   }
+
+  h2 + *, h3 + * {
+    margin-top: 20px;
+  }
+
   h2{
-    margin-top: 32px;
     margin-bottom: 32px;
     font-family: 'Literata';
     font-weight: 400;
@@ -224,12 +228,15 @@ export const StyledContent = styled.div`
         grid-gap: 20px;
       }
       li{
-        padding: 12px;
         font-family: 'Lato';
         font-weight: 400;
         font-size: 20px;
         line-height: 150%;
         color: #12433A;
+        display: grid;
+        grid-template-columns: 24px 1fr;
+        padding-left: 0;
+        grid-gap: 8px;
         &::before{
           display: none;
         }
@@ -261,8 +268,101 @@ export const StyledContent = styled.div`
         font-size: 20px;
         line-height: 150%;
         color: #12433A;
+        padding-left: 0;
         &::before{
           display: none;
+        }
+      }
+    }
+
+    .tabs-list{
+      max-width: unset;
+
+      .first-tab-content{
+        display: none;
+
+        &.active{
+          display: block;
+        }
+      }
+
+      .second-tab-content{
+        display: none;
+
+        &.active{
+          display: block;
+        }
+      }
+
+      .tabs-list__title{
+        font-family: 'Literata';
+        font-weight: 400;
+        font-size: 28px;
+        line-height: 164%;
+        color: #12433A;
+        text-align: center;
+      }
+
+      .tabs-list__control{
+        margin-top: 24px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
+        button{
+          padding: 24px 12px;
+          font-family: 'Literata';
+          font-weight: 400;
+          font-size: 24px;
+          line-height: 158%;
+          text-align: center;
+          color: #0F3730;
+          border-bottom: 3px solid #BFCACD;
+
+          &.active{
+            border-bottom: 3px solid #3DA290;
+          }
+        }
+      }
+
+      ul{
+        display: flex;
+        flex-wrap: wrap;
+        align-items: stretch;
+        gap: 32px;
+
+        li{
+          padding-left: 0;
+          width: calc(50% - 16px);
+          background: #6FE8D2;
+          display: grid;
+          grid-template-columns: 78px 1fr;
+          min-height: 122px;
+
+          &:last-child:nth-child(odd){
+            width: 100%;
+          }
+
+          .gcb-services-grid__img-container{
+            background: #9CFFEE;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+
+          p{
+            padding-left: 32px;
+            font-family: 'Literata';
+            font-weight: 400;
+            font-size: 24px;
+            line-height: 138%;
+            color: #0F3730;
+            display: flex;
+            align-items: center;
+          }
+
+          &::before{
+            display: none;
+          }
         }
       }
     }
