@@ -26,8 +26,8 @@ const Hero = ({ data }) => {
         </div>
       </header>
       <div className="hero-img">
-        <GatsbyImage image={data.leftImage.localFile.childImageSharp.gatsbyImageData} alt={data.leftImage.altText || ''} />
-        <GatsbyImage image={data.rightImage.localFile.childImageSharp.gatsbyImageData} alt={data.rightImage.altText || ''} />
+        <GatsbyImage loading="eager" image={data.leftImage.localFile.childImageSharp.gatsbyImageData} alt={data.leftImage.altText || ''} />
+        <GatsbyImage loading="eager" image={data.rightImage.localFile.childImageSharp.gatsbyImageData} alt={data.rightImage.altText || ''} />
       </div>
     </StyledHero>
   );
