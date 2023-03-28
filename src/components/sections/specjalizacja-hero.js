@@ -11,7 +11,7 @@ export default function Hero({ title, excerpt, featuredImage }) {
         <h1>{title}</h1>
         <div dangerouslySetInnerHTML={{__html: excerpt}}/>
       </div>
-      <GatsbyImage className="image" image={featuredImage.node.localFile.childImageSharp.gatsbyImageData} alt={featuredImage.node.altText} />
+      {/* <GatsbyImage className="image" image={featuredImage.node.localFile.childImageSharp.gatsbyImageData} alt={featuredImage.node.altText} /> */}
     </Wrapper>
   )
 }

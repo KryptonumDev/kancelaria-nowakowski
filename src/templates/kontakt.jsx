@@ -1,11 +1,15 @@
 import { graphql } from "gatsby"
 import * as React from "react"
+import CalendlyCta from "../components/sections/CalendlyCta"
+import ContactUs from "../components/sections/ContactUs"
 
 export default function Kontakt({ data }) {
-    return (
-        <>
-        </>
-    )
+  return (
+    <>
+      <ContactUs />
+      <CalendlyCta />
+    </>
+  )
 }
 
 export { Head } from "./../components/sections/seo"

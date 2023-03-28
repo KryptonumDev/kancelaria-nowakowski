@@ -9,20 +9,20 @@ const GlobalStyle = createGlobalStyle`
   }
   :root {
     --primary-100: #ECFFFC;
-    --primary-200: #C6EBE4;
-    --primary-300: #AAE0D7;
-    --primary-400: #8DD6C9;
-    --primary-500: #71CCBC;
-    --primary-600: #5CA699;
-    --primary-700: #468176;
-    --primary-800: #315B54;
-    --primary-900: #1B3631;
-    --secondary-100: #FCF4E8;
+    --primary-200: #9CFFEE;
+    --primary-300: #6FE8D2;
+    --primary-400: #4FD2BB;
+    --primary-500: #51C6B1;
+    --primary-600: #3DA190;
+    --primary-700: #016250;
+    --primary-800: #12433A;
+    --primary-900: #0F3730;
+    --secondary-100: #FFFFFF;
     --secondary-200: #EAF0F1;
-    --secondary-300: #F5DDBA;
-    --secondary-400: #F1D2A3;
-    --secondary-500: #EEC78C;
-    --secondary-600: #CDA972;
+    --secondary-300: #D8E1E3;
+    --secondary-400: #BFCACD;
+    --secondary-500: #AAB4B7;
+    --secondary-600: #90999B;
     --secondary-700: #AC8A58;
     --secondary-800: #8A6C3F;
     --secondary-900: #694D25;
@@ -31,10 +31,12 @@ const GlobalStyle = createGlobalStyle`
     --neutral-300: #FAF9F6;
     --neutral-400: #F8F7F3;
     --neutral-500: #F6F5F0;
-    --neutral-600: #DDDACE;
+    --neutral-600: #EAE8DD;
     --neutral-700: #C3BFAC;
     --neutral-800: #AAA58B;
     --neutral-900: #9D977A;
+
+    --error-800: #8A4248;
 
     --sans-serif: 'Lato', sans-serif;
     --serif: 'Literata', serif;
@@ -45,7 +47,7 @@ const GlobalStyle = createGlobalStyle`
     -webkit-tap-highlight-color: transparent;
     overflow-x: hidden;
     min-width: 320px;
-    font-family: 'Lato', sans-serif;
+    font-family: var(--sans-serif);
     color: var(--primary-800);
     margin-top: 137px;
     @media (max-width: 1149px) {
@@ -82,6 +84,16 @@ const GlobalStyle = createGlobalStyle`
   }
   h3 {
     font-size: clamp(${18/16}rem, ${24/10.24}vw, ${24/16}rem);
+  }
+  button[type="submit"] {
+    background-color: var(--primary-500);
+    color: var(--color-900);
+    font-size: clamp(${18/16}rem, ${21/7.68}vw, ${24/16}rem);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+    padding: 1rem 2rem;
   }
 
   #___gatsby, .max-width {

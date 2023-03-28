@@ -86,13 +86,28 @@ const StyledNav = styled.nav`
     > ul {
       display: flex;
       margin: 0 -${20/16}rem;
+      --navHeight: 200px;
       > li {
         margin: 0 ${20/16}rem;
+        &:hover ul {
+          height: 200px;
+        }
         ul {
-          display: none;
+          transition: height .4s;
+          height: 0;
+          overflow: auto;
+          &::before {
+            content: '';
+            width: 200%;
+            height: 100%;
+            background: #f90;
+            position: absolute;
+            left: -50%;
+            top: 20px;
+            z-index: -1;
+          }
           width: 100%;
           position: absolute;
-          padding: 2rem 0;
           > li {
             margin: 1rem 0;
           }

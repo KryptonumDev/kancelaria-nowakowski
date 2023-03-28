@@ -26,7 +26,7 @@ const Testimonials = ({ data }) => {
     <Wrapper ref={constraintsRef}>
       <Content animate={{ x: -1 * activeSlide * width }} dragConstraints={constraintsRef} drag="x" onDragEnd={dragEndHandler}>
         {data.comments.map((el, index) => (
-          <motion.div className="item">
+          <motion.div className="item" key={index}>
             <GatsbyImage className="image" image={el.commentImage.localFile.childImageSharp.gatsbyImageData} alt={el.commentImage.altText} />
             <div className="content">
               <StaticImage className="background" src="./../../../resources/images/backogrund-comment.jpg" alt='tło' />
@@ -47,7 +47,7 @@ const Testimonials = ({ data }) => {
           </svg>
         </button>
         {data.comments.map((el, index) => (
-          <button onClick={() => { setActiveSlide(index) }} className={index === activeSlide ? 'active dot' : "dot"} />
+          <button onClick={() => { setActiveSlide(index) }} className={index === activeSlide ? 'active dot' : "dot"} key={index} />
         ))}
         <button onClick={() => { setActiveSlide(activeSlide + 1 < data.comments.length ? activeSlide + 1 : activeSlide) }}>
           <svg width="65" height="65" viewBox="0 0 65 65" fill="none" xmlns="http://www.w3.org/2000/svg">

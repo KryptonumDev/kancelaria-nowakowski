@@ -4,8 +4,8 @@ import Hero from "../components/sections/Home/Hero"
 import StepsSection from "../components/sections/Home/StepsSection";
 import Rules from "../components/sections/Home/Rules";
 import Testimonials from "../components/sections/Home/Testimonials";
-import CallToActionTwoBtns from "../components/sections/CallToActionTwoBtns";
 import Slider from "../components/sections/blog-slider";
+import ContactUs from "../components/sections/ContactUs";
 
 
 export default function Homepage({ data }) {
@@ -18,6 +18,7 @@ export default function Homepage({ data }) {
       <Rules data={sectionWithImgOnRightHome} />
       <Testimonials data={sectionWithCommentsHome} />
       <Slider posts={data.allWpPost.nodes} data={sectionBlog} />
+      <ContactUs />
     </main>
   )
 }
