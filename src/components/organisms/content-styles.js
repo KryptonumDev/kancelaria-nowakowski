@@ -140,14 +140,14 @@ export const StyledContent = styled.div`
     counter-reset: my-awesome-counter;
 
     > li{
-      padding: 32px;
+      padding: clamp(16px, ${24 / 768 * 100}vw, 32px);
       border: 2px solid #4FD2BB;
       position: relative;
       counter-increment: my-awesome-counter;
       list-style: none;
       font-family: 'Literata';
       font-weight: 400;
-      font-size: 24px;
+      font-size: clamp(18px, ${21 / 768 * 100}vw, 24px);
       line-height: 158%;
       color: #12433A;
 
@@ -159,7 +159,7 @@ export const StyledContent = styled.div`
 
       strong{
         font-weight: 400;
-    font-size: clamp(${24 / 16}rem, ${28 / 7.68}vw, ${32 / 16}rem);
+        font-size: clamp(${24 / 16}rem, ${28 / 7.68}vw, ${32 / 16}rem);
         line-height: 131%;
         letter-spacing: -0.005em;
       }
@@ -176,9 +176,9 @@ export const StyledContent = styled.div`
         content:  "0" counter(my-awesome-counter);
         position: absolute;
         right: 32px;
-        top: 32px;
+        top: clamp(20px, ${24 / 768 * 100}vw, 32px);
         font-weight: 400;
-        font-size: 54px;
+        font-size: clamp(36px, ${50 / 768 * 100}vw, 54px);
         line-height: 111%;
         letter-spacing: -0.01em;
         color: #3DA290;

@@ -39,12 +39,10 @@ const Footer = () => {
           <a href="">Rozwody</a>
           <a href="">Prawo dla firm</a>
         </li>
-        <li>
+        <li className="grid">
           <h3>
             <Link to="#">Kancelaria</Link>
           </h3>
-        </li>
-        <li>
           <h3>
             <Link to="#">Współpraca</Link>
           </h3>
@@ -105,7 +103,16 @@ const Wrapper = styled.footer`
     padding: ${32/16}rem 0 ${24/16}rem;
     list-style-type: none;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 2fr 0fr;
+    grid-template-columns: 1fr 2fr 2fr 0fr;
+
+    .grid{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+
+      @media (max-width: 999px){
+        grid-template-columns: 1fr;
+      }
+    }
     h3 {
       margin-bottom: 1rem;
     }
@@ -121,7 +128,8 @@ const Wrapper = styled.footer`
       }
     }
     .blog-item {
-      display: flex;
+      display: grid;
+      grid-template-columns: clamp(133px, ${152/7.68}vw, 152px) auto;
       gap: 12px;
       width: max(${185/7.68}vw, ${243/16}rem);
       img {
@@ -167,15 +175,15 @@ const Wrapper = styled.footer`
   @media (max-width: 999px){
     .footer-top {
       grid-template-columns: 1.2fr 1fr 2fr;
+      grid-gap: 12px;
       row-gap: 32px;
       grid-template-areas:"a b d"
                           "a c d"
                           "e e e";
       li:nth-child(1){grid-area: a;}
       li:nth-child(2){grid-area: b;}
-      li:nth-child(3){grid-area: c;}
-      li:nth-child(4){grid-area: d;}
-      li:nth-child(5){grid-area: e;}
+      li:nth-child(3){grid-area: d;}
+      li:nth-child(4){grid-area: e;}
       .social {
         display: flex;
         justify-content: center;
@@ -206,7 +214,7 @@ const Wrapper = styled.footer`
   }
   @media (max-width: 749px){
     .footer-top {
-      grid-template-columns: 2fr 1fr;
+      grid-template-columns: 1fr 1fr;
       row-gap: 32px;
       justify-content: space-between;
       grid-template-areas:"a b"

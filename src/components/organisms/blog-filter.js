@@ -62,6 +62,7 @@ export default function Filter({ postsCount, categories }) {
       </div>
       <SliderWrapper id='control-wrap'>
         <Slider style={{ x }} drag='x' dragConstraints={{ left: maxButtonsTransform > 0 ? -maxButtonsTransform : 0, right: 0 }} maxButtonsTransform={maxButtonsTransform} id='control'>
+          <Placeholder/>
           <Link activeClassName="active" to='/blog/'>
             Wszystkie ({postsCount})
           </Link>
@@ -70,11 +71,65 @@ export default function Filter({ postsCount, categories }) {
               {el.name} ({el.count})
             </Link>
           ))}
+          {categories.map(el => (
+            <Link activeClassName="active" to={el.uri}>
+              {el.name} ({el.count})
+            </Link>
+          ))}
+          {categories.map(el => (
+            <Link activeClassName="active" to={el.uri}>
+              {el.name} ({el.count})
+            </Link>
+          ))}
+          {categories.map(el => (
+            <Link activeClassName="active" to={el.uri}>
+              {el.name} ({el.count})
+            </Link>
+          ))}
+          {categories.map(el => (
+            <Link activeClassName="active" to={el.uri}>
+              {el.name} ({el.count})
+            </Link>
+          ))}
+          {categories.map(el => (
+            <Link activeClassName="active" to={el.uri}>
+              {el.name} ({el.count})
+            </Link>
+          ))}
+          {categories.map(el => (
+            <Link activeClassName="active" to={el.uri}>
+              {el.name} ({el.count})
+            </Link>
+          ))}
+          {categories.map(el => (
+            <Link activeClassName="active" to={el.uri}>
+              {el.name} ({el.count})
+            </Link>
+          ))}
+          {categories.map(el => (
+            <Link activeClassName="active" to={el.uri}>
+              {el.name} ({el.count})
+            </Link>
+          ))}
+          <Placeholder/>
         </Slider>
       </SliderWrapper>
     </Wrapper>
   )
 }
+
+const Placeholder = styled.div`
+  width: 24px;
+  display: none;
+
+  @media (max-width: 1366px) {
+    display: block;
+  }
+
+  @media (max-width: 768px) {
+    width: 1px;
+  }
+`
 
 const Wrapper = styled.div`
   margin-top: 80px;
@@ -130,7 +185,14 @@ const SliderWrapper = styled.div`
 
     @media (max-width: 1366px) {
       width: 100%;
-      overflow: unset;
+
+      width: calc(100% + 80px);
+      transform: translateX(-40px);
+    }
+
+    @media (max-width: 768px) {
+      width: calc(100% + 34px);
+      transform: translateX(-17px);
     }
 
 `

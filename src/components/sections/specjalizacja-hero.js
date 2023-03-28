@@ -39,6 +39,30 @@ const Wrapper = styled.section`
   h1{
     font-size: clamp(${36/16}rem, ${46/7.68}vw, ${54/16}rem);
     margin-bottom: 32px;
+
+    position: relative;
+    
+    &::after{
+      content: "";
+      position: absolute;
+      transform: translate(-50%, 50%) rotateZ(45deg);
+      left: 0;
+      bottom: -10px;
+      width: 6px;
+      height: 6px;
+      background-color: #4FD2BB;
+    }
+
+    &::before{
+      content: "";
+      position: absolute;
+      transform: translate(0, 50%);
+      left: 0;
+      bottom: -10px;
+      width: 100%;
+      height: 2px;
+      background-color: #4FD2BB;
+    }
   }
 
   .text{

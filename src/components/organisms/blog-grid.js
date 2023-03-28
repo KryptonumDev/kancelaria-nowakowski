@@ -37,4 +37,10 @@ const Wrapper = styled.div`
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 120px 32px;
   margin-bottom: 168px;
+  overflow: hidden  ;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr;
+    padding-bottom: 0;
+  }
 `
