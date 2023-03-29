@@ -5,9 +5,9 @@ require("dotenv").config({
 module.exports = {
   siteMetadata: {
     title: `Kancelaria Nowakowski`,
-    siteUrl: `https://www.yourdomain.tld`,
     description: '',
-    image: ''
+    siteUrl: `https://kancelaria.gatsbyjs.io`,
+    image: 'https://kancelaria.gatsbyjs.io/social.jpg',
   },
   plugins: [
     "gatsby-plugin-styled-components",
@@ -32,5 +32,5 @@ module.exports = {
         "url": "https://kancelaria.headlesshub.com/graphql"
       }
     },
-  ] 
+  ]
 }

@@ -1,27 +1,8 @@
 import { graphql, useStaticQuery } from "gatsby"
 import React from "react"
-
-const createBreadcrumbs = (siteMetadata, breadCrumbs) => {
-  const items = [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": siteMetadata.title,
-      "item": siteMetadata.siteUrl
-    }
-  ]
-
-  breadCrumbs.forEach((el, index) => {
-    items.push({
-      "@type": "ListItem",
-      "position": index + 2,
-      "name": el.name,
-      "item": el.url
-    })
-  });
-
-  return items
-}
+import BreadCrumbs from "../layout/schema/breadcrumbs"
+import Organization from "../layout/schema/organization"
+import Post from "../layout/schema/post"
 
 export function Head({ data, pageContext }) {
   const seo = data.wpPage?.seo || data.wpPost?.seo || data.wpSpecjalizacja?.seo// TODO: add custom post 
@@ -38,19 +19,13 @@ export function Head({ data, pageContext }) {
   }
 `)
   const canonical = siteMetadata.siteUrl + pageContext.uri
-  const breadCrumbsItems = createBreadcrumbs(siteMetadata, pageContext.breadcrumbs)
-  debugger
+  
   return (
     <>
-      {breadCrumbsItems.length > 1 ? (
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            "itemListElement": breadCrumbsItems
-          })}
-        </script>
-      ) : null}
+      <BreadCrumbs siteMetadata={siteMetadata} pageContext={pageContext} />
+      <Organization siteMetadata={siteMetadata}/>
+      {data.wpPost &&
+        <Post siteMetadata={siteMetadata} canonical={canonical} data={data.wpPost} context={pageContext}/>}
 
       <meta charSet="utf-8" />
       <meta property="og:site_name" content={seo.opengraphSiteName || siteMetadata.title} />

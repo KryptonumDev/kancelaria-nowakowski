@@ -26,6 +26,8 @@ export const query = graphql`
         wpPost(id: {eq: $id}){
             ...PostSEO
             id
+            dateGmt
+            modifiedGmt
             title
             excerpt
             content
