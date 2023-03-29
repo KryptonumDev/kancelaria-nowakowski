@@ -12,7 +12,7 @@ const Nav = () => {
   return (
     <StyledNav className="nav" ref={nav}>
       <div className="max-width">
-        <Link to="/">
+        <Link to="/" aria-label="Strona główna">
           <Logo />
         </Link>
         <div className="nav-links">
