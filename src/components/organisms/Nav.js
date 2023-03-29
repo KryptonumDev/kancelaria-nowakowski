@@ -1,47 +1,29 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
-import { Logo } from '../atoms/Icons';
+import { DropDown, Logo } from '../atoms/Icons';
 
 const Nav = () => {
   const nav = useRef();
   const handleToggle = () => {
     nav.current.classList.toggle('expand');
   }
+  const handleNavClick = () => {
+    nav.current.classList.remove('expand');
+  }
+  useEffect(() => {
+    nav.current.style.pointerEvents = 'none';
+    setTimeout(() => {
+      nav.current.style = null;
+    }, 100);
+  }, [window.location.pathname])
 
   return (
     <StyledNav className="nav" ref={nav}>
       <div className="max-width">
-        <Link to="/" aria-label="Strona główna">
+        <Link to="/" aria-label="Strona główna" onClick={handleNavClick} className="nav-logo">
           <Logo />
         </Link>
-        <div className="nav-links">
-          <ul>
-            <li className="dropdown">
-              <Link to="/specjalizacje">Specjalizacje</Link>
-              <ul>
-                <li><Link to="/specjalizacje">Hałas lotniczy</Link></li>
-                <li><Link to="/specjalizacje">Kredyty CHF</Link></li>
-                <li><Link to="/specjalizacje">Odszkodowania</Link></li>
-                <li><Link to="/specjalizacje">Prawo spadkowe</Link></li>
-                <li><Link to="/specjalizacje">Proces sądowy</Link></li>
-                <li><Link to="/specjalizacje">Rozwód</Link></li>
-                <li><Link to="/specjalizacje">Utrata wartości</Link></li>
-              </ul>
-            </li>
-            <li>
-              <Link to="/kancelaria">Kancelaria</Link>
-            </li>
-            <li>
-              <Link to="/wspolpraca">Współpraca</Link>
-            </li>
-            <li>
-              <Link to="/blog">Blog</Link>
-            </li>
-          </ul>
-          <Link to="/kontakt" className="navLinks-cta">Kontakt</Link>
-        </div>
-        <Link to="/kontakt" className="nav-cta">Kontakt</Link>
         <button
           id="nav-toggle"
           aria-label="Pokaż/Ukryj nawigację mobilną"
@@ -49,6 +31,36 @@ const Nav = () => {
         >
           <span></span><span></span><span></span>
         </button>
+        <div className="nav-links">
+          <ul>
+            <li className="dropdown">
+              <Link to="/specjalizacje" onClick={handleNavClick}>
+                <span>Specjalizacje</span>
+                <DropDown />
+              </Link>
+              <ul>
+                <li><Link to="/halas-lotniczy" onClick={handleNavClick}>Hałas lotniczy</Link></li>
+                <li><Link to="/kredyty-chf" onClick={handleNavClick}>Kredyty CHF</Link></li>
+                <li><Link to="/odszkodowania" onClick={handleNavClick}>Odszkodowania</Link></li>
+                <li><Link to="/prawo-spadkowe" onClick={handleNavClick}>Prawo spadkowe</Link></li>
+                <li><Link to="/proces-sadowy" onClick={handleNavClick}>Proces sądowy</Link></li>
+                <li><Link to="/rozwod" onClick={handleNavClick}>Rozwód</Link></li>
+                <li><Link to="/utrata-wartosci" onClick={handleNavClick}>Utrata wartości</Link></li>
+              </ul>
+            </li>
+            <li>
+              <Link to="/kancelaria" onClick={handleNavClick}>Kancelaria</Link>
+            </li>
+            <li>
+              <Link to="/wspolpraca" onClick={handleNavClick}>Współpraca</Link>
+            </li>
+            <li>
+              <Link to="/blog" onClick={handleNavClick}>Blog</Link>
+            </li>
+          </ul>
+          <Link to="/kontakt" className="navLinks-cta" onClick={handleNavClick}>Kontakt</Link>
+        </div>
+        <Link to="/kontakt" className="nav-cta">Kontakt</Link>
       </div>
     </StyledNav>
   );
@@ -78,6 +90,21 @@ const StyledNav = styled.nav`
       margin: 0 -${20/16}rem;
       > li {
         margin: 0 ${20/16}rem;
+        &.dropdown {
+          &:hover > a svg {
+            transform: rotate(-180deg);
+          }
+          > a {
+            span, svg {
+              vertical-align: middle;
+              display: inline-block;
+            }
+            svg {
+              margin-left: 2px;
+              transition: transform .2s;
+            }
+          }
+        }
         &:hover ul,
         &:focus-within ul {
           opacity: 1;
@@ -129,6 +156,7 @@ const StyledNav = styled.nav`
     font-size: ${24/16}rem;
   }
   #nav-toggle {
+    order: 1;
     display: none;
     width: 48px;
     height: 48px;
@@ -140,28 +168,61 @@ const StyledNav = styled.nav`
       background-color: var(--primary-900);
       transition: transform 0.3s ease 0s;
       &:nth-child(odd){
-        width: 80%;
+        transform-origin: left;
+        transform: scaleX(.8);
       }
       &:not(:last-child){
         margin-bottom: 10px;
       }
     }
   }
+  &.expand #nav-toggle {
+    span {
+      &:nth-child(1) {
+        transform: translateY(1.5px) rotate(45deg);
+      }
+      &:nth-child(2) {
+        transform: scaleX(0);
+      }
+      &:nth-child(3) {
+        transform: translateY(-1.5px) rotate(-45deg);
+      }
+    }
+  }
+  .navLinks-cta {
+    display: none;
+  }
   @media (max-width: 1149px){
     height: 89px;
-    ul {
-      list-style-type: none;
-      font-size: ${22/16}rem;
-      font-family: var(--serif);
+    &::after {
+      content: '';
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,.6);
+      position: fixed;
+      left: 0;
+      top: 89px;
+      z-index: -1;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity .5s;
+    }
+    &.expand::after {
+      opacity: 1;
     }
     &.expand .nav-links {
       transform: translateX(0);
       visibility: visible;
     }
+    ul {
+      font-size: ${22/16}rem;
+      font-family: var(--serif);
+    }
     .nav-links {
+      position: relative;
       transform: translateX(100%);
       visibility: hidden;
-      transition: transform .5s cubic-bezier(0.65,0.05,0.36,1), visibility .4s;
+      transition: transform .5s cubic-bezier(0.65,0.05,0.36,1), visibility .5s;
       overflow-y: auto;
       position: absolute;
       right: 0;
@@ -179,7 +240,14 @@ const StyledNav = styled.nav`
             order: 1;
           }
           margin: ${14/16}rem 0;
+          &.dropdown > a svg{
+            display: none;
+          }
           ul {
+            opacity: 1;
+            &::after, &::before {
+              content: none;
+            }
             & > li {
               font-family: var(--sans-serif);
               font-size: ${20/16}rem;
@@ -187,10 +255,6 @@ const StyledNav = styled.nav`
             padding: 0;
             position: static;
           }
-        }
-        a[aria-current="page"] {
-          font-weight: 700;
-          font-style: italic;
         }
       }
     }
@@ -201,16 +265,26 @@ const StyledNav = styled.nav`
     #nav-toggle {
       display: block;
     }
-  }
-  .navLinks-cta {
-    display: none;
+    
   }
   @media (max-width: 699px){
+    height: 67px;
+    &::after {
+      top: 67px;
+    }
+    .nav-logo svg {
+      height: 46px;
+      width: auto;
+    }
     .nav-links {
-      width: calc(100% + 34px);
-      height: calc(100vh - 89px);
-      height: calc(100dvh - 89px);
-      padding: ${66/16}rem;
+      padding: ${48/16}rem 1rem 1rem;
+      width: 100%;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: calc(100vh - 67px);
+      height: calc(100dvh - 67px);
       background-color: var(--neutral-200);
       > ul {
         margin: 0;
@@ -241,10 +315,6 @@ const StyledNav = styled.nav`
             position: static;
           }
         }
-        a[aria-current="page"] {
-          font-weight: 700;
-          font-style: italic;
-        }
       }
     }
     .nav-cta {
@@ -256,6 +326,7 @@ const StyledNav = styled.nav`
       font-family: var(--serif);
       padding: ${10/24}em ${32/24}em;
       font-size: ${24/16}rem;
+      text-align: center;
     }
   }
 `
