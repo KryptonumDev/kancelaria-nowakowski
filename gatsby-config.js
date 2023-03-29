@@ -32,5 +32,5 @@ module.exports = {
         "url": "https://kancelaria.headlesshub.com/graphql"
       }
     },
-  ] 
+  ]
 }
