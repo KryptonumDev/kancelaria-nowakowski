@@ -65,16 +65,16 @@ const Footer = () => {
           ))}
         </li>
         <li className="social">
-          <a href="#">
+          <a href="#" aria-label="YouTube">
             <Youtube />
           </a>
-          <a href="#">
+          <a href="#" aria-label="Twitter">
             <Twitter />
           </a>
-          <a href="#">
+          <a href="#" aria-label="Instagram">
             <Instagram />
           </a>
-          <a href="#">
+          <a href="#" aria-label="Facebook">
             <Facebook />
           </a>
         </li>
@@ -83,7 +83,7 @@ const Footer = () => {
         <p>© 2022 Piotr Nowakowski & Dominika Sujka-Kujawiak</p>
         <p>
           <span>Zaprojektowane przez</span>
-          <a href="https://kryptonum.eu" target="_blank" rel="noreferrer">
+          <a href="https://kryptonum.eu" target="_blank" rel="noreferrer" aria-label="Kryptonum">
             <KryptonumLogo />
           </a>
         </p>

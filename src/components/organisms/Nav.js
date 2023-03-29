@@ -12,7 +12,7 @@ const Nav = () => {
   return (
     <StyledNav className="nav" ref={nav}>
       <div className="max-width">
-        <Link to="/">
+        <Link to="/" aria-label="Strona główna">
           <Logo />
         </Link>
         <div className="nav-links">
@@ -59,24 +59,14 @@ const StyledNav = styled.nav`
   left: 0;
   top: 0;
   width: 100%;
-  background-color: var(--neutral-200);
+  background-color: var(--neutral-100);
   height: 105px;
   z-index: 9;
   .max-width {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: relative;
-    ::after {
-      content: '';
-      width: 100%;
-      height: 1px;
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      background-color: var(--secondary-200);
-      z-index: -1;
-    }
+    border-bottom: 1px solid var(--secondary-200);
   }
   ul {
     list-style-type: none;
@@ -86,25 +76,38 @@ const StyledNav = styled.nav`
     > ul {
       display: flex;
       margin: 0 -${20/16}rem;
-      --navHeight: 200px;
       > li {
         margin: 0 ${20/16}rem;
-        &:hover ul {
-          height: 200px;
+        &:hover ul,
+        &:focus-within ul {
+          opacity: 1;
+          pointer-events: auto;
         }
         ul {
-          transition: height .4s;
-          height: 0;
-          overflow: auto;
+          transition: opacity .2s;
+          opacity: 0;
+          pointer-events: none;
+          z-index: 2;
           &::before {
             content: '';
-            width: 200%;
+            width: 150vw;
             height: 100%;
-            background: #f90;
+            background: var(--neutral-100);
             position: absolute;
-            left: -50%;
-            top: 20px;
+            left: -50vw;
+            top: 1rem;
             z-index: -1;
+          }
+          &::after {
+            content: '';
+            width: 150vw;
+            height: 100vh;
+            background: rgba(0,0,0,.6);
+            position: fixed;
+            left: 0;
+            top: 108px;
+            z-index: -2;
+            pointer-events: none;
           }
           width: 100%;
           position: absolute;
