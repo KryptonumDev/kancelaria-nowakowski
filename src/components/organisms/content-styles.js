@@ -197,7 +197,6 @@ export const StyledContent = styled.div`
   }
 
   .cta-wrapper{
-    max-width: unset;
     margin: 64px 0;
     position: relative;
     display: flex;
@@ -206,6 +205,7 @@ export const StyledContent = styled.div`
     align-items: center;
     padding: 42px 32px 68px;
     overflow: hidden;
+    max-width: 848px;
 
 
     @media (max-width: 768px) {
@@ -213,7 +213,7 @@ export const StyledContent = styled.div`
       transform: translateX(-17px);
     }
 
-    .gatsby-image-wrapper{
+    .gatsby-image-wrapper, .inline-gatsby-image-wrapper{
         position: absolute !important;
         top: 0;
         bottom: 0;
