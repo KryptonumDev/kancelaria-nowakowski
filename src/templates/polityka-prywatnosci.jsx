@@ -1,10 +1,12 @@
 import { graphql } from "gatsby"
 import * as React from "react"
+import Content from "../components/sections/content-privacy-policy"
 
 export default function PolityaPrywatnosci({ data }) {
     return (
-        <>
-        </>
+        <main>
+            <Content data={data.wpPage.content}/>
+        </main>
     )
 }
 

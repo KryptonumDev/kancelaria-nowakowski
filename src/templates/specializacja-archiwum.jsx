@@ -1,17 +1,49 @@
 import { graphql } from "gatsby"
 import * as React from "react"
+import Hero from "../components/sections/archive-specjalizacja-hero"
+import Slider from "../components/sections/blog-slider"
+import ContactUs from "../components/sections/ContactUs"
 
 export default function SpecializacjaArchiwum({ data }) {
-    return (
-        <>
-        </>
-    )
+  const { sectionContact, sectionBlog } = data.global.global
+  const { sectionGridSpecialisation } = data.wpPage.specjalizacje
+  return (
+    <main>
+      <Hero data={sectionGridSpecialisation}/>
+      <Slider posts={data.allWpPost.nodes} data={sectionBlog} />
+      <ContactUs />
+    </main>
+  )
 }
 
 export { Head } from "./../components/sections/seo"
 
 export const query = graphql`
     query archiwum ($id: String!) {
+      allWpPost(limit: 3) {
+        nodes {
+          id
+          uri
+          title
+          excerpt
+          featuredImage {
+            node {
+              altText
+              localFile {
+                childImageSharp {
+                  gatsbyImageData
+                }
+              }
+            }
+          }
+          categories {
+            nodes {
+              name
+              slug
+            }
+          }
+        }
+      }
         global : wpPage(id: {eq: "cG9zdDoxNjg="}) {
           global {
             sectionContact {
@@ -35,6 +67,14 @@ export const query = graphql`
                   title
                   url
                 }
+                backgroundImage{
+                  altText
+                  localFile{
+                    childImageSharp{
+                      gatsbyImageData
+                    }
+                  }
+                }
               }
             }
           }
@@ -54,7 +94,7 @@ export const query = graphql`
                       altText
                       localFile {
                         childImageSharp {
-                          gatsbyImageData
+                          gatsbyImageData(quality: 90)
                         }
                       }
                     }

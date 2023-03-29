@@ -10,7 +10,7 @@ import ContactUs from "../components/sections/ContactUs";
 
 export default function Homepage({ data }) {
   const { heroHome, stepsSection, sectionWithImgOnRightHome, sectionWithCommentsHome } = data.wpPage.homepage;
-  const { sectionBlog } = data.global.global;
+  const { sectionBlog, sectionContact } = data.global.global;
   return (
     <main>
       <Hero data={heroHome} />
