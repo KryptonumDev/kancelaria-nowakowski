@@ -137,7 +137,7 @@ exports.createPages = async ({
 
   createBlogInstance('blog.jsx', 'cG9zdDo4Mw==')
 
-  // create specialisations
+  // create specialisations 
 
   const { data: { allWpSpecjalizacja } } = await graphql(`
     query getSpecialisationData {

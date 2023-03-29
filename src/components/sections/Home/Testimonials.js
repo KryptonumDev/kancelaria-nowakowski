@@ -41,9 +41,9 @@ const Testimonials = ({ data }) => {
         <button onClick={() => { setActiveSlide(activeSlide - 1 >= 0 ? activeSlide - 1 : 0) }}>
           <svg width="65" height="65" viewBox="0 0 65 65" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect width="64" height="64" transform="translate(0.715698 0.480469)" fill="white" />
-            <path d="M11.381 32.4805L54.0471 32.4805" stroke="#0F3730" stroke-width="1.5" stroke-linecap="square" />
-            <path d="M26.4748 17.387C26.4748 25.1463 19.6413 32.4805 11.3813 32.4805" stroke="#0F3730" stroke-width="1.5" stroke-linecap="square" />
-            <path d="M26.4748 47.5739C26.4748 39.8146 19.6413 32.4805 11.3813 32.4805" stroke="#0F3730" stroke-width="1.5" stroke-linecap="square" />
+            <path d="M11.381 32.4805L54.0471 32.4805" stroke="#0F3730" strokeWidth="1.5" strokeLinecap="square" />
+            <path d="M26.4748 17.387C26.4748 25.1463 19.6413 32.4805 11.3813 32.4805" stroke="#0F3730" strokeWidth="1.5" strokeLinecap="square" />
+            <path d="M26.4748 47.5739C26.4748 39.8146 19.6413 32.4805 11.3813 32.4805" stroke="#0F3730" strokeWidth="1.5" strokeLinecap="square" />
           </svg>
         </button>
         {data.comments.map((el, index) => (
@@ -52,9 +52,9 @@ const Testimonials = ({ data }) => {
         <button onClick={() => { setActiveSlide(activeSlide + 1 < data.comments.length ? activeSlide + 1 : activeSlide) }}>
           <svg width="65" height="65" viewBox="0 0 65 65" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect width="64" height="64" transform="translate(0.284241 0.480469)" fill="white" />
-            <path d="M53.615 32.4805L10.949 32.4805" stroke="#0F3730" stroke-width="1.5" stroke-linecap="square" />
-            <path d="M38.5225 47.5739C38.5225 39.8146 45.3561 32.4805 53.616 32.4805" stroke="#0F3730" stroke-width="1.5" stroke-linecap="square" />
-            <path d="M38.5225 17.387C38.5225 25.1463 45.3561 32.4805 53.616 32.4805" stroke="#0F3730" stroke-width="1.5" stroke-linecap="square" />
+            <path d="M53.615 32.4805L10.949 32.4805" stroke="#0F3730" strokeWidth="1.5" strokeLinecap="square" />
+            <path d="M38.5225 47.5739C38.5225 39.8146 45.3561 32.4805 53.616 32.4805" stroke="#0F3730" strokeWidth="1.5" strokeLinecap="square" />
+            <path d="M38.5225 17.387C38.5225 25.1463 45.3561 32.4805 53.616 32.4805" stroke="#0F3730" strokeWidth="1.5" strokeLinecap="square" />
           </svg>
         </button>
       </Control>

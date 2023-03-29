@@ -9,7 +9,7 @@ const Hero = ({ data }) => {
     <StyledHero className="hero">
       <header>
         <Ornament />
-        <h1>{data.pageTitle}</h1>
+        <div dangerouslySetInnerHTML={{__html: data.pageTitle}}></div>
         <p className="flex">
           {data.linksToSubpages.map((link, i) => (
             <span className="no-wrap" key={link.link.title + i}>
@@ -26,8 +26,8 @@ const Hero = ({ data }) => {
         </div>
       </header>
       <div className="hero-img">
-        <GatsbyImage image={data.leftImage.localFile.childImageSharp.gatsbyImageData} alt={data.leftImage.altText || ''} />
-        <GatsbyImage image={data.rightImage.localFile.childImageSharp.gatsbyImageData} alt={data.rightImage.altText || ''} />
+        <GatsbyImage loading="eager" image={data.leftImage.localFile.childImageSharp.gatsbyImageData} alt={data.leftImage.altText || ''} />
+        <GatsbyImage loading="eager" image={data.rightImage.localFile.childImageSharp.gatsbyImageData} alt={data.rightImage.altText || ''} />
       </div>
     </StyledHero>
   );

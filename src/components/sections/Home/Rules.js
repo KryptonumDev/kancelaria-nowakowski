@@ -4,16 +4,16 @@ import { GatsbyImage } from "gatsby-plugin-image";
 import styled from "styled-components";
 import { OrnamentLogo } from "../../atoms/Icons";
 
-const Rules = ({data}) => {
+const Rules = ({ data }) => {
   return (
     <StyledSection>
       <OrnamentLogo className="ornament-logo" />
       <header>
-        <h2>{data.sectionTitle}</h2>
-        <p dangerouslySetInnerHTML={{__html: data.textUnderTitle}}></p>
+        <h2 dangerouslySetInnerHTML={{ __html: data.sectionTitle }}></h2>
+        <div className="text" dangerouslySetInnerHTML={{ __html: data.textUnderTitle }}></div>
         <div className="cta">
           <Link to={data.link.url} className="cta-primary">{data.link.title}</Link>
-          <p>{data.buttonHint}</p>
+          <p>Dobierzemy rozwiązanie <em><strong>najlepsze dla Ciebie</strong></em></p>
         </div>
       </header>
       <GatsbyImage image={data.imageOnTheRight.localFile.childImageSharp.gatsbyImageData} alt={data.imageOnTheRight.altText} className="img" />
@@ -22,14 +22,23 @@ const Rules = ({data}) => {
 }
 
 const StyledSection = styled.section`
-  margin: ${150/16}rem 0;
-  padding: ${100/16}rem 0;
+  margin: ${150 / 16}rem 0;
+  padding: ${100 / 16}rem 0;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
   gap: 32px;
   position: relative;
   padding-right: 15%;
+  .text{
+    ul{
+      display: grid;
+      grid-gap: 12px 24px;
+      li{
+
+      }
+    }
+  }
   svg {
     position: absolute;
     left: 50%;
@@ -49,18 +58,18 @@ const StyledSection = styled.section`
   header {
     width: 50%;
     h2 {
-      margin-bottom: ${48/16}rem;
+      margin-bottom: ${48 / 16}rem;
     }
     p {
-      font-size: clamp(${18/16}rem, ${24/13.66}vw, ${24/16}rem);
+      font-size: clamp(${18 / 16}rem, ${24 / 13.66}vw, ${24 / 16}rem);
     }
     .cta {
-      margin-top: ${24/16}rem;
+      margin-top: ${24 / 16}rem;
       display: flex;
       align-items: center;
       gap: 20px;
       p {
-        font-size: ${18/16}rem;
+        font-size: ${18 / 16}rem;
       }
     }
   }
@@ -79,15 +88,15 @@ const StyledSection = styled.section`
     header {
       width: 66.6%;
       h2 {
-        margin-bottom: ${48/16}rem;
+        margin-bottom: ${48 / 16}rem;
       }
       p {
-        font-size: clamp(${18/16}rem, ${24/13.66}vw, ${24/16}rem);
+        font-size: clamp(${18 / 16}rem, ${24 / 13.66}vw, ${24 / 16}rem);
       }
       .cta {
         display: block;
         p {
-          margin-top: ${12/16}rem;
+          margin-top: ${12 / 16}rem;
         }
       }
     }
@@ -96,7 +105,7 @@ const StyledSection = styled.section`
     }
   }
   @media (max-width: 599px){
-    margin: ${89/16}rem 0;
+    margin: ${89 / 16}rem 0;
     flex-direction: column-reverse;
     gap: 16px;
     svg {

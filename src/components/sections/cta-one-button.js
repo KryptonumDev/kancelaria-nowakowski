@@ -24,8 +24,14 @@ const Wrapper = styled.section`
   flex-direction: column;
   justify-content: center;
 
+  @media (max-width: 768px) {
+    width: calc(100% + 34px);
+    transform: translateX(-17px);
+  }
+
   svg{
     width: 100%;
+    margin: 0 auto;
     margin-bottom: 16px;
     g{
       fill: #3DA290;

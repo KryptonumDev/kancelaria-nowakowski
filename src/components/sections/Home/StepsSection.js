@@ -2,11 +2,11 @@ import React from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
 
-const StepsSection = ({data}) => {
+const StepsSection = ({ data }) => {
   return (
     <StyledSection>
       <header>
-        <h2>{data.sectionTitle}</h2>
+        <h2 dangerouslySetInnerHTML={{ __html: data.sectionTitle }}></h2>
         <h3>{data.textOnTheRight}</h3>
       </header>
       <ol className="steps">
@@ -26,7 +26,7 @@ const StepsSection = ({data}) => {
 }
 
 const StyledSection = styled.section`
-  padding: ${128/16}rem 0;
+  padding: ${128 / 16}rem 0;
   header,
   .underSteps {
     display: flex;
@@ -36,7 +36,7 @@ const StyledSection = styled.section`
     }
   }
   .steps {
-    margin: ${60/16}rem 0 ${110/16}rem 0;
+    margin: ${60 / 16}rem 0 ${110 / 16}rem 0;
     counter-reset: counter;
     display: flex;
     gap: 32px;
@@ -44,7 +44,7 @@ const StyledSection = styled.section`
       flex: 1;
       counter-increment: counter;
       list-style-type: none;
-      font-size: ${20/16}rem;
+      font-size: ${20 / 16}rem;
       &::before {
         content: counter(counter);
         font-family: var(--serif);
@@ -65,7 +65,7 @@ const StyledSection = styled.section`
   }
   @media (max-width: 899px){
     .steps {
-      margin: ${72/16}rem 0;
+      margin: ${72 / 16}rem 0;
       flex-direction: column;
       li::before {
         margin: 0 auto 1rem;
@@ -98,5 +98,5 @@ const StyledSection = styled.section`
     }
   }
 `
- 
+
 export default StepsSection;

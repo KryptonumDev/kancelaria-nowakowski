@@ -21,31 +21,8 @@ export default function Content({ categories, posts, data, page }) {
 const Wrapper = styled.section`
   h1{
     font-size: clamp(${36 / 16}rem, ${50 / 7.68}vw, ${54 / 16}rem);
-    position: relative;
     display: block;
     width: fit-content;
     max-width: 630px;
-    
-    &::after{
-      content: "";
-      position: absolute;
-      transform: translate(-50%, 50%) rotateZ(45deg);
-      left: 0;
-      bottom: -10px;
-      width: 6px;
-      height: 6px;
-      background-color: #4FD2BB;
-    }
-
-    &::before{
-      content: "";
-      position: absolute;
-      transform: translate(0, 50%);
-      left: 0;
-      bottom: -10px;
-      width: 100%;
-      height: 2px;
-      background-color: #4FD2BB;
-    }
   }
 `

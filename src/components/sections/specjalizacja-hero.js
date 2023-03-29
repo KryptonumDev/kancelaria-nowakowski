@@ -9,9 +9,9 @@ export default function Hero({ title, excerpt, featuredImage }) {
       <Ornament />
       <div className="text">
         <h1>{title}</h1>
-        <div dangerouslySetInnerHTML={{__html: excerpt}}/>
+        <div className="text" dangerouslySetInnerHTML={{__html: excerpt}}/>
       </div>
-      {/* <GatsbyImage className="image" image={featuredImage.node.localFile.childImageSharp.gatsbyImageData} alt={featuredImage.node.altText} /> */}
+      <GatsbyImage className="image" image={featuredImage.node.localFile.childImageSharp.gatsbyImageData} alt={featuredImage.node.altText} />
     </Wrapper>
   )
 }
@@ -24,6 +24,65 @@ const Wrapper = styled.section`
   'ornament ornament'
   'text image';
 
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+    'image'
+    'ornament'
+    'text';
+  }
+
+  h1{
+    font-size: clamp(${36/16}rem, ${46/7.68}vw, ${54/16}rem);
+    margin-bottom: 32px;
+
+    position: relative;
+    
+    &::after{
+      content: "";
+      position: absolute;
+      transform: translate(-50%, 50%) rotateZ(45deg);
+      left: 0;
+      bottom: -10px;
+      width: 6px;
+      height: 6px;
+      background-color: #4FD2BB;
+    }
+
+    &::before{
+      content: "";
+      position: absolute;
+      transform: translate(0, 50%);
+      left: 0;
+      bottom: -10px;
+      width: 100%;
+      height: 2px;
+      background-color: #4FD2BB;
+    }
+  }
+
+  .text{
+    *+*{
+      margin-top: 16px;
+    }
+    h3{
+      font-family: 'Literata', serif;
+      font-size: clamp(${21/16}rem, ${21/7.68}vw, ${24/16}rem);
+    }
+    p{
+      font-family: 'Lato';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 150%;
+      color: #12433A;
+    }
+  }
+
   .ornament{
     grid-area: ornament;
   }
@@ -35,5 +94,9 @@ const Wrapper = styled.section`
   .image{
     grid-area: image;
     width: fit-content;
+
+    @media (max-width: 640px){
+      margin: 0 auto;
+    }
   }
 `
