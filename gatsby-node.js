@@ -11,6 +11,7 @@ exports.createPages = async ({
                     slug
                     id
                     uri
+                    title
                 }
             }
         `, { id: PAGE_ID })
@@ -22,51 +23,71 @@ exports.createPages = async ({
         id: pageData.id, // Gatsby GraphQL page id - not the same as WP page id
         slug: pageData.slug, // Page slug from wordpress example : 'o-tworzeniu-wiki'
         uri: pageData.uri, // Page url from wordpress example : '/blog/post/o-tworzeniu-wiki/'
+        breadcrumbs: [
+          {
+            name: pageData.title,
+            url: pageData.uri
+          }
+        ]
       },
       ownerNodeId: pageData.id // Upgrade Gatsby cloud page render logic
     })
   }
 
-  const createBlogInstance = async (TEMPLATE_FILE_NAME, PAGE_ID) => {
+  const createBlogInstance = async (POST_TEMPLATE_FILE_NAME, ARCHIVE_TEMPLATE_FILE_NAME, PAGE_ID) => {
     const { data: {
       wpPage: pageData,
       allWpPost: {
-        totalCount: postsCount
+        totalCount: postsCount,
+        nodes: posts
       },
       allWpCategory: {
         nodes: categories
       }
     } } = await graphql(`
-            query getPageData ($id: String!){
-                wpPage(id: {eq: $id})  {
-                    slug
-                    id
-                    uri
-                }
-                allWpPost {
-                  totalCount
-                }
-                allWpCategory(filter: {count: {gt: 0}}) {
-                  nodes {
-                    slug
-                    count
-                    id
-                    uri
-                  }
-                }
+        query getPageData ($id: String!){
+            wpPage(id: {eq: $id})  {
+                slug
+                id
+                uri
+                title
             }
-        `, { id: PAGE_ID })
+            allWpPost {
+              totalCount
+              nodes{
+                slug
+                id
+                uri
+              }
+            }
+            allWpCategory(filter: {count: {gt: 0}}) {
+              nodes {
+                slug
+                count
+                id
+                uri
+                name
+              }
+            }
+        }
+    `, { id: PAGE_ID })
 
     //  Create blog page
     createPage({
       path: pageData.uri,
-      component: path.resolve(`src/templates/${TEMPLATE_FILE_NAME}`),
+      component: path.resolve(`src/templates/${ARCHIVE_TEMPLATE_FILE_NAME}`),
       context: {
         id: pageData.id,
         slug: pageData.slug,
         uri: pageData.uri,
         page: 1,
-        category: null
+        category: null,
+        breadcrumbs: [
+          {
+            name: pageData.title,
+            url: pageData.uri
+          }
+        ]
       },
       ownerNodeId: pageData.id
     })
@@ -77,13 +98,19 @@ exports.createPages = async ({
         let page = i + 2
         createPage({
           path: pageData.uri + page + '/',
-          component: path.resolve(`src/templates/${TEMPLATE_FILE_NAME}`),
+          component: path.resolve(`src/templates/${ARCHIVE_TEMPLATE_FILE_NAME}`),
           context: {
             id: pageData.id,
             slug: pageData.slug,
             uri: pageData.uri,
             page: page,
-            category: null
+            category: null,
+            breadcrumbs: [
+              {
+                name: pageData.title,
+                url: pageData.uri
+              }
+            ]
           },
           ownerNodeId: pageData.id
         })
@@ -94,13 +121,23 @@ exports.createPages = async ({
       //  Create category page
       createPage({
         path: categoryData.uri,
-        component: path.resolve(`src/templates/${TEMPLATE_FILE_NAME}`),
+        component: path.resolve(`src/templates/${ARCHIVE_TEMPLATE_FILE_NAME}`),
         context: {
           id: pageData.id,
           slug: categoryData.slug,
           uri: categoryData.uri,
           page: 1,
-          category: null
+          category: categoryData.name,
+          breadcrumbs: [
+            {
+              name: pageData.title,
+              url: pageData.uri
+            },
+            {
+              name: categoryData.name,
+              url: categoryData.uri
+            }
+          ]
         },
         ownerNodeId: categoryData.id
       })
@@ -111,18 +148,52 @@ exports.createPages = async ({
           let page = i + 2
           createPage({
             path: categoryData.uri + page + '/',
-            component: path.resolve(`src/templates/${TEMPLATE_FILE_NAME}`),
+            component: path.resolve(`src/templates/${ARCHIVE_TEMPLATE_FILE_NAME}`),
             context: {
               id: categoryData.id,
               slug: categoryData.slug,
               uri: categoryData.uri,
               page: page,
-              category: null
+              category: categoryData.name,
+              breadcrumbs: [
+                {
+                  name: pageData.title,
+                  url: pageData.uri
+                },
+                {
+                  name: categoryData.name,
+                  url: categoryData.uri
+                }
+              ]
             },
             ownerNodeId: pageData.id
           })
         }
       }
+
+      posts.forEach(el => {
+        createPage({
+          path: el.uri,
+          component: path.resolve(`src/templates/${POST_TEMPLATE_FILE_NAME}`),
+          context: {
+            id: el.id,
+            slug: el.slug,
+            uri: el.uri,
+            breadcrumbs: [
+              {
+                name: pageData.title,
+                url: pageData.uri
+              },
+              {
+                name: el.title,
+                url: el.uri
+              }
+            ]
+          },
+          ownerNodeId: el.id
+        })
+      })
+
     })
   }
 
@@ -135,17 +206,22 @@ exports.createPages = async ({
   createPageInstance('polityka-prywatnosci.jsx', 'cG9zdDo3Nw==')
   createPageInstance('kancelaria.jsx', 'cG9zdDo3MQ==')
 
-  createBlogInstance('blog.jsx', 'cG9zdDo4Mw==')
+  createBlogInstance('blog-post.jsx', 'blog.jsx', 'cG9zdDo4Mw==')
 
   // create specialisations 
 
-  const { data: { allWpSpecjalizacja } } = await graphql(`
+  const { data: { allWpSpecjalizacja, arhive } } = await graphql(`
     query getSpecialisationData {
+      arhive : wpPage(id: {eq: "cG9zdDo4Ng=="}){
+        title
+        uri
+      }
       allWpSpecjalizacja  {
         nodes{
           slug 
           id
           uri
+          title
         }
       }
     } 
@@ -159,35 +235,19 @@ exports.createPages = async ({
         id: el.id,
         slug: el.slug,
         uri: el.uri,
+        breadcrumbs: [
+          {
+            name: arhive.title,
+            url: arhive.uri
+          },
+          {
+            name: el.title,
+            url: el.uri
+          }
+        ]
       },
       ownerNodeId: el.id
     })
   })
 
-  // create posts
-
-  const { data: { allWpPost } } = await graphql(`
-    query getSpecialisationData {
-      allWpPost  {
-        nodes{
-          slug
-          id
-          uri
-        }
-      }
-    }
-  `)
-
-  allWpPost.nodes.forEach(el => {
-    createPage({
-      path: el.uri, // TODO: change url basis
-      component: path.resolve(`src/templates/blog-post.jsx`),
-      context: {
-        id: el.id,
-        slug: el.slug,
-        uri: el.uri,
-      },
-      ownerNodeId: el.id
-    })
-  })
 }

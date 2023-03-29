@@ -49,9 +49,9 @@ const GlobalStyle = createGlobalStyle`
     min-width: 320px;
     font-family: var(--sans-serif);
     color: var(--primary-800);
-    margin-top: 137px;
+    padding-top: 137px;
     @media (max-width: 1149px) {
-      margin-top: 113px;
+      padding-top: 113px;
     }
   }
   button, select {

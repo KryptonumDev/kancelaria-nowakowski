@@ -4,9 +4,9 @@ import Nav from "../organisms/Nav";
 import Footer from "../organisms/Footer";
 import BreadCrumbs from './breadcrumbs';
 
-const Layout = ({children}) => {
+const Layout = ({ children, pageContext }) => {
   useEffect(() => {
-    const orphans = ['w','W','z','u','o','i','np.'];
+    const orphans = ['w', 'W', 'z', 'u', 'o', 'i', 'np.'];
     const paragraphs = document.querySelectorAll('p, li, h2, h3, span');
     paragraphs.forEach(paragraph => {
       orphans.forEach(orphan => {
@@ -18,11 +18,11 @@ const Layout = ({children}) => {
     <>
       <GlobalStyle />
       <Nav />
-      <BreadCrumbs/>
+      <BreadCrumbs data={pageContext.breadcrumbs} />
       {children}
       <Footer />
     </>
   );
 }
- 
+
 export default Layout;

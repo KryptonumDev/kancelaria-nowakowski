@@ -99,6 +99,10 @@ const Footer = () => {
 const Wrapper = styled.footer`
   margin-top: clamp(${68/16}rem, ${100/7.68}vw, ${128/16}rem);
   border-top: 1px solid var(--neutral-600);
+
+  a{
+    width: fit-content;
+  }
   .footer-top {
     padding: ${32/16}rem 0 ${24/16}rem;
     list-style-type: none;

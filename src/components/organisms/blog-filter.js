@@ -71,46 +71,6 @@ export default function Filter({ postsCount, categories }) {
               {el.name} ({el.count})
             </Link>
           ))}
-          {categories.map(el => (
-            <Link activeClassName="active" to={el.uri}>
-              {el.name} ({el.count})
-            </Link>
-          ))}
-          {categories.map(el => (
-            <Link activeClassName="active" to={el.uri}>
-              {el.name} ({el.count})
-            </Link>
-          ))}
-          {categories.map(el => (
-            <Link activeClassName="active" to={el.uri}>
-              {el.name} ({el.count})
-            </Link>
-          ))}
-          {categories.map(el => (
-            <Link activeClassName="active" to={el.uri}>
-              {el.name} ({el.count})
-            </Link>
-          ))}
-          {categories.map(el => (
-            <Link activeClassName="active" to={el.uri}>
-              {el.name} ({el.count})
-            </Link>
-          ))}
-          {categories.map(el => (
-            <Link activeClassName="active" to={el.uri}>
-              {el.name} ({el.count})
-            </Link>
-          ))}
-          {categories.map(el => (
-            <Link activeClassName="active" to={el.uri}>
-              {el.name} ({el.count})
-            </Link>
-          ))}
-          {categories.map(el => (
-            <Link activeClassName="active" to={el.uri}>
-              {el.name} ({el.count})
-            </Link>
-          ))}
           <Placeholder/>
         </Slider>
       </SliderWrapper>

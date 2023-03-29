@@ -5,9 +5,28 @@ import CallToAction from "../components/sections/cta-one-button"
 
 export default function Blog({ pageContext, data }) {
   const { blogContent, callToActionBlog } = data.wpPage.blog
+
+  const posts = React.useMemo(() => {
+    if (!pageContext.category) {
+      return data.allWpPost.nodes
+    }
+
+    return data.allWpPost.nodes.filter(el => {
+      let isAccepted = false
+      el.categories.nodes.forEach(el => {
+        if (el.name === pageContext.category) {
+          isAccepted = true
+          return false
+        }
+        return true
+      })
+      return isAccepted
+    })
+  }, [data, pageContext])
+
   return (
     <main>
-      <Content categories={data.allWpCategory.nodes} posts={data.allWpPost.nodes} page={pageContext.page} data={blogContent} />
+      <Content categories={data.allWpCategory.nodes} posts={posts} page={pageContext.page} data={blogContent} />
       <CallToAction data={callToActionBlog} />
     </main>
   )
