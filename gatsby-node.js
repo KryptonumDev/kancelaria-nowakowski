@@ -205,6 +205,7 @@ exports.createPages = async ({
   createPageInstance('wspolpraca.jsx', 'cG9zdDo3NA==')
   createPageInstance('polityka-prywatnosci.jsx', 'cG9zdDo3Nw==')
   createPageInstance('kancelaria.jsx', 'cG9zdDo3MQ==')
+  createPageInstance('mapa-strony.jsx', 'cG9zdDoxNDc0')
 
   createBlogInstance('blog-post.jsx', 'blog.jsx', 'cG9zdDo4Mw==')
 

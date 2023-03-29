@@ -18,7 +18,8 @@ const Layout = ({ children, pageContext }) => {
     <>
       <GlobalStyle />
       <Nav />
-      <BreadCrumbs data={pageContext.breadcrumbs} />
+      {pageContext.breadcrumbs
+        && <BreadCrumbs data={pageContext.breadcrumbs} />}
       {children}
       <Footer />
     </>
