@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { graphql, Link, useStaticQuery } from "gatsby";
 import styled from "styled-components";
-import { Logo } from '../atoms/Icons';
+import { DropDown, Logo } from '../atoms/Icons';
 
 const Nav = () => {
   const { allWpSpecjalizacja: { nodes: specjalizacji } } = useStaticQuery(graphql`
@@ -18,6 +18,13 @@ const Nav = () => {
   const nav = useRef();
   const handleToggle = () => {
     nav.current.classList.toggle('expand');
+  }
+  const handleNavClick = () => {
+    nav.current.classList.remove('expand');
+    nav.current.style.pointerEvents = 'none';
+    setTimeout(() => {
+      nav.current.style = null;
+    }, 100);
   }
 
   return (
@@ -154,7 +161,22 @@ const StyledNav = styled.header`
       display: flex;
       margin: 0 -${20 / 16}rem;
       > li {
-        margin: 0 ${20 / 16}rem;
+        margin: 0 ${20/16}rem;
+        &.dropdown {
+          &:hover > a svg {
+            transform: rotate(-180deg);
+          }
+          > a {
+            span, svg {
+              vertical-align: middle;
+              display: inline-block;
+            }
+            svg {
+              margin-left: 2px;
+              transition: transform .2s;
+            }
+          }
+        }
         &:hover ul,
         &:focus-within ul {
           opacity: 1;
@@ -229,6 +251,7 @@ const StyledNav = styled.header`
     }
   }
   #nav-toggle {
+    order: 1;
     display: none;
     width: 48px;
     height: 48px;
@@ -240,29 +263,62 @@ const StyledNav = styled.header`
       background-color: var(--primary-900);
       transition: transform 0.3s ease 0s;
       &:nth-child(odd){
-        width: 80%;
+        transform-origin: left;
+        transform: scaleX(.8);
       }
       &:not(:last-child){
         margin-bottom: 10px;
       }
     }
   }
+  &.expand #nav-toggle {
+    span {
+      &:nth-child(1) {
+        transform: translateY(1.5px) rotate(45deg);
+      }
+      &:nth-child(2) {
+        transform: scaleX(0);
+      }
+      &:nth-child(3) {
+        transform: translateY(-1.5px) rotate(-45deg);
+      }
+    }
+  }
+  .navLinks-cta {
+    display: none;
+  }
   @media (max-width: 1149px){
     height: 89px;
-    ul {
-      list-style-type: none;
-      font-size: ${22 / 16}rem;
-      font-family: var(--serif);
+    &::after {
+      content: '';
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,.6);
+      position: fixed;
+      left: 0;
+      top: 89px;
+      z-index: -1;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity .5s;
+    }
+    &.expand::after {
+      opacity: 1;
     }
     &.expand .nav-links {
       transform: translateX(0);
       visibility: visible;
       overflow: hidden;
     }
+    ul {
+      font-size: ${22/16}rem;
+      font-family: var(--serif);
+    }
     .nav-links {
+      position: relative;
       transform: translateX(100%);
       visibility: hidden;
-      transition: transform .5s cubic-bezier(0.65,0.05,0.36,1), visibility .4s;
+      transition: transform .5s cubic-bezier(0.65,0.05,0.36,1), visibility .5s;
       overflow-y: auto;
       position: absolute;
       right: 0;
@@ -279,8 +335,15 @@ const StyledNav = styled.header`
           &:first-child {
             order: 1;
           }
-          margin: ${14 / 16}rem 0;
+          margin: ${14/16}rem 0;
+          &.dropdown > a svg{
+            display: none;
+          }
           ul {
+            opacity: 1;
+            &::after, &::before {
+              content: none;
+            }
             & > li {
               font-family: var(--sans-serif);
               font-size: ${20 / 16}rem;
@@ -288,10 +351,6 @@ const StyledNav = styled.header`
             padding: 0;
             position: static;
           }
-        }
-        a.active {
-          font-weight: 700;
-          font-style: italic;
         }
       }
     }
@@ -302,16 +361,26 @@ const StyledNav = styled.header`
     #nav-toggle {
       display: block;
     }
-  }
-  .navLinks-cta {
-    display: none;
+    
   }
   @media (max-width: 699px){
+    height: 67px;
+    &::after {
+      top: 67px;
+    }
+    .nav-logo svg {
+      height: 46px;
+      width: auto;
+    }
     .nav-links {
-      width: calc(100% + 34px);
-      height: calc(100vh - 89px);
-      height: calc(100dvh - 89px);
-      padding: ${66 / 16}rem;
+      padding: ${48/16}rem 1rem 1rem;
+      width: 100%;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: calc(100vh - 67px);
+      height: calc(100dvh - 67px);
       background-color: var(--neutral-200);
       > ul {
         margin: 0;
@@ -342,10 +411,6 @@ const StyledNav = styled.header`
             position: static;
           }
         }
-        a.active {
-          font-weight: 700;
-          font-style: italic;
-        }
       }
     }
     .nav-cta {
@@ -355,8 +420,9 @@ const StyledNav = styled.header`
       display: block;
       border: 2px solid var(--primary-800);
       font-family: var(--serif);
-      padding: ${10 / 24}em ${32 / 24}em;
-      font-size: ${24 / 16}rem;
+      padding: ${10/24}em ${32/24}em;
+      font-size: ${24/16}rem;
+      text-align: center;
     }
   }
 `

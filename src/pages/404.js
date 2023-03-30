@@ -8,7 +8,7 @@ const NotFoundPage = () => {
   return (
     <Wrapper>
       <div>
-        <StaticImage className="image" src='./../resources/images/404.jpg' alt='obrazek dekoracyjny' />
+        <StaticImage className="image" src='./../resources/images/404.jpg' alt='Mężczyzna uważnie czytający tekst z dokumentu' />
         <Ornament />
         <h1>
           Niestety nie znaleźliśmy

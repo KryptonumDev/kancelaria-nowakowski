@@ -8,7 +8,7 @@ import { useState } from "react";
 
 const Layout = ({ children, pageContext }) => {
   useEffect(() => {
-    const orphans = ['w', 'W', 'z', 'u', 'o', 'i', 'np.'];
+    const orphans = ['w','W','z','u','o','i','np.'];
     const paragraphs = document.querySelectorAll('p, h2, h3, span');
     paragraphs.forEach(paragraph => {
       orphans.forEach(orphan => {

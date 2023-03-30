@@ -154,6 +154,7 @@ const Wrapper = styled.footer`
       }
     }
     .social {
+      color: var(--primary-400);
       a:not(:last-child) {
         margin-bottom: ${24 / 16}rem;
       }
@@ -228,6 +229,10 @@ const Wrapper = styled.footer`
                           "a c"
                           "d d"
                           "e e";
+
+      .blog-item {
+        width: 100%;
+      }
     }
     .footer-bottom {
       flex-direction: column;
