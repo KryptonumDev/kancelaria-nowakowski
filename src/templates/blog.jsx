@@ -32,7 +32,7 @@ export default function Blog({ pageContext, data }) {
   )
 }
 
-export { Head } from "./../components/sections/seo"
+// export { Head } from "./../components/sections/seo"
 
 export const query = graphql`
   query blog ($id: String!) {
@@ -48,8 +48,10 @@ export const query = graphql`
       nodes {
         id
         uri
-        title
-        excerpt
+        gutenberg {
+          excerpt
+          title : tytulStrony
+        }
         featuredImage {
           node {
             altText

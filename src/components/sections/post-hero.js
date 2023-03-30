@@ -9,7 +9,7 @@ export default function Hero({ categories, title, excerpt, featuredImage }) {
     <Wrapper>
       <div>
         <Ornament />
-        <h1>{title}</h1>
+        <div dangerouslySetInnerHTML={{__html: title}}/>
         <div dangerouslySetInnerHTML={{ __html: excerpt }} />
         <Categories>
           {categories.nodes.map(el => (

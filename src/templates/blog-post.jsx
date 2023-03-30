@@ -2,18 +2,17 @@ import { graphql } from "gatsby"
 import * as React from "react"
 import Content from "../components/sections/gutenberg-content"
 import Hero from "../components/sections/post-hero"
-import { slugTransform } from "../helpers/slug-transform"
 import useHeadings from "../hooks/create-headings"
 
 
 export default function Post({ data }) {
-  const { content, categories, title, excerpt, featuredImage } = data.wpPost
+  const { content, categories, featuredImage, gutenberg } = data.wpPost
 
   const headings = useHeadings(content)
 
   return (
     <main>
-      <Hero categories={categories} title={title} excerpt={excerpt} featuredImage={featuredImage} />
+      <Hero categories={categories} title={gutenberg.title} excerpt={gutenberg.excerpt} featuredImage={featuredImage} />
       <Content content={content} headings={headings} />
     </main>
   )
@@ -26,10 +25,13 @@ export const query = graphql`
         wpPost(id: {eq: $id}){
             ...PostSEO
             id
+            gutenberg {
+              excerpt
+              title : tytulStrony
+            }
             dateGmt
             modifiedGmt
             title
-            excerpt
             content
             featuredImage {
               node {

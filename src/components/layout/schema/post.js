@@ -1,7 +1,6 @@
 import React from "react"
 
 export default function Post({ canonical, data, context, siteMetadata }) {
-  debugger
   return (
     <script type="application/ld+json">
       {JSON.stringify(

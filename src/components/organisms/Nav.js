@@ -1,60 +1,95 @@
 import React, { useRef } from "react";
-import { Link } from "gatsby";
+import { graphql, Link, useStaticQuery } from "gatsby";
 import styled from "styled-components";
 import { Logo } from '../atoms/Icons';
 
 const Nav = () => {
+  const { allWpSpecjalizacja: { nodes: specjalizacji } } = useStaticQuery(graphql`
+    query {
+      allWpSpecjalizacja {
+        nodes {
+          uri
+          title
+        }
+      }
+    }
+  `)
+
   const nav = useRef();
   const handleToggle = () => {
     nav.current.classList.toggle('expand');
   }
 
   return (
-    <StyledNav className="nav" ref={nav}>
-      <div className="max-width">
-        <Link to="/" aria-label="Strona główna">
-          <Logo />
-        </Link>
-        <div className="nav-links">
-          <ul>
-            <li className="dropdown">
-              <Link to="/specjalizacje">Specjalizacje</Link>
-              <ul>
-                <li><Link to="/specjalizacje">Hałas lotniczy</Link></li>
-                <li><Link to="/specjalizacje">Kredyty CHF</Link></li>
-                <li><Link to="/specjalizacje">Odszkodowania</Link></li>
-                <li><Link to="/specjalizacje">Prawo spadkowe</Link></li>
-                <li><Link to="/specjalizacje">Proces sądowy</Link></li>
-                <li><Link to="/specjalizacje">Rozwód</Link></li>
-                <li><Link to="/specjalizacje">Utrata wartości</Link></li>
-              </ul>
-            </li>
-            <li>
-              <Link to="/kancelaria">Kancelaria</Link>
-            </li>
-            <li>
-              <Link to="/wspolpraca">Współpraca</Link>
-            </li>
-            <li>
-              <Link to="/blog">Blog</Link>
-            </li>
-          </ul>
-          <Link to="/kontakt" className="navLinks-cta">Kontakt</Link>
-        </div>
-        <Link to="/kontakt" className="nav-cta">Kontakt</Link>
-        <button
-          id="nav-toggle"
-          aria-label="Pokaż/Ukryj nawigację mobilną"
-          onClick={handleToggle}
-        >
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-    </StyledNav>
+    <>
+      <Placeholder />
+      <StyledNav className="nav" ref={nav}>
+        <nav className="max-width-header">
+          <Link to="/" aria-label="Strona główna">
+            <Logo />
+          </Link>
+          <div className="nav-links">
+            <ul>
+              <li className="dropdown">
+                <Link partiallyActive={true} className="drop-down" activeClassName='active' to="/specjalizacje/">
+                  <span>Specjalizacje</span>
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7.99976 13.334L7.99976 2.66748" stroke="#12433A" stroke-width="1.5" stroke-linecap="square" />
+                    <path d="M4.22639 9.56055C6.16622 9.56055 7.99976 11.2689 7.99976 13.3339" stroke="#12433A" stroke-width="1.5" stroke-linecap="square" />
+                    <path d="M11.7731 9.56055C9.83329 9.56055 7.99976 11.2689 7.99976 13.3339" stroke="#12433A" stroke-width="1.5" stroke-linecap="square" />
+                  </svg>
+                </Link>
+                <ul>
+                  {specjalizacji.map(el => (
+                    <li>
+                      <Link className="arrow-link" activeClassName='active' to={el.uri}>
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M13.3325 8L2.66601 8" stroke="#0F3730" stroke-width="1.5" stroke-linecap="square" />
+                          <path d="M9.55957 11.7734C9.55957 9.83354 11.268 8 13.3329 8" stroke="#0F3730" stroke-width="1.5" stroke-linecap="square" />
+                          <path d="M9.55957 4.22664C9.55957 6.16646 11.268 8 13.3329 8" stroke="#0F3730" stroke-width="1.5" stroke-linecap="square" />
+                        </svg>
+                        <span>{el.title}</span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </li>
+              <li>
+                <Link activeClassName='active' to="/kancelaria/">Kancelaria</Link>
+              </li>
+              <li>
+                <Link activeClassName='active' to="/wspolpraca/">Współpraca</Link>
+              </li>
+              <li>
+                <Link partiallyActive={true} activeClassName='active' to="/blog/">Blog</Link>
+              </li>
+            </ul>
+            <Link activeClassName='active' to="/kontakt/" className="navLinks-cta">Kontakt</Link>
+          </div>
+          <Link activeClassName='active' to="/kontakt/" className="nav-cta">Kontakt</Link>
+          <button
+            id="nav-toggle"
+            aria-label="Pokaż/Ukryj nawigację mobilną"
+            onClick={handleToggle}
+          >
+            <span />
+            <span />
+            <span />
+          </button>
+        </nav>
+      </StyledNav>
+    </>
   );
 }
 
-const StyledNav = styled.nav`
+const Placeholder = styled.div`
+  height: 105px;
+  @media (max-width: 1149px){
+    height: 89px;
+    }
+`
+
+const StyledNav = styled.header`
   position: fixed;
   left: 0;
   top: 0;
@@ -62,22 +97,64 @@ const StyledNav = styled.nav`
   background-color: var(--neutral-100);
   height: 105px;
   z-index: 9;
-  .max-width {
+
+  .arrow-link{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transform: translateX(-24px);
+    transition: transform .2s ease-out;
+
+    svg{
+      transition: opacity .2s ease-out;
+      opacity: 0;
+    }
+
+
+    &.active{
+      transform: translate(0px);
+
+      svg{
+        opacity: 1;
+      }
+    }
+  }
+
+  .max-width-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid var(--secondary-200);
   }
+
+  .dropdown{
+    &:hover{
+      svg{
+        transform: rotateX(180deg);
+      }
+    }
+
+    .drop-down{
+      display: flex;
+      align-items: center;
+      gap: 2px; 
+      
+      svg{
+        margin-bottom: -3px;
+        transition: transform .2s ease-out;
+      }
+    }
+  }
   ul {
     list-style-type: none;
-    font-size: ${20/16}rem;
+    font-size: ${20 / 16}rem;
   }
   .nav-links {
     > ul {
       display: flex;
-      margin: 0 -${20/16}rem;
+      margin: 0 -${20 / 16}rem;
       > li {
-        margin: 0 ${20/16}rem;
+        margin: 0 ${20 / 16}rem;
         &:hover ul,
         &:focus-within ul {
           opacity: 1;
@@ -116,7 +193,7 @@ const StyledNav = styled.nav`
           }
         }
       }
-      a[aria-current="page"] {
+      a.active {
         font-weight: 700;
         font-style: italic;
       }
@@ -125,8 +202,31 @@ const StyledNav = styled.nav`
   .nav-cta {
     border: 2px solid var(--primary-800);
     font-family: var(--serif);
-    padding: ${10/24}em ${32/24}em;
-    font-size: ${24/16}rem;
+    padding: ${10 / 24}em ${32 / 24}em;
+    font-size: ${24 / 16}rem;
+    position: relative;
+
+    &::after{
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: -9px;
+      transform: translateX(-50%) rotateZ(45deg);
+      background-color: var(--primary-600);
+      width: 16px;
+      height: 16px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .2s ease-out;
+    }
+
+    &:hover{
+      background-color: var(--primary-100);
+      &::after{
+        opacity: 1;
+        background-color: var(--primary-800);
+      }
+    }
   }
   #nav-toggle {
     display: none;
@@ -151,12 +251,13 @@ const StyledNav = styled.nav`
     height: 89px;
     ul {
       list-style-type: none;
-      font-size: ${22/16}rem;
+      font-size: ${22 / 16}rem;
       font-family: var(--serif);
     }
     &.expand .nav-links {
       transform: translateX(0);
       visibility: visible;
+      overflow: hidden;
     }
     .nav-links {
       transform: translateX(100%);
@@ -168,7 +269,7 @@ const StyledNav = styled.nav`
       top: 100%;
       height: calc(100vh - 89px);
       height: calc(100dvh - 89px);
-      padding: ${66/16}rem;
+      padding: ${66 / 16}rem;
       background-color: var(--neutral-400);
       margin: 0 -20px;
       > ul {
@@ -178,17 +279,17 @@ const StyledNav = styled.nav`
           &:first-child {
             order: 1;
           }
-          margin: ${14/16}rem 0;
+          margin: ${14 / 16}rem 0;
           ul {
             & > li {
               font-family: var(--sans-serif);
-              font-size: ${20/16}rem;
+              font-size: ${20 / 16}rem;
             }
             padding: 0;
             position: static;
           }
         }
-        a[aria-current="page"] {
+        a.active {
           font-weight: 700;
           font-style: italic;
         }
@@ -210,7 +311,7 @@ const StyledNav = styled.nav`
       width: calc(100% + 34px);
       height: calc(100vh - 89px);
       height: calc(100dvh - 89px);
-      padding: ${66/16}rem;
+      padding: ${66 / 16}rem;
       background-color: var(--neutral-200);
       > ul {
         margin: 0;
@@ -231,17 +332,17 @@ const StyledNav = styled.nav`
           grid-area: d;
         }
         > li {
-          margin: ${14/16}rem 0;
+          margin: ${14 / 16}rem 0;
           ul {
             & > li {
               font-family: var(--sans-serif);
-              font-size: ${20/16}rem;
+              font-size: ${20 / 16}rem;
             }
             padding: 0;
             position: static;
           }
         }
-        a[aria-current="page"] {
+        a.active {
           font-weight: 700;
           font-style: italic;
         }
@@ -254,8 +355,8 @@ const StyledNav = styled.nav`
       display: block;
       border: 2px solid var(--primary-800);
       font-family: var(--serif);
-      padding: ${10/24}em ${32/24}em;
-      font-size: ${24/16}rem;
+      padding: ${10 / 24}em ${32 / 24}em;
+      font-size: ${24 / 16}rem;
     }
   }
 `

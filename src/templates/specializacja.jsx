@@ -6,12 +6,12 @@ import useHeadings from "../hooks/create-headings"
 import ContactUs from "../components/sections/ContactUs"
 
 export default function Specializacja({ data }) {
-  const { content, title, gutenberg, featuredImage } = data.wpSpecjalizacja
+  const { content, gutenberg, featuredImage } = data.wpSpecjalizacja
 
   const headings = useHeadings(content)
   return (
     <main>
-      <Hero title={title} excerpt={gutenberg.excerpt} featuredImage={featuredImage} />
+      <Hero title={gutenberg.title} excerpt={gutenberg.excerpt} featuredImage={featuredImage} />
       <Content headings={headings} content={content} />
       <ContactUs />
     </main>
@@ -24,9 +24,9 @@ export const query = graphql`
   query specializacja ($id: String!) {
       wpSpecjalizacja(id: {eq: $id}){
           ...specjalizacjaSEO
-          title
           gutenberg {
             excerpt
+            title : tytulStrony
           }
           featuredImage {
             node {

@@ -5,8 +5,14 @@ import styled from "styled-components";
 import { Facebook, Instagram, KryptonumLogo, RightArrow, Twitter, Youtube } from "../atoms/Icons";
 
 const Footer = () => {
-  const {allWpPost: {blogs}} = useStaticQuery(graphql`
+  const { allWpSpecjalizacja: { specjalizacje }, allWpPost: { blogs } } = useStaticQuery(graphql`
     query {
+      allWpSpecjalizacja {
+        specjalizacje: nodes {
+          uri
+          title
+        }
+      }
       allWpPost(limit: 2) {
         blogs: nodes {
           title
@@ -30,35 +36,32 @@ const Footer = () => {
       <ul className="footer-top">
         <li>
           <h3>
-            <Link to="#">Specjalizacje</Link>
+            <Link to="/specjalizacje/">Specjalizacje</Link>
           </h3>
-          <a href="">Odszkodowania</a>
-          <a href="">Nieruchomości</a>
-          <a href="">Spadki</a>
-          <a href="">Kredyty frankowe</a>
-          <a href="">Rozwody</a>
-          <a href="">Prawo dla firm</a>
+          {specjalizacje.map(el => (
+            <Link to={el.uri}>{el.title}</Link>
+          ))}
         </li>
         <li className="grid">
           <h3>
-            <Link to="#">Kancelaria</Link>
+            <Link to="/kancelaria/">Kancelaria</Link>
           </h3>
           <h3>
-            <Link to="#">Współpraca</Link>
+            <Link to="/wspolpraca/">Współpraca</Link>
           </h3>
         </li>
         <li className="blog">
           <h3>
-            <Link to="#">Blog</Link>
+            <Link to="/blog/">Blog</Link>
           </h3>
-          {blogs.map((blog,i) => (
+          {blogs.map((blog, i) => (
             <div className="blog-item" key={i}>
               <GatsbyImage image={blog.featuredImage.node.localFile.childImageSharp.gatsbyImageData} alt={blog.featuredImage.node.altText || ""} />
               <div className="blog-copy">
                 <p>{blog.title}</p>
                 <Link to={blog.uri}>
                   <span>Czytaj więcej</span>
-                  <RightArrow />  
+                  <RightArrow />
                 </Link>
               </div>
             </div>
@@ -88,8 +91,8 @@ const Footer = () => {
           </a>
         </p>
         <p>
-          <Link to="/mapa-strony">Mapa strony</Link>
-          <Link to="/polityka-prywatnosci">Polityka prywatności</Link>
+          <Link to="/mapa-strony/">Mapa strony</Link>
+          <Link to="/polityka-prywatnosci/">Polityka prywatności</Link>
         </p>
       </div>
     </Wrapper>
@@ -97,14 +100,14 @@ const Footer = () => {
 }
 
 const Wrapper = styled.footer`
-  margin-top: clamp(${68/16}rem, ${100/7.68}vw, ${128/16}rem);
+  margin-top: clamp(${68 / 16}rem, ${100 / 7.68}vw, ${128 / 16}rem);
   border-top: 1px solid var(--neutral-600);
 
   a{
     width: fit-content;
   }
   .footer-top {
-    padding: ${32/16}rem 0 ${24/16}rem;
+    padding: ${32 / 16}rem 0 ${24 / 16}rem;
     list-style-type: none;
     display: grid;
     grid-template-columns: 1fr 2fr 2fr 0fr;
@@ -125,7 +128,7 @@ const Wrapper = styled.footer`
     }
     li {
       & > a {
-        font-size: ${20/16}rem;
+        font-size: ${20 / 16}rem;
         &:not(:last-child) {
           margin-bottom: .5rem;
         }
@@ -133,18 +136,18 @@ const Wrapper = styled.footer`
     }
     .blog-item {
       display: grid;
-      grid-template-columns: clamp(133px, ${152/7.68}vw, 152px) auto;
+      grid-template-columns: clamp(133px, ${152 / 7.68}vw, 152px) auto;
       gap: 12px;
-      width: max(${185/7.68}vw, ${243/16}rem);
+      width: max(${185 / 7.68}vw, ${243 / 16}rem);
       img {
-        width: clamp(133px, ${152/7.68}vw, 152px);
+        width: clamp(133px, ${152 / 7.68}vw, 152px);
       }
       p {
-        font-size: clamp(1rem, ${20/7.68}vw, ${20/16}rem);
+        font-size: clamp(1rem, ${20 / 7.68}vw, ${20 / 16}rem);
         margin-bottom: .5rem;
       }
       a {
-        font-size: clamp(${18/16}rem, ${21/7.68}vw, ${24/16}rem);
+        font-size: clamp(${18 / 16}rem, ${21 / 7.68}vw, ${24 / 16}rem);
         display: flex;align-items: center;
         font-family: var(--serif);
         white-space: nowrap;
@@ -152,13 +155,13 @@ const Wrapper = styled.footer`
     }
     .social {
       a:not(:last-child) {
-        margin-bottom: ${24/16}rem;
+        margin-bottom: ${24 / 16}rem;
       }
     }
   }
   .footer-bottom {
     border-top: 1px solid var(--neutral-600);
-    padding: ${26/16}rem 0 ${32/16}rem;
+    padding: ${26 / 16}rem 0 ${32 / 16}rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -168,11 +171,11 @@ const Wrapper = styled.footer`
       vertical-align: middle;
     }
     span + a {
-      margin-left: ${10/16}rem;
+      margin-left: ${10 / 16}rem;
     }
     p:last-child {
       a:first-child {
-        margin-right: ${48/13.66}vw;
+        margin-right: ${48 / 13.66}vw;
       }
     }
   }
@@ -201,7 +204,7 @@ const Wrapper = styled.footer`
       p:nth-child(2) {
         text-align: center;
         span {
-          margin-bottom: ${6/16}rem;
+          margin-bottom: ${6 / 16}rem;
         }
       }
       p:last-child {
@@ -209,7 +212,7 @@ const Wrapper = styled.footer`
         a {
           &:first-child {
             margin-right: 0;
-            margin-bottom: ${12/16}rem;
+            margin-bottom: ${12 / 16}rem;
           }
           display: block;
         }
@@ -235,7 +238,7 @@ const Wrapper = styled.footer`
       p:nth-child(2) {
         text-align: center;
         span {
-          margin-bottom: ${6/16}rem;
+          margin-bottom: ${6 / 16}rem;
           display: block;
         }
       }
@@ -254,5 +257,5 @@ const Wrapper = styled.footer`
     }
   }
 `
- 
+
 export default Footer;

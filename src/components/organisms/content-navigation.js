@@ -1,8 +1,32 @@
 import React from "react"
+import { useState } from "react"
+import { useEffect } from "react"
 import styled from "styled-components"
 import { slugTransform } from './../../helpers/slug-transform'
 
 export default function Navigation({ headings }) {
+
+  const [activePart, setActivePart] = useState(null)
+
+  const scroll = (e, id) => {
+    e.preventDefault()
+    document.getElementById(id).scrollIntoView({ behavior: "smooth" });
+  }
+
+  useEffect(() => {
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(el => {
+        if (el.isIntersecting) {
+          setActivePart(el.target.id)
+        }
+      })
+    }, { threshold: [1] });
+
+    document.getElementById('content').querySelectorAll("h2").forEach(el => {
+      observer.observe(el);
+    })
+  }, [])
+
   return (
     <Wrapper>
       <svg width="116" height="97" viewBox="0 0 116 97" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -12,7 +36,7 @@ export default function Navigation({ headings }) {
       </svg>
       <div>
         {headings?.map(el => (
-          <a href={'#' + slugTransform(el.innerText)}>{el.innerText}</a>
+          <button className={activePart === slugTransform(el.innerText) ? 'active' : ''} onClick={(e) => { scroll(e, slugTransform(el.innerText)) }}>{el.innerText}</button>
         ))}
       </div>
     </Wrapper>
@@ -43,7 +67,11 @@ const Wrapper = styled.aside`
     display: grid;
     grid-gap: 16px;
 
-    a{
+    button{
+      border: none;
+      background-color: transparent;
+      cursor: pointer;
+      text-align: left;
       font-weight: 400;
       font-size: 20px;
       line-height: 150%;
@@ -60,6 +88,28 @@ const Wrapper = styled.aside`
         top: 12px;
         background: #4FD2BB;
         transform: rotateZ(45deg);
+        opacity: 0;
+        transition: opacity .2s ease-out;
+      }
+
+      &.active{
+        font-weight: 700;
+        font-style: italic;
+
+        &::before{
+          opacity: 1;
+        }
+      }
+
+          
+      @media (max-width: 940px){
+        &::before{
+          opacity: 1;
+        }
+        &.active{
+          font-weight: 400;
+          font-style: normal;
+        }
       }
     }
   }

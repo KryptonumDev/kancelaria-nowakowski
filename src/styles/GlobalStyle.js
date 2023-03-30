@@ -49,11 +49,8 @@ const GlobalStyle = createGlobalStyle`
     min-width: 320px;
     font-family: var(--sans-serif);
     color: var(--primary-800);
-    padding-top: 137px;
-    @media (max-width: 1149px) {
-      padding-top: 113px;
-    }
   }
+
   button, select {
     cursor: pointer;
   }
@@ -133,7 +130,18 @@ const GlobalStyle = createGlobalStyle`
     }
     max-width: 1286px;
     margin: 0 auto;
+  }
+
+  .max-width-header{
     height: 100%;
+    width: 100%;
+    padding: 0 40px;
+    max-width: 1286px;
+    margin: 0 auto;
+
+    @media (max-width: 768px) {
+      padding: 0 17px;
+    }
   }
 
   .cta-primary,
@@ -146,14 +154,49 @@ const GlobalStyle = createGlobalStyle`
     white-space: nowrap;
     display: inline-block;
     text-align: center;
+    position: relative;
+    transition: background-color .2s ease-out;
+
+    &::after{
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: -8px;
+      transform: translateX(-50%) rotateZ(45deg);
+      background-color: var(--primary-600);
+      width: 16px;
+      height: 16px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .2s ease-out;
+    }
   }
   .cta-primary, .wp-block-button a {
     background-color: var(--primary-500);
     color: var(--primary-900);
+
+    &:hover{
+      background-color: var(--primary-300);
+
+      &::after{
+        opacity: 1;
+      }
+    }
   }
   .cta-secondary {
     box-shadow: inset 0 0 0 2px var(--primary-800);
     color: var(--primary-800);
+      &::after{
+        top: -7px;
+      }
+
+    &:hover{
+      background-color: var(--primary-100);
+      &::after{
+        opacity: 1;
+        background-color: var(--primary-800);
+      }
+    }
   }
   .cta-white{
     background: #ECFFFC;

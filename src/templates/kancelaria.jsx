@@ -33,8 +33,10 @@ export const query = graphql`
           nodes {
             id
             uri
-            title
-            excerpt
+            gutenberg {
+              excerpt
+              title : tytulStrony
+            }
             featuredImage {
               node {
                 altText

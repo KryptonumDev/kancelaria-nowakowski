@@ -4,6 +4,15 @@ import { GatsbyImage } from "gatsby-plugin-image"
 import React from "react"
 import styled from "styled-components"
 
+const htmlDelete = (string) => {
+
+    if(!string){
+        return string
+    }    
+
+    return string.replace(/<[^>]*>?/gm, '');
+}
+
 export default function Card({ index, data, scrollProgresValue }) {
   const scrollValue = ((index + 2) % 3 === 0)
     ? 120 - (scrollProgresValue * 120)
@@ -23,8 +32,8 @@ export default function Card({ index, data, scrollProgresValue }) {
         </Categories>
       </Image>
       <Information>
-        <p className="title">{data.title}</p>
-        <div className="description" dangerouslySetInnerHTML={{ __html: data.excerpt }} />
+        <p className="title" >{htmlDelete(data.gutenberg.title)}</p>
+        <div className="description" dangerouslySetInnerHTML={{ __html: data.gutenberg.excerpt }} />
         <Link to={`/${data.slug}/`} >
           <span>Czytaj więcej</span>
           <svg width="33" height="33" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">

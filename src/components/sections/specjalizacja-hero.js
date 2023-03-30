@@ -8,7 +8,7 @@ export default function Hero({ title, excerpt, featuredImage }) {
     <Wrapper>
       <Ornament />
       <div className="text">
-        <h1>{title}</h1>
+        <div dangerouslySetInnerHTML={{__html: title}}/>
         <div className="text" dangerouslySetInnerHTML={{__html: excerpt}}/>
       </div>
       <GatsbyImage className="image" image={featuredImage.node.localFile.childImageSharp.gatsbyImageData} alt={featuredImage.node.altText} />
@@ -18,7 +18,7 @@ export default function Hero({ title, excerpt, featuredImage }) {
 
 const Wrapper = styled.section`
   display: grid;
-  grid-template-columns: 405px 1fr;
+  grid-template-columns: 430px 1fr;
   grid-gap: 16px 32px;
   grid-template-areas: 
   'ornament ornament'

@@ -27,7 +27,7 @@ exports.createPages = async ({
           {
             name: pageData.title,
             url: pageData.uri
-          }
+          } 
         ]
       },
       ownerNodeId: pageData.id // Upgrade Gatsby cloud page render logic
@@ -58,6 +58,7 @@ exports.createPages = async ({
                 slug
                 id
                 uri
+                title
               }
             }
             allWpCategory(filter: {count: {gt: 0}}) {
@@ -237,7 +238,7 @@ exports.createPages = async ({
         slug: el.slug,
         uri: el.uri,
         breadcrumbs: [
-          {
+          { 
             name: arhive.title,
             url: arhive.uri
           },

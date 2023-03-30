@@ -31,6 +31,7 @@ export const StyledContent = styled.div`
     line-height: 130%;
     letter-spacing: -0.01em;
     color: #0F3730;
+    scroll-margin-top: 120px;
   }
 
   h3{
@@ -203,9 +204,16 @@ export const StyledContent = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 42px 32px 68px;
+    padding: clamp(24px, ${42/768*100}vw, 42px) 32px clamp(43px, ${43/768*100}vw, 68px);
     overflow: hidden;
     max-width: 848px;
+
+    span{
+      display: block;
+      svg{
+        width: 100%;
+      }
+    }
 
 
     @media (max-width: 768px) {
@@ -226,6 +234,7 @@ export const StyledContent = styled.div`
     }
 
     .cta-title{
+        margin: 0 auto;
         margin-top: 16px;
         margin-bottom: 20px;
         text-align: center;
@@ -235,6 +244,9 @@ export const StyledContent = styled.div`
         line-height: 158%;
         color: #12433A;
         max-width: 600px;
+        @media (max-width: 420px) {
+          margin: 0 auto 4px auto;
+        }
       }
 
     .cta-secondary{
@@ -249,6 +261,10 @@ export const StyledContent = styled.div`
         display: block;
         width: fit-content;
         text-decoration: unset;
+
+        @media (max-width: 420px) {
+          width: 100%;
+        }
     }
 
     .cta-content{
