@@ -13,28 +13,32 @@ export default function Organization({ siteMetadata }) {
           "image": siteMetadata.image,
           "url": siteMetadata.siteUrl,
           "telephone": [
-            "+48 42 636 04 30",
-            "+48 42 633 10 88",
-            "+48 42 208 06 37"
+            "+48 43 677 70 87",
+            "+48 600 533 697"
           ],
-          "email": "sekretariat@nowakowski-kancelaria.pl",
+          "email": [
+            "piotr.nowakowski@adwokatura.pl",
+            "kancelaria@kancelaria-nowakowski.com"
+          ],
           "address": {
             "@type": "PostalAddress",
-            "streetAddress": "ul. Narutowicza 44/18",
-            "addressLocality": "Łódź",
-            "postalCode": "90-135",
+            "streetAddress": "ul. Żeromskiego 8/4",
+            "addressLocality": "Łask",
+            "postalCode": "98-100",
             "addressCountry": "PL"
           },
           "openingHours": [
-            "Mo-Fr 08:00-20:00",
+            "Mo-Tu 09:00-19:00",
+            "We-Th 09:00-17:00",
+            "Fr 08:00-16:00",
             "Sa-Su Closed"
           ],
-          // "hasMap": "https://www.google.com/maps/place/123+Main+St,+Anytown,+CA+12345",
-          // "sameAs": [
-          //   "https://www.facebook.com/smithjoneslaw",
-          //   "https://twitter.com/smithjoneslaw",
-          //   "https://www.linkedin.com/company/smith-jones-law-firm"
-          // ]
+          "hasMap": "https://www.google.com/maps/place/Kancelaria+Adwokacka.+Adwokat+Piotr+Nowakowski/@51.5934948,19.127799,17z/data=!4m6!3m5!1s0x471a45d492e9abdb:0x201d0e4801bcde8b!8m2!3d51.5934948!4d19.1321764!16s%2Fg%2F11fp8kn70b",
+          "sameAs": [
+            "https://www.facebook.com/profile.php?id=100046139240389&locale=pl_PL",
+            "https://www.linkedin.com/in/piotr-nowakowski-7832b422a/",
+            "https://www.linkedin.com/in/dr-dominika-sujka-kujawiak-077b1b189/"
+          ]
         }
       )}
     </script>
