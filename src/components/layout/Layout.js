@@ -7,7 +7,7 @@ import BreadCrumbs from './breadcrumbs';
 const Layout = ({children}) => {
   useEffect(() => {
     const orphans = ['w','W','z','u','o','i','np.'];
-    const paragraphs = document.querySelectorAll('p, li, h2, h3, span');
+    const paragraphs = document.querySelectorAll('p, h2, h3, span');
     paragraphs.forEach(paragraph => {
       orphans.forEach(orphan => {
         paragraph.innerHTML = paragraph.innerHTML.replaceAll(` ${orphan} `, ` ${orphan}&nbsp;`);

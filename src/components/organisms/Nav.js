@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
 import { DropDown, Logo } from '../atoms/Icons';

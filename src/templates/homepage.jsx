@@ -2,7 +2,7 @@ import { graphql } from "gatsby"
 import * as React from "react"
 import Hero from "../components/sections/Home/Hero"
 import StepsSection from "../components/sections/Home/StepsSection";
-import Rules from "../components/sections/Home/Rules";
+import OrnamentSection from "../components/sections/OrnamentSection";
 import Testimonials from "../components/sections/Home/Testimonials";
 import Slider from "../components/sections/blog-slider";
 import ContactUs from "../components/sections/ContactUs";
@@ -15,7 +15,7 @@ export default function Homepage({ data }) {
     <main>
       <Hero data={heroHome} />
       <StepsSection data={stepsSection} />
-      <Rules data={sectionWithImgOnRightHome} />
+      <OrnamentSection data={sectionWithImgOnRightHome} />
       <Testimonials data={sectionWithCommentsHome} />
       <Slider posts={data.allWpPost.nodes} data={sectionBlog} />
       <ContactUs />

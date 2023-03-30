@@ -2,14 +2,14 @@ import React from "react";
 import { Link } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import styled from "styled-components";
-import { OrnamentLogo } from "../../atoms/Icons";
+import { OrnamentLogo } from "../atoms/Icons";
 
 const Rules = ({ data }) => {
   return (
     <StyledSection>
       <OrnamentLogo className="ornament-logo" />
       <header>
-        <h2 dangerouslySetInnerHTML={{ __html: data.sectionTitle }}></h2>
+        <div dangerouslySetInnerHTML={{ __html: data.sectionTitle }}></div>
         <div className="text" dangerouslySetInnerHTML={{ __html: data.textUnderTitle }}></div>
         <div className="cta">
           <Link to={data.link.url} className="cta-primary">{data.link.title}</Link>

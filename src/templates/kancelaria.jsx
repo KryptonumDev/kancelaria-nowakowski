@@ -1,28 +1,43 @@
 import { graphql } from "gatsby"
 import * as React from "react"
+import Slider from "../components/sections/blog-slider";
+import ContactUs from "../components/sections/ContactUs";
+import Hero from "../components/sections/Kancelaria/Hero";
+import Purpose from "../components/sections/Kancelaria/Purpose";
+import Team from "../components/sections/Kancelaria/Team";
+import Process from "../components/sections/Kancelaria/Process";
+import OrnamentSeciton from "../components/sections/OrnamentSection";
 
 export default function Kancelaria({ data }) {
-    const {
-        allWpPost: { nodes: posts },
-        global: {
-            global: {
-                sectionContact,
-                sectionBlog
-            } },
-        wpPage: {
-            kancelaria: {
-                heroKancelaria,
-                twoColumnFlexKancelaria,
-                teamKancelaria,
-                sectionWithImgOnRightKancelaria,
-                howWeWorkKancelaria
-            }
-        }
-    } = data
-    return (
-        <>
-        </>
-    )
+  const {
+    allWpPost: { nodes: posts },
+    global: {
+      global: {
+        sectionContact,
+        sectionBlog
+      }},
+    wpPage: {
+      kancelaria: {
+        heroKancelaria,
+        twoColumnFlexKancelaria,
+        teamKancelaria,
+        sectionWithImgOnRightKancelaria,
+        howWeWorkKancelaria
+      }
+    }
+  } = data;
+  console.log(data);
+  return (
+    <main>
+      <Hero data={heroKancelaria} />
+      <Purpose data={twoColumnFlexKancelaria} />
+      <Team data={teamKancelaria} />
+      <Process data={howWeWorkKancelaria} />
+      <OrnamentSeciton data={sectionWithImgOnRightKancelaria} />
+      <Slider posts={data.allWpPost.nodes} data={sectionBlog} />
+      <ContactUs />
+    </main>
+  )
 }
 
 export { Head } from "./../components/sections/seo"
