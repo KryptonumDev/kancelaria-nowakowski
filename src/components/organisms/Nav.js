@@ -3,7 +3,6 @@ import { Link } from "gatsby";
 import styled from "styled-components";
 import { DropDown, Logo } from '../atoms/Icons';
 
-const isBrowser = typeof window !== "undefined";
 const Nav = () => {
   const nav = useRef();
   const handleToggle = () => {
@@ -11,14 +10,10 @@ const Nav = () => {
   }
   const handleNavClick = () => {
     nav.current.classList.remove('expand');
-  }
-  if(isBrowser){
-    useEffect(() => {
-      nav.current.style.pointerEvents = 'none';
-      setTimeout(() => {
-        nav.current.style = null;
-      }, 100);
-    }, [window.location.pathname])
+    nav.current.style.pointerEvents = 'none';
+    setTimeout(() => {
+      nav.current.style = null;
+    }, 100);
   }
 
   return (
