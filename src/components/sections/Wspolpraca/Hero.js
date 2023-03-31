@@ -9,60 +9,36 @@ const Hero = ({ data }) => {
     <StyledHero className="hero">
       <header>
         <Ornament />
-        <div className="title" dangerouslySetInnerHTML={{__html: data.pageTitle}}></div>
-        <p className="flex">
-          {data.linksToSubpages.map((link, i) => (
-            <span className="no-wrap" key={link.link.title + i}>
-              <Link to={link.link.url} >{link.link.title}</Link>
-              {i !== data.linksToSubpages.length - 1 && (
-                <>&nbsp;/&nbsp;</>
-              )}
-            </span>
-          ))}
-        </p>
+        <div dangerouslySetInnerHTML={{__html: data.pageTitle}}></div>
+        <div dangerouslySetInnerHTML={{__html: data.textUnderTitle}}></div>
         <div className="cta">
-          <Link className="cta-primary" to={data.coloredButton.url}>{data.coloredButton.title}</Link>
-          <Link className="cta-secondary" to={data.transparentButton.url}>{data.transparentButton.title}</Link>
+          <Link className="cta-primary" to={data.leftButton.url}>{data.leftButton.title}</Link>
+          <Link className="cta-secondary" to={data.rightButton.url}>{data.rightButton.title}</Link>
         </div>
       </header>
       <div className="hero-img">
-        <GatsbyImage loading="eager" image={data.leftImage.localFile.childImageSharp.gatsbyImageData} alt={data.leftImage.altText || ''} />
-        <GatsbyImage loading="eager" image={data.rightImage.localFile.childImageSharp.gatsbyImageData} alt={data.rightImage.altText || ''} />
+        <GatsbyImage loading="eager" image={data.image.localFile.childImageSharp.gatsbyImageData} alt={data.image.altText || ''} />
       </div>
     </StyledHero>
   );
 }
 
 const StyledHero = styled.section`
-  padding: ${22 / 16}rem 0;
+  padding: ${22/16}rem 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  .flex{
-    display: flex;
-    flex-wrap: wrap;
-  }
-  .no-wrap{
-    white-space: nowrap;
-    font-family: 'Literata';
-  }
-  .title{
-    max-width: 500px;
-  }
   header {
     svg {
       width: 100%;
       height: auto;
-      margin-bottom: 1rem;
     }
     width: 50%;
     max-width: ${627 / 13.66}vw;
     p {
       margin: ${48 / 16}rem 0;
       font-size: clamp(${18 / 16}rem, ${24 / 13.66}vw, ${24 / 16}rem);
-      a {
-        text-decoration: underline;
-      }
+      font-family: var(--serif);
     }
     .cta {
       display: flex;
@@ -85,7 +61,7 @@ const StyledHero = styled.section`
       max-width: ${627 / 16}rem;
       margin-bottom: ${32 / 16}rem;
       p {
-        margin: ${42 / 16}rem 0 ${24 / 16}rem 0;
+        margin: ${24 / 16}rem 0;
       }
     }
     .hero-img {
@@ -96,13 +72,6 @@ const StyledHero = styled.section`
   @media (max-width: 549px){
     flex-direction: column-reverse;
     align-items: flex-start;
-
-    h1{
-      margin-top: 8px;
-    }
-    .flex{
-      gap: 8px 0;
-    }
     header {
       width: 100%;
       max-width: ${627 / 16}rem;

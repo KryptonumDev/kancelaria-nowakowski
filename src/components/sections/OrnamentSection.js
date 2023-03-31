@@ -45,11 +45,18 @@ const StyledSection = styled.section`
     display: grid;
     grid-gap: 32px;
     font-family: 'Literata';
-    ul{
+    ul {
+      list-style-type: none;
       display: grid;
+      grid-template-columns: 1fr 1fr;
       grid-gap: 12px 24px;
-      li{
-
+      font-size: inherit;
+      li {
+        display: flex;
+        gap: 4px;
+        > * {
+          flex-shrink: 0;
+        }
       }
     }
   }
@@ -77,6 +84,9 @@ const StyledSection = styled.section`
     }
     p {
       font-size: clamp(${18 / 16}rem, ${21 / 7.68}vw, ${24 / 16}rem);
+      &:not(:last-of-type){
+        margin-bottom: 1rem;
+      }
     }
     .cta {
       margin-top: ${24 / 16}rem;
@@ -99,6 +109,11 @@ const StyledSection = styled.section`
     }
     ::before {
       display: none;
+    }
+    .text {
+      ul {
+        grid-template-columns: 1fr;
+      }
     }
     svg {
       left: 83.25%;
