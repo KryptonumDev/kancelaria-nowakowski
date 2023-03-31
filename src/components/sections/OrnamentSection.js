@@ -29,6 +29,7 @@ const StyledSection = styled.section`
   grid-gap: 32px;
   position: relative;
   padding-right: 15%;
+<<<<<<< HEAD
   .annotation{
     font-weight: 400;
     font-size: 20px !important;
@@ -46,10 +47,22 @@ const StyledSection = styled.section`
     grid-gap: 32px;
     font-family: 'Literata';
     ul{
+=======
+  .text {
+    ul {
+      margin: ${12/16}rem 0 ${24/16}rem;
+      list-style-type: none;
+>>>>>>> dev
       display: grid;
+      grid-template-columns: 1fr 1fr;
       grid-gap: 12px 24px;
-      li{
-
+      font-size: inherit;
+      li {
+        display: flex;
+        gap: 4px;
+        > * {
+          flex-shrink: 0;
+        }
       }
     }
   }
@@ -76,7 +89,14 @@ const StyledSection = styled.section`
       font-size: clamp(${24 / 16}rem, ${36 / 7.68}vw, ${40 / 16}rem);
     }
     p {
+<<<<<<< HEAD
       font-size: clamp(${18 / 16}rem, ${21 / 7.68}vw, ${24 / 16}rem);
+=======
+      font-size: clamp(${18 / 16}rem, ${24 / 13.66}vw, ${24 / 16}rem);
+      &:not(:last-of-type){
+        margin-bottom: 1rem;
+      }
+>>>>>>> dev
     }
     .cta {
       margin-top: ${24 / 16}rem;
@@ -99,6 +119,11 @@ const StyledSection = styled.section`
     }
     ::before {
       display: none;
+    }
+    .text {
+      ul {
+        grid-template-columns: 1fr;
+      }
     }
     svg {
       left: 83.25%;
@@ -125,8 +150,11 @@ const StyledSection = styled.section`
     }
   }
   @media (max-width: 599px){
+<<<<<<< HEAD
     margin: ${89 / 16}rem 0 0 0;
     display: flex;
+=======
+>>>>>>> dev
     flex-direction: column-reverse;
     gap: 16px;
     svg {
