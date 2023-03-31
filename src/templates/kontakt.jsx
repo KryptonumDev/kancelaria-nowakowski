@@ -5,10 +5,10 @@ import ContactUs from "../components/sections/ContactUs"
 
 export default function Kontakt({ data }) {
   return (
-    <>
+    <main>
       <ContactUs />
       <CalendlyCta  data={data.wpPage.contact.sectionCtaContact}/>
-    </>
+    </main>
   )
 }
 

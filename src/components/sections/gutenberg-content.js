@@ -74,7 +74,7 @@ export default function Content({ headings, content }) {
 }
 
 const Wrapper = styled.section`
-  margin-top: 128px;
+margin-top: clamp(64px, ${96 / 768 * 100}vw, 128px);
   display: grid;
   grid-gap: 32px;
   grid-template-columns: 408fr 848fr;

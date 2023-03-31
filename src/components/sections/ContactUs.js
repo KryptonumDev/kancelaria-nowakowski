@@ -201,7 +201,6 @@ const ContactUs = () => {
 }
 
 const Wrapper = styled.section`
-  margin: clamp(${68/16}rem, ${98/7.68}vw, ${128/16}rem) 0;
   display: grid;
   grid-template-areas: "header form" "content form";
   grid-template-columns: 1.2fr 1fr;

@@ -131,6 +131,10 @@ const Information = styled.div`
     line-height: 160%;
     color: #0F3730;
     font-family: 'Literata';
+
+    @media (max-width: 680px) {
+      margin-top: 12px;
+    }
   }
 
   .description{

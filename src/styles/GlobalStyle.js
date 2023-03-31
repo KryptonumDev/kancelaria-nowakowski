@@ -105,23 +105,28 @@ const GlobalStyle = createGlobalStyle`
     line-height: 1.22;
   }
   h1 {
-    font-size: clamp(${36/16}rem, ${50/7.68}vw, ${54/16}rem);
+    font-size: clamp(${36 / 16}rem, ${50 / 7.68}vw, ${54 / 16}rem);
   }
   h2 {
-    font-size: clamp(${28/16}rem, ${40/13.66}vw, ${40/16}rem);
+    font-size: clamp(${28 / 16}rem, ${40 / 13.66}vw, ${40 / 16}rem);
   }
   h3, .h3 {
-    font-size: clamp(${18/16}rem, ${24/10.24}vw, ${24/16}rem);
+    font-size: clamp(${18 / 16}rem, ${24 / 10.24}vw, ${24 / 16}rem);
   }
   button[type="submit"] {
     background-color: var(--primary-500);
     color: var(--color-900);
-    font-size: clamp(${18/16}rem, ${21/7.68}vw, ${24/16}rem);
+    font-size: clamp(${18 / 16}rem, ${21 / 7.68}vw, ${24 / 16}rem);
     display: flex;
     align-items: center;
     gap: 10px;
     justify-content: center;
     padding: 1rem 2rem;
+  }
+
+  main{
+    display: grid;
+    grid-gap: clamp(64px, ${96 / 768 * 100}vw, 128px);
   }
 
   #___gatsby, .max-width {
@@ -169,8 +174,8 @@ const GlobalStyle = createGlobalStyle`
   .cta-white,
   .wp-block-button a {
     font-family: var(--serif);
-    font-size: clamp(${18/16}rem, ${24/13.66}vw, ${24/16}rem);
-    padding: ${16/24}em ${32/24}em;
+    font-size: clamp(${18 / 16}rem, ${21 / 7.68}vw, ${24 / 16}rem);
+    padding: ${16 / 24}em ${32 / 24}em;
     white-space: nowrap;
     display: inline-block;
     text-align: center;

@@ -35,7 +35,6 @@ export default function Slider({ posts, data }) {
 }
 
 const Wrapper = styled.section`
-  margin-top: 128px;
   h2{
     max-width: 650px;
     font-size: clamp(${28 / 16}rem, ${36 / 7.68}vw, ${40 / 16}rem);

@@ -27,7 +27,8 @@ const CallToActionTwoBtns = ({ data }) => {
 }
 
 const Wrapper = styled.section`
-  margin: clamp(${75 / 16}rem, ${95 / 7.68}vw, ${120 / 16}rem) 0;
+  margin: clamp(64px, ${96 / 768 * 100}vw, 128px) 0 0 0;
+
   padding: ${52 / 16}rem ${42 / 16}rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -38,6 +39,7 @@ const Wrapper = styled.section`
     position: absolute;
     inset: 0;
     z-index: -1;
+    height: 100%;
   }
   svg{
     g{
@@ -60,6 +62,10 @@ const Wrapper = styled.section`
     a{
       width: fit-content;
       margin: 0 auto;
+
+      @media (max-width: 480px) {
+        width: 100%;
+      }
     }
   }
   @media (max-width: 699px){

@@ -95,6 +95,13 @@ const StyledHero = styled.section`
   @media (max-width: 549px){
     flex-direction: column-reverse;
     align-items: flex-start;
+
+    h1{
+      margin-top: 8px;
+    }
+    .flex{
+      gap: 8px 0;
+    }
     header {
       width: 100%;
       max-width: ${627 / 16}rem;

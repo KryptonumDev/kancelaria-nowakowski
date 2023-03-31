@@ -26,7 +26,10 @@ const StepsSection = ({ data }) => {
 }
 
 const StyledSection = styled.section`
-  padding: ${128 / 16}rem 0;
+
+  h2{
+    font-size: 28px, ${40 / 768 * 100}vw, 40px;
+  }
   header,
   .underSteps {
     display: flex;
@@ -76,7 +79,7 @@ const StyledSection = styled.section`
   }
   @media (max-width: 899px){
     .steps {
-      margin: ${72 / 16}rem 0;
+      margin:clamp(${16 / 16}rem, ${32/768*100}vw, ${72 / 16}rem)  0 clamp(${16 / 16}rem, ${24/768*100}vw, ${72 / 16}rem) 0 ;
       flex-direction: column;
       li::before {
         margin: 0 auto 1rem;

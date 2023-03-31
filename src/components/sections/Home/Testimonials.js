@@ -24,9 +24,9 @@ const Testimonials = ({ data }) => {
 
   return (
     <Wrapper ref={constraintsRef}>
-      <Content transition={{ type: "spring", stiffness: 40 }} animate={{ x: -1 * activeSlide * width }} dragConstraints={constraintsRef} drag="x" onDragEnd={dragEndHandler}>
+      <Content transition={{ type: "spring", stiffness: 50 }} animate={{ x: -1 * activeSlide * width }} dragConstraints={constraintsRef} drag="x" onDragEnd={dragEndHandler}>
         {data.comments.map((el, index) => (
-          <motion.div  className="item" key={index}>
+          <motion.div className="item" key={index}>
             <GatsbyImage className="image" image={el.commentImage.localFile.childImageSharp.gatsbyImageData} alt={el.commentImage.altText} />
             <div className="content">
               <StaticImage className="background" src="./../../../resources/images/backogrund-comment.jpg" alt='tło' />
@@ -69,11 +69,26 @@ const Control = styled.div`
   gap: 8px;
   margin-top: 12px;
   padding: 12px 0;
+  button{
+    &:first-child{
+      margin-right: 18px;
+    }
+
+    &:last-child{
+      margin-left: 18px;
+    }
+  }
   .dot{
     width: 12px;
     height: 12px;
     border: 1px solid #3DA290;
     transform: rotate(45deg);
+    transition: background-color .2s ease-out, border-color .2s ease-out, width .2s ease-out, height .2s ease-out;
+
+    &:hover{
+      background: #4FD2BB;
+      border: 1px solid #4FD2BB;
+    }
 
     &.active{
       width: 16px;
@@ -139,7 +154,7 @@ const Wrapper = styled.section`
     }
 
     h3{
-      margin-bottom: 32px;
+      margin-bottom: clamp(16px, ${24 / 768 * 100}vw, 32px);
       font-family: 'Literata';
       font-weight: 400;
       font-size: clamp(24px, ${30 / 768 * 100}vw, 32px);
@@ -173,7 +188,7 @@ const Wrapper = styled.section`
     }
     .text{
       display: grid;
-      grid-gap: 20px;
+      grid-gap: clamp(12px, ${16 / 768 * 100}vw, 20px);
       *{
         font-family: 'Literata';
         font-size: clamp(18px, ${21 / 768 * 100}vw, 24px);
@@ -192,6 +207,10 @@ const Wrapper = styled.section`
       line-height: 120%;
       color: #12433A;
       max-width: 737px;
+
+      @media (max-width: 768px) {
+        text-align: left;
+      }
     }
 
     .background{
