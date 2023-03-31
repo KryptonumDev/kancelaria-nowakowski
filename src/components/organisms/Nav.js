@@ -372,8 +372,7 @@ const StyledNav = styled.header`
       top: 67px;
     }
     .nav-logo svg {
-      height: 46px;
-      width: auto;
+      width: 216px;
     }
     .nav-links {
       padding: ${48 / 16}rem 1rem 1rem;
