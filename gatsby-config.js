@@ -10,8 +10,17 @@ module.exports = {
     image: 'https://kancelaria.gatsbyjs.io/social.jpg',
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        defaults: {
+          placeholder: `blurred`,
+          quality: 90,
+          backgroundColor: `transparent`,
+        }
+      }
+    },
     "gatsby-plugin-styled-components",
-    "gatsby-plugin-image",
     "gatsby-plugin-sitemap",
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",

@@ -4,7 +4,7 @@ import { GatsbyImage } from "gatsby-plugin-image";
 import styled from "styled-components";
 import { Facebook, Instagram, KryptonumLogo, RightArrow, Twitter, Youtube } from "../atoms/Icons";
 
-const Footer = () => {
+const Footer = ({ setCookiesActive }) => {
   const { allWpSpecjalizacja: { specjalizacje }, allWpPost: { blogs } } = useStaticQuery(graphql`
     query {
       allWpSpecjalizacja {
@@ -31,6 +31,7 @@ const Footer = () => {
       }
     }
   `);
+
   return (
     <Wrapper>
       <ul className="footer-top">
@@ -39,7 +40,7 @@ const Footer = () => {
             <Link to="/specjalizacje/">Specjalizacje</Link>
           </h3>
           {specjalizacje.map(el => (
-            <Link to={el.uri}>{el.title}</Link>
+            <Link key={el.title} to={el.uri}>{el.title}</Link>
           ))}
         </li>
         <li className="grid">
@@ -90,7 +91,8 @@ const Footer = () => {
             <KryptonumLogo />
           </a>
         </p>
-        <p>
+        <p className="flex-add">
+          <button onClick={() => { setCookiesActive(true) }}>Zarządzaj ciasteczkami</button>
           <Link to="/mapa-strony/">Mapa strony</Link>
           <Link to="/polityka-prywatnosci/">Polityka prywatności</Link>
         </p>
@@ -105,6 +107,11 @@ const Wrapper = styled.footer`
 
   a{
     width: fit-content;
+  }
+  .flex-add{
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
   }
   .footer-top {
     padding: ${32 / 16}rem 0 ${24 / 16}rem;

@@ -41,19 +41,19 @@ const Nav = () => {
                 <Link partiallyActive={true} className="drop-down" activeClassName='active' to="/specjalizacje/">
                   <span>Specjalizacje</span>
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M7.99976 13.334L7.99976 2.66748" stroke="#12433A" stroke-width="1.5" stroke-linecap="square" />
-                    <path d="M4.22639 9.56055C6.16622 9.56055 7.99976 11.2689 7.99976 13.3339" stroke="#12433A" stroke-width="1.5" stroke-linecap="square" />
-                    <path d="M11.7731 9.56055C9.83329 9.56055 7.99976 11.2689 7.99976 13.3339" stroke="#12433A" stroke-width="1.5" stroke-linecap="square" />
+                    <path d="M7.99976 13.334L7.99976 2.66748" stroke="#12433A" strokeWidth="1.5" strokeLinecap="square" />
+                    <path d="M4.22639 9.56055C6.16622 9.56055 7.99976 11.2689 7.99976 13.3339" stroke="#12433A" strokeWidth="1.5" strokeLinecap="square" />
+                    <path d="M11.7731 9.56055C9.83329 9.56055 7.99976 11.2689 7.99976 13.3339" stroke="#12433A" strokeWidth="1.5" strokeLinecap="square" />
                   </svg>
                 </Link>
                 <ul>
                   {specjalizacji.map(el => (
-                    <li>
+                    <li key={el.title}>
                       <Link className="arrow-link" activeClassName='active' to={el.uri}>
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M13.3325 8L2.66601 8" stroke="#0F3730" stroke-width="1.5" stroke-linecap="square" />
-                          <path d="M9.55957 11.7734C9.55957 9.83354 11.268 8 13.3329 8" stroke="#0F3730" stroke-width="1.5" stroke-linecap="square" />
-                          <path d="M9.55957 4.22664C9.55957 6.16646 11.268 8 13.3329 8" stroke="#0F3730" stroke-width="1.5" stroke-linecap="square" />
+                          <path d="M13.3325 8L2.66601 8" stroke="#0F3730" strokeWidth="1.5" strokeLinecap="square" />
+                          <path d="M9.55957 11.7734C9.55957 9.83354 11.268 8 13.3329 8" stroke="#0F3730" strokeWidth="1.5" strokeLinecap="square" />
+                          <path d="M9.55957 4.22664C9.55957 6.16646 11.268 8 13.3329 8" stroke="#0F3730" strokeWidth="1.5" strokeLinecap="square" />
                         </svg>
                         <span>{el.title}</span>
                       </Link>
@@ -93,7 +93,10 @@ const Placeholder = styled.div`
   height: 105px;
   @media (max-width: 1149px){
     height: 89px;
-    }
+  }
+  @media (max-width: 699px){
+    height: 67px;
+  }
 `
 
 const StyledNav = styled.header`
@@ -161,7 +164,7 @@ const StyledNav = styled.header`
       display: flex;
       margin: 0 -${20 / 16}rem;
       > li {
-        margin: 0 ${20/16}rem;
+        margin: 0 ${20 / 16}rem;
         &.dropdown {
           &:hover > a svg {
             transform: rotate(-180deg);
@@ -311,7 +314,7 @@ const StyledNav = styled.header`
       overflow: hidden;
     }
     ul {
-      font-size: ${22/16}rem;
+      font-size: ${22 / 16}rem;
       font-family: var(--serif);
     }
     .nav-links {
@@ -335,7 +338,7 @@ const StyledNav = styled.header`
           &:first-child {
             order: 1;
           }
-          margin: ${14/16}rem 0;
+          margin: ${14 / 16}rem 0;
           &.dropdown > a svg{
             display: none;
           }
@@ -373,7 +376,7 @@ const StyledNav = styled.header`
       width: auto;
     }
     .nav-links {
-      padding: ${48/16}rem 1rem 1rem;
+      padding: ${48 / 16}rem 1rem 1rem;
       width: 100%;
       margin: 0;
       display: flex;
@@ -420,8 +423,8 @@ const StyledNav = styled.header`
       display: block;
       border: 2px solid var(--primary-800);
       font-family: var(--serif);
-      padding: ${10/24}em ${32/24}em;
-      font-size: ${24/16}rem;
+      padding: ${10 / 24}em ${32 / 24}em;
+      font-size: ${24 / 16}rem;
       text-align: center;
     }
   }

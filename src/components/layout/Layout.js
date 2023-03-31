@@ -17,7 +17,8 @@ const Layout = ({ children, pageContext }) => {
     })
   }, [])
 
-  const [cookiesActive, setCookiesActive] = useState(true)
+  const [cookiesActive, setCookiesActive] = useState(false)
+
   return (
     <>
       <Cookies isActive={cookiesActive} setIsActive={setCookiesActive} />
@@ -26,7 +27,7 @@ const Layout = ({ children, pageContext }) => {
       {(pageContext.uri !== '/' && pageContext.breadcrumbs)
         && <BreadCrumbs data={pageContext.breadcrumbs} />}
       {children}
-      <Footer />
+      <Footer setCookiesActive={setCookiesActive} />
     </>
   );
 }

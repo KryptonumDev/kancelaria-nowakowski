@@ -268,8 +268,8 @@ const Grid = ({ isActive, active, el: data }) => {
                   <p className="item-description">{el.cookieDescription}</p>
                 </div>
                 <div className="item-flex">
-                  <p>Expiry: {el.expireTime}</p>
-                  <p>Type: {el.cookieType}</p>
+                  <p>Data ważności: {el.expireTime}</p>
+                  <p>Rodzaj: {el.cookieType}</p>
                 </div>
               </div>
             )
@@ -283,9 +283,9 @@ const Grid = ({ isActive, active, el: data }) => {
                   <span className="tablet">&nbsp;({data.innerPartCookies.length - 2})</span>
                   <span className="mobile">&nbsp;({data.innerPartCookies.length - 1})</span>
                   <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M15.9995 26.666L15.9995 5.333" stroke="#0F3730" stroke-width="1.5" stroke-linecap="square" />
-                    <path d="M8.45278 19.1201C12.3324 19.1201 15.9995 22.5369 15.9995 26.6668" stroke="#0F3730" stroke-width="1.5" stroke-linecap="square" />
-                    <path d="M23.5462 19.1201C19.6666 19.1201 15.9995 22.5369 15.9995 26.6668" stroke="#0F3730" stroke-width="1.5" stroke-linecap="square" />
+                    <path d="M15.9995 26.666L15.9995 5.333" stroke="#0F3730" strokeWidth="1.5" strokeLinecap="square" />
+                    <path d="M8.45278 19.1201C12.3324 19.1201 15.9995 22.5369 15.9995 26.6668" stroke="#0F3730" strokeWidth="1.5" strokeLinecap="square" />
+                    <path d="M23.5462 19.1201C19.6666 19.1201 15.9995 22.5369 15.9995 26.6668" stroke="#0F3730" strokeWidth="1.5" strokeLinecap="square" />
                   </svg>
                 </button>
               )
@@ -344,6 +344,20 @@ const Wrapper = styled(motion.aside)`
       font-size: clamp(16px, ${16 / 768 * 100}vw, 20px);
       line-height: 150%;
       color: #12433A;
+    }
+
+    .content p em strong, .content p strong em {
+      font-family: 'Literata';
+      font-weight: 600;
+      font-size: clamp(16px, ${16 / 768 * 100}vw, 20px);
+      font-style: normal;
+    }
+
+    .content a{
+      font-family: 'Literata';
+      font-weight: 600;
+      font-size: clamp(16px, ${16 / 768 * 100}vw, 20px);
+      text-decoration: underline;
     }
 
     .name, .grid-name{
@@ -607,7 +621,7 @@ const Tab = styled(motion.div)`
         width: 45px;
         height: 24px;
         border-radius: 42px;
-        background-color: #F8F5F0;
+        background-color: #90999B;
         border: none;
         position: relative;
         cursor: pointer;
@@ -619,7 +633,7 @@ const Tab = styled(motion.div)`
             left: 4px;
             width: 16px;
             height: 16px;
-            background-color: #926F45;
+            background-color: #EAF0F1;
             border-radius: 40px;
             transition: all .2s cubic-bezier(0.645, 0.045, 0.355, 1);
         }
