@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { graphql, Link, useStaticQuery } from "gatsby";
 import styled from "styled-components";
-import { DropDown, Logo } from '../atoms/Icons';
+import { Logo } from '../atoms/Icons';
 
 const Nav = () => {
   const { allWpSpecjalizacja: { nodes: specjalizacji } } = useStaticQuery(graphql`
@@ -21,24 +21,24 @@ const Nav = () => {
   }
   const handleNavClick = () => {
     nav.current.classList.remove('expand');
-    nav.current.style.pointerEvents = 'none';
+    nav.current.querySelector('.dropdown ul').style.pointerEvents = 'none';
     setTimeout(() => {
-      nav.current.style = null;
+      nav.current.querySelector('.dropdown ul').style = null;
     }, 100);
   }
 
   return (
     <>
       <Placeholder />
-      <StyledNav className="nav" ref={nav}>
+      <StyledNav className="nav" ref={nav}> 
         <nav className="max-width-header">
-          <Link to="/" aria-label="Strona główna">
+          <Link to="/" aria-label="Strona główna" onClick={handleNavClick} className="nav-logo">
             <Logo />
           </Link>
           <div className="nav-links">
             <ul>
               <li className="dropdown">
-                <Link partiallyActive={true} className="drop-down styled-link" activeClassName='active' to="/specjalizacje/">
+                <Link partiallyActive={true} className="drop-down styled-link" activeClassName='active' to="/specjalizacje/" onClick={handleNavClick}>
                   <span>Specjalizacje</span>
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M7.99976 13.334L7.99976 2.66748" stroke="#12433A" strokeWidth="1.5" strokeLinecap="square" />
@@ -49,7 +49,7 @@ const Nav = () => {
                 <ul>
                   {specjalizacji.map(el => (
                     <li key={el.title}>
-                      <Link className="arrow-link" activeClassName='active' to={el.uri}>
+                      <Link className="arrow-link" activeClassName='active' to={el.uri} onClick={handleNavClick}>
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <path d="M13.3325 8L2.66601 8" stroke="#0F3730" strokeWidth="1.5" strokeLinecap="square" />
                           <path d="M9.55957 11.7734C9.55957 9.83354 11.268 8 13.3329 8" stroke="#0F3730" strokeWidth="1.5" strokeLinecap="square" />
@@ -62,18 +62,18 @@ const Nav = () => {
                 </ul>
               </li>
               <li>
-                <Link className="styled-link" activeClassName='active' to="/kancelaria/">Kancelaria</Link>
+                <Link className="styled-link" activeClassName='active' to="/kancelaria/" onClick={handleNavClick}>Kancelaria</Link>
               </li>
               <li>
-                <Link className="styled-link" activeClassName='active' to="/wspolpraca/">Współpraca</Link>
+                <Link className="styled-link" activeClassName='active' to="/wspolpraca/" onClick={handleNavClick}>Współpraca</Link>
               </li>
               <li>
-                <Link className="styled-link" partiallyActive={true} activeClassName='active' to="/blog/">Blog</Link>
+                <Link className="styled-link" partiallyActive={true} activeClassName='active' to="/blog/" onClick={handleNavClick}>Blog</Link>
               </li>
             </ul>
-            <Link c activeClassName='active' to="/kontakt/" className="navLinks-cta ">Kontakt</Link>
+            <Link c activeClassName='active' to="/kontakt/" className="navLinks-cta " onClick={handleNavClick}>Kontakt</Link>
           </div>
-          <Link activeClassName='active' to="/kontakt/" className="nav-cta">Kontakt</Link>
+          <Link activeClassName='active' to="/kontakt/" className="nav-cta" onClick={handleNavClick}>Kontakt</Link>
           <button
             id="nav-toggle"
             aria-label="Pokaż/Ukryj nawigację mobilną"
@@ -186,7 +186,7 @@ const StyledNav = styled.header`
           pointer-events: auto;
         }
         ul {
-          transition: opacity .2s;
+          transition: opacity .1s;
           opacity: 0;
           pointer-events: none;
           z-index: 2;
