@@ -34,7 +34,7 @@ export default function Card({ index, data, scrollProgresValue }) {
       <Information>
         <p className="title" >{htmlDelete(data.gutenberg.title)}</p>
         <div className="description" dangerouslySetInnerHTML={{ __html: data.gutenberg.excerpt }} />
-        <Link to={`/${data.slug}/`} >
+        <Link className="styled-link" to={`/${data.slug}/`} >
           <span>Czytaj więcej</span>
           <svg width="33" height="33" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M27.1641 16.0801L5.83105 16.0801" stroke="#0F3730" strokeWidth="1.5" strokeLinecap="square" />
@@ -50,6 +50,20 @@ export default function Card({ index, data, scrollProgresValue }) {
 const Wrapper = styled(motion.div)`
   height: 100%;
   position: relative;
+
+  .image img{
+    transition: transform .4s ease-out;
+  }
+
+  &:hover{
+    .image img{
+      transform: scale(1.05);
+    }
+
+    .styled-link{
+      background-size: 100% 2px;
+    }
+  }
 
   @media (max-width: 1024px){
     display: flex;

@@ -144,6 +144,24 @@ const GlobalStyle = createGlobalStyle`
     }
   }
 
+  .styled-link{
+    width: fit-content;
+    display: block;
+    position: relative;
+    padding-bottom: 3px;
+
+    transition: background-size 0.3s ease-out;
+
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 2px;
+    background-position: left bottom;
+    background-repeat: no-repeat;
+
+    &:hover {
+        background-size: 100% 2px;
+    }
+  }
+
   .cta-primary,
   .cta-secondary,
   .cta-white,

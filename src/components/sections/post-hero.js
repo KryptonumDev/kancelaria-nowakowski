@@ -90,6 +90,12 @@ const Categories = styled.div`
     align-items: center;
     color: #0F3730;
     background-color: #D8E1E3;
+    
+    transition: background-color .3s ease-out;
+
+    &:hover{
+      background-color: #6FE8D2;
+    }
   }
 
 `

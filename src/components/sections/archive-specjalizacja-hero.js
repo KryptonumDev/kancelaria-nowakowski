@@ -93,9 +93,21 @@ const Grid = styled.div`
   .item{
     position: relative;
 
+    &:hover{
+      .image{
+        img{
+          transform: scale(1.05);
+        }
+      }
+    }
+
     .image{
       width: 100%;
       height: 100%;
+
+      img{
+        transition: transform .4s ease-out;
+      }
     }
 
     p {

@@ -38,7 +38,7 @@ const Nav = () => {
           <div className="nav-links">
             <ul>
               <li className="dropdown">
-                <Link partiallyActive={true} className="drop-down" activeClassName='active' to="/specjalizacje/">
+                <Link partiallyActive={true} className="drop-down styled-link" activeClassName='active' to="/specjalizacje/">
                   <span>Specjalizacje</span>
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M7.99976 13.334L7.99976 2.66748" stroke="#12433A" strokeWidth="1.5" strokeLinecap="square" />
@@ -62,16 +62,16 @@ const Nav = () => {
                 </ul>
               </li>
               <li>
-                <Link activeClassName='active' to="/kancelaria/">Kancelaria</Link>
+                <Link className="styled-link" activeClassName='active' to="/kancelaria/">Kancelaria</Link>
               </li>
               <li>
-                <Link activeClassName='active' to="/wspolpraca/">Współpraca</Link>
+                <Link className="styled-link" activeClassName='active' to="/wspolpraca/">Współpraca</Link>
               </li>
               <li>
-                <Link partiallyActive={true} activeClassName='active' to="/blog/">Blog</Link>
+                <Link className="styled-link" partiallyActive={true} activeClassName='active' to="/blog/">Blog</Link>
               </li>
             </ul>
-            <Link activeClassName='active' to="/kontakt/" className="navLinks-cta">Kontakt</Link>
+            <Link c activeClassName='active' to="/kontakt/" className="navLinks-cta ">Kontakt</Link>
           </div>
           <Link activeClassName='active' to="/kontakt/" className="nav-cta">Kontakt</Link>
           <button
@@ -121,7 +121,7 @@ const StyledNav = styled.header`
     }
 
 
-    &.active{
+    &.active, &:hover{
       transform: translate(0px);
 
       svg{

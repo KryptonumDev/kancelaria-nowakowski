@@ -7,7 +7,7 @@ export default function Kontakt({ data }) {
   return (
     <>
       <ContactUs />
-      <CalendlyCta />
+      <CalendlyCta  data={data.wpPage.contact.sectionCtaContact}/>
     </>
   )
 }
@@ -33,6 +33,14 @@ export const query = graphql`
                   target
                   title
                   url
+                }
+                backgroundImg{
+                  altText
+                  localFile{
+                    childImageSharp{
+                      gatsbyImageData
+                    }
+                  }
                 }
               }
             }

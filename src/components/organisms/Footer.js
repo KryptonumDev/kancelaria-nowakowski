@@ -2,7 +2,7 @@ import React from "react";
 import { graphql, Link, useStaticQuery } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import styled from "styled-components";
-import { Facebook, Instagram, KryptonumLogo, RightArrow, Twitter, Youtube } from "../atoms/Icons";
+import { Facebook, KryptonumLogo, Linkedin, RightArrow } from "../atoms/Icons";
 
 const Footer = ({ setCookiesActive }) => {
   const { allWpSpecjalizacja: { specjalizacje }, allWpPost: { blogs } } = useStaticQuery(graphql`
@@ -37,30 +37,30 @@ const Footer = ({ setCookiesActive }) => {
       <ul className="footer-top">
         <li>
           <h3>
-            <Link to="/specjalizacje/">Specjalizacje</Link>
+            <Link className="styled-link" to="/specjalizacje/">Specjalizacje</Link>
           </h3>
           {specjalizacje.map(el => (
-            <Link key={el.title} to={el.uri}>{el.title}</Link>
+            <Link className="styled-link" key={el.title} to={el.uri}>{el.title}</Link>
           ))}
         </li>
         <li className="grid">
           <h3>
-            <Link to="/kancelaria/">Kancelaria</Link>
+            <Link className="styled-link" to="/kancelaria/">Kancelaria</Link>
           </h3>
           <h3>
-            <Link to="/wspolpraca/">Współpraca</Link>
+            <Link className="styled-link" to="/wspolpraca/">Współpraca</Link>
           </h3>
         </li>
         <li className="blog">
           <h3>
-            <Link to="/blog/">Blog</Link>
+            <Link className="styled-link" to="/blog/">Blog</Link>
           </h3>
           {blogs.map((blog, i) => (
             <div className="blog-item" key={i}>
               <GatsbyImage image={blog.featuredImage.node.localFile.childImageSharp.gatsbyImageData} alt={blog.featuredImage.node.altText || ""} />
               <div className="blog-copy">
                 <p>{blog.title}</p>
-                <Link to={blog.uri}>
+                <Link className="styled-link" to={blog.uri}>
                   <span>Czytaj więcej</span>
                   <RightArrow />
                 </Link>
@@ -69,17 +69,14 @@ const Footer = ({ setCookiesActive }) => {
           ))}
         </li>
         <li className="social">
-          <a href="#" aria-label="YouTube">
-            <Youtube />
-          </a>
-          <a href="#" aria-label="Twitter">
-            <Twitter />
-          </a>
-          <a href="#" aria-label="Instagram">
-            <Instagram />
-          </a>
-          <a href="#" aria-label="Facebook">
+          <a href="https://www.facebook.com/profile.php?id=100046139240389&locale=pl_PL" target='_blank' rel="noreferrer noopener" aria-label="Facebook">
             <Facebook />
+          </a>
+          <a href="https://www.linkedin.com/in/piotr-nowakowski-7832b422a/" target='_blank' rel="noreferrer noopener" aria-label="Facebook">
+            <Linkedin />
+          </a>
+          <a href="https://www.linkedin.com/in/dr-dominika-sujka-kujawiak-077b1b189/" target='_blank' rel="noreferrer noopener" aria-label="Facebook">
+            <Linkedin />
           </a>
         </li>
       </ul>
@@ -92,9 +89,9 @@ const Footer = ({ setCookiesActive }) => {
           </a>
         </p>
         <p className="flex-add">
-          <button onClick={() => { setCookiesActive(true) }}>Zarządzaj ciasteczkami</button>
-          <Link to="/mapa-strony/">Mapa strony</Link>
-          <Link to="/polityka-prywatnosci/">Polityka prywatności</Link>
+          <button className="styled-link" onClick={() => { setCookiesActive(true) }}>Zarządzaj ciasteczkami</button>
+          <Link className="styled-link" to="/mapa-strony/">Mapa strony</Link>
+          <Link className="styled-link" to="/polityka-prywatnosci/">Polityka prywatności</Link>
         </p>
       </div>
     </Wrapper>
@@ -162,6 +159,10 @@ const Wrapper = styled.footer`
     }
     .social {
       color: var(--primary-400);
+      svg{
+        width: 32px;
+        height: 32px;
+      }
       a:not(:last-child) {
         margin-bottom: ${24 / 16}rem;
       }

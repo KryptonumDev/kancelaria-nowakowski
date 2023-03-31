@@ -112,6 +112,11 @@ const Wrapper = styled.div`
     line-height: 30px;
     font-family: 'Lato';
     color: #0F3730;
+    transition: background-color .3s ease-out;
+
+    &:hover{
+      background-color: #6FE8D2;
+    }
 
     &.active{
       background-color: #51C6B1;

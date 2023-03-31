@@ -92,6 +92,12 @@ const Wrapper = styled.aside`
         transition: opacity .2s ease-out;
       }
 
+      &:hover{
+        &::before{
+          opacity: 1;
+        }
+      }
+
       &.active{
         font-weight: 700;
         font-style: italic;

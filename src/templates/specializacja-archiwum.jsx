@@ -96,7 +96,7 @@ export const query = graphql`
                       altText
                       localFile {
                         childImageSharp {
-                          gatsbyImageData(quality: 90)
+                          gatsbyImageData(quality: 100)
                         }
                       }
                     }
