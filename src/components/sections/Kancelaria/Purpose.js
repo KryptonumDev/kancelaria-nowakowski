@@ -23,7 +23,6 @@ const Purpose = ({data}) => {
 }
 
 const Wrapper = styled.section`
-  margin: clamp(${64/16}rem, ${96/7.68}vw, ${128/16}rem) 0;
   h2 {
     max-width: ${768/16}rem;
   }
