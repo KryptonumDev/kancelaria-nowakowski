@@ -30,12 +30,20 @@ const StyledSection = styled.section`
   gap: 32px;
   position: relative;
   padding-right: 15%;
-  .text{
-    ul{
+  .text {
+    ul {
+      margin: ${12/16}rem 0 ${24/16}rem;
+      list-style-type: none;
       display: grid;
+      grid-template-columns: 1fr 1fr;
       grid-gap: 12px 24px;
-      li{
-
+      font-size: inherit;
+      li {
+        display: flex;
+        gap: 4px;
+        > * {
+          flex-shrink: 0;
+        }
       }
     }
   }
@@ -62,6 +70,9 @@ const StyledSection = styled.section`
     }
     p {
       font-size: clamp(${18 / 16}rem, ${24 / 13.66}vw, ${24 / 16}rem);
+      &:not(:last-of-type){
+        margin-bottom: 1rem;
+      }
     }
     .cta {
       margin-top: ${24 / 16}rem;
@@ -80,6 +91,11 @@ const StyledSection = styled.section`
     padding-right: 0;
     ::before {
       display: none;
+    }
+    .text {
+      ul {
+        grid-template-columns: 1fr;
+      }
     }
     svg {
       left: 83.25%;
@@ -105,7 +121,6 @@ const StyledSection = styled.section`
     }
   }
   @media (max-width: 599px){
-    margin: ${89 / 16}rem 0;
     flex-direction: column-reverse;
     gap: 16px;
     svg {

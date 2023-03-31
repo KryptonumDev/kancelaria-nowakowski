@@ -6,7 +6,10 @@ const Process = ({data}) => {
   return (
     <Wrapper>
       <header>
-        <div dangerouslySetInnerHTML={{__html: data.tytulSekcji}}></div>
+        <div dangerouslySetInnerHTML={{__html: data.sectionTitle}}></div>
+        <div dangerouslySetInnerHTML={{__html: data.textUnderTitle}} className="underTitle"></div>
+
+        <div dangerouslySetInnerHTML={{__html: data.advantagesTitle}}></div>
         <div className="grid">
           <div dangerouslySetInnerHTML={{__html: data.leftText}}></div>
           <div dangerouslySetInnerHTML={{__html: data.rightText}}></div>
@@ -23,14 +26,6 @@ const Process = ({data}) => {
           </div>
         ))}
       </div>
-      <div className="advantages-keynote">
-        {data.advantagesWithImg.map((advantage, i) => (
-          <div className="advantagesKeynote-item" key={i}>
-            <h3>{advantage.title}</h3>
-            <GatsbyImage image={advantage.image.localFile.childImageSharp.gatsbyImageData} alt={advantage.image.altText || ""} className="advantagesKeynote-img"></GatsbyImage>
-          </div>
-        ))}
-      </div>
     </Wrapper>
   );
 }
@@ -42,8 +37,19 @@ const Wrapper = styled.section`
       font-size: clamp(1.75rem, 4.6875vw, 2.5rem);
       margin-bottom: ${24/16}rem;
     }
+    .underTitle {
+      font-size: clamp(${22/16}rem, ${26/7.68}vw, ${28/16}rem);
+      margin-bottom: 3rem;
+    }
+    h2, .underTitle {
+      max-width: ${600/16}rem;
+    }
     h3 {
       font-size: clamp(${24/16}rem, ${30/7.68}vw, 2rem);
+      margin-bottom: clamp(${22/16}rem, ${32/7.68}vw, ${28/16}rem);
+    }
+    h4 {
+      font-size: clamp(${24/16}rem, ${30/7.68}vw, ${32/16}rem);
       margin-bottom: .5rem;
     }
     .grid {
@@ -109,65 +115,6 @@ const Wrapper = styled.section`
       }
       p {
         font-size: clamp(${20/16}rem, ${24/7.68}vw, ${20/16}rem);
-      }
-    }
-  }
-  .advantagesKeynote-item {
-    display: flex;
-    align-items: center;
-    border: 1px solid var(--primary-400);
-    justify-content: flex-end;
-    gap: 32px;
-    h3 {
-      width: 33.3%;
-      font-size: clamp(${24/16}rem, ${30/7.68}vw, ${32/16}rem);
-      text-align: center;
-    }
-    &:nth-child(odd){
-      flex-direction: row-reverse;
-    }
-    .advantagesKeynote-img {
-      width: 33.3%;
-      margin: -1px;
-    }
-    &:not(:last-child){
-      margin-bottom: 40px;
-    }
-  }
-  @media (max-width: 1249px){
-    .advantagesKeynote-item {
-      h3 {
-        width: 50%;
-        text-align: left;
-        padding: 0 34px;
-      }
-      &:nth-child(odd){
-        flex-direction: row-reverse;
-      }
-      .advantagesKeynote-img {
-        width: 50%;
-      }
-      &:not(:last-child){
-        margin-bottom: 40px;
-      }
-    }
-  }
-  @media (max-width: 599px){
-    .advantagesKeynote-item {
-      display: flex;
-      flex-direction: column-reverse;
-      h3 {
-        width: 100%;
-        font-size: clamp(${24/16}rem, ${30/7.68}vw, ${32/16}rem);
-        text-align: center;
-        padding: 0 .5rem 2rem;
-      }
-      &:nth-child(odd){
-        flex-direction: column-reverse;
-      }
-      .advantagesKeynote-img {
-        width: 100%;
-        margin: 0;
       }
     }
   }
