@@ -6,18 +6,18 @@ const StepsSection = ({ data }) => {
   return (
     <StyledSection>
       <header>
-        <h2 dangerouslySetInnerHTML={{ __html: data.sectionTitle }}></h2>
-        <h3>{data.textOnTheRight}</h3>
+        <div dangerouslySetInnerHTML={{ __html: data.sectionTitle }}></div>
+        <div className="h3" dangerouslySetInnerHTML={{ __html: data.textOnTheRight }}></div>
       </header>
       <ol className="steps">
         {data.steps.map((step, i) => (
-          <li key={i}>{step.stepText}</li>
+          <li key={i} dangerouslySetInnerHTML={{ __html: step.stepText }}></li>
         ))}
       </ol>
       <div className="underSteps">
-        <h3>{data.textOnTheLeftUnderSteps}</h3>
+        <div className="h3" dangerouslySetInnerHTML={{ __html: data.textOnTheLeftUnderSteps }}></div>
         <div>
-          <h3>{data.titleAboveButtonUnderSteps}</h3>
+          <div className="h3" dangerouslySetInnerHTML={{ __html: data.titleAboveButtonUnderSteps }}></div>
           <Link to={data.linkUnderSteps.url} className="cta-primary">{data.linkUnderSteps.title}</Link>
         </div>
       </div>
@@ -35,6 +35,12 @@ const StyledSection = styled.section`
       width: 50%;
     }
   }
+  .h3{
+    line-height: 1.58;
+    em{
+      font-style: normal;
+    }
+  }
   .steps {
     margin: ${60 / 16}rem 0 ${110 / 16}rem 0;
     counter-reset: counter;
@@ -45,6 +51,11 @@ const StyledSection = styled.section`
       counter-increment: counter;
       list-style-type: none;
       font-size: ${20 / 16}rem;
+
+      em{
+        font-family: 'Literata';
+        font-style: normal;
+      }
       &::before {
         content: counter(counter);
         font-family: var(--serif);

@@ -49,6 +49,8 @@ const GlobalStyle = createGlobalStyle`
     min-width: 320px;
     font-family: var(--sans-serif);
     color: var(--primary-800);
+    font-feature-settings: 'pnum' on, 'onum' on;
+
   }
 
   button, select {
@@ -96,7 +98,7 @@ const GlobalStyle = createGlobalStyle`
     }
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1, h2, h3, h4, h5, h6, .h3 {
     font-family: 'Literata', serif;
     font-weight: 400;
     color: var(--primary-900);
@@ -108,7 +110,7 @@ const GlobalStyle = createGlobalStyle`
   h2 {
     font-size: clamp(${28/16}rem, ${40/13.66}vw, ${40/16}rem);
   }
-  h3 {
+  h3, .h3 {
     font-size: clamp(${18/16}rem, ${24/10.24}vw, ${24/16}rem);
   }
   button[type="submit"] {

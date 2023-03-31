@@ -9,7 +9,7 @@ const Hero = ({ data }) => {
     <StyledHero className="hero">
       <header>
         <Ornament />
-        <div dangerouslySetInnerHTML={{__html: data.pageTitle}}></div>
+        <div className="title" dangerouslySetInnerHTML={{__html: data.pageTitle}}></div>
         <p className="flex">
           {data.linksToSubpages.map((link, i) => (
             <span className="no-wrap" key={link.link.title + i}>
@@ -46,6 +46,9 @@ const StyledHero = styled.section`
     white-space: nowrap;
     font-family: 'Literata';
   }
+  .title{
+    max-width: 500px;
+  }
   header {
     svg {
       width: 100%;
@@ -81,7 +84,7 @@ const StyledHero = styled.section`
       max-width: ${627 / 16}rem;
       margin-bottom: ${32 / 16}rem;
       p {
-        margin: ${24 / 16}rem 0;
+        margin: ${42 / 16}rem 0 ${24 / 16}rem 0;
       }
     }
     .hero-img {

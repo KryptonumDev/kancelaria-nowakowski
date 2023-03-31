@@ -13,7 +13,7 @@ const Rules = ({ data }) => {
         <div className="text" dangerouslySetInnerHTML={{ __html: data.textUnderTitle }}></div>
         <div className="cta">
           <Link to={data.link.url} className="cta-primary">{data.link.title}</Link>
-          <p>Dobierzemy rozwiązanie <em><strong>najlepsze dla Ciebie</strong></em></p>
+          <p className="annotation">Dobierzemy rozwiązanie <em><strong>najlepsze dla Ciebie</strong></em></p>
         </div>
       </header>
       <GatsbyImage image={data.imageOnTheRight.localFile.childImageSharp.gatsbyImageData} alt={data.imageOnTheRight.altText} className="img" />
@@ -24,13 +24,28 @@ const Rules = ({ data }) => {
 const StyledSection = styled.section`
   margin: ${150 / 16}rem 0;
   padding: ${100 / 16}rem 0;
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 630fr auto;
   align-items: flex-end;
-  gap: 32px;
+  grid-gap: 32px;
   position: relative;
   padding-right: 15%;
+  .annotation{
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 150%;
+    font-feature-settings: 'pnum' on, 'onum' on;
+    color: #12433A;
+
+    em{
+      font-style: normal;
+      font-family: 'Literata';
+    }
+  }
   .text{
+    display: grid;
+    grid-gap: 32px;
+    font-family: 'Literata';
     ul{
       display: grid;
       grid-gap: 12px 24px;
@@ -56,7 +71,6 @@ const StyledSection = styled.section`
     z-index: -1;
   }
   header {
-    width: 50%;
     h2 {
       margin-bottom: ${48 / 16}rem;
     }

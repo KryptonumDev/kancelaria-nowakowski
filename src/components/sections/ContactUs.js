@@ -190,7 +190,7 @@ const ContactUs = () => {
               <span>Wyrażam zgodę na przetwarzanie moich danych osobowych na zasadach określonych w <Link to="/polityka-prywatnosci">Polityce prywatności</Link></span>
             </label>
           </div>
-          <button type="submit">
+          <button className="cta-primary" type="submit">
             <span>Wyślij</span>
             <RightArrow />
           </button>

@@ -16,12 +16,8 @@ export default function Slider({ posts, data }) {
     <Wrapper>
       <h2 dangerouslySetInnerHTML={{ __html: data.sectionTitle }}></h2>
       <div className="flex">
-        <p>
-          {data.leftTextUnderTitle}
-        </p>
-        <p>
-          {data.rightTextUnderTitle}
-        </p>
+        <div dangerouslySetInnerHTML={{ __html: data.leftTextUnderTitle }} />
+        <div dangerouslySetInnerHTML={{ __html: data.rightTextUnderTitle }} />
       </div>
       <Grid>
         {posts.map((el, index) => (
@@ -41,7 +37,7 @@ export default function Slider({ posts, data }) {
 const Wrapper = styled.section`
   margin-top: 128px;
   h2{
-    max-width: 630px;
+    max-width: 650px;
     font-size: clamp(${28 / 16}rem, ${36 / 7.68}vw, ${40 / 16}rem);
   }
 
@@ -62,6 +58,9 @@ const Wrapper = styled.section`
       line-height: 160%; 
       color: #12433A;
 
+      em{
+        font-style: normal;
+      }
     }
   }
 `
