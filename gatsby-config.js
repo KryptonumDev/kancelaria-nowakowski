@@ -64,6 +64,18 @@ module.exports = {
         sitemap: 'https://kancelaria.gatsbyjs.iositemap-index.xml',
         policy: [{userAgent: '*', allow: '/'}]
       }
+    },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Kancelaria Nowakowski`,
+        short_name: `Kancelaria`,
+        start_url: `/`,
+        background_color: `#FFFFFF`,
+        theme_color: `#51C6B1`,
+        display: `standalone`,
+        icon: `static/logo.png`,
+      },
     }
   ]
 }
