@@ -31,7 +31,6 @@ const Process = ({data}) => {
 }
 
 const Wrapper = styled.section`
-  margin: clamp(${64/16}rem, ${96/7.68}vw, ${128/16}rem) 0;
   header {
     h2 {
       font-size: clamp(1.75rem, 4.6875vw, 2.5rem);

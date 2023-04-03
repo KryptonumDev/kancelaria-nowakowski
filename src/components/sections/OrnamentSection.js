@@ -22,7 +22,6 @@ const Rules = ({ data }) => {
 }
 
 const StyledSection = styled.section`
-  margin: ${150 / 16}rem 0;
   padding: ${100 / 16}rem 0;
   display: flex;
   justify-content: space-between;

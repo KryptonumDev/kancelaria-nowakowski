@@ -67,7 +67,7 @@ const Wrapper = styled.section`
         text-align: right;
         position: relative;
         ::before {
-          content: '0'counter(counter);
+          content: '0' counter(counter);
           position: absolute;
           left: 0;
           bottom: 0;

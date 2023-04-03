@@ -16,7 +16,6 @@ export default function CallToAction({ data }) {
 }
 
 const Wrapper = styled.section`
-  margin-top: 120px;
   padding: 52px 32px 72px 32px;
   min-height: 370px;
   position: relative;
