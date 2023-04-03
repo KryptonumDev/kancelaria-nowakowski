@@ -5,7 +5,7 @@ require("dotenv").config({
 module.exports = {
   siteMetadata: {
     title: `Kancelaria Nowakowski`,
-    description: '',
+    description: 'placeholder',
     siteUrl: `https://kancelaria.gatsbyjs.io`,
     image: 'https://kancelaria.gatsbyjs.io/social.jpg',
   },

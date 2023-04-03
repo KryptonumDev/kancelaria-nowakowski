@@ -20,7 +20,7 @@ export default function Card({ index, data, scrollProgresValue }) {
 
   return (
     <Wrapper initial={{ y: scrollValue }} transition={{ type: "spring", stiffness: 10 }} style={{ y: scrollValue }}>
-      <Link tabIndex='-1' className="link" to={data.uri} />
+      <Link aria-label={`blog post: ${htmlDelete(data.gutenberg.title)}`} tabIndex='-1' className="link" to={data.uri} />
       <Image>
         <GatsbyImage className="image" image={data.featuredImage.node.localFile.childImageSharp.gatsbyImageData} alt={data.featuredImage.node.altText} />
         <Categories>

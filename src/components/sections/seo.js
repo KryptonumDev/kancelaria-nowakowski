@@ -6,7 +6,7 @@ import Post from "../layout/schema/post"
 
 export function Head({ data, pageContext }) {
   const seo = data.wpPage?.seo || data.wpPost?.seo || data.wpSpecjalizacja?.seo
-  const { site: siteMetadata } = useStaticQuery(graphql`
+  const { site: { siteMetadata } } = useStaticQuery(graphql`
   query {
       site {
           siteMetadata {
@@ -19,13 +19,13 @@ export function Head({ data, pageContext }) {
   }
 `)
   const canonical = siteMetadata.siteUrl + pageContext.uri
-  
+
   return (
     <>
       <BreadCrumbs siteMetadata={siteMetadata} pageContext={pageContext} />
-      <Organization siteMetadata={siteMetadata}/>
+      <Organization siteMetadata={siteMetadata} />
       {data.wpPost &&
-        <Post siteMetadata={siteMetadata} canonical={canonical} data={data.wpPost} context={pageContext}/>}
+        <Post siteMetadata={siteMetadata} canonical={canonical} data={data.wpPost} context={pageContext} />}
 
       <meta charSet="utf-8" />
       <meta property="og:site_name" content={seo.opengraphSiteName || siteMetadata.title} />

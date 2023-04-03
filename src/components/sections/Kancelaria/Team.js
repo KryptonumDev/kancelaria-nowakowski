@@ -22,10 +22,10 @@ const Team = ({data}) => {
             <div className="people-item" key={i}>
               <GatsbyImage image={person.zdjecieOsoby.localFile.childImageSharp.gatsbyImageData} alt={person.zdjecieOsoby.altText || ""}></GatsbyImage>
               <div className="social">
-                <a href={person.facebookLink} target="_blank" rel="noreferrer">
+                <a aria-label="link do facebook" href={person.facebookLink} target="_blank" rel="noreferrer">
                   <Facebook />
                 </a>
-                <a href={person.instagramLink} target="_blank" rel="noreferrer">
+                <a aria-label="link do instagram" href={person.instagramLink} target="_blank" rel="noreferrer">
                   <Instagram />
                 </a>
               </div>

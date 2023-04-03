@@ -35,7 +35,7 @@ const Wrapper = styled.div`
     font-weight: 400;
     font-size: 14px;
     line-height: 24px;
-    color: #90999B;
+    color: rgb(113, 120, 120);
 
     &:last-child{
       color: #016250;
