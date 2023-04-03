@@ -54,7 +54,6 @@ module.exports = {
       options: {
         baseUrl : "https://kancelaria.headlesshub.com",
         gatsbyUrl : 'https://kancelaria.gatsbyjs.io',
-        defaultDataLayer: { platform: "gatsby" },
       },
     },
     {
