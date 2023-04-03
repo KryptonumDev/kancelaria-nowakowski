@@ -38,28 +38,6 @@ const Wrapper = styled.section`
     margin-top: 16px;
     font-size: clamp(${32 / 16}rem, ${48 / 7.68}vw, ${48 / 16}rem);
     position: relative;
-    
-    &::after{
-      content: "";
-      position: absolute;
-      transform: translate(-50%, 50%) rotateZ(45deg);
-      left: 0;
-      bottom: -10px;
-      width: 6px;
-      height: 6px;
-      background-color: #4FD2BB;
-    }
-
-    &::before{
-      content: "";
-      position: absolute;
-      transform: translate(0, 50%);
-      left: 0;
-      bottom: -10px;
-      width: 100%;
-      height: 2px;
-      background-color: #4FD2BB;
-    }
   }
 
   p{
