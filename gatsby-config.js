@@ -41,5 +41,29 @@ module.exports = {
         "url": "https://kancelaria.headlesshub.com/graphql"
       }
     },
+    {
+      resolve: "gatsby-plugin-google-tagmanager",
+      options: {
+        id: "GTM-KHNZS7X",
+        includeInDevelopment: true,
+        defaultDataLayer: { platform: "gatsby" },
+      },
+    },
+    {
+      resolve: "gatsby-plugin-yoast-sitemap",
+      options: {
+        baseUrl : "https://kancelaria.headlesshub.com",
+        gatsbyUrl : 'https://kancelaria.gatsbyjs.io',
+        defaultDataLayer: { platform: "gatsby" },
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        host: 'https://kancelaria.gatsbyjs.io',
+        sitemap: 'https://kancelaria.gatsbyjs.iositemap-index.xml',
+        policy: [{userAgent: '*', allow: '/'}]
+      }
+    }
   ]
 }
