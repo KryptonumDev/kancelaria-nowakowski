@@ -61,7 +61,7 @@ module.exports = {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
         host: 'https://kancelaria.gatsbyjs.io',
-        sitemap: 'https://kancelaria.gatsbyjs.iositemap-index.xml',
+        sitemap: 'https://kancelaria.gatsbyjs.io/sitemap-index.xml',
         policy: [{userAgent: '*', allow: '/'}]
       }
     },
