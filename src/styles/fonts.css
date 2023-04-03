@@ -28,6 +28,13 @@
 }
 @font-face {
   font-family: "Literata";
+  font-weight: 400;
+  font-display: swap;
+  font-style: italic;
+  src: url(../resources/fonts/Literata-Italic.woff2) format("woff2");
+}
+@font-face {
+  font-family: "Literata";
   font-weight: 600;
   font-display: swap;
   font-style: normal;

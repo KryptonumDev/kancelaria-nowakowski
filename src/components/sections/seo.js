@@ -5,7 +5,7 @@ import Organization from "../layout/schema/organization"
 import Post from "../layout/schema/post"
 
 export function Head({ data, pageContext }) {
-  const seo = data.wpPage?.seo || data.wpPost?.seo || data.wpSpecjalizacja?.seo// TODO: add custom post 
+  const seo = data.wpPage?.seo || data.wpPost?.seo || data.wpSpecjalizacja?.seo
   const { site: siteMetadata } = useStaticQuery(graphql`
   query {
       site {

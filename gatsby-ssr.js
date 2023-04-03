@@ -5,6 +5,7 @@ import LatoRegular from "./src/resources/fonts/Lato-Regular.woff2"
 import LatoBold from "./src/resources/fonts/Lato-Bold.woff2"
 import LiterataRegular from "./src/resources/fonts/Literata-Regular.woff2"
 import LiterataSemiBold from "./src/resources/fonts/Literata-SemiBold.woff2"
+import LiterataItalic from "./src/resources/fonts/Literata-Italic.woff2"
 
 export const onRenderBody = ({ setHtmlAttributes, setHeadComponents }) => {
   setHtmlAttributes({ lang: "pl" })
@@ -44,6 +45,14 @@ export const onRenderBody = ({ setHtmlAttributes, setHeadComponents }) => {
     <link
       rel="preload"
       href={LiterataSemiBold}
+      as="font"
+      type="font/woff2"
+      crossOrigin="anonymous"
+      key="interFont"
+    />,
+    <link
+      rel="preload"
+      href={LiterataItalic}
       as="font"
       type="font/woff2"
       crossOrigin="anonymous"

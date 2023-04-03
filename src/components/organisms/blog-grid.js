@@ -20,6 +20,7 @@ export default function Grid({ currentPage, posts }) {
         ) {
           return (
             <Card
+              key={el.title + index}
               index={index}
               scrollProgresValue={scrollProgresValue}
               data={el}

@@ -71,7 +71,7 @@ const Nav = () => {
                 <Link className="styled-link" partiallyActive={true} activeClassName='active' to="/blog/" onClick={handleNavClick}>Blog</Link>
               </li>
             </ul>
-            <Link c activeClassName='active' to="/kontakt/" className="navLinks-cta " onClick={handleNavClick}>Kontakt</Link>
+            <Link activeClassName='active' to="/kontakt/" className="navLinks-cta" onClick={handleNavClick}>Kontakt</Link>
           </div>
           <Link activeClassName='active' to="/kontakt/" className="nav-cta" onClick={handleNavClick}>Kontakt</Link>
           <button
@@ -220,7 +220,6 @@ const StyledNav = styled.header`
       }
       a.active {
         font-weight: 700;
-        font-style: italic;
       }
     }
   }

@@ -36,7 +36,7 @@ export default function Navigation({ headings }) {
       </svg>
       <div>
         {headings?.map(el => (
-          <button className={activePart === slugTransform(el.innerText) ? 'active' : ''} onClick={(e) => { scroll(e, slugTransform(el.innerText)) }}>{el.innerText}</button>
+          <button key={slugTransform(el.innerText)} className={activePart === slugTransform(el.innerText) ? 'active' : ''} onClick={(e) => { scroll(e, slugTransform(el.innerText)) }}>{el.innerText}</button>
         ))}
       </div>
     </Wrapper>

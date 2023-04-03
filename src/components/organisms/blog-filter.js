@@ -7,7 +7,7 @@ export default function Filter({ postsCount, categories }) {
 
   const x = useMotionValue(0)
 
-  const [maxButtonsTransform, setMaxButtonsTransform] = useState(0)
+  const [maxbuttonstransform, setMaxButtonsTransform] = useState(0)
 
   useEffect(() => {
     const parrent = document.getElementById('control-wrap')
@@ -17,7 +17,7 @@ export default function Filter({ postsCount, categories }) {
     setMaxButtonsTransform(maxTransform)
   }, [])
 
-  const transform = useCallback((direction, x, maxButtonsTransform) => {
+  const transform = useCallback((direction, x, maxbuttonstransform) => {
     const transformx = x.get()
     x.stop()
     if (direction === 'left') {
@@ -27,8 +27,8 @@ export default function Filter({ postsCount, categories }) {
         x.set(transformx + 200)
       }
     } else if (direction === 'right') {
-      if (transformx - 200 < - maxButtonsTransform) {
-        x.set(-maxButtonsTransform)
+      if (transformx - 200 < - maxbuttonstransform) {
+        x.set(-maxbuttonstransform)
       } else {
         x.set(transformx - 200)
       }
@@ -39,9 +39,9 @@ export default function Filter({ postsCount, categories }) {
     <Wrapper>
       <div className="flex">
         <h2>Kategorie:</h2>
-        {maxButtonsTransform > 0 && (
+        {maxbuttonstransform > 0 && (
           <div className="arrows" >
-            <button onClick={() => { transform('left', x, maxButtonsTransform) }}>
+            <button onClick={() => { transform('left', x, maxbuttonstransform) }}>
               <svg width="49" height="49" viewBox="0 0 49 49" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect width="48" height="48" transform="translate(0.5 0.0800781)" fill="white" />
                 <path d="M8.5 24.0801L40.4995 24.0801" stroke="#0F3730" strokeWidth="1.5" strokeLinecap="square" />
@@ -49,7 +49,7 @@ export default function Filter({ postsCount, categories }) {
                 <path d="M19.8203 35.4002C19.8203 29.5807 14.6952 24.0801 8.50022 24.0801" stroke="#0F3730" strokeWidth="1.5" strokeLinecap="square" />
               </svg>
             </button>
-            <button onClick={() => { transform('right', x, maxButtonsTransform) }}>
+            <button onClick={() => { transform('right', x, maxbuttonstransform) }}>
               <svg width="49" height="49" viewBox="0 0 49 49" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect width="48" height="48" transform="translate(0.5 0.0800781)" fill="white" />
                 <path d="M40.5 24.0801L8.50048 24.0801" stroke="#0F3730" strokeWidth="1.5" strokeLinecap="square" />
@@ -61,13 +61,13 @@ export default function Filter({ postsCount, categories }) {
         )}
       </div>
       <SliderWrapper id='control-wrap'>
-        <Slider style={{ x }} drag='x' dragConstraints={{ left: maxButtonsTransform > 0 ? -maxButtonsTransform : 0, right: 0 }} maxButtonsTransform={maxButtonsTransform} id='control'>
+        <Slider style={{ x }} drag='x' dragConstraints={{ left: maxbuttonstransform > 0 ? -maxbuttonstransform : 0, right: 0 }} maxbuttonstransform={maxbuttonstransform} id='control'>
           <Placeholder/>
           <Link activeClassName="active" to='/blog/'>
             Wszystkie ({postsCount})
           </Link>
           {categories.map(el => (
-            <Link activeClassName="active" to={el.uri}>
+            <Link key={el.name} activeClassName="active" to={el.uri}>
               {el.name} ({el.count})
             </Link>
           ))}

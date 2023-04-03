@@ -13,7 +13,7 @@ export default function Hero({ categories, title, excerpt, featuredImage }) {
         <div dangerouslySetInnerHTML={{ __html: excerpt }} />
         <Categories>
           {categories.nodes.map(el => (
-            <Link to={el.uri}>
+            <Link key={el.name} to={el.uri}>
               {el.name}
             </Link>
           ))}
@@ -29,11 +29,10 @@ const Wrapper = styled.section`
   grid-template-columns: 1fr 1fr;
   grid-gap: 32px;
 
-
-@media (max-width: 640px) {
-  display: flex;
-  flex-direction: column-reverse;
-}
+  @media (max-width: 640px) {
+    display: flex;
+    flex-direction: column-reverse;
+  }
 
   h1{
     margin-top: 16px;

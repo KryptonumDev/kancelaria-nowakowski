@@ -70,6 +70,11 @@ const GlobalStyle = createGlobalStyle`
     text-decoration: none;
   }
 
+  p em {
+    font-style: italic !important;
+    font-family: 'Literata';
+  }
+
   h1 em, h2 em, h3 em, h4 em, h5 em, h6 em{
     position: relative;
     font-style: normal;

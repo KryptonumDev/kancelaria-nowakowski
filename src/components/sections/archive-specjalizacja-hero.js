@@ -11,7 +11,7 @@ export default function Hero({ data }) {
       <Grid>
         <div className="title" dangerouslySetInnerHTML={{ __html: data.pageTitle }} />
         {data.linksToSubpages.map((el, index) => (
-          <Link to={el.link.url} className={`item item-${index}`}>
+          <Link key={el.link.title + index} to={el.link.url} className={`item item-${index}`}>
             <p>{el.link.title}</p>
             <GatsbyImage className="image" image={el.backgroundImage.localFile.childImageSharp.gatsbyImageData} alt={el.backgroundImage.altText} />
           </Link>

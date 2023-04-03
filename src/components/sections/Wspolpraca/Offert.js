@@ -28,7 +28,7 @@ const Offert = ({data}) => {
       <div className="content">
         <div className="item">
           {data.leftContentPart.contentRepeater.map((item, i) => (
-            <div className="itemSubSection">
+            <div key={item.subpartName + i} className="itemSubSection">
               <h3>{item.subpartName}</h3>
               <div dangerouslySetInnerHTML={{__html: item.subpartContent}}></div>
             </div>
@@ -36,7 +36,7 @@ const Offert = ({data}) => {
         </div>
         <div className="item">
           {data.rightContentPart.contentRepeater.map((item, i) => (
-            <div className="itemSubSection">
+            <div key={item.subpartName + i} className="itemSubSection">
               <h3>{item.subpartName}</h3>
               <div dangerouslySetInnerHTML={{__html: item.subpartContent}}></div>
             </div>

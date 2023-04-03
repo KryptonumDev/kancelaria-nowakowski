@@ -26,7 +26,6 @@ export default function Kancelaria({ data }) {
       }
     }
   } = data;
-  console.log(data);
   return (
     <main>
       <Hero data={heroKancelaria} />

@@ -14,7 +14,7 @@ export default function Slider({ posts, data }) {
 
   return (
     <Wrapper>
-      <h2 dangerouslySetInnerHTML={{ __html: data.sectionTitle }}></h2>
+      <div dangerouslySetInnerHTML={{ __html: data.sectionTitle }}></div>
       <div className="flex">
         <div dangerouslySetInnerHTML={{ __html: data.leftTextUnderTitle }} />
         <div dangerouslySetInnerHTML={{ __html: data.rightTextUnderTitle }} />
