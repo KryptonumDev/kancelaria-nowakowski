@@ -219,6 +219,10 @@ const Wrapper = styled.section`
       .people {
         .people-item {
           width: 100%;
+          img {
+            max-height: 514px;
+            object-position: top;
+          }
         }
       }
     }
