@@ -18,7 +18,7 @@ export default function Homepage({ data }) {
       <OrnamentSection data={sectionWithImgOnRightHome} />
       <Testimonials data={sectionWithCommentsHome} />
       <Slider posts={data.allWpPost.nodes} data={sectionBlog} />
-      <ContactUs />
+      <ContactUs data={sectionContact} />
     </main>
   )
 }

@@ -20,10 +20,10 @@ export default function Slider({ posts, data }) {
         <div dangerouslySetInnerHTML={{ __html: data.rightTextUnderTitle }} />
       </div>
       <Grid>
-        {posts.map((el, index) => (
+        {posts.map((el, i) => (
           <Card
-            key={el.title + index}
-            index={index}
+            key={i}
+            index={i}
             scrollProgresValue={scrollProgresValue}
             data={el}
           />

@@ -73,13 +73,13 @@ const Wrapper = styled.section`
           bottom: 0;
           line-height: 1;
           color: var(--primary-600);
-          font-family: var(--serif);
           font-size: clamp(${50/16}rem, ${50/7.68}vw, ${54/16}rem);
         }
         font-size: clamp(${24/16}rem, ${30/7.68}vw, ${32/16}rem);
         margin-bottom: clamp(1rem, ${24/7.68}vw, ${24/16}rem);
       }
       p {
+        font-size: clamp(1rem, ${20/7.68}vw, ${20/16}rem);
         &:not(:last-child) {
           margin-bottom: 1rem;
         }

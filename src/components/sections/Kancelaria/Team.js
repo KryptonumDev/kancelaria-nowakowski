@@ -20,12 +20,12 @@ const Team = ({data}) => {
         <div className="people">
           {advocates.osoby.map((person, i) => (
             <div className="people-item" key={i}>
-              <GatsbyImage image={person.zdjecieOsoby.localFile.childImageSharp.gatsbyImageData} alt={person.zdjecieOsoby.altText || ""}></GatsbyImage>
+              <GatsbyImage image={person.zdjecieOsoby.localFile.childImageSharp.gatsbyImageData} alt={person.zdjecieOsoby.altText || ""} className="people-img"></GatsbyImage>
               <div className="social">
-                <a aria-label="link do facebook" href={person.facebookLink} target="_blank" rel="noreferrer">
+                <a aria-label="Link do facebook" href={person.facebookLink} target="_blank" rel="noreferrer">
                   <Facebook />
                 </a>
-                <a aria-label="link do instagram" href={person.instagramLink} target="_blank" rel="noreferrer">
+                <a aria-label="Link do instagram" href={person.instagramLink} target="_blank" rel="noreferrer">
                   <Instagram />
                 </a>
               </div>
@@ -48,12 +48,12 @@ const Team = ({data}) => {
         <div className="people">
           {lawyers.osoby.map((person, i) => (
             <div className="people-item" key={i}>
-              <GatsbyImage image={person.zdjecieOsoby.localFile.childImageSharp.gatsbyImageData} alt={person.zdjecieOsoby.altText || ""}></GatsbyImage>
+              <GatsbyImage image={person.zdjecieOsoby.localFile.childImageSharp.gatsbyImageData} alt={person.zdjecieOsoby.altText || ""} className="people-img"></GatsbyImage>
               <div className="social">
-                <a href={person.facebookLink} target="_blank" rel="noreferrer">
+                <a aria-label="Link do facebook" href={person.facebookLink} target="_blank" rel="noreferrer">
                   <Facebook />
                 </a>
-                <a href={person.instagramLink} target="_blank" rel="noreferrer">
+                <a aria-label="Link do instagram" href={person.instagramLink} target="_blank" rel="noreferrer">
                   <Instagram />
                 </a>
               </div>
@@ -76,12 +76,12 @@ const Team = ({data}) => {
         <div className="people">
           {other.osoby.map((person, i) => (
             <div className="people-item" key={i}>
-              <GatsbyImage image={person.zdjecieOsoby.localFile.childImageSharp.gatsbyImageData} alt={person.zdjecieOsoby.altText || ""}></GatsbyImage>
+              <GatsbyImage image={person.zdjecieOsoby.localFile.childImageSharp.gatsbyImageData} alt={person.zdjecieOsoby.altText || ""} className="people-img"></GatsbyImage>
               <div className="social">
-                <a href={person.facebookLink} target="_blank" rel="noreferrer">
+                <a aria-label="Link do facebook" href={person.facebookLink} target="_blank" rel="noreferrer">
                   <Facebook />
                 </a>
-                <a href={person.instagramLink} target="_blank" rel="noreferrer">
+                <a aria-label="Link do instagram" href={person.instagramLink} target="_blank" rel="noreferrer">
                   <Instagram />
                 </a>
               </div>
@@ -110,6 +110,8 @@ const Wrapper = styled.section`
     margin: clamp(${20/16}rem, ${24/7.68}vw, ${24/16}rem) auto;
     display: block;
   }
+  .team-section:nth-of-type(2) > svg g {fill: #2F80ED}
+  .team-section:nth-of-type(3) > svg g {fill: var(--secondary-600)}
   .team-section {
     &:not(:first-of-type){
       margin-top: ${108/16}rem;
@@ -151,6 +153,9 @@ const Wrapper = styled.section`
           font-size: clamp(${18/16}rem, ${21/7.68}vw, ${24/16}rem);
           margin-bottom: ${12/16}rem;
         }
+        .people-img {
+          width: 100%;
+        }
         .social {
           display: grid;
           grid-template-columns: 1fr 1fr;
@@ -160,6 +165,23 @@ const Wrapper = styled.section`
             svg {
               display: block;
               margin: 0 auto;
+            }
+            position: relative;
+            &::before {
+              content: '';
+              position: absolute;
+              left: 50%;
+              top: -8px;
+              transform: translateX(-50%) rotate(45deg);
+              background-color: var(--primary-600);
+              width: 16px;
+              height: 16px;
+              opacity: 0;
+              pointer-events: none;
+              transition: opacity .2s ease-in-out;
+            }
+            &:hover::before {
+              opacity: 1;
             }
           }
           a:nth-child(1) {

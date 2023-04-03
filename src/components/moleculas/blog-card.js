@@ -110,7 +110,9 @@ const Categories = styled.div`
 const Image = styled.div`
   position: relative;
   .image{
+    width: 100%;
     height: 300px;
+    aspect-ratio: 314 / 235;
 
     @media (max-width: 1024px) {
       height: 100%;

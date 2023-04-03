@@ -126,6 +126,7 @@ const Wrapper = styled.footer`
     }
     h3 {
       margin-bottom: 1rem;
+      font-size: clamp(${18/16}rem, ${21/7.68}vw, ${24/16}rem);
     }
     a {
       display: block;
@@ -142,9 +143,10 @@ const Wrapper = styled.footer`
       display: grid;
       grid-template-columns: clamp(133px, ${152 / 7.68}vw, 152px) auto;
       gap: 12px;
-      width: max(${185 / 7.68}vw, ${243 / 16}rem);
+      width: clamp(${328/16}rem, ${347/7.68}vw, ${407/16}rem);
       img {
         width: clamp(133px, ${152 / 7.68}vw, 152px);
+        aspect-ratio: 152 / 114;
       }
       p {
         font-size: clamp(1rem, ${20 / 7.68}vw, ${20 / 16}rem);
@@ -155,6 +157,9 @@ const Wrapper = styled.footer`
         display: flex;align-items: center;
         font-family: var(--serif);
         white-space: nowrap;
+      }
+      &:not(:last-child) {
+        margin-bottom: 1rem;
       }
     }
     .social {
@@ -237,7 +242,6 @@ const Wrapper = styled.footer`
                           "a c"
                           "d d"
                           "e e";
-
       .blog-item {
         width: 100%;
       }

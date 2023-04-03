@@ -27,12 +27,10 @@ const CallToActionTwoBtns = ({ data }) => {
 }
 
 const Wrapper = styled.section`
-  margin: clamp(64px, ${96 / 768 * 100}vw, 128px) 0 0 0;
-
   padding: ${52 / 16}rem ${42 / 16}rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-gap: min(${66 / 7.68}vw, ${116 / 16}rem);
+  grid-gap: clamp(${32/16}rem, ${66/7.68}vw, ${116/16}rem);
   text-align: center;
   position: relative;
   .image{
@@ -41,13 +39,12 @@ const Wrapper = styled.section`
     z-index: -1;
     height: 100%;
   }
-  svg{
-    g{
-      fill: #3DA290;
-    }
+  svg g {
+    fill: #3DA290;
   }
   h3 {
     margin: 1rem 0 ${20 / 16}rem;
+    font-size: clamp(${18/16}rem, ${21/7.68}vw, ${24/16}rem);
   }
   .cta-primary {
     background-color: var(--primary-100);

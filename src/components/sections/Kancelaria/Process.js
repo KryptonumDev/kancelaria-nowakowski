@@ -78,13 +78,17 @@ const Wrapper = styled.section`
     .advantages-item:nth-child(3){grid-area:c};
     .advantages-item:nth-child(4){grid-area:d};
     .advantages-item:nth-child(5){grid-area:e};
+    .advantages-item:nth-of-type(1)::before   {
+      background-color: var(--primary-400);
+    }
     .advantages-item {
       position: relative;
       ::before {
         content: '';
         width: 16px;
         height: 16px;
-        background-color: var(--primary-400);
+        background-color: #fff;
+        border: 1px solid var(--primary-400);
         position: absolute;
         top: .5em;
         right: -1.5rem;
@@ -105,6 +109,8 @@ const Wrapper = styled.section`
         img {
           width: 32px;
           height: 32px;
+          margin-right: 4px;
+          margin-top: 2px;
         }
       }
       p {
@@ -118,6 +124,7 @@ const Wrapper = styled.section`
     border: 1px solid var(--primary-400);
     justify-content: flex-end;
     gap: 32px;
+    background: center / cover no-repeat url("/pattern.png");
     h3 {
       width: 33.3%;
       font-size: clamp(${24/16}rem, ${30/7.68}vw, ${32/16}rem);

@@ -25,7 +25,7 @@ export default function Wspolpraca({ data }) {
       <OrnamentSection data={sectionWithImgOnRightCooperation} />
       <Offert data={offersCooperation} />
       <CallToAction data={callToActionCooperation} />
-      <ContactUs />
+      <ContactUs data={data.global.global.sectionContact} />
     </main>
   )
 }
@@ -151,6 +151,14 @@ export const query = graphql`
               }
             }
           }
+        }
+      }
+    }
+    global : wpPage(id: {eq: "cG9zdDoxNjg="}) {
+      global {
+        sectionContact {
+          sectionTitle
+          contentUnderTitle
         }
       }
     }

@@ -4,10 +4,21 @@ import CalendlyCta from "../components/sections/CalendlyCta"
 import ContactUs from "../components/sections/ContactUs"
 
 export default function Kontakt({ data }) {
+  const {
+    global: {
+      global: {
+        sectionContact,
+      }},
+    wpPage: {
+      contact: {
+        sectionCtaContact
+      }
+    }
+  } = data;
   return (
     <main>
-      <ContactUs />
-      <CalendlyCta  data={data.wpPage.contact.sectionCtaContact}/>
+      <ContactUs data={sectionContact} />
+      <CalendlyCta data={sectionCtaContact}/>
     </main>
   )
 }

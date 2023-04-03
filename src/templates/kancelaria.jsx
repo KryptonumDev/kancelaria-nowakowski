@@ -34,7 +34,7 @@ export default function Kancelaria({ data }) {
       <Process data={howWeWorkKancelaria} />
       <OrnamentSeciton data={sectionWithImgOnRightKancelaria} />
       <Slider posts={data.allWpPost.nodes} data={sectionBlog} />
-      <ContactUs />
+      <ContactUs data={sectionContact} />
     </main>
   )
 }

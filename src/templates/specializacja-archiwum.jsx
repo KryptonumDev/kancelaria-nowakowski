@@ -11,7 +11,7 @@ export default function SpecializacjaArchiwum({ data }) {
     <main>
       <Hero data={sectionGridSpecialisation}/>
       <Slider posts={data.allWpPost.nodes} data={sectionBlog} />
-      <ContactUs />
+      <ContactUs data={sectionContact} />
     </main>
   )
 }

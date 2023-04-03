@@ -5,7 +5,8 @@ import { Link } from "gatsby";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 
-const ContactUs = () => {
+const ContactUs = ({data}) => {
+  console.log(data);
   const { register, handleSubmit, reset, watch, formState: { errors } } = useForm();
   const [sended, setSended] = useState(false)
 
@@ -23,7 +24,7 @@ const ContactUs = () => {
 
     axios.post(url, body)
       .then((res) => {
-        if (res.status === 200) {
+        if(res.status === 200){
           setSended(true)
           reset()
         } else {
@@ -36,21 +37,9 @@ const ContactUs = () => {
     <Wrapper>
       <header className="header">
         <Ornament />
-        <h2>Skontaktuj się z nami.</h2>
+        <div dangerouslySetInnerHTML={{__html: data.sectionTitle}}></div>
       </header>
-      <div className="content">
-        <p>Potrzebujesz profesjonalnej porady prawnej? Jesteś zainteresowany stałą współpracą z naszą Kancelarią?</p>
-        <h3>Wypełnij formularz kontaktowy, napisz lub zadzwoń. Jesteśmy do Twojej dyspozycji w poniedziałek od 9.00 do 18.00 wtorek - czwartek w godzinach od 9.00 do 17.00.  W piątek zapraszamy od 8.00 do 16.00.</h3>
-        <ul>
-          <li>Kancelaria w Łodzi Manu Park, ul. Ogrodowa 4, lok. 5, 91-062 Łódź. Zapraszamy w indywidualnie uzgodnionym terminie.</li>
-          <li>Kancelaria w Łasku ul. Żeromskiego 8/4, 98-100 Łask.
-            <ul>
-              <li>Poniedziałek od 9.00 do 18.00</li>
-              <li>Wtorek - czwartek od 9.00 do 17.00</li>
-              <li>Piątek od 8.00 do 16.00</li>
-            </ul>
-          </li>
-        </ul>
+      <div className="content" dangerouslySetInnerHTML={{__html: data.contentUnderTitle}}>
       </div>
       <div className="form">
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -111,7 +100,7 @@ const ContactUs = () => {
             <label>
               <span>Wybierz datę i godzinę</span>
               <div className="input">
-                <input min={new Date().toISOString().slice(0,new Date().toISOString().lastIndexOf(":"))} type="datetime-local" {...register("date")} />
+                <input min={new Date().toISOString().slice(0,new Date().toISOString().lastIndexOf(":"))} type="datetime-local" placeholder="SIEMA" {...register("date")} />
                 <InputBorder />
               </div>
             </label>
@@ -136,22 +125,20 @@ const Wrapper = styled.section`
   display: grid;
   grid-template-areas: "header form" "content form";
   grid-template-columns: 1.2fr 1fr;
-  column-gap: ${140 / 13.66}vw;
+  column-gap: ${140/13.66}vw;
+  row-gap: 42px;
   .header {
     grid-area: header;
     h2 {
-      margin-top: ${32 / 16}rem;
+      margin-top: ${32/16}rem;
     }
   }
   .content {
     grid-area: content;
     p {
-      margin: ${48 / 16}rem 0 ${24 / 16}rem;
+      margin: 1rem 0;
       font-family: var(--serif);
-      font-size: clamp(${20 / 16}rem, ${24 / 13.66}vw, ${26 / 16}rem);
-      & + h3 {
-        margin-bottom: 1rem;
-      }
+      font-size: clamp(${22/16}rem, ${26/7.68}vw, ${24/16}rem);
     }
     ul {
       list-style-type: none;

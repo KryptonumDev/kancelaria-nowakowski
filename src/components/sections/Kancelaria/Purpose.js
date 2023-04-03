@@ -47,7 +47,7 @@ const Wrapper = styled.section`
       margin-bottom: clamp(${12/16}rem, ${16/7.68}vw, ${24/16}rem);
     }
     p {
-      font-size: clamp(${18/16}rem, ${26/7.68}vw, ${24/16}rem);
+      font-size: clamp(${18/16}rem, ${21/7.68}vw, ${24/16}rem);
       font-family: var(--serif);
     }
   }
@@ -62,14 +62,6 @@ const Wrapper = styled.section`
       }
       &:nth-child(odd) {
         flex-direction: column-reverse;
-      }
-      h3 {
-        font-size: clamp(${24/16}rem, ${30/7.68}vw, ${32/16}rem);
-        margin-bottom: clamp(${12/16}rem, ${16/7.68}vw, ${24/16}rem);
-      }
-      p {
-        font-size: clamp(${18/16}rem, ${26/7.68}vw, ${24/16}rem);
-        font-family: var(--serif);
       }
     }
   }

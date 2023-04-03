@@ -49,10 +49,7 @@ const GlobalStyle = createGlobalStyle`
     min-width: 320px;
     font-family: var(--sans-serif);
     color: var(--primary-800);
-    font-feature-settings: 'pnum' on, 'onum' on;
-
   }
-
   button, select {
     cursor: pointer;
   }
@@ -69,12 +66,13 @@ const GlobalStyle = createGlobalStyle`
     color: inherit;
     text-decoration: none;
   }
-
+  p {
+    font-feature-settings: 'pnum' on, 'onum' on;
+  }
   p em {
     font-style: italic !important;
     font-family: 'Literata';
   }
-
   h1 em, h2 em, h3 em, h4 em, h5 em, h6 em{
     position: relative;
     font-style: normal;
@@ -104,19 +102,20 @@ const GlobalStyle = createGlobalStyle`
   }
 
   h1, h2, h3, h4, h5, h6, .h3 {
-    font-family: 'Literata', serif;
+    font-family: var(--serif);
     font-weight: 400;
     color: var(--primary-900);
     line-height: 1.22;
+    letter-spacing: -0.01em;
   }
   h1 {
     font-size: clamp(${36 / 16}rem, ${50 / 7.68}vw, ${54 / 16}rem);
   }
   h2 {
-    font-size: clamp(${28 / 16}rem, ${40 / 13.66}vw, ${40 / 16}rem);
+    font-size: clamp(${28 / 16}rem, ${36 / 7.68}vw, ${40 / 16}rem);
   }
   h3, .h3 {
-    font-size: clamp(${18 / 16}rem, ${24 / 10.24}vw, ${24 / 16}rem);
+    font-size: clamp(${24 / 16}rem, ${30 / 7.68}vw, ${32 / 16}rem);
   }
   button[type="submit"] {
     background-color: var(--primary-500);
@@ -129,7 +128,7 @@ const GlobalStyle = createGlobalStyle`
     padding: 1rem 2rem;
   }
 
-  main{
+  main {
     display: grid;
     grid-gap: clamp(64px, ${96 / 768 * 100}vw, 128px);
   }

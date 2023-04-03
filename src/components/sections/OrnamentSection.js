@@ -28,7 +28,7 @@ const StyledSection = styled.section`
   align-items: flex-end;
   gap: 32px;
   position: relative;
-  padding-right: 15%;
+  padding-right: 173px;
   .text {
     ul {
       margin: ${12/16}rem 0 ${24/16}rem;
@@ -37,7 +37,9 @@ const StyledSection = styled.section`
       grid-template-columns: 1fr 1fr;
       grid-gap: 12px 24px;
       font-size: inherit;
+      padding-right: 62px;
       li {
+        font-size: clamp(${20/16}rem, ${16/7.68}vw, ${20/16}rem);
         display: flex;
         gap: 4px;
         > * {
@@ -55,7 +57,7 @@ const StyledSection = styled.section`
   ::before {
     content: '';
     position: absolute;
-    right: 5%;
+    right: 67px;
     top: 0;
     width: 120%;
     height: 100%;
@@ -63,13 +65,15 @@ const StyledSection = styled.section`
     z-index: -1;
   }
   header {
-    width: 50%;
+    width: 55%;
     h2 {
       margin-bottom: ${48 / 16}rem;
+      font-size: clamp(${24/16}rem, ${36/7.68}, ${40/16}rem);
     }
     p {
-      font-size: clamp(${18 / 16}rem, ${24 / 13.66}vw, ${24 / 16}rem);
-      &:not(:last-of-type){
+      font-size: clamp(${18/16}rem, ${21/7.68}vw, ${24/16}rem);
+      font-family: var(--serif);
+      &:not(:last-child){
         margin-bottom: 1rem;
       }
     }
@@ -93,6 +97,7 @@ const StyledSection = styled.section`
     }
     .text {
       ul {
+        padding-right: 0;
         grid-template-columns: 1fr;
       }
     }

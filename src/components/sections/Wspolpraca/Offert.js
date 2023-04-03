@@ -18,12 +18,12 @@ const Offert = ({data}) => {
         </div>
         <div>
           <GatsbyImage image={data.rightContentPart.partIcon.localFile.childImageSharp.gatsbyImageData} alt={data.rightContentPart.partIcon.altText} />
-          <span>{data.leftContentPart.partName}</span>
+          <span>{data.rightContentPart.partName}</span>
         </div>
       </div>
       <div className="switcher">
         <button onClick={() => setSwitcher(0)}>{data.leftContentPart.partName}</button>
-        <button onClick={() => setSwitcher(1)}>{data.leftContentPart.partName}</button>
+        <button onClick={() => setSwitcher(1)}>{data.rightContentPart.partName}</button>
       </div>
       <div className="content">
         <div className="item">
@@ -65,10 +65,11 @@ const Wrapper = styled.section`
     grid-template-columns: 1fr 1fr;
     font-size: ${32/16}rem;
     font-family: var(--serif);
-    .switch {
-      display: inline-flex;
+    > div {
+      display: flex;
       align-items: center;
       justify-content: center;
+      gap: 4px;
     }
   }
   .switcher {

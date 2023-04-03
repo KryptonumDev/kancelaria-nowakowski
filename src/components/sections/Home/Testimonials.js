@@ -38,7 +38,7 @@ const Testimonials = ({ data }) => {
         ))}
       </Content>
       <Control>
-        <button aria-label='stzrałka w lewo' onClick={() => { setActiveSlide(activeSlide - 1 >= 0 ? activeSlide - 1 : 0) }}>
+        <button aria-label='strzałka w lewo' onClick={() => { setActiveSlide(activeSlide - 1 >= 0 ? activeSlide - 1 : 0) }}>
           <svg width="65" height="65" viewBox="0 0 65 65" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect width="64" height="64" transform="translate(0.715698 0.480469)" fill="white" />
             <path d="M11.381 32.4805L54.0471 32.4805" stroke="#0F3730" strokeWidth="1.5" strokeLinecap="square" />
@@ -49,7 +49,7 @@ const Testimonials = ({ data }) => {
         {data.comments.map((el, index) => (
           <button aria-label={`komentarz numer ${index + 1}`} onClick={() => { setActiveSlide(index) }} className={index === activeSlide ? 'active dot' : "dot"} key={index} />
         ))}
-        <button aria-label='stzrałka w prawo' onClick={() => { setActiveSlide(activeSlide + 1 < data.comments.length ? activeSlide + 1 : activeSlide) }}>
+        <button aria-label='strzałka w prawo' onClick={() => { setActiveSlide(activeSlide + 1 < data.comments.length ? activeSlide + 1 : activeSlide) }}>
           <svg width="65" height="65" viewBox="0 0 65 65" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect width="64" height="64" transform="translate(0.284241 0.480469)" fill="white" />
             <path d="M53.615 32.4805L10.949 32.4805" stroke="#0F3730" strokeWidth="1.5" strokeLinecap="square" />

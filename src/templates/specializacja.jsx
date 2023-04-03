@@ -7,13 +7,12 @@ import ContactUs from "../components/sections/ContactUs"
 
 export default function Specializacja({ data }) {
   const { content, gutenberg, featuredImage } = data.wpSpecjalizacja
-
   const headings = useHeadings(content)
   return (
     <main>
       <Hero title={gutenberg.title} excerpt={gutenberg.excerpt} featuredImage={featuredImage} />
       <Content headings={headings} content={content} />
-      <ContactUs />
+      <ContactUs data={data.global.global.sectionContact} />
     </main>
   )
 }
@@ -22,23 +21,31 @@ export { Head } from "./../components/sections/seo"
 
 export const query = graphql`
   query specializacja ($id: String!) {
-      wpSpecjalizacja(id: {eq: $id}){
-          ...specjalizacjaSEO
-          gutenberg {
-            excerpt
-            title : tytulStrony
-          }
-          featuredImage {
-            node {
-              altText
-              localFile {
-                childImageSharp {
-                  gatsbyImageData
-                }
-              }
+    wpSpecjalizacja(id: {eq: $id}){
+      ...specjalizacjaSEO
+      gutenberg {
+        excerpt
+        title : tytulStrony
+      }
+      featuredImage {
+        node {
+          altText
+          localFile {
+            childImageSharp {
+              gatsbyImageData
             }
           }
-          content
+        }
       }
+      content
+    }
+    global : wpPage(id: {eq: "cG9zdDoxNjg="}) {
+      global {
+        sectionContact {
+          sectionTitle
+          contentUnderTitle
+        }
+      }
+    }
   }
 `
