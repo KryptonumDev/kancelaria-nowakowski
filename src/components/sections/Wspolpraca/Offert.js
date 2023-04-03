@@ -11,7 +11,7 @@ const Offert = ({data}) => {
         <div dangerouslySetInnerHTML={{__html: data.sectionTitle}}></div>
         <p>{data.textUnderTitle}</p>
       </header>
-      <div className="headerRow">
+      <div className="switcher-desktop">
         <div>
           <GatsbyImage image={data.leftContentPart.partIcon.localFile.childImageSharp.gatsbyImageData} alt={data.leftContentPart.partIcon.altText} />
           <span>{data.leftContentPart.partName}</span>
@@ -21,27 +21,23 @@ const Offert = ({data}) => {
           <span>{data.rightContentPart.partName}</span>
         </div>
       </div>
-      <div className="switcher">
+      <div className="switcher-mobile">
         <button onClick={() => setSwitcher(0)}>{data.leftContentPart.partName}</button>
         <button onClick={() => setSwitcher(1)}>{data.rightContentPart.partName}</button>
       </div>
       <div className="content">
-        <div className="item">
-          {data.leftContentPart.contentRepeater.map((item, i) => (
-            <div key={item.subpartName + i} className="itemSubSection">
-              <h3>{item.subpartName}</h3>
-              <div dangerouslySetInnerHTML={{__html: item.subpartContent}}></div>
-            </div>
-          ))}
-        </div>
-        <div className="item">
-          {data.rightContentPart.contentRepeater.map((item, i) => (
-            <div key={item.subpartName + i} className="itemSubSection">
-              <h3>{item.subpartName}</h3>
-              <div dangerouslySetInnerHTML={{__html: item.subpartContent}}></div>
-            </div>
-          ))}
-        </div>
+        {data.leftContentPart.contentRepeater.map((item, i) => (
+          <div key={item.subpartName + i} className="item-left">
+            <h3>{item.subpartName}</h3>
+            <div dangerouslySetInnerHTML={{__html: item.subpartContent}}></div>
+          </div>
+        ))}
+        {data.rightContentPart.contentRepeater.map((item, i) => (
+          <div key={item.subpartName + i} className="item-right">
+            <h3>{item.subpartName}</h3>
+            <div dangerouslySetInnerHTML={{__html: item.subpartContent}}></div>
+          </div>
+        ))}
       </div>
     </Wrapper>
   );
@@ -59,7 +55,7 @@ const Wrapper = styled.section`
       font-family: var(--serif);
     }
   }
-  .headerRow {
+  .switcher-desktop {
     margin: ${48/16}rem 0;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -72,13 +68,26 @@ const Wrapper = styled.section`
       gap: 4px;
     }
   }
-  .switcher {
+  .switcher-mobile {
     display: none;
   }
   .content {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: ${250/13.66}vw;
+    grid-template-areas: "a e" "b f" "c g" "d h";
+    .item-left {
+      &:nth-child(1) {grid-area:a}
+      &:nth-child(2) {grid-area:b}
+      &:nth-child(3) {grid-area:c}
+      &:nth-child(4) {grid-area:d}
+    }
+    .item-right {
+      &:nth-child(1) {grid-area:e}
+      &:nth-child(2) {grid-area:f}
+      &:nth-child(3) {grid-area:g}
+      &:nth-child(4) {grid-area:h}
+    }
+    gap: ${48/16}rem ${250/13.66}vw;
     position: relative;
     ::before {
       content: '';
@@ -93,6 +102,7 @@ const Wrapper = styled.section`
     font-size: ${20/16}rem;
     h3 {
       margin-bottom: ${32/16}rem;
+      font-size: clamp(${22/16}rem, ${26/7.68}vw, ${24/16}rem);
     }
     h4, p, li {
       margin-bottom: ${12/16}rem;
@@ -102,15 +112,12 @@ const Wrapper = styled.section`
       background: left 2px / 24px no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='25' fill='none'%3E%3Cpath stroke='%233DA290' stroke-linecap='square' stroke-width='1.5' d='M8.371 11.454c2.09 1.32 3.65 3.68 3.65 3.68h.031s3.316-5.867 9.477-9.476'/%3E%3Cpath stroke='%233DA290' stroke-linecap='round' stroke-width='1.5' d='M11.723 21.445a9.25 9.25 0 1 0 0-18.5 9.25 9.25 0 0 0 0 18.5Z' clip-rule='evenodd'/%3E%3C/svg%3E");
       padding-left: 28px;
     }
-    .itemSubSection:not(:last-child) {
-      margin-bottom: ${48/16}rem;
-    }
   }
-  @media (max-width: 899px){
-    .headerRow {
+  @media (max-width: 999px){
+    .switcher-desktop {
       display: none;
     }
-    .switcher {
+    .switcher-mobile {
       display: block;
       margin: ${48/16}rem 0;
       display: grid;
@@ -136,31 +143,34 @@ const Wrapper = styled.section`
     }
     .content {
       grid-template-columns: 1fr;
-      gap: ${250/13.66}vw;
-      position: relative;
+      grid-template-areas: unset;
+      .item-left,
+      .item-right {
+        grid-area: unset !important;
+      }
+      .item-right {
+        display: none;
+      }
       ::before {
         content: none;
       }
-      .item:last-child {
-        display: none;
-      }
     }
-  }
-  &[data-option="1"] {
-    button {
-      &:first-child {
-        opacity: .4;
+    &[data-option="1"] {
+      button {
+        &:first-child {
+          opacity: .4;
+        }
+        &:last-child {
+          opacity: 1;
+        }
       }
-      &:last-child {
-        opacity: 1;
-      }
-    }
-    .content {
-      .item:first-child {
-        display: none;
-      }
-      .item:last-child {
-        display: block;
+      .content {
+        .item-left {
+          display: none;
+        }
+        .item-right {
+          display: block;
+        }
       }
     }
   }

@@ -6,16 +6,12 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 
 const ContactUs = ({data}) => {
-  console.log(data);
-  const { register, handleSubmit, reset, watch, formState: { errors } } = useForm();
-  const [sended, setSended] = useState(false)
+  const { register, handleSubmit, reset, formState: { errors } } = useForm();
+  const [sent, setSent] = useState(false);
 
+  const url = 'https://kancelaria.headlesshub.com/wp-json/contact-form-7/v1/contact-forms/13/feedback';
   const onSubmit = data => {
-
-    let url = 'https://kancelaria.headlesshub.com/wp-json/contact-form-7/v1/contact-forms/13/feedback'
-
     let body = new FormData()
-
     body.append('email', data.email)
     body.append("phone", data.tel)
     body.append('fullname', data.name)
@@ -23,14 +19,14 @@ const ContactUs = ({data}) => {
     body.append('date', data.date)
 
     axios.post(url, body)
-      .then((res) => {
-        if(res.status === 200){
-          setSended(true)
-          reset()
-        } else {
-          // toast('There was some problem with contact form, try later')
-        }
-      })
+    .then((res) => {
+      if(res.status === 200){
+        setSent(true)
+        reset()
+      } else {
+        // toast('There was some problem with contact form, try later')
+      }
+    })
   }
 
   return (
@@ -50,7 +46,7 @@ const ContactUs = ({data}) => {
               <div className="input">
                 <input
                   type="text"
-                  {...register("name")}
+                  {...register("name", {required: true, maxLength: 80})}
                 />
                 <InputBorder />
               </div>
@@ -59,10 +55,11 @@ const ContactUs = ({data}) => {
           <div className="form-input">
             <label>
               <span>Adres e-mail</span>
+              <span>(Opcjonalnie)</span>
               <div className="input">
                 <input
                   type="email"
-                  {...register("email")}
+                  {...register("email", {required: true, pattern: /^\S+@\S+$/i})}
                 />
                 <InputBorder />
               </div>
@@ -74,7 +71,7 @@ const ContactUs = ({data}) => {
               <div className="input">
                 <input
                   type="tel"
-                  {...register("tel")}
+                  {...register("tel", {required: true})}
                 />
                 <InputBorder />
               </div>
@@ -100,14 +97,14 @@ const ContactUs = ({data}) => {
             <label>
               <span>Wybierz datę i godzinę</span>
               <div className="input">
-                <input min={new Date().toISOString().slice(0,new Date().toISOString().lastIndexOf(":"))} type="datetime-local" placeholder="SIEMA" {...register("date")} />
+                <input min={new Date().toISOString().slice(0,new Date().toISOString().lastIndexOf(":"))} type="datetime-local" {...register("date")} />
                 <InputBorder />
               </div>
             </label>
           </div>
           <div className="form-input">
             <label>
-              <input type="checkbox"  {...register("legal")} />
+              <input type="checkbox" {...register("legal", {required: true})} />
               <span>Wyrażam zgodę na przetwarzanie moich danych osobowych na zasadach określonych w <Link to="/polityka-prywatnosci">Polityce prywatności</Link></span>
             </label>
           </div>

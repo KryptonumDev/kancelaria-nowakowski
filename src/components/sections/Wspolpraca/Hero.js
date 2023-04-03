@@ -47,7 +47,6 @@ const StyledHero = styled.section`
     }
   }
   .hero-img {
-    min-width: 360px;
     width: 37.5%;
     &, > * {
       height: 100%;

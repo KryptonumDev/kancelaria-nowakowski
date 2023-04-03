@@ -78,7 +78,7 @@ const Wrapper = styled.section`
     .advantages-item:nth-child(3){grid-area:c};
     .advantages-item:nth-child(4){grid-area:d};
     .advantages-item:nth-child(5){grid-area:e};
-    .advantages-item:nth-of-type(1)::before   {
+    .advantages-item:nth-of-type(1)::before {
       background-color: var(--primary-400);
     }
     .advantages-item {

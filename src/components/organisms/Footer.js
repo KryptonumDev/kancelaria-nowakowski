@@ -81,7 +81,7 @@ const Footer = ({ setCookiesActive }) => {
         </li>
       </ul>
       <div className="footer-bottom">
-        <p>© 2022 Piotr Nowakowski & Dominika Sujka-Kujawiak</p>
+        <p>© {(new Date().getFullYear())} Piotr Nowakowski & Dominika Sujka-Kujawiak</p>
         <p>
           <span>Zaprojektowane przez</span>
           <a href="https://kryptonum.eu" target="_blank" rel="noreferrer" aria-label="Kryptonum">
