@@ -32,10 +32,10 @@ export default function Blog({ pageContext, data }) {
   )
 }
 
-// export { Head } from "./../components/sections/seo"
+export { Head } from "./../components/sections/seo"
 
 export const query = graphql`
-  query blog ($id: String!) {
+  query blog ($id: String!, $categoryId: String!) {
     allWpCategory(filter: {count: {gt: 0}}) {
       nodes {
         slug
@@ -69,6 +69,9 @@ export const query = graphql`
           }
         }
       }
+    }
+    wpCategory(id: {eq: $categoryId}) {
+      ...CategorySEO
     }
     wpPage(id: {eq: $id}){
       ...SEO

@@ -4,6 +4,13 @@ import * as React from "react"
 import styled from "styled-components"
 import { Ornament } from "../components/atoms/Icons"
 
+
+export const Head = () => {
+  return (
+    <title>Błąd 404 – Niestety ta strona nie istnieje</title>
+  )
+}
+
 const NotFoundPage = () => {
   return (
     <Wrapper>

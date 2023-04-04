@@ -79,6 +79,7 @@ exports.createPages = async ({
       component: path.resolve(`src/templates/${ARCHIVE_TEMPLATE_FILE_NAME}`),
       context: {
         id: pageData.id,
+        categoryId: '',
         slug: pageData.slug,
         uri: pageData.uri,
         page: 1,
@@ -102,6 +103,7 @@ exports.createPages = async ({
           component: path.resolve(`src/templates/${ARCHIVE_TEMPLATE_FILE_NAME}`),
           context: {
             id: pageData.id,
+            categoryId: '',
             slug: pageData.slug,
             uri: pageData.uri,
             page: page,
@@ -125,6 +127,7 @@ exports.createPages = async ({
         component: path.resolve(`src/templates/${ARCHIVE_TEMPLATE_FILE_NAME}`),
         context: {
           id: pageData.id,
+          categoryId: categoryData.id,
           slug: categoryData.slug,
           uri: categoryData.uri,
           page: 1,
@@ -152,6 +155,7 @@ exports.createPages = async ({
             component: path.resolve(`src/templates/${ARCHIVE_TEMPLATE_FILE_NAME}`),
             context: {
               id: categoryData.id,
+              categoryId: categoryData.id,
               slug: categoryData.slug,
               uri: categoryData.uri,
               page: page,

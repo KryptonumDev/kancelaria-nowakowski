@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
-    title: `Kancelaria Nowakowski`,
-    description: 'placeholder',
+    title: `Kancelaria Nowakowski - Kancelaria Adwokacka`,
+    description: 'Odszkodowania / Nieruchomości / Spadki / Kredyty frankowe / Rozwody / Prawo dla firm. Kancelaria adwokacka z wieloletnim doświadczeniem.',
     siteUrl: `https://kancelaria.gatsbyjs.io`,
     image: 'https://kancelaria.gatsbyjs.io/social.jpg',
   },
