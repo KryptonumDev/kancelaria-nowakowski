@@ -33,6 +33,11 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
+  padding-bottom: 4px;
+
+  svg{
+    min-width: 20px;
+  }
 
   a, span {
     font-style: normal;
@@ -40,9 +45,13 @@ const Wrapper = styled.div`
     font-size: 14px;
     line-height: 24px;
     color: rgb(113, 120, 120);
+    white-space: nowrap;
 
     &:last-child{
       color: #016250;
+      text-overflow: ellipsis;
+      overflow: hidden; 
+      white-space: nowrap;
     }
   }
 `

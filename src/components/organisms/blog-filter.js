@@ -93,6 +93,11 @@ const Placeholder = styled.div`
 
 const Wrapper = styled.div`
   margin-top: 80px;
+  max-width: calc(100vw - 80px);
+
+  @media (max-width: 768px) {
+    max-width: calc(100vw - 34px);
+  }
 
   .flex{
     display: flex;
