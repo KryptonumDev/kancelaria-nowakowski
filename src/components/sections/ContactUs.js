@@ -131,7 +131,14 @@ const ContactUs = ({data}) => {
           </div>
           <div className="form-input">
             <label>
-              <input type="checkbox" {...register("legal", {required: true})} />
+              {errors.legal && (
+                <span role="alert" className="error">To pole jest wymagane</span>
+              )}
+              <input
+                type="checkbox"
+                {...register("legal", {required: true})}
+                aria-invalid={errors.legal ? "true" : "false"}
+              />
               <span>Wyrażam zgodę na przetwarzanie moich danych osobowych na zasadach określonych w <Link to="/polityka-prywatnosci/">Polityce prywatności</Link></span>
             </label>
           </div>
