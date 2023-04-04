@@ -33,7 +33,7 @@ export default function Kancelaria({ data }) {
       <Team data={teamKancelaria} />
       <Process data={howWeWorkKancelaria} />
       <OrnamentSeciton data={sectionWithImgOnRightKancelaria} />
-      <Slider posts={data.allWpPost.nodes} data={sectionBlog} />
+      <Slider posts={posts} data={sectionBlog} />
       <ContactUs data={sectionContact} />
     </main>
   )

@@ -35,20 +35,24 @@ const MapaStrony = ({ data }) => {
 
   return (
     <Wrapper>
-      <Ornament />
-      <h1>Mapa strony.</h1>
-      <Link className="home" to='/'>Strona główna</Link>
-      <div className="columns">
-        {pages.map(el => (
-          <div className="block">
-            <Link className="main" to={el.uri}>{el.title}</Link>
-            <div className="sub-block">
-              {el.subArray.map(el => (
-                <Link className="sub" to={el.uri}>{el.title}</Link>
-              ))}
+      <div>
+        <Ornament />
+        <h1>Mapa strony.</h1>
+        <Link className="home styled-link" to='/'>Strona główna</Link>
+        <div className="columns">
+          {pages.map(el => (
+            <div className="block">
+              <Link className="main styled-link" to={el.uri}>{el.title}</Link><br />
+              <div className="sub-block">
+                {el.subArray.map(el => (
+                  <>
+                    <Link className="sub styled-link" to={el.uri}>{el.title}</Link><br />
+                  </>
+                ))}
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </Wrapper>
   )
@@ -84,6 +88,9 @@ const Wrapper = styled.main`
     width: 100%;
     max-width: fit-content;
   }
+  a{
+    width: fit-content;
+  }
   h1{
     font-size: clamp(${36 / 16}rem, ${54 / 13.66}vw, ${54 / 16}rem);
     position: relative;
@@ -113,7 +120,7 @@ const Wrapper = styled.main`
   }
 
   a{
-    display: block;
+    display: inline;
   }
 
   *{
@@ -129,7 +136,8 @@ const Wrapper = styled.main`
     font-size: clamp(${36 / 16}rem, ${54 / 13.66}vw, ${54 / 16}rem);
     line-height: 110%;
     letter-spacing: -0.01em;
-    width: 100%;
+    width: fit-content;
+    display: block;
   }
 
   .columns{
@@ -139,6 +147,12 @@ const Wrapper = styled.main`
     @media (max-width: 640px) {
       columns: unset;
     }
+  }
+
+  br{
+    display: block;
+    content: "";
+    margin: 16px;
   }
 
   .block{
@@ -153,7 +167,6 @@ const Wrapper = styled.main`
     .sub-block{
       margin-top: 24px;
       .sub{
-        margin-top: 16px;
         font-size: clamp(${18 / 16}rem, ${21 / 13.66}vw, ${24 / 16}rem);
       }
     }
