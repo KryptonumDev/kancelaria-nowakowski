@@ -246,7 +246,8 @@ const GlobalStyle = createGlobalStyle`
       background-color: var(--primary-800);
     }
   }
-  .cta-white{
+  .cta-white {
+    background-color: var(--primary-100);
     color: #0F3730;
   }
 `
