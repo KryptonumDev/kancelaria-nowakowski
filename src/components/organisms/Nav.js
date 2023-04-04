@@ -108,23 +108,21 @@ const StyledNav = styled.header`
   background-color: var(--neutral-100);
   height: 105px;
   z-index: 9;
-
   .arrow-link{
     display: flex;
     align-items: center;
     gap: 8px;
     transform: translateX(-24px);
     transition: transform .2s ease-out;
-
-    svg{
+    svg {
       transition: opacity .2s ease-out;
       opacity: 0;
     }
-
-
-    &.active, &:hover{
+    &.active,
+    &:hover,
+    &:focus-visible {
+      outline: none;
       transform: translate(0px);
-
       svg{
         opacity: 1;
       }
@@ -139,17 +137,10 @@ const StyledNav = styled.header`
   }
 
   .dropdown{
-    &:hover{
-      svg{
-        transform: rotateX(180deg);
-      }
-    }
-
     .drop-down{
       display: flex;
       align-items: center;
       gap: 2px; 
-      
       svg{
         margin-bottom: -3px;
         transition: transform .2s ease-out;

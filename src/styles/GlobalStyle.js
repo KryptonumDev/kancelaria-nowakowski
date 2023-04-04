@@ -50,6 +50,10 @@ const GlobalStyle = createGlobalStyle`
     font-family: var(--sans-serif);
     color: var(--primary-800);
   }
+  *:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 1px var(--primary-500);
+  }
   button, select {
     cursor: pointer;
   }
@@ -148,7 +152,7 @@ const GlobalStyle = createGlobalStyle`
     margin: 0 auto;
   }
 
-  .styled-link{
+  .styled-link {
     width: fit-content;
     display: block;
     position: relative;
@@ -158,7 +162,9 @@ const GlobalStyle = createGlobalStyle`
     background-size: 0% 2px;
     background-position: left bottom;
     background-repeat: no-repeat;
-    &:hover {
+    &:hover,
+    &:focus-visible {
+      outline: none;
       background-size: 100% 2px;
     }
   }
@@ -167,6 +173,7 @@ const GlobalStyle = createGlobalStyle`
   .cta-secondary,
   .cta-white,
   .wp-block-button a {
+    outline: none;
     font-family: var(--serif);
     font-size: clamp(${18 / 16}rem, ${21 / 7.68}vw, ${24 / 16}rem);
     padding: ${16 / 24}em ${32 / 24}em;
@@ -206,7 +213,8 @@ const GlobalStyle = createGlobalStyle`
       pointer-events: none;
       transition: opacity .2s ease-in-out;
     }
-    &:hover {
+    &:hover,
+    &:focus-visible {
       &::before {
         transform: scaleY(1);
         transition: transform .2s ease-in-out;
@@ -215,6 +223,12 @@ const GlobalStyle = createGlobalStyle`
         opacity: 1;
         transition: opacity .2s ease-in-out .2s;
       }
+    }
+    &:active::before {
+      background-color: var(--primary-200);
+    }
+    &:focus-visible::before {
+      background-color: var(--primary-300);
     }
   }
   .cta-primary, .wp-block-button a {
@@ -233,7 +247,6 @@ const GlobalStyle = createGlobalStyle`
     }
   }
   .cta-white{
-    background: #ECFFFC;
     color: #0F3730;
   }
 `
