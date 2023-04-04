@@ -72,9 +72,9 @@ const Nav = () => {
                 <Link className="styled-link" partiallyActive={true} activeClassName='active' to="/blog/" onClick={handleNavClick}>Blog</Link>
               </li>
             </ul>
-            <Link activeClassName='active' to="/kontakt/" className="navLinks-cta" onClick={handleNavClick}>Kontakt</Link>
+            <Link activeClassName='active' to="/kontakt/" className="navLinks-cta cta-secondary" onClick={handleNavClick}><span>Kontakt</span></Link>
           </div>
-          <Link activeClassName='active' to="/kontakt/" className="nav-cta" onClick={handleNavClick}>Kontakt</Link>
+          <Link activeClassName='active' to="/kontakt/" className="nav-cta cta-secondary" onClick={handleNavClick}><span>Kontakt</span></Link>
           <button
             id="nav-toggle"
             aria-label="Pokaż/Ukryj nawigację mobilną"
@@ -161,7 +161,6 @@ const StyledNav = styled.header`
     font-size: ${20 / 16}rem;
   }
   .nav-links {
-    overflow: auto;
     > ul {
       display: flex;
       margin: 0 -${20 / 16}rem;
@@ -226,33 +225,7 @@ const StyledNav = styled.header`
     }
   }
   .nav-cta {
-    border: 2px solid var(--primary-800);
-    font-family: var(--serif);
-    padding: ${10 / 24}em ${32 / 24}em;
-    font-size: ${24 / 16}rem;
-    position: relative;
-
-    &::after{
-      content: '';
-      position: absolute;
-      left: 50%;
-      top: -9px;
-      transform: translateX(-50%) rotateZ(45deg);
-      background-color: var(--primary-600);
-      width: 16px;
-      height: 16px;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity .2s ease-out;
-    }
-
-    &:hover{
-      background-color: var(--primary-100);
-      &::after{
-        opacity: 1;
-        background-color: var(--primary-800);
-      }
-    }
+    padding: ${10/16}rem ${32/16}rem;
   }
   #nav-toggle {
     order: 1;
@@ -320,6 +293,7 @@ const StyledNav = styled.header`
       font-family: var(--serif);
     }
     .nav-links {
+      overflow: auto;
       position: relative;
       transform: translateX(100%);
       visibility: hidden;

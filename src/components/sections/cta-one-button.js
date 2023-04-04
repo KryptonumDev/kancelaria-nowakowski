@@ -16,18 +16,15 @@ export default function CallToAction({ data }) {
 }
 
 const Wrapper = styled.section`
-  padding: 52px 32px 72px 32px;
-  min-height: 370px;
+  padding: clamp(${42/16}rem, ${44/7.68}vw, ${52/16}rem) 1rem clamp(${34/16}rem, ${92/7.68}vw, ${34/16}rem);
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
-
   @media (max-width: 768px) {
     width: calc(100% + 34px);
-    transform: translateX(-17px);
+    margin-left: -17px;
   }
-
   svg{
     width: 100%;
     margin: 0 auto;
@@ -47,8 +44,8 @@ const Wrapper = styled.section`
   }
 
   h2{
-    font-size: 24px;
-    margin-bottom: 20px;
+    font-size: clamp(${18/16}rem, ${21/7.68}vw, ${24/16}rem);
+    margin-bottom: 1rem;
     text-align: center;
   }
 

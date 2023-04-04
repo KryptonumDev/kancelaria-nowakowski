@@ -9,7 +9,7 @@ const CalendlyCta = ({ data }) => {
     <Wrapper>
       <Ornament />
       <h3>{data.titleAboveButton}</h3>
-      <Link to={data.link.url} className="cta-secondary">{data.link.title}</Link>
+      <Link to={data.link.url} className="cta-secondary"><span>{data.link.title}</span></Link>
       <GatsbyImage className="image" image={data.backgroundImg.localFile.childImageSharp.gatsbyImageData} alt={data.backgroundImg.altText} />
     </Wrapper>
   );

@@ -13,14 +13,14 @@ const CallToActionTwoBtns = ({ data }) => {
           <Ornament />
           <h3>{data.leftTitle}</h3>
         </div>
-        <Link to={data.leftLink.url} className="cta-secondary">{data.leftLink.title}</Link>
+        <Link to={data.leftLink.url} className="cta-secondary"><span>{data.leftLink.title}</span></Link>
       </div>
       <div className="contact">
         <div>
           <Ornament />
           <h3>{data.rightTitle}</h3>
         </div>
-        <Link to={data.rightLink.url} className="cta-primary">{data.rightLink.title}</Link>
+        <Link to={data.rightLink.url} className="cta-primary"><span>{data.rightLink.title}</span></Link>
       </div>
     </Wrapper>
   );

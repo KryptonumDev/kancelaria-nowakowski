@@ -136,6 +136,16 @@ const Wrapper = styled.section`
       margin: 1rem 0;
       font-family: var(--serif);
       font-size: clamp(${22/16}rem, ${26/7.68}vw, ${24/16}rem);
+      &:nth-of-type(2){
+        font-size: clamp(${22/16}rem, ${26/7.68}vw, ${28/16}rem);
+        em {
+          font-size: clamp(${22/16}rem, ${26/7.68}vw, ${24/16}rem);
+        }
+      }
+    }
+    a {
+      text-decoration: underline;
+      text-decoration-color: var(--secondary-500);
     }
     ul {
       list-style-type: none;

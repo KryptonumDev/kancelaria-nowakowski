@@ -71,7 +71,7 @@ const GlobalStyle = createGlobalStyle`
   }
   p em {
     font-style: italic !important;
-    font-family: 'Literata';
+    font-family: var(--serif);
   }
   h1 em, h2 em, h3 em, h4 em, h5 em, h6 em{
     position: relative;
@@ -175,8 +175,27 @@ const GlobalStyle = createGlobalStyle`
     text-align: center;
     position: relative;
     transition: background-color .2s ease-out;
-
-    &::after{
+    position: relative;
+    span {
+      z-index: 1;
+    }
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: var(--primary-100);
+      transform: scaleY(0);
+      transform-origin: bottom;
+      transition: transform .2s ease-in-out;
+      z-index: -1;
+    }
+    &:hover::before {
+      transform: scaleY(1);
+    }
+    &::after {
       content: '';
       position: absolute;
       left: 50%;
@@ -193,10 +212,11 @@ const GlobalStyle = createGlobalStyle`
   .cta-primary, .wp-block-button a {
     background-color: var(--primary-500);
     color: var(--primary-900);
-
+    &::before {
+      background-color: var(--primary-300);
+    }
     &:hover{
       background-color: var(--primary-300);
-
       &::after{
         opacity: 1;
       }
@@ -205,15 +225,13 @@ const GlobalStyle = createGlobalStyle`
   .cta-secondary {
     box-shadow: inset 0 0 0 2px var(--primary-800);
     color: var(--primary-800);
-      &::after{
-        top: -7px;
-      }
-
+    &::after{
+      top: -7px;
+      background-color: var(--primary-800);
+    }
     &:hover{
-      background-color: var(--primary-100);
       &::after{
         opacity: 1;
-        background-color: var(--primary-800);
       }
     }
   }

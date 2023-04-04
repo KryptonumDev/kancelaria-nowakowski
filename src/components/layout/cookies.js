@@ -227,19 +227,19 @@ export default function Cookies({ isActive, setIsActive }) {
               </TabWrapper>
               <Buttons>
                 <button className="cta-secondary" tabIndex={isActive ? '0' : '-1'} onClick={() => { rejectAll() }}>
-                  Odmowa
+                  <span>Odmowa</span>
                 </button>
                 {activeTab === 1 ? (
                   <button className="cta-secondary" onClick={() => { acceptPart() }} tabIndex={isActive ? '0' : '-1'}>
-                    Zgoda na wybrane
+                    <span>Zgoda na wybrane</span>
                   </button>
                 ) : (
                   <button className="cta-secondary" onClick={() => { setActiveTab(1) }} tabIndex={isActive ? '0' : '-1'}>
-                    Ustaw preferencje
+                    <span>Ustaw preferencje</span>
                   </button>
                 )}
                 <button className="cta-primary allow" tabIndex={isActive ? '0' : '-1'} onClick={() => { acceptAll() }} >
-                  Zgoda na wszystkie
+                  <span>Zgoda na wszystkie</span>
                 </button>
               </Buttons>
             </Content>
