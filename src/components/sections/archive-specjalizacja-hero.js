@@ -92,27 +92,58 @@ const Grid = styled.div`
 
   .item{
     position: relative;
+    border: 2px solid transparent;
+    transition: all .3s ease-out;
 
     &:hover{
       .image{
-        img{
-          transform: scale(1.05);
+        &::before{
+          opacity: 0;
         }
+      }
+      p{
+        background: #016250;
+        color: #ECFFFC;
+      }
+    }
+
+    &:focus-visible{
+      outline: none;
+      border: 2px solid #016250;
+      .image{
+        &::before{
+          opacity: 0;
+        }
+      }
+      p{
+        background: #016250;
+        color: #ECFFFC;
       }
     }
 
     .image{
       width: 100%;
       height: 100%;
+      position: relative;
 
-      img{
-        transition: transform .4s ease-out;
+      &::before{
+        content: '';
+        inset: 0;
+        position: absolute;
+        z-index: 1;
+        background: radial-gradient(50% 50% at 50% 50%, rgba(47, 85, 78, 0) 13.54%, rgba(47, 85, 78, 0.1) 100%), #4FD2BBd0;
+        opacity: 1;
+        transition: all .3s ease-out;
       }
     }
 
     p {
       position: absolute;
-      bottom: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 84px;
+      bottom: 0;
       width: 100%;
       text-align: center;
       padding: 0 12px;
@@ -123,6 +154,7 @@ const Grid = styled.div`
       font-size: clamp(${20 / 16}rem, ${16 / 7.68}vw, ${24 / 16}rem);
       line-height: 158%;
       color: #0F3730;
+      transition: all .2s ease-out;
       @media (max-width: 440px) {
         font-size: 24px;
       }
