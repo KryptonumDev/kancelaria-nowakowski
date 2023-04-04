@@ -3,7 +3,7 @@ import { Link } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 import React from "react"
 import styled from "styled-components"
-import {htmlDelete} from './../../helpers/html-delete'
+import { htmlDelete } from './../../helpers/html-delete'
 
 export default function Card({ index, data, scrollProgresValue }) {
   const scrollValue = ((index + 2) % 3 === 0)
@@ -12,29 +12,30 @@ export default function Card({ index, data, scrollProgresValue }) {
 
   return (
     <Wrapper initial={{ y: scrollValue }} transition={{ type: "spring", stiffness: 10 }} style={{ y: scrollValue }}>
-      <Link aria-label={`blog post: ${htmlDelete(data.gutenberg.title)}`} tabIndex='-1' className="link" to={data.uri} />
-      <Image>
-        <GatsbyImage className="image" image={data.featuredImage.node.localFile.childImageSharp.gatsbyImageData} alt={data.featuredImage.node.altText} />
-        <Categories>
-          {data.categories.nodes.map((el, index) => (
-            <div key={el.name + index}>
-              {el.name}
-            </div>
-          ))}
-        </Categories>
-      </Image>
-      <Information>
-        <p className="title" >{htmlDelete(data.gutenberg.title)}</p>
-        <div className="description" dangerouslySetInnerHTML={{ __html: data.gutenberg.excerpt }} />
-        <Link className="styled-link" to={`/${data.slug}/`} >
-          <span>Czytaj więcej</span>
-          <svg width="33" height="33" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M27.1641 16.0801L5.83105 16.0801" stroke="#0F3730" strokeWidth="1.5" strokeLinecap="square" />
-            <path d="M19.6172 23.6268C19.6172 19.7472 23.034 16.0801 27.1639 16.0801" stroke="#0F3730" strokeWidth="1.5" strokeLinecap="square" />
-            <path d="M19.6172 8.53335C19.6172 12.413 23.034 16.0801 27.1639 16.0801" stroke="#0F3730" strokeWidth="1.5" strokeLinecap="square" />
-          </svg>
-        </Link>
-      </Information>
+      <Link aria-label={`blog post: ${htmlDelete(data.gutenberg.title)}`} className="link" to={data.uri} >
+        <Image>
+          <GatsbyImage className="image" image={data.featuredImage.node.localFile.childImageSharp.gatsbyImageData} alt={data.featuredImage.node.altText} />
+          <Categories>
+            {data.categories.nodes.map((el, index) => (
+              <div key={el.name + index}>
+                {el.name}
+              </div>
+            ))}
+          </Categories>
+        </Image>
+        <Information>
+          <p className="title" >{htmlDelete(data.gutenberg.title)}</p>
+          <div className="description" dangerouslySetInnerHTML={{ __html: data.gutenberg.excerpt }} />
+          <span className="styled-link"  >
+            <span>Czytaj więcej</span>
+            <svg width="33" height="33" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M27.1641 16.0801L5.83105 16.0801" stroke="#0F3730" strokeWidth="1.5" strokeLinecap="square" />
+              <path d="M19.6172 23.6268C19.6172 19.7472 23.034 16.0801 27.1639 16.0801" stroke="#0F3730" strokeWidth="1.5" strokeLinecap="square" />
+              <path d="M19.6172 8.53335C19.6172 12.413 23.034 16.0801 27.1639 16.0801" stroke="#0F3730" strokeWidth="1.5" strokeLinecap="square" />
+            </svg>
+          </span>
+        </Information>
+      </Link>
     </Wrapper>
   )
 }
@@ -90,9 +91,7 @@ const Wrapper = styled(motion.div)`
   }
 
   .link{
-    position: absolute;
-    inset: 0;
-    z-index: 3;
+    display: block;
   }
 `
 
@@ -162,7 +161,7 @@ const Information = styled.div`
     color: #12433A;
   }
 
-  a{
+  .styled-link{
     font-family: 'Literata';
     font-size: 24px;
     line-height: 160%;
