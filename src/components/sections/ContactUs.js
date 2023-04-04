@@ -8,9 +8,9 @@ import axios from "axios";
 const ContactUs = ({data}) => {
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
   const [sent, setSent] = useState(false);
-
   const url = 'https://kancelaria.headlesshub.com/wp-json/contact-form-7/v1/contact-forms/13/feedback';
   const onSubmit = data => {
+    console.log(errors);
     let body = new FormData()
     body.append('email', data.email)
     body.append("phone", data.tel)
@@ -43,10 +43,14 @@ const ContactUs = ({data}) => {
           <div className="form-input">
             <label>
               <span>Imię i nazwisko</span>
+              {errors.name && (
+                <span role="alert" className="error">To pole jest wymagane</span>
+              )}
               <div className="input">
                 <input
                   type="text"
                   {...register("name", {required: true, maxLength: 80})}
+                  aria-invalid={errors.name ? "true" : "false"}
                 />
                 <InputBorder />
               </div>
@@ -55,11 +59,16 @@ const ContactUs = ({data}) => {
           <div className="form-input">
             <label>
               <span>Adres e-mail</span>
-              <span>(Opcjonalnie)</span>
+              {errors.email ? (
+                <span role="alert" className="error">Nieprawidłowy adres e-mail</span>
+              ) : (
+                <span>(ocjonalnie)</span>
+              )}
               <div className="input">
                 <input
                   type="email"
-                  {...register("email", {required: true, pattern: /^\S+@\S+$/i})}
+                  {...register("email", {pattern: /^\S+@\S+$/i})}
+                  aria-invalid={errors.email ? "true" : "false"}
                 />
                 <InputBorder />
               </div>
@@ -68,10 +77,14 @@ const ContactUs = ({data}) => {
           <div className="form-input">
             <label>
               <span>Telefon</span>
+              {errors.tel && (
+                <span role="alert" className="error">To pole jest wymagane</span>
+              )}
               <div className="input">
                 <input
                   type="tel"
                   {...register("tel", {required: true})}
+                  aria-invalid={errors.tel ? "true" : "false"}
                 />
                 <InputBorder />
               </div>
@@ -81,8 +94,14 @@ const ContactUs = ({data}) => {
           <div className="form-input">
             <label>
               <span>Wybierz temat:</span>
+              {errors.subject && (
+                <span role="alert" className="error">To pole jest wymagane</span>
+              )}
               <div className="input">
-                <select {...register("subject")}>
+                <select
+                  {...register("subject", {required: true})}
+                  aria-invalid={errors.subject ? "true" : "false"}
+                >
                   <option value="odszkodowania">Odszkodowania</option>
                   <option value="odszkodowania">Odszkodowania</option>
                   <option value="odszkodowania">Odszkodowania</option>
@@ -96,15 +115,30 @@ const ContactUs = ({data}) => {
           <div className="form-input">
             <label>
               <span>Wybierz datę i godzinę</span>
+              {errors.date && (
+                <span role="alert" className="error">To pole jest wymagane</span>
+              )}
               <div className="input">
-                <input min={new Date().toISOString().slice(0,new Date().toISOString().lastIndexOf(":"))} type="datetime-local" {...register("date")} />
+                <input
+                  min={new Date().toISOString().slice(0,new Date().toISOString().lastIndexOf(":"))}
+                  type="datetime-local"
+                  {...register("date")}
+                  aria-invalid={errors.date ? "true" : "false"}
+                />
                 <InputBorder />
               </div>
             </label>
           </div>
           <div className="form-input">
             <label>
-              <input type="checkbox" {...register("legal", {required: true})} />
+              {errors.legal && (
+                <span role="alert" className="error">To pole jest wymagane</span>
+              )}
+              <input
+                type="checkbox"
+                {...register("legal", {required: true})}
+                aria-invalid={errors.legal ? "true" : "false"}
+              />
               <span>Wyrażam zgodę na przetwarzanie moich danych osobowych na zasadach określonych w <Link to="/polityka-prywatnosci/">Polityce prywatności</Link></span>
             </label>
           </div>
@@ -272,14 +306,26 @@ const Wrapper = styled.section`
       }
     }
   }
-  @media (max-width: 768px){
+  @media (max-width: 999px){
     grid-template-areas: "header" "form" "content";  
     grid-template-columns: 1fr;
     row-gap: ${42 / 16}rem;
+    .header {
+      text-align: center;
+    }
+    .form {
+      max-width: 515px;
+      margin: 0 auto;
+    }
     .content {
       p {
         margin-top: 0;
       }
+    }
+  }
+  @media (max-width: 549px){
+    .header {
+      text-align: left;
     }
   }
 `

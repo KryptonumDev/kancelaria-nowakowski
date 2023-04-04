@@ -10,7 +10,7 @@ export default function CallToAction({ data }) {
       <GatsbyImage className="image" image={data.backgroundImage.localFile.childImageSharp.gatsbyImageData} alt={data.backgroundImage.altText} />
       <Ornament/>
       <h2>{data.titleAboveButton}</h2>
-      <Link className="cta-white" to={data.link.url}>{data.link.title}</Link>
+      <Link className="cta-white" to={data.link.url}><span>{data.link.title}</span></Link>
     </Wrapper>
   )
 }

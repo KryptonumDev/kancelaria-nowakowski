@@ -50,6 +50,9 @@ const GlobalStyle = createGlobalStyle`
     font-family: var(--sans-serif);
     color: var(--primary-800);
   }
+  *:focus {
+    outline: none
+  }
   *:focus-visible {
     outline: none;
     box-shadow: 0 0 0 1px var(--primary-500);
@@ -257,7 +260,8 @@ const GlobalStyle = createGlobalStyle`
       background-color: var(--primary-800);
     }
   }
-  .cta-white{
+  .cta-white {
+    background-color: var(--primary-100);
     color: #0F3730;
   }
 `
