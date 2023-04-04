@@ -109,7 +109,7 @@ const StyledNav = styled.header`
   height: 105px;
   z-index: 9;
   .arrow-link{
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 8px;
     transform: translateX(-24px);
