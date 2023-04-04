@@ -169,6 +169,17 @@ const GlobalStyle = createGlobalStyle`
     }
   }
 
+  .no-focus {
+    position: absolute;
+    opacity: 0;
+    left: 0;
+    top: 0;
+  }
+
+  .no-focus:focus-visible {
+    outline: none;
+  }
+
   .cta-primary,
   .cta-secondary,
   .cta-white,

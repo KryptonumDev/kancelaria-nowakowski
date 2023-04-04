@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { graphql, Link, useStaticQuery } from "gatsby";
 import styled from "styled-components";
 import { Logo } from '../atoms/Icons';
@@ -16,22 +16,38 @@ const Nav = () => {
   `)
 
   const nav = useRef();
+  const overlay = useRef();
+
   const handleToggle = () => {
     nav.current.classList.toggle('expand');
+    overlay.current.classList.toggle('expand');
     document.querySelector('.nav-links a').focus();
   }
   const handleNavClick = () => {
     nav.current.classList.remove('expand');
+    overlay.current.classList.remove('expand');
     nav.current.querySelector('.dropdown ul').style.pointerEvents = 'none';
     setTimeout(() => {
       nav.current.querySelector('.dropdown ul').style = null;
     }, 100);
   }
 
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      document.onkeydown = function (e) {
+        if (e.key == "Escape") {
+          handleNavClick()
+        }
+      }
+    }
+  }, [])
+
   return (
     <>
+      <Overlay onClick={handleNavClick} ref={overlay} />
       <Placeholder />
       <StyledNav className="nav" ref={nav}>
+        <a className="no-focus" href="#main" aria-label='skip link to main content' > </a>
         <nav className="max-width-header">
           <Link to="/" aria-label="Strona główna" onClick={handleNavClick} className="nav-logo">
             <Logo />
@@ -100,6 +116,23 @@ const Placeholder = styled.div`
   }
 `
 
+const Overlay = styled.div`
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,.6);
+  position: fixed;
+  inset: 0;
+  z-index: 4;
+  transition: opacity .5s;
+  opacity: 0;
+  pointer-events: none;
+  
+  &.expand{
+    opacity: 1;
+    pointer-events: all;
+  }
+`
+
 const StyledNav = styled.header`
   position: fixed;
   left: 0;
@@ -134,6 +167,8 @@ const StyledNav = styled.header`
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid var(--secondary-200);
+    position: relative;
+    z-index: 2;
   }
 
   .dropdown{
@@ -216,7 +251,7 @@ const StyledNav = styled.header`
     }
   }
   .nav-cta {
-    padding: ${10/16}rem ${32/16}rem;
+    padding: ${10 / 16}rem ${32 / 16}rem;
   }
   #nav-toggle {
     order: 1;
@@ -257,22 +292,6 @@ const StyledNav = styled.header`
   }
   @media (max-width: 1149px){
     height: 89px;
-    &::after {
-      content: '';
-      width: 100vw;
-      height: 100vh;
-      background: rgba(0,0,0,.6);
-      position: fixed;
-      left: 0;
-      top: 89px;
-      z-index: -1;
-      pointer-events: none;
-      opacity: 0;
-      transition: opacity .5s;
-    }
-    &.expand::after {
-      opacity: 1;
-    }
     &.expand .nav-links {
       transform: translateX(0);
       visibility: visible;
