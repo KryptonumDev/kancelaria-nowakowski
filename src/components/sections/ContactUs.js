@@ -105,7 +105,7 @@ const ContactUs = ({data}) => {
           <div className="form-input">
             <label>
               <input type="checkbox" {...register("legal", {required: true})} />
-              <span>Wyrażam zgodę na przetwarzanie moich danych osobowych na zasadach określonych w <Link to="/polityka-prywatnosci">Polityce prywatności</Link></span>
+              <span>Wyrażam zgodę na przetwarzanie moich danych osobowych na zasadach określonych w <Link to="/polityka-prywatnosci/">Polityce prywatności</Link></span>
             </label>
           </div>
           <button className="cta-primary" type="submit">
