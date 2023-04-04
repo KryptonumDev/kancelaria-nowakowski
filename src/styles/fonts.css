@@ -40,3 +40,10 @@
   font-style: normal;
   src: url(../resources/fonts/Literata-SemiBold.woff2) format("woff2");
 }
+@font-face {
+  font-family: "Literata";
+  font-weight: 600;
+  font-display: swap;
+  font-style: italic;
+  src: url(../resources/fonts/Literata-SemiBoldItalic.woff2) format("woff2");
+}

@@ -19,8 +19,8 @@ const NotFoundPage = () => {
         </div>
         <p>Postaramy się pomóc Ci znaleźć to, czego szukasz.</p>
         <div className="flex">
-          <Link className="cta-primary" to='/kontakt/'>Odszkodowania</Link>
-          <Link className="cta-secondary" to='/'>Strona główna</Link>
+          <Link className="cta-primary" to='/kontakt/'><span>Odszkodowania</span></Link>
+          <Link className="cta-secondary" to='/'><span>Strona główna</span></Link>
         </div>
       </div>
     </Wrapper>

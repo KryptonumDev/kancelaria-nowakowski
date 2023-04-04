@@ -21,8 +21,8 @@ const Hero = ({ data }) => {
           ))}
         </p>
         <div className="cta">
-          <Link className="cta-primary" to={data.coloredButton.url}>{data.coloredButton.title}</Link>
-          <Link className="cta-secondary" to={data.transparentButton.url}>{data.transparentButton.title}</Link>
+          <Link className="cta-primary" to={data.coloredButton.url}><span>{data.coloredButton.title}</span></Link>
+          <Link className="cta-secondary" to={data.transparentButton.url}><span>{data.transparentButton.title}</span></Link>
         </div>
       </header>
       <div className="hero-img">

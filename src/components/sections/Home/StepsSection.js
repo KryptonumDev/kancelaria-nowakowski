@@ -18,7 +18,7 @@ const StepsSection = ({ data }) => {
         <div className="h3" dangerouslySetInnerHTML={{ __html: data.textOnTheLeftUnderSteps }}></div>
         <div>
           <div className="h3" dangerouslySetInnerHTML={{ __html: data.titleAboveButtonUnderSteps }}></div>
-          <Link to={data.linkUnderSteps.url} className="cta-primary">{data.linkUnderSteps.title}</Link>
+          <Link to={data.linkUnderSteps.url} className="cta-primary"><span>{data.linkUnderSteps.title}</span></Link>
         </div>
       </div>
     </StyledSection>

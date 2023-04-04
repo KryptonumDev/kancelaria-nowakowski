@@ -105,12 +105,12 @@ const Wrapper = styled.section`
         margin-bottom: 1rem;
         > div {
           flex-shrink: 0;
+          margin-right: 4px;
+          margin-top: 2px;
         }
         img {
           width: 32px;
           height: 32px;
-          margin-right: 4px;
-          margin-top: 2px;
         }
       }
       p {

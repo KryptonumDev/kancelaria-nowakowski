@@ -12,7 +12,7 @@ const Rules = ({ data }) => {
         <div dangerouslySetInnerHTML={{ __html: data.sectionTitle }}></div>
         <div className="text" dangerouslySetInnerHTML={{ __html: data.textUnderTitle }}></div>
         <div className="cta">
-          <Link to={data.link.url} className="cta-primary">{data.link.title}</Link>
+          <Link to={data.link.url} className="cta-primary"><span>{data.link.title}</span></Link>
           <p>Dobierzemy rozwiązanie <em><strong>najlepsze dla Ciebie</strong></em></p>
         </div>
       </header>
@@ -84,6 +84,10 @@ const StyledSection = styled.section`
       gap: 20px;
       p {
         font-size: ${18 / 16}rem;
+        &,
+        em {
+          font-family: var(--sans-serif);
+        }
       }
     }
   }

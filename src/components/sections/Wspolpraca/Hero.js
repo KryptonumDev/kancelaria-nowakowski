@@ -12,8 +12,8 @@ const Hero = ({ data }) => {
         <div dangerouslySetInnerHTML={{__html: data.pageTitle}}></div>
         <div dangerouslySetInnerHTML={{__html: data.textUnderTitle}}></div>
         <div className="cta">
-          <Link className="cta-primary" to={data.leftButton.url}>{data.leftButton.title}</Link>
-          <Link className="cta-secondary" to={data.rightButton.url}>{data.rightButton.title}</Link>
+          <Link className="cta-primary" to={data.leftButton.url}><span>{data.leftButton.title}</span></Link>
+          <Link className="cta-secondary" to={data.rightButton.url}><span>{data.rightButton.title}</span></Link>
         </div>
       </header>
       <div className="hero-img">

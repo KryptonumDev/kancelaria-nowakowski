@@ -5,7 +5,6 @@ import { Facebook, Instagram, Linkedin, Ornament } from "../../atoms/Icons";
 
 const Team = ({data}) => {
   const {advocates, lawyers, other} = data;
-  console.log(data);
   return (
     <Wrapper>
       <h2>Nasz zespół</h2>
