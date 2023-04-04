@@ -175,7 +175,6 @@ const GlobalStyle = createGlobalStyle`
     text-align: center;
     position: relative;
     transition: background-color .2s ease-out;
-
     &::after{
       content: '';
       position: absolute;
@@ -193,10 +192,8 @@ const GlobalStyle = createGlobalStyle`
   .cta-primary, .wp-block-button a {
     background-color: var(--primary-500);
     color: var(--primary-900);
-
     &:hover{
       background-color: var(--primary-300);
-
       &::after{
         opacity: 1;
       }
@@ -205,10 +202,9 @@ const GlobalStyle = createGlobalStyle`
   .cta-secondary {
     box-shadow: inset 0 0 0 2px var(--primary-800);
     color: var(--primary-800);
-      &::after{
-        top: -7px;
-      }
-
+    &::after{
+      top: -7px;
+    }
     &:hover{
       background-color: var(--primary-100);
       &::after{

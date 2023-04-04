@@ -161,7 +161,6 @@ const StyledNav = styled.header`
     font-size: ${20 / 16}rem;
   }
   .nav-links {
-    overflow: auto;
     > ul {
       display: flex;
       margin: 0 -${20 / 16}rem;
@@ -231,7 +230,6 @@ const StyledNav = styled.header`
     padding: ${10 / 24}em ${32 / 24}em;
     font-size: ${24 / 16}rem;
     position: relative;
-
     &::after{
       content: '';
       position: absolute;
@@ -245,7 +243,6 @@ const StyledNav = styled.header`
       pointer-events: none;
       transition: opacity .2s ease-out;
     }
-
     &:hover{
       background-color: var(--primary-100);
       &::after{
@@ -320,6 +317,7 @@ const StyledNav = styled.header`
       font-family: var(--serif);
     }
     .nav-links {
+      overflow: auto;
       position: relative;
       transform: translateX(100%);
       visibility: hidden;
