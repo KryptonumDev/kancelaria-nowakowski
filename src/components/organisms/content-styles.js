@@ -249,24 +249,6 @@ export const StyledContent = styled.div`
         }
       }
 
-    .cta-secondary{
-        font-size: clamp(${18 / 16}rem, ${21 / 7.68}vw, ${24 / 16}rem);
-        padding: 16px 32px;
-        white-space: nowrap;
-        display: inline-block;
-        text-align: center;
-        box-shadow: inset 0 0 0 2px #315B54;
-        color: #315B54;
-        margin: 0 auto;
-        display: block;
-        width: fit-content;
-        text-decoration: unset;
-
-        @media (max-width: 420px) {
-          width: 100%;
-        }
-    }
-
     .cta-content{
         position: relative;
         z-index: 2;

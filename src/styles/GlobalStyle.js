@@ -23,9 +23,9 @@ const GlobalStyle = createGlobalStyle`
     --secondary-400: #BFCACD;
     --secondary-500: #AAB4B7;
     --secondary-600: #90999B;
-    --secondary-700: #AC8A58;
-    --secondary-800: #8A6C3F;
-    --secondary-900: #694D25;
+    --secondary-700: #707778;
+    --secondary-800: #555959;
+    --secondary-900: #343535;
     --neutral-100: #FDFDFC;
     --neutral-200: #FBFBF9;
     --neutral-300: #FAF9F6;
