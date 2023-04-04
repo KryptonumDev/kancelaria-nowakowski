@@ -10,7 +10,6 @@ export default function Grid({ currentPage, posts }) {
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
     setScrollProgresValue(latest)
   })
-
   return (
     <Wrapper>
       {posts.map((el, index) => {
@@ -20,7 +19,7 @@ export default function Grid({ currentPage, posts }) {
         ) {
           return (
             <Card
-              key={el.title + index}
+              key={el.uri + index}
               index={index}
               scrollProgresValue={scrollProgresValue}
               data={el}
