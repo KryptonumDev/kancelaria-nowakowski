@@ -176,7 +176,8 @@ const GlobalStyle = createGlobalStyle`
     position: relative;
     transition: background-color .2s ease-out;
     position: relative;
-    span {
+    > * {
+      position: relative;
       z-index: 1;
     }
     &::before {
@@ -189,11 +190,8 @@ const GlobalStyle = createGlobalStyle`
       background-color: var(--primary-100);
       transform: scaleY(0);
       transform-origin: bottom;
-      transition: transform .2s ease-in-out;
-      z-index: -1;
-    }
-    &:hover::before {
-      transform: scaleY(1);
+      transition: transform .2s ease-in-out .2s;
+      z-index: 0;
     }
     &::after {
       content: '';
@@ -206,7 +204,17 @@ const GlobalStyle = createGlobalStyle`
       height: 16px;
       opacity: 0;
       pointer-events: none;
-      transition: opacity .2s ease-out;
+      transition: opacity .2s ease-in-out;
+    }
+    &:hover {
+      &::before {
+        transform: scaleY(1);
+        transition: transform .2s ease-in-out;
+      }
+      &::after {
+        opacity: 1;
+        transition: opacity .2s ease-in-out .2s;
+      }
     }
   }
   .cta-primary, .wp-block-button a {
@@ -215,24 +223,13 @@ const GlobalStyle = createGlobalStyle`
     &::before {
       background-color: var(--primary-300);
     }
-    &:hover{
-      background-color: var(--primary-300);
-      &::after{
-        opacity: 1;
-      }
-    }
   }
   .cta-secondary {
-    box-shadow: inset 0 0 0 2px var(--primary-800);
+    border: 2px solid var(--primary-800);
     color: var(--primary-800);
     &::after{
-      top: -7px;
+      top: -9px;
       background-color: var(--primary-800);
-    }
-    &:hover{
-      &::after{
-        opacity: 1;
-      }
     }
   }
   .cta-white{
