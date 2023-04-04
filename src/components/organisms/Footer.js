@@ -144,7 +144,8 @@ const Wrapper = styled.footer`
       grid-template-columns: clamp(133px, ${152 / 7.68}vw, 152px) auto;
       gap: 12px;
       width: clamp(${328/16}rem, ${347/7.68}vw, ${407/16}rem);
-      &:hover {
+      &:hover,
+      &:focus-visible {
         img {
           transform: scale(1.05);
         }

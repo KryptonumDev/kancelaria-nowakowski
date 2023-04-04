@@ -50,6 +50,10 @@ const GlobalStyle = createGlobalStyle`
     font-family: var(--sans-serif);
     color: var(--primary-800);
   }
+  *:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 1px var(--primary-500);
+  }
   button, select {
     cursor: pointer;
   }
@@ -148,7 +152,7 @@ const GlobalStyle = createGlobalStyle`
     margin: 0 auto;
   }
 
-  .styled-link{
+  .styled-link {
     width: fit-content;
     display: block;
     position: relative;
@@ -158,7 +162,9 @@ const GlobalStyle = createGlobalStyle`
     background-size: 0% 2px;
     background-position: left bottom;
     background-repeat: no-repeat;
-    &:hover {
+    &:hover,
+    &:focus-visible {
+      outline: none;
       background-size: 100% 2px;
     }
   }
@@ -218,18 +224,18 @@ const GlobalStyle = createGlobalStyle`
         transition: opacity .2s ease-in-out .2s;
       }
     }
+    &:active::before {
+      background-color: var(--primary-200);
+    }
+    &:focus-visible::before {
+      background-color: var(--primary-300);
+    }
   }
   .cta-primary, .wp-block-button a {
     background-color: var(--primary-500);
     color: var(--primary-900);
     &::before {
       background-color: var(--primary-300);
-    }
-    &:active::before {
-      background-color: var(--primary-200);
-    }
-    &:focus-visible::before {
-      background-color: var(--primary-100);
     }
   }
   .cta-secondary {
@@ -241,7 +247,6 @@ const GlobalStyle = createGlobalStyle`
     }
   }
   .cta-white{
-    background: #ECFFFC;
     color: #0F3730;
   }
 `
