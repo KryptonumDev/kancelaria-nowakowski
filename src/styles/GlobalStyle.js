@@ -100,7 +100,6 @@ const GlobalStyle = createGlobalStyle`
       background-color: #4FD2BB;
     }
   }
-
   h1, h2, h3, h4, h5, h6, .h3 {
     font-family: var(--serif);
     font-weight: 400;
@@ -135,7 +134,6 @@ const GlobalStyle = createGlobalStyle`
 
   #___gatsby, .max-width {
     width: calc(100% - 80px);
-
     @media (max-width: 768px){  
       width: calc(100% - 34px);
     }
@@ -143,16 +141,11 @@ const GlobalStyle = createGlobalStyle`
     margin: 0 auto;
   }
 
-  .max-width-header{
+  .max-width-header {
     height: 100%;
-    width: 100%;
-    padding: 0 40px;
+    width: calc(100% - 34px);
     max-width: 1286px;
     margin: 0 auto;
-
-    @media (max-width: 768px) {
-      padding: 0 17px;
-    }
   }
 
   .styled-link{
@@ -160,16 +153,13 @@ const GlobalStyle = createGlobalStyle`
     display: block;
     position: relative;
     padding-bottom: 3px;
-
     transition: background-size 0.3s ease-out;
-
     background-image: linear-gradient(currentColor, currentColor);
     background-size: 0% 2px;
     background-position: left bottom;
     background-repeat: no-repeat;
-
     &:hover {
-        background-size: 100% 2px;
+      background-size: 100% 2px;
     }
   }
 

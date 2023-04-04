@@ -18,6 +18,7 @@ const Nav = () => {
   const nav = useRef();
   const handleToggle = () => {
     nav.current.classList.toggle('expand');
+    document.querySelector('.nav-links a').focus();
   }
   const handleNavClick = () => {
     nav.current.classList.remove('expand');
@@ -160,6 +161,7 @@ const StyledNav = styled.header`
     font-size: ${20 / 16}rem;
   }
   .nav-links {
+    overflow: auto;
     > ul {
       display: flex;
       margin: 0 -${20 / 16}rem;
@@ -186,7 +188,7 @@ const StyledNav = styled.header`
           pointer-events: auto;
         }
         ul {
-          transition: opacity .1s;
+          transition: opacity .4s ease-out;
           opacity: 0;
           pointer-events: none;
           z-index: 2;
@@ -311,6 +313,7 @@ const StyledNav = styled.header`
       transform: translateX(0);
       visibility: visible;
       overflow: hidden;
+      transition: transform .5s cubic-bezier(0.65,0.05,0.36,1);
     }
     ul {
       font-size: ${22 / 16}rem;

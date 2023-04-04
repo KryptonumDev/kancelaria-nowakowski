@@ -24,7 +24,7 @@ const Testimonials = ({ data }) => {
 
   return (
     <Wrapper ref={constraintsRef}>
-      <Content transition={{ type: "spring", stiffness: 50 }} animate={{ x: -1 * activeSlide * width }} dragConstraints={constraintsRef} drag="x" onDragEnd={dragEndHandler}>
+      <Content transition={{ type: "spring", stiffness: 30 }} animate={{ x: -1 * activeSlide * width }} dragConstraints={constraintsRef} drag="x" onDragEnd={dragEndHandler}>
         {data.comments.map((el, index) => (
           <motion.div className="item" key={index}>
             <GatsbyImage className="image" image={el.commentImage.localFile.childImageSharp.gatsbyImageData} alt={el.commentImage.altText} />
@@ -155,7 +155,7 @@ const Wrapper = styled.section`
 
     h3{
       margin-bottom: clamp(16px, ${24 / 768 * 100}vw, 32px);
-      font-family: 'Literata';
+      font-family: var(--serif);
       font-weight: 400;
       font-size: clamp(24px, ${30 / 768 * 100}vw, 32px);
       line-height: 131%;
@@ -167,7 +167,7 @@ const Wrapper = styled.section`
       &::before{
         content: '“';
         position: absolute;
-        font-family: 'Literata';
+        font-family: var(--serif);
         font-weight: 400;
         font-size: 54px;
         line-height: 111%;
@@ -190,7 +190,7 @@ const Wrapper = styled.section`
       display: grid;
       grid-gap: clamp(12px, ${16 / 768 * 100}vw, 20px);
       *{
-        font-family: 'Literata';
+        font-family: var(--serif);
         font-size: clamp(18px, ${21 / 768 * 100}vw, 24px);
         line-height: 158%;
         color: #0F3730;

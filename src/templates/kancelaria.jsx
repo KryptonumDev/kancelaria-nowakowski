@@ -146,6 +146,7 @@ export const query = graphql`
                     name
                     instagramLink
                     facebookLink
+                    linkedinLink
                     description
                     zdjecieOsoby {
                       altText
@@ -165,8 +166,9 @@ export const query = graphql`
                   osoby {
                     description
                     facebookLink
-                    fieldGroupName
                     instagramLink
+                    linkedinLink
+                    fieldGroupName
                     name
                     work
                     zdjecieOsoby {
@@ -188,6 +190,7 @@ export const query = graphql`
                     description
                     facebookLink
                     instagramLink
+                    linkedinLink
                     name
                     work
                     zdjecieOsoby {
