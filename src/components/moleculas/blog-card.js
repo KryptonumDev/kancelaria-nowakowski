@@ -76,6 +76,7 @@ const Wrapper = styled(motion.div)`
   @media (max-width: 680px){
     display: block;
     max-width: 500px;
+    width: 100%;
     margin: 0 auto;
   }
 
@@ -117,7 +118,11 @@ const Image = styled.div`
     }
     @media (max-width: 1024px) {
       height: 100%;
-      min-width: 314px;
+      width: 314px;
+    }
+
+    @media (max-width: 680px){
+      width: 100%;
     }
   }
 `
