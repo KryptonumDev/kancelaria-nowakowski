@@ -125,11 +125,17 @@ const ContactUs = ({data}) => {
                 <select
                   {...register("subject", {required: true})}
                   aria-invalid={errors.subject ? "true" : "false"}
+                  defaultValue=""
                 >
-                  <option value="odszkodowania">Odszkodowania</option>
-                  <option value="odszkodowania">Odszkodowania</option>
-                  <option value="odszkodowania">Odszkodowania</option>
-                  <option value="odszkodowania">Odszkodowania</option>
+                  <option value="" disabled="true">Wybierz temat...</option>
+                  <option value="B2B">B2B</option>
+                  <option value="Kredyty CHF">Kredyty CHF</option>
+                  <option value="Hałas Lotniczy">Hałas lotniczy</option>
+                  <option value="Sprawy Rozwodowe">Sprawy rozwodowe</option>
+                  <option value="Proces sądowy">Proces sądowy</option>
+                  <option value="Sprawy spadkowe">Sprawy spadkowe</option>
+                  <option value="Odzkodowania">Odszkodowania</option>
+                  <option value="Inne">Inne</option>
                 </select>
                 <InputBorder />
                 <SelectDropdown />
@@ -308,7 +314,8 @@ const Wrapper = styled.section`
         color:var(--error-800);
         & + label,
         & + .input {
-          input {
+          input,
+          select {
             border-color: var(--error-800);
           } 
           .ornament {
