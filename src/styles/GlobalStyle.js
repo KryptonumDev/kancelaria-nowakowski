@@ -57,6 +57,9 @@ const GlobalStyle = createGlobalStyle`
     outline: none;
     box-shadow: 0 0 0 1px var(--primary-500);
   }
+  #gatsby-focus-wrapper {
+    box-shadow:unset;
+  }
   button, select {
     cursor: pointer;
   }
