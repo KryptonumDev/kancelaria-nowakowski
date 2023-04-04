@@ -3,15 +3,7 @@ import { Link } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 import React from "react"
 import styled from "styled-components"
-
-const htmlDelete = (string) => {
-
-    if(!string){
-        return string
-    }    
-
-    return string.replace(/<[^>]*>?/gm, '');
-}
+import {htmlDelete} from './../../helpers/html-delete'
 
 export default function Card({ index, data, scrollProgresValue }) {
   const scrollValue = ((index + 2) % 3 === 0)

@@ -3,6 +3,7 @@ import { useState } from "react"
 import { useEffect } from "react"
 import styled from "styled-components"
 import { slugTransform } from './../../helpers/slug-transform'
+import { htmlDelete } from "../../helpers/html-delete"
 
 export default function Navigation({ headings }) {
 
@@ -36,7 +37,7 @@ export default function Navigation({ headings }) {
       </svg>
       <div>
         {headings?.map(el => (
-          <button key={slugTransform(el.innerText)} className={activePart === slugTransform(el.innerText) ? 'active' : ''} onClick={(e) => { scroll(e, slugTransform(el.innerText)) }}>{el.innerText}</button>
+          <button key={slugTransform(htmlDelete(el))} className={activePart === slugTransform(htmlDelete(el)) ? 'active' : ''} onClick={(e) => { scroll(e, slugTransform(htmlDelete(el))) }}>{htmlDelete(el)}</button>
         ))}
       </div>
     </Wrapper>
