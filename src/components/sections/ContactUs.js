@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import styled from "styled-components";
 import { InputBorder, Ornament, RightArrow, SelectDropdown } from "../atoms/Icons";
 import { Link } from "gatsby";
@@ -10,7 +10,6 @@ const ContactUs = ({data}) => {
   const [sent, setSent] = useState(false);
   const url = 'https://kancelaria.headlesshub.com/wp-json/contact-form-7/v1/contact-forms/13/feedback';
   const onSubmit = data => {
-    console.log(errors);
     let body = new FormData()
     body.append('email', data.email)
     body.append("phone", data.tel)
@@ -21,12 +20,24 @@ const ContactUs = ({data}) => {
     axios.post(url, body)
     .then((res) => {
       if(res.status === 200){
-        setSent(true)
-        reset()
+        setSent(true);
+        reset();
       } else {
-        // toast('There was some problem with contact form, try later')
+        window.alert('Coś poszło nie tak. Proszę spróbować ponownie później.');
       }
     })
+  }
+
+  const formSent = useRef();
+  const getCookie = (cookieName) => document.cookie.split("; ").find((row) => row.startsWith(`${cookieName}`))?.split("=")[1];
+
+  const sendAgain = () => {
+    document.cookie = `sentCount=${getCookie('sentCount') ? Number(getCookie('sentCount'))+1 : 1};max-age=86400;path=/`;
+    formSent.current.classList.add('hide');
+    setTimeout(() => {
+      formSent.current.classList.remove('hide');
+      setSent(false);
+    }, 400);
   }
 
   return (
@@ -38,6 +49,19 @@ const ContactUs = ({data}) => {
       <div className="content" dangerouslySetInnerHTML={{__html: data.contentUnderTitle}}>
       </div>
       <div className="form">
+        {sent && (
+          <div className="form-sent" ref={formSent}>
+            <div>
+              <h3>Wiadomość została wysłana pomyślnie. Oczekuj naszego telefonu.</h3>
+              {(!getCookie('sentCount') || getCookie('sentCount') < 3) && (
+                <button className="cta-secondary" onClick={sendAgain}>
+                  <span>Wypełnij formularz ponownie</span>
+                  <RightArrow />
+                </button>
+              )}
+            </div>
+          </div>
+        )}
         <form onSubmit={handleSubmit(onSubmit)}>
           <h3>Dane kontaktowe</h3>
           <div className="form-input">
@@ -83,7 +107,7 @@ const ContactUs = ({data}) => {
               <div className="input">
                 <input
                   type="tel"
-                  {...register("tel", {required: true})}
+                  {...register("tel", {required: true, pattern: /(?<!\w)(\(?(\+|00)?48\)?)?[ -]?\d{3}[ -]?\d{3}[ -]?\d{3}(?!\w)/})}
                   aria-invalid={errors.tel ? "true" : "false"}
                 />
                 <InputBorder />
@@ -129,11 +153,11 @@ const ContactUs = ({data}) => {
               </div>
             </label>
           </div>
-          <div className="form-input">
+          <div className="form-input legal">
+            {errors.legal && (
+              <span role="alert" className="error">To pole jest wymagane</span>
+            )}
             <label>
-              {errors.legal && (
-                <span role="alert" className="error">To pole jest wymagane</span>
-              )}
               <input
                 type="checkbox"
                 {...register("legal", {required: true})}
@@ -219,7 +243,39 @@ const Wrapper = styled.section`
       }
     }
   }
-  .form  {
+  .form {
+    position: relative;
+    .form-sent {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: calc(100% + 34px);
+      height: 100%;
+      margin: 0 -17px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--primary-400);
+      z-index: 3;
+      padding: 0 2rem;
+      h3 {
+        font-size: clamp(${24/16}rem, ${32/7.68}vw, ${32/16}rem);
+        margin-bottom: 1em;
+      }
+      animation: formSent .4s;
+      transition: opacity .4s;
+      &.hide {
+        opacity: 0 !important;
+      }
+    }
+    @keyframes formSent {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
     grid-area: form;
     h3 {
       font-size: ${24 / 16}rem;
@@ -247,15 +303,16 @@ const Wrapper = styled.section`
         span:last-child {
           font-size: 1rem;
         }
-        .error:not(:empty) {
-          color:var(--error-800);
-          & + .input {
-            input {
-              border-color: var(--error-800);
-            } 
-            .ornament {
-              fill: var(--error-800);
-            }
+      }
+      .error:not(:empty) {
+        color:var(--error-800);
+        & + label,
+        & + .input {
+          input {
+            border-color: var(--error-800);
+          } 
+          .ornament {
+            fill: var(--error-800);
           }
         }
       }
@@ -270,8 +327,22 @@ const Wrapper = styled.section`
           height: 100%;
           border: 2px solid var(--secondary-600);
           padding: ${13 / 16}rem ${8 / 16}rem;
-          &:focus + svg .ornament {
-            fill: #f90;
+          transition: border-color .4s;
+          + .border .ornament {
+            color: var(--secondary-600);
+            transition: fill .4s;
+          }
+          &:hover {
+            border-color: var(--secondary-800);
+            + svg .ornament {
+              fill: var(--secondary-800);
+            }
+          }
+          &:focus-visible {
+            border-color: var(--primary-800);
+            + svg .ornament {
+              fill: var(--primary-800);
+            }
           }
         }
         .border {
@@ -286,21 +357,23 @@ const Wrapper = styled.section`
           transform: translateY(-50%);
         }
       }
-      input[type="checkbox"] {
-        -webkit-appearance: none;
-        appearance: none;
-        width: unset;
-        width: 24px;
-        height: 24px;
-        border: 2px solid var(--primary-900);
-        &:checked {
-          background: center / 80% no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='13' fill='none'%3E%3Cpath stroke='%230F3730' strokeLinecap='square' strokeWidth='1.5' d='M2 7.5c2.223 1.405 3.884 3.916 3.884 3.916h.033S9.445 5.173 16 1.334'/%3E%3C/svg%3E")
-        }
-        & + span {
-          width: calc(100% - 32px);
-          font-size: ${14 / 16}rem;
-          a {
-            text-decoration: underline;
+      &.legal {
+        input {
+          -webkit-appearance: none;
+          appearance: none;
+          width: unset;
+          width: 24px;
+          height: 24px;
+          border: 2px solid var(--primary-900);
+          &:checked {
+            background: center / 80% no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='13' fill='none'%3E%3Cpath stroke='%230F3730' strokeLinecap='square' strokeWidth='1.5' d='M2 7.5c2.223 1.405 3.884 3.916 3.884 3.916h.033S9.445 5.173 16 1.334'/%3E%3C/svg%3E")
+          }
+          & + span {
+            width: calc(100% - 32px);
+            font-size: ${14 / 16}rem;
+            a {
+              text-decoration: underline;
+            }
           }
         }
       }

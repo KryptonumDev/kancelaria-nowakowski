@@ -60,7 +60,7 @@ export const InputBorder = () => (
     <path fill='#fff' d='M4 6h4v17H4z'></path>
     <path
       className="ornament"
-      fill='#90999B'
+      fill='currentColor'
       d='M6 0l6 5.833-6 5.832-6-5.832L6 0zm0 30l-6-5.833 6-5.833 6 5.833L6 30z'
     ></path>
   </svg>
