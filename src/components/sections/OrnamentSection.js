@@ -125,6 +125,7 @@ const StyledSection = styled.section`
     }
   }
   @media (max-width: 599px){
+    margin-top: ${89/16}rem;
     flex-direction: column-reverse;
     gap: 16px;
     svg {

@@ -1,10 +1,11 @@
 import { GatsbyImage } from "gatsby-plugin-image";
 import React from "react";
 import styled from "styled-components";
-import { Facebook, Instagram, Ornament } from "../../atoms/Icons";
+import { Facebook, Instagram, Linkedin, Ornament } from "../../atoms/Icons";
 
 const Team = ({data}) => {
   const {advocates, lawyers, other} = data;
+  console.log(data);
   return (
     <Wrapper>
       <h2>Nasz zespół</h2>
@@ -21,14 +22,25 @@ const Team = ({data}) => {
           {advocates.osoby.map((person, i) => (
             <div className="people-item" key={i}>
               <GatsbyImage image={person.zdjecieOsoby.localFile.childImageSharp.gatsbyImageData} alt={person.zdjecieOsoby.altText || ""} className="people-img"></GatsbyImage>
-              <div className="social">
-                <a aria-label="Link do facebook" href={person.facebookLink} target="_blank" rel="noreferrer">
-                  <Facebook />
-                </a>
-                <a aria-label="Link do instagram" href={person.instagramLink} target="_blank" rel="noreferrer">
-                  <Instagram />
-                </a>
-              </div>
+              {(person.facebookLink || person.linkedinLink || person.instagramLink) && (
+                <div className="social">
+                  {person.facebookLink && (
+                    <a aria-label="Link do Facebook" href={person.facebookLink} target="_blank" rel="noreferrer">
+                      <Facebook />
+                    </a>
+                  )}
+                  {person.linkedinLink && (
+                    <a aria-label="Link do LinkedIn" href={person.linkedinLink} target="_blank" rel="noreferrer">
+                      <Linkedin />
+                    </a>
+                  )}
+                  {person.instagramLink && (
+                    <a aria-label="Link do Instagram" href={person.instagramLink} target="_blank" rel="noreferrer">
+                      <Instagram />
+                    </a>
+                  )}
+                </div>
+              )}
               <h3>{person.name}</h3>
               <h4>{person.work}</h4>
               <p>{person.description}</p>
@@ -49,14 +61,25 @@ const Team = ({data}) => {
           {lawyers.osoby.map((person, i) => (
             <div className="people-item" key={i}>
               <GatsbyImage image={person.zdjecieOsoby.localFile.childImageSharp.gatsbyImageData} alt={person.zdjecieOsoby.altText || ""} className="people-img"></GatsbyImage>
-              <div className="social">
-                <a aria-label="Link do facebook" href={person.facebookLink} target="_blank" rel="noreferrer">
-                  <Facebook />
-                </a>
-                <a aria-label="Link do instagram" href={person.instagramLink} target="_blank" rel="noreferrer">
-                  <Instagram />
-                </a>
-              </div>
+              {(person.facebookLink || person.linkedinLink || person.instagramLink) && (
+                <div className="social">
+                  {person.facebookLink && (
+                    <a aria-label="Link do Facebook" href={person.facebookLink} target="_blank" rel="noreferrer">
+                      <Facebook />
+                    </a>
+                  )}
+                  {person.linkedinLink && (
+                    <a aria-label="Link do LinkedIn" href={person.linkedinLink} target="_blank" rel="noreferrer">
+                      <Linkedin />
+                    </a>
+                  )}
+                  {person.instagramLink && (
+                    <a aria-label="Link do Instagram" href={person.instagramLink} target="_blank" rel="noreferrer">
+                      <Instagram />
+                    </a>
+                  )}
+                </div>
+              )}
               <h3>{person.name}</h3>
               <h4>{person.work}</h4>
               <p>{person.description}</p>
@@ -77,14 +100,25 @@ const Team = ({data}) => {
           {other.osoby.map((person, i) => (
             <div className="people-item" key={i}>
               <GatsbyImage image={person.zdjecieOsoby.localFile.childImageSharp.gatsbyImageData} alt={person.zdjecieOsoby.altText || ""} className="people-img"></GatsbyImage>
-              <div className="social">
-                <a aria-label="Link do facebook" href={person.facebookLink} target="_blank" rel="noreferrer">
-                  <Facebook />
-                </a>
-                <a aria-label="Link do instagram" href={person.instagramLink} target="_blank" rel="noreferrer">
-                  <Instagram />
-                </a>
-              </div>
+              {(person.facebookLink || person.linkedinLink || person.instagramLink) && (
+                <div className="social">
+                  {person.facebookLink && (
+                    <a aria-label="Link do Facebook" href={person.facebookLink} target="_blank" rel="noreferrer">
+                      <Facebook />
+                    </a>
+                  )}
+                  {person.linkedinLink && (
+                    <a aria-label="Link do LinkedIn" href={person.linkedinLink} target="_blank" rel="noreferrer">
+                      <Linkedin />
+                    </a>
+                  )}
+                  {person.instagramLink && (
+                    <a aria-label="Link do Instagram" href={person.instagramLink} target="_blank" rel="noreferrer">
+                      <Instagram />
+                    </a>
+                  )}
+                </div>
+              )}
               <h3>{person.name}</h3>
               <h4>{person.work}</h4>
               <p>{person.description}</p>
@@ -157,10 +191,10 @@ const Wrapper = styled.section`
           width: 100%;
         }
         .social {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
+          display: flex;
           color: var(--primary-100);
           a {
+            flex-grow: 1;
             padding: 12px 0;
             svg {
               display: block;
@@ -189,6 +223,9 @@ const Wrapper = styled.section`
           }
           a:nth-child(2) {
             background-color: var(--primary-700);
+          }
+          a:nth-child(3) {
+            background-color: var(--primary-900);
           }
         }
       }

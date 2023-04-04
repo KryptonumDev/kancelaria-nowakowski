@@ -109,11 +109,12 @@ const Categories = styled.div`
 
 const Image = styled.div`
   position: relative;
-  .image{
+  .image {
     width: 100%;
     height: 300px;
-    aspect-ratio: 314 / 235;
-
+    img {
+      aspect-ratio: 314 / 235;
+    }
     @media (max-width: 1024px) {
       height: 100%;
       min-width: 314px;
@@ -132,7 +133,7 @@ const Information = styled.div`
     font-size: 24px;
     line-height: 160%;
     color: #0F3730;
-    font-family: 'Literata';
+    font-family: var(--serif);
 
     @media (max-width: 680px) {
       margin-top: 12px;

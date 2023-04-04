@@ -123,7 +123,6 @@ const Wrapper = styled.section`
     align-items: center;
     border: 1px solid var(--primary-400);
     justify-content: flex-end;
-    gap: 32px;
     background: center / cover no-repeat url("/pattern.png");
     h3 {
       width: 33.3%;

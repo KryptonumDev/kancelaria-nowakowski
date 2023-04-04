@@ -56,16 +56,16 @@ const Footer = ({ setCookiesActive }) => {
             <Link className="styled-link" to="/blog/">Blog</Link>
           </h3>
           {blogs.map((blog, i) => (
-            <div className="blog-item" key={i}>
+            <Link className="blog-item" key={i} to={blog.uri}>
               <GatsbyImage image={blog.featuredImage.node.localFile.childImageSharp.gatsbyImageData} alt={blog.featuredImage.node.altText || ""} />
               <div className="blog-copy">
                 <p>{blog.title}</p>
-                <Link className="styled-link" to={blog.uri}>
+                <span className="styled-link">
                   <span>Czytaj więcej</span>
                   <RightArrow />
-                </Link>
+                </span>
               </div>
-            </div>
+            </Link>
           ))}
         </li>
         <li className="social">
@@ -88,11 +88,11 @@ const Footer = ({ setCookiesActive }) => {
             <KryptonumLogo />
           </a>
         </p>
-        <p className="flex-add">
+        <div className="flex-add">
           <button className="styled-link" onClick={() => { setCookiesActive(true) }}>Zarządzaj ciasteczkami</button>
           <Link className="styled-link" to="/mapa-strony/">Mapa strony</Link>
           <Link className="styled-link" to="/polityka-prywatnosci/">Polityka prywatności</Link>
-        </p>
+        </div>
       </div>
     </Wrapper>
   );
@@ -144,15 +144,24 @@ const Wrapper = styled.footer`
       grid-template-columns: clamp(133px, ${152 / 7.68}vw, 152px) auto;
       gap: 12px;
       width: clamp(${328/16}rem, ${347/7.68}vw, ${407/16}rem);
+      &:hover {
+        img {
+          transform: scale(1.05);
+        }
+        .styled-link {
+          background-size: 100% 2px;
+        }
+      }
       img {
         width: clamp(133px, ${152 / 7.68}vw, 152px);
         aspect-ratio: 152 / 114;
+        transition: transform .4s ease-out;
       }
       p {
         font-size: clamp(1rem, ${20 / 7.68}vw, ${20 / 16}rem);
         margin-bottom: .5rem;
       }
-      a {
+      .styled-link {
         font-size: clamp(${18 / 16}rem, ${21 / 7.68}vw, ${24 / 16}rem);
         display: flex;align-items: center;
         font-family: var(--serif);
@@ -164,12 +173,19 @@ const Wrapper = styled.footer`
     }
     .social {
       color: var(--primary-400);
-      svg{
+      svg {
         width: 32px;
         height: 32px;
       }
-      a:not(:last-child) {
-        margin-bottom: ${24 / 16}rem;
+      a {
+        transition: color .4s;
+        &:hover,
+        &:focus-visible {
+          color: var(--primary-600);
+        }
+        &:not(:last-child) {
+          margin-bottom: ${24 / 16}rem;
+        }
       }
     }
   }
