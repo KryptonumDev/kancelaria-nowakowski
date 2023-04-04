@@ -31,7 +31,7 @@ const Nav = () => {
   return (
     <>
       <Placeholder />
-      <StyledNav className="nav" ref={nav}> 
+      <StyledNav className="nav" ref={nav}>
         <nav className="max-width-header">
           <Link to="/" aria-label="Strona główna" onClick={handleNavClick} className="nav-logo">
             <Logo />
@@ -389,9 +389,11 @@ const StyledNav = styled.header`
       > ul {
         margin: 0;
         display: grid;
-        grid-template:"b a"
-                      "c a"
-                      "d a";
+        grid-gap: 0 16px;
+        grid-template:
+                "b a" auto
+                "c a" auto
+                "d a" 1fr;
         > li:nth-child(1){
           grid-area: a;
         }

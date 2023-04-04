@@ -1,7 +1,3 @@
-require("dotenv").config({
-  path: `.env`,
-})
-
 module.exports = {
   siteMetadata: {
     title: `Kancelaria Nowakowski`,
@@ -54,14 +50,13 @@ module.exports = {
       options: {
         baseUrl : "https://kancelaria.headlesshub.com",
         gatsbyUrl : 'https://kancelaria.gatsbyjs.io',
-        defaultDataLayer: { platform: "gatsby" },
       },
     },
     {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
         host: 'https://kancelaria.gatsbyjs.io',
-        sitemap: 'https://kancelaria.gatsbyjs.iositemap-index.xml',
+        sitemap: 'https://kancelaria.gatsbyjs.io/sitemap-index.xml',
         policy: [{userAgent: '*', allow: '/'}]
       }
     },
