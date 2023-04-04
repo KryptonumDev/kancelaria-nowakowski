@@ -70,7 +70,7 @@ const Grid = styled.div`
   grid-gap: 32px;
   margin-top: 40px;
   padding-bottom: 120px;
-  margin-bottom: clamp(${74/16}rem, ${96/7.68}vw, ${110/16}rem);
+  margin-bottom: clamp(${74/16}rem, ${96/7.68}vw, ${120/16}rem);
   @media (max-width: 1024px) {
     grid-template-columns: 1fr;
     padding-bottom: 0;

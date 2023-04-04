@@ -28,7 +28,7 @@ module.exports = {
       },
       __key: "images"
     },
-    {
+    { 
       resolve: 'gatsby-source-wordpress',
       options: {
         schema: {

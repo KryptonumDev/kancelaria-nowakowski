@@ -50,6 +50,23 @@ export default function Card({ index, data, scrollProgresValue }) {
 const Wrapper = styled(motion.div)`
   height: 100%;
   position: relative;
+  
+
+  /* .image img{
+    transition: width .4s ease-out;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &:hover{
+    .image img{
+      width: calc(100% + 10px);
+    }
+
+    .styled-link{
+      background-size: 100% 2px;
+    }
+  } */
 
   .image img{
     transition: transform .4s ease-out;
