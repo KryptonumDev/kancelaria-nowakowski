@@ -167,6 +167,7 @@ const GlobalStyle = createGlobalStyle`
   .cta-secondary,
   .cta-white,
   .wp-block-button a {
+    outline: none;
     font-family: var(--serif);
     font-size: clamp(${18 / 16}rem, ${21 / 7.68}vw, ${24 / 16}rem);
     padding: ${16 / 24}em ${32 / 24}em;
@@ -206,7 +207,8 @@ const GlobalStyle = createGlobalStyle`
       pointer-events: none;
       transition: opacity .2s ease-in-out;
     }
-    &:hover {
+    &:hover,
+    &:focus-visible {
       &::before {
         transform: scaleY(1);
         transition: transform .2s ease-in-out;
@@ -222,6 +224,12 @@ const GlobalStyle = createGlobalStyle`
     color: var(--primary-900);
     &::before {
       background-color: var(--primary-300);
+    }
+    &:active::before {
+      background-color: var(--primary-200);
+    }
+    &:focus-visible::before {
+      background-color: var(--primary-100);
     }
   }
   .cta-secondary {
