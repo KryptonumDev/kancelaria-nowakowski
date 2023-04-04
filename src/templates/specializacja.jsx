@@ -2,16 +2,14 @@ import { graphql } from "gatsby"
 import * as React from "react"
 import Hero from "../components/sections/specjalizacja-hero"
 import Content from "../components/sections/gutenberg-content"
-import useHeadings from "../hooks/create-headings"
 import ContactUs from "../components/sections/ContactUs"
 
 export default function Specializacja({ data }) {
   const { content, gutenberg, featuredImage } = data.wpSpecjalizacja
-  const headings = useHeadings(content)
   return (
     <main>
       <Hero title={gutenberg.title} excerpt={gutenberg.excerpt} featuredImage={featuredImage} />
-      <Content headings={headings} content={content} />
+      <Content content={content} />
       <ContactUs data={data.global.global.sectionContact} />
     </main>
   )

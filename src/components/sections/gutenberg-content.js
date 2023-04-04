@@ -1,14 +1,16 @@
-import React from "react"
+import React, { useLayoutEffect } from "react"
 import { useEffect } from "react"
 import styled from "styled-components"
 import Navigation from "../organisms/content-navigation"
 import { StyledContent } from "../organisms/content-styles"
 import { slugTransform } from "../../helpers/slug-transform"
+import useHeadings from "../../hooks/create-headings"
 
-export default function Content({ headings, content }) {
+export default function Content({ content }) {
 
 
   useEffect(() => {
+
     const changeTab = (tab) => {
       if (tab === 'first') {
         document.querySelectorAll('.first-tab-button').forEach(el => {
@@ -64,17 +66,16 @@ export default function Content({ headings, content }) {
 
   }, [])
 
-
+  const headings = useHeadings(content)
   return (
     <Wrapper>
       <Navigation headings={headings} />
-      <StyledContent id='content' dangerouslySetInnerHTML={{ __html: content }} />
+      <StyledContent id='content' dangerouslySetInnerHTML={{__html: content.replaceAll(/<style\b[^>]*>(.*?)<\/style>/gs, '')}}/>
     </Wrapper>
   )
 }
 
 const Wrapper = styled.section`
-margin-top: clamp(64px, ${96 / 768 * 100}vw, 128px);
   display: grid;
   grid-gap: 32px;
   grid-template-columns: 408fr 848fr;

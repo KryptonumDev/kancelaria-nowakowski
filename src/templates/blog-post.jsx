@@ -2,18 +2,15 @@ import { graphql } from "gatsby"
 import * as React from "react"
 import Content from "../components/sections/gutenberg-content"
 import Hero from "../components/sections/post-hero"
-import useHeadings from "../hooks/create-headings"
 
 
 export default function Post({ data }) {
   const { content, categories, featuredImage, gutenberg } = data.wpPost
 
-  const headings = useHeadings(content)
-
   return (
     <main>
       <Hero categories={categories} title={gutenberg.title} excerpt={gutenberg.excerpt} featuredImage={featuredImage} />
-      <Content content={content} headings={headings} />
+      <Content content={content} />
     </main>
   )
 }
