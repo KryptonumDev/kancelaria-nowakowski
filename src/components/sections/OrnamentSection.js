@@ -41,7 +41,11 @@ const StyledSection = styled.section`
       li {
         font-size: clamp(${20/16}rem, ${16/7.68}vw, ${20/16}rem);
         display: flex;
+        align-items: flex-start;
         gap: 4px;
+        img {
+          margin-top: 5px;
+        }
         > * {
           flex-shrink: 0;
         }

@@ -1,6 +1,4 @@
-
 let $body
-
 if (typeof document !== `undefined`) {
     $body = document.querySelector('html');
 }
