@@ -255,13 +255,10 @@ const Wrapper = styled.section`
     }
   }
   .form {
-    position: relative;
     .form-sent {
-      position: absolute;
-      left: 0;
-      top: 0;
       width: calc(100% + 34px);
       height: 100%;
+      min-height: 750px;
       margin: 0 -17px;
       display: flex;
       align-items: center;

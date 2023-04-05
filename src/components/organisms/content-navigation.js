@@ -4,6 +4,7 @@ import { useEffect } from "react"
 import styled from "styled-components"
 import { slugTransform } from './../../helpers/slug-transform'
 import { htmlDelete } from "../../helpers/html-delete"
+import { isBrowser } from "framer-motion"
 
 export default function Navigation({ headings }) {
   const [activePart, setActivePart] = useState(null)
@@ -15,7 +16,7 @@ export default function Navigation({ headings }) {
   useEffect(() => {
     var observer = new IntersectionObserver(function (entries) {
       entries.forEach(el => {
-        if (el.isIntersecting) {
+        if(el.isIntersecting) {
           setActivePart(el.target.id)
         }
       })
@@ -35,7 +36,16 @@ export default function Navigation({ headings }) {
       </svg>
       <div>
         {headings?.map(el => (
-          <button key={slugTransform(htmlDelete(el))} className={activePart === slugTransform(htmlDelete(el)) ? 'active' : ''} onClick={(e) => { scroll(e)}} dangerouslySetInnerHTML={{ __html: htmlDelete(el) }}></button>
+          <button
+            key={slugTransform(htmlDelete(el))}
+            className={
+              activePart === (isBrowser ? slugTransform(new DOMParser().parseFromString(el, "text/html").body.textContent || "") : '')
+              ? 'active'
+              : ''
+            }
+            onClick={(e) => { scroll(e)}}
+            dangerouslySetInnerHTML={{__html: htmlDelete(el)}}
+          ></button>
         ))}
       </div>
     </Wrapper>
