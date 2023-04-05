@@ -198,6 +198,7 @@ export const StyledContent = styled.div`
   }
 
   .cta-wrapper{
+    text-align: center;
     margin: 64px 0;
     position: relative;
     display: flex;

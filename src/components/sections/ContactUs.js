@@ -127,7 +127,7 @@ const ContactUs = ({data}) => {
                   aria-invalid={errors.subject ? "true" : "false"}
                   defaultValue=""
                 >
-                  <option value="" disabled="true">Wybierz temat...</option>
+                  <option value="" disabled>Wybierz temat...</option>
                   <option value="B2B">B2B</option>
                   <option value="Kredyty CHF">Kredyty CHF</option>
                   <option value="Hałas Lotniczy">Hałas lotniczy</option>

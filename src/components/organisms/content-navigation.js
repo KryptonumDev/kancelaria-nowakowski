@@ -7,11 +7,11 @@ import { htmlDelete } from "../../helpers/html-delete"
 
 export default function Navigation({ headings }) {
 
+  console.log(headings[1]);
   const [activePart, setActivePart] = useState(null)
 
-  const scroll = (e, id) => {
-    e.preventDefault()
-    document.getElementById(id).scrollIntoView({ behavior: "smooth" });
+  const scroll = (e) => {
+    document.getElementById(slugTransform(e.target.textContent)).scrollIntoView({ behavior: "smooth" });
   }
 
   useEffect(() => {
@@ -37,7 +37,7 @@ export default function Navigation({ headings }) {
       </svg>
       <div>
         {headings?.map(el => (
-          <button key={slugTransform(htmlDelete(el))} className={activePart === slugTransform(htmlDelete(el)) ? 'active' : ''} onClick={(e) => { scroll(e, slugTransform(htmlDelete(el))) }}>{htmlDelete(el)}</button>
+          <button key={slugTransform(htmlDelete(el))} className={activePart === slugTransform(htmlDelete(el)) ? 'active' : ''} onClick={(e) => { scroll(e)}} dangerouslySetInnerHTML={{ __html: htmlDelete(el) }}></button>
         ))}
       </div>
     </Wrapper>
