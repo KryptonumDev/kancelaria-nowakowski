@@ -49,7 +49,7 @@ const ContactUs = ({data}) => {
       <div className="content" dangerouslySetInnerHTML={{__html: data.contentUnderTitle}}>
       </div>
       <div className="form">
-        {sent && (
+        {(sent || getCookie('sentCount') >= 3) ? (
           <div className="form-sent" ref={formSent}>
             <div>
               <h3>Wiadomość została wysłana pomyślnie. Oczekuj naszego telefonu.</h3>
@@ -61,122 +61,123 @@ const ContactUs = ({data}) => {
               )}
             </div>
           </div>
+        ) : (
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <h3>Dane kontaktowe</h3>
+            <div className="form-input">
+              <label>
+                <span>Imię i nazwisko</span>
+                {errors.name && (
+                  <span role="alert" className="error">To pole jest wymagane</span>
+                )}
+                <div className="input">
+                  <input
+                    type="text"
+                    {...register("name", {required: true, maxLength: 80})}
+                    aria-invalid={errors.name ? "true" : "false"}
+                  />
+                  <InputBorder />
+                </div>
+              </label>
+            </div>
+            <div className="form-input">
+              <label>
+                <span>Adres e-mail</span>
+                {errors.email ? (
+                  <span role="alert" className="error">Nieprawidłowy adres e-mail</span>
+                ) : (
+                  <span>(ocjonalnie)</span>
+                )}
+                <div className="input">
+                  <input
+                    type="email"
+                    {...register("email", {pattern: /^\S+@\S+$/i})}
+                    aria-invalid={errors.email ? "true" : "false"}
+                  />
+                  <InputBorder />
+                </div>
+              </label>
+            </div>
+            <div className="form-input">
+              <label>
+                <span>Telefon</span>
+                {errors.tel && (
+                  <span role="alert" className="error">To pole jest wymagane</span>
+                )}
+                <div className="input">
+                  <input
+                    type="tel"
+                    {...register("tel", {required: true, pattern: /(?<!\w)(\(?(\+|00)?48\)?)?[ -]?\d{3}[ -]?\d{3}[ -]?\d{3}(?!\w)/})}
+                    aria-invalid={errors.tel ? "true" : "false"}
+                  />
+                  <InputBorder />
+                </div>
+              </label>
+            </div>
+            <h3>Temat i termin</h3>
+            <div className="form-input">
+              <label>
+                <span>Wybierz temat:</span>
+                {errors.subject && (
+                  <span role="alert" className="error">To pole jest wymagane</span>
+                )}
+                <div className="input">
+                  <select
+                    {...register("subject", {required: true})}
+                    aria-invalid={errors.subject ? "true" : "false"}
+                    defaultValue=""
+                  >
+                    <option value="" disabled>Wybierz temat...</option>
+                    <option value="B2B">B2B</option>
+                    <option value="Kredyty CHF">Kredyty CHF</option>
+                    <option value="Hałas Lotniczy">Hałas lotniczy</option>
+                    <option value="Sprawy Rozwodowe">Sprawy rozwodowe</option>
+                    <option value="Proces sądowy">Proces sądowy</option>
+                    <option value="Sprawy spadkowe">Sprawy spadkowe</option>
+                    <option value="Odzkodowania">Odszkodowania</option>
+                    <option value="Inne">Inne</option>
+                  </select>
+                  <InputBorder />
+                  <SelectDropdown />
+                </div>
+              </label>
+            </div>
+            <div className="form-input">
+              <label>
+                <span>Wybierz datę i godzinę</span>
+                {errors.date && (
+                  <span role="alert" className="error">To pole jest wymagane</span>
+                )}
+                <div className="input">
+                  <input
+                    min={new Date().toISOString().slice(0,new Date().toISOString().lastIndexOf(":"))}
+                    type="datetime-local"
+                    {...register("date")}
+                    aria-invalid={errors.date ? "true" : "false"}
+                  />
+                  <InputBorder />
+                </div>
+              </label>
+            </div>
+            <div className="form-input legal">
+              {errors.legal && (
+                <span role="alert" className="error">To pole jest wymagane</span>
+              )}
+              <label>
+                <input
+                  type="checkbox"
+                  {...register("legal", {required: true})}
+                  aria-invalid={errors.legal ? "true" : "false"}
+                />
+                <span>Wyrażam zgodę na przetwarzanie moich danych osobowych na zasadach określonych w <Link to="/polityka-prywatnosci/">Polityce prywatności</Link></span>
+              </label>
+            </div>
+            <button className="cta-primary" type="submit">
+              <span>Wyślij</span>
+              <RightArrow />
+            </button>
+          </form>
         )}
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <h3>Dane kontaktowe</h3>
-          <div className="form-input">
-            <label>
-              <span>Imię i nazwisko</span>
-              {errors.name && (
-                <span role="alert" className="error">To pole jest wymagane</span>
-              )}
-              <div className="input">
-                <input
-                  type="text"
-                  {...register("name", {required: true, maxLength: 80})}
-                  aria-invalid={errors.name ? "true" : "false"}
-                />
-                <InputBorder />
-              </div>
-            </label>
-          </div>
-          <div className="form-input">
-            <label>
-              <span>Adres e-mail</span>
-              {errors.email ? (
-                <span role="alert" className="error">Nieprawidłowy adres e-mail</span>
-              ) : (
-                <span>(ocjonalnie)</span>
-              )}
-              <div className="input">
-                <input
-                  type="email"
-                  {...register("email", {pattern: /^\S+@\S+$/i})}
-                  aria-invalid={errors.email ? "true" : "false"}
-                />
-                <InputBorder />
-              </div>
-            </label>
-          </div>
-          <div className="form-input">
-            <label>
-              <span>Telefon</span>
-              {errors.tel && (
-                <span role="alert" className="error">To pole jest wymagane</span>
-              )}
-              <div className="input">
-                <input
-                  type="tel"
-                  {...register("tel", {required: true, pattern: /(?<!\w)(\(?(\+|00)?48\)?)?[ -]?\d{3}[ -]?\d{3}[ -]?\d{3}(?!\w)/})}
-                  aria-invalid={errors.tel ? "true" : "false"}
-                />
-                <InputBorder />
-              </div>
-            </label>
-          </div>
-          <h3>Temat i termin</h3>
-          <div className="form-input">
-            <label>
-              <span>Wybierz temat:</span>
-              {errors.subject && (
-                <span role="alert" className="error">To pole jest wymagane</span>
-              )}
-              <div className="input">
-                <select
-                  {...register("subject", {required: true})}
-                  aria-invalid={errors.subject ? "true" : "false"}
-                  defaultValue=""
-                >
-                  <option value="" disabled>Wybierz temat...</option>
-                  <option value="B2B">B2B</option>
-                  <option value="Kredyty CHF">Kredyty CHF</option>
-                  <option value="Hałas Lotniczy">Hałas lotniczy</option>
-                  <option value="Sprawy Rozwodowe">Sprawy rozwodowe</option>
-                  <option value="Proces sądowy">Proces sądowy</option>
-                  <option value="Sprawy spadkowe">Sprawy spadkowe</option>
-                  <option value="Odzkodowania">Odszkodowania</option>
-                  <option value="Inne">Inne</option>
-                </select>
-                <InputBorder />
-                <SelectDropdown />
-              </div>
-            </label>
-          </div>
-          <div className="form-input">
-            <label>
-              <span>Wybierz datę i godzinę</span>
-              {errors.date && (
-                <span role="alert" className="error">To pole jest wymagane</span>
-              )}
-              <div className="input">
-                <input
-                  min={new Date().toISOString().slice(0,new Date().toISOString().lastIndexOf(":"))}
-                  type="datetime-local"
-                  {...register("date")}
-                  aria-invalid={errors.date ? "true" : "false"}
-                />
-                <InputBorder />
-              </div>
-            </label>
-          </div>
-          <div className="form-input legal">
-            {errors.legal && (
-              <span role="alert" className="error">To pole jest wymagane</span>
-            )}
-            <label>
-              <input
-                type="checkbox"
-                {...register("legal", {required: true})}
-                aria-invalid={errors.legal ? "true" : "false"}
-              />
-              <span>Wyrażam zgodę na przetwarzanie moich danych osobowych na zasadach określonych w <Link to="/polityka-prywatnosci/">Polityce prywatności</Link></span>
-            </label>
-          </div>
-          <button className="cta-primary" type="submit">
-            <span>Wyślij</span>
-            <RightArrow />
-          </button>
-        </form>
       </div>
     </Wrapper>
   );

@@ -6,8 +6,6 @@ import { slugTransform } from './../../helpers/slug-transform'
 import { htmlDelete } from "../../helpers/html-delete"
 
 export default function Navigation({ headings }) {
-
-  console.log(headings[1]);
   const [activePart, setActivePart] = useState(null)
 
   const scroll = (e) => {
