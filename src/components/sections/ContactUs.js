@@ -28,8 +28,12 @@ const ContactUs = ({data}) => {
     })
   }
 
+  const isBrowser = typeof window !== "undefined";
   const formSent = useRef();
-  const getCookie = (cookieName) => document.cookie.split("; ").find((row) => row.startsWith(`${cookieName}`))?.split("=")[1];
+  const getCookie = (cookieName) =>
+    isBrowser
+    ? document.cookie.split("; ").find((row) => row.startsWith(`${cookieName}`))?.split("=")[1]
+    : '';
 
   const sendAgain = () => {
     document.cookie = `sentCount=${getCookie('sentCount') ? Number(getCookie('sentCount'))+1 : 1};max-age=86400;path=/`;
