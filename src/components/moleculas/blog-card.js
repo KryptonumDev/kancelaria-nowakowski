@@ -75,23 +75,27 @@ const Wrapper = styled(motion.div)`
     }
   }
 
+  .link{
+    display: block;
+  }
+
   @media (max-width: 1024px){
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    max-width: 900px;
-    transform: unset !important;
+      transform: unset !important;
+    .link{
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      max-width: 900px;
+    }
   }
 
   @media (max-width: 680px){
-    display: block;
-    max-width: 500px;
-    width: 100%;
-    margin: 0 auto;
-  }
-
-  .link{
-    display: block;
+    .link{
+      display: block;
+      max-width: 500px;
+      width: 100%;
+      margin: 0 auto;
+    }
   }
 `
 
