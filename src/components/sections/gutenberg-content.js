@@ -75,7 +75,7 @@ export default function Content({ content }) {
         <StyledContent id='content' dangerouslySetInnerHTML={{ __html: content.replaceAll(/<style\b[^>]*>(.*?)<\/style>/gs, '') }} />
         <Contakt>
           <h3>Jesteśmy do Twojej dyspozycji. Zacznij działać.</h3>
-          <Link to="/kontakt/" className="cta-secondary"><sapn>Jestem zainteresowany</sapn></Link>
+          <Link to="/kontakt/" className="cta-secondary"><span>Jestem zainteresowany</span></Link>
         </Contakt>
       </div>
     </Wrapper>

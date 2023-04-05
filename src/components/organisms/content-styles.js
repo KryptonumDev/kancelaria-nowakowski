@@ -43,7 +43,7 @@ export const StyledContent = styled.div`
     color: #12433A;
   }
 
-  p{
+  p, table{
     font-family: 'Lato';
     font-style: normal;
     font-weight: 400;
@@ -59,6 +59,21 @@ export const StyledContent = styled.div`
     @media (max-width: 480px) {
       grid-template-columns: 1fr;
       grid-gap: 24px;
+    }
+  }
+
+  table {
+    border-spacing: 0 0;
+    width: 100%;
+    border: 1px solid var(--secondary-500);
+    tr:not(:last-child) td {
+      border-bottom: 1px solid var(--secondary-500);
+    }
+    td:not(:last-child){
+      border-right: 1px solid var(--secondary-500);
+    }
+    td {
+      padding: .5em 1em;
     }
   }
 
