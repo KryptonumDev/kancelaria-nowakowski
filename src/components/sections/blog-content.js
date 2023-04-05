@@ -11,7 +11,7 @@ export default function Content({ categories, posts, data, page }) {
     <Wrapper>
       <Ornament />
       <h1>{data.pageTitle}</h1>
-      <Filter postsCount={posts.length} categories={categories} />
+      <Filter categories={categories} />
       <Grid posts={posts} currentPage={page} />
       <Pagination defaultUrl='/blog/' currentPage={page} itemCount={posts.length} />
     </Wrapper>

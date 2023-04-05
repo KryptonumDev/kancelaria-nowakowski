@@ -3,8 +3,9 @@ import { Link } from "gatsby"
 import React, { useCallback, useEffect, useState } from "react"
 import styled from "styled-components"
 
-export default function Filter({ postsCount, categories }) {
+export default function Filter({ categories }) {
 
+  const allPostsItems = categories.reduce((acc, obj) => acc + obj['count'], 0);
   const x = useMotionValue(0)
 
   const [maxbuttonstransform, setMaxButtonsTransform] = useState(0)
@@ -64,7 +65,7 @@ export default function Filter({ postsCount, categories }) {
         <Slider style={{ x }} drag='x' dragConstraints={{ left: maxbuttonstransform > 0 ? -maxbuttonstransform : 0, right: 0 }} maxbuttonstransform={maxbuttonstransform} id='control'>
           <Placeholder/>
           <Link activeClassName="active" to='/blog/'>
-            Wszystkie ({postsCount})
+            Wszystkie ({allPostsItems})
           </Link>
           {categories.map(el => (
             <Link key={el.name} activeClassName="active" to={el.uri}>
