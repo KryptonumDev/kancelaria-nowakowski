@@ -37,7 +37,7 @@ export default function Navigation({ headings }) {
       </svg>
       <div>
         {headings?.map(el => (
-          <button key={slugTransform(htmlDelete(el))} className={activePart === slugTransform(htmlDelete(el)) ? 'active' : ''} onClick={(e) => { scroll(e, slugTransform(htmlDelete(el))) }}>{htmlDelete(el)}</button>
+          <button key={slugTransform(htmlDelete(el))} className={activePart === slugTransform(htmlDelete(el)) ? 'active' : ''} onClick={(e) => { scroll(e, slugTransform(htmlDelete(el))) }} dangerouslySetInnerHTML={{ __html: htmlDelete(el) }}></button>
         ))}
       </div>
     </Wrapper>
