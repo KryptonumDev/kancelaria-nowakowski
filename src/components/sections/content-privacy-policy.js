@@ -133,4 +133,8 @@ const Wrapper = styled.section`
       max-width: unset;
     }
   }
+  a {
+    text-decoration: underline;
+    text-decoration-color: var(--secondary-500);
+  }
 `

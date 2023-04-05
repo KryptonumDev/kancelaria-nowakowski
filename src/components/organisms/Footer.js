@@ -180,9 +180,12 @@ const Wrapper = styled.footer`
       }
       a {
         transition: color .4s;
-        &:hover,
-        &:focus-visible {
+        &:hover {
           color: var(--primary-600);
+        }
+        &:active,
+        &:focus-visible {
+          color: var(--primary-700);
         }
         &:not(:last-child) {
           margin-bottom: ${24 / 16}rem;
