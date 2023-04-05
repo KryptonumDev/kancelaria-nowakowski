@@ -44,7 +44,7 @@ export const query = graphql`
         uri
       }
     }
-    allWpPost {
+    allWpPost(sort: {date: DESC}) {
       nodes {
         id
         uri

@@ -20,7 +20,7 @@ export { Head } from "./../components/sections/seo"
 
 export const query = graphql`
     query archiwum ($id: String!) {
-      allWpPost(limit: 3) {
+      allWpPost(limit: 3, sort: {date: DESC}) {
         nodes {
           id
           uri

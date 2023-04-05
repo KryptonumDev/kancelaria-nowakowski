@@ -5,6 +5,7 @@ import Navigation from "../organisms/content-navigation"
 import { StyledContent } from "../organisms/content-styles"
 import { slugTransform } from "../../helpers/slug-transform"
 import useHeadings from "../../hooks/create-headings"
+import { Link } from "gatsby"
 
 export default function Content({ content }) {
 
@@ -70,7 +71,13 @@ export default function Content({ content }) {
   return (
     <Wrapper>
       <Navigation headings={headings} />
-      <StyledContent id='content' dangerouslySetInnerHTML={{__html: content.replaceAll(/<style\b[^>]*>(.*?)<\/style>/gs, '')}}/>
+      <div>
+        <StyledContent id='content' dangerouslySetInnerHTML={{ __html: content.replaceAll(/<style\b[^>]*>(.*?)<\/style>/gs, '') }} />
+        <Contakt>
+          <h3>Jesteśmy do Twojej dyspozycji. Zacznij działać.</h3>
+          <Link to="/kontakt/" className="cta-secondary"><sapn>Jestem zainteresowany</sapn></Link>
+        </Contakt>
+      </div>
     </Wrapper>
   )
 }
@@ -82,5 +89,20 @@ const Wrapper = styled.section`
 
   @media (max-width: 940px) {
     grid-template-columns: 1fr;
+  }
+`
+
+const Contakt = styled.div`
+  margin-top: 32px;
+
+  h3{
+    text-align: center;
+    font-size: clamp(22px, ${26/768*100}, 24px);
+  }
+
+  a{
+    display: block;
+    margin: 24px auto 0 auto;
+    width: fit-content;
   }
 `

@@ -13,7 +13,7 @@ const Footer = ({ setCookiesActive }) => {
           title
         }
       }
-      allWpPost(limit: 2) {
+      allWpPost(limit: 2, sort: {date: DESC}) {
         blogs: nodes {
           title
           uri

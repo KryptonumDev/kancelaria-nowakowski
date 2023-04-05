@@ -68,7 +68,7 @@ export const query = graphql`
       title
     }
   }
-  allWpPost {
+  allWpPost(sort: {date: DESC}) {
     nodes {
       title
       uri
