@@ -68,6 +68,9 @@ const GlobalStyle = createGlobalStyle`
     color: inherit;
     background-color: transparent;
     border: none;
+    -webkit-appearance: none;
+    appearance: none;
+    border-radius: 0;
   }
   svg {
     vertical-align: top;

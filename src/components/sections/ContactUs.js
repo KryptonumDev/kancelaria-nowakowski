@@ -335,9 +335,6 @@ const Wrapper = styled.section`
         height: 56px;
         position: relative;
         input, select {
-          -webkit-appearance: none;
-          appearance: none;
-          border-radius: 0;
           width: 100%;
           height: 100%;
           border: 2px solid var(--secondary-600);
