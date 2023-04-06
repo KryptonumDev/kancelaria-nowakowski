@@ -111,7 +111,7 @@ const ContactUs = ({data}) => {
                 <div className="input">
                   <input
                     type="tel"
-                    {...register("tel", {required: true, pattern: /(?<!\w)(\(?(\+|00)?48\)?)?[ -]?\d{3}[ -]?\d{3}[ -]?\d{3}(?!\w)/})}
+                    {...register("tel", {required: true, pattern: /(\(?(\+|00)?48\)?)?[ -]?\d{3}[ -]?\d{3}[ -]?\d{3}(?!\w)/})}
                     aria-invalid={errors.tel ? "true" : "false"}
                   />
                   <InputBorder />
@@ -332,6 +332,7 @@ const Wrapper = styled.section`
         input, select {
           -webkit-appearance: none;
           appearance: none;
+          border-radius: 0;
           width: 100%;
           height: 100%;
           border: 2px solid var(--secondary-600);

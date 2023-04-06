@@ -18,7 +18,7 @@ const Wrapper = styled.section`
   }
 
   h2{
-    font-family: 'Literata';
+    font-family: var(--serif);
     font-style: normal;
     font-weight: 400;
     font-size: 28px;
@@ -53,7 +53,7 @@ const Wrapper = styled.section`
   }
 
   p em {
-    font-family: 'Literata';
+    font-family: var(--serif);
     font-style: normal;
   }
 
@@ -109,7 +109,7 @@ const Wrapper = styled.section`
 
   h3{
     font-size: 24px;
-    font-family: 'Literata';
+    font-family: var(--serif);
     font-style: normal;
     font-weight: 400;
     line-height: 150%;

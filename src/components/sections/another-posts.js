@@ -47,7 +47,7 @@ const Wrapper = styled.section`
 
     p{
       font-size: clamp(${22 / 16}rem, ${24 / 7.68}vw, ${24 / 16}rem);
-      font-family: 'Literata';
+      font-family: var(--serif);
       line-height: 160%; 
       color: #12433A;
 

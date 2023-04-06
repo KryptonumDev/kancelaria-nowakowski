@@ -166,7 +166,7 @@ const Information = styled.div`
   }
 
   .styled-link{
-    font-family: 'Literata';
+    font-family: var(--serif);
     font-size: 24px;
     line-height: 160%;
     color: #12433A;

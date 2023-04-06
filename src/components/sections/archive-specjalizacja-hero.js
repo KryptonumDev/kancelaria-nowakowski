@@ -148,7 +148,7 @@ const Grid = styled.div`
       text-align: center;
       padding: 0 12px;
       z-index: 2;
-      font-family: 'Literata';
+      font-family: var(--serif);
       font-style: normal;
       font-weight: 400;
       font-size: clamp(${20 / 16}rem, ${16 / 7.68}vw, ${24 / 16}rem);

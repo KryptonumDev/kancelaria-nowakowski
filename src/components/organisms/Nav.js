@@ -35,7 +35,7 @@ const Nav = () => {
   useEffect(() => {
     if (typeof window !== 'undefined') {
       document.onkeydown = function (e) {
-        if (e.key == "Escape") {
+        if (e.key === "Escape") {
           handleNavClick()
         }
       }
@@ -295,7 +295,6 @@ const StyledNav = styled.header`
     &.expand .nav-links {
       transform: translateX(0);
       visibility: visible;
-      overflow: hidden;
       transition: transform .5s cubic-bezier(0.65,0.05,0.36,1);
     }
     ul {
@@ -303,15 +302,14 @@ const StyledNav = styled.header`
       font-family: var(--serif);
     }
     .nav-links {
-      overflow: auto;
       position: relative;
       transform: translateX(100%);
       visibility: hidden;
       transition: transform .5s cubic-bezier(0.65,0.05,0.36,1), visibility .5s;
       overflow-y: auto;
-      position: absolute;
+      position: fixed;
       right: 0;
-      top: 100%;
+      top: 89px;
       height: calc(100vh - 89px);
       height: calc(100dvh - 89px);
       padding: ${66 / 16}rem;
@@ -361,6 +359,7 @@ const StyledNav = styled.header`
       width: 216px;
     }
     .nav-links {
+      top: 67px;
       padding: ${48 / 16}rem 1rem 1rem;
       width: 100%;
       margin: 0;

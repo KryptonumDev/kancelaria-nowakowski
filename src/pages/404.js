@@ -84,7 +84,7 @@ const Wrapper = styled.main`
   p{
     margin-top: clamp(1rem, ${24 / 768 * 100}vw, 2rem);
     font-size: clamp(${18 / 16}rem, ${24 / 13.66}vw, ${24 / 16}rem);
-    font-family: 'Literata';
+    font-family: var(--serif);
     max-width: 500px;
     line-height: 160%;
     color: #12433A;

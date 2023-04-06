@@ -5,13 +5,13 @@ import Filter from "../organisms/blog-filter"
 import Grid from "../organisms/blog-grid"
 import Pagination from "../organisms/blog-pagination"
 
-export default function Content({ categories, posts, data, page }) {
+export default function Content({ categories, posts, data, page, postsCount }) {
 
   return (
     <Wrapper>
       <Ornament />
       <h1>{data.pageTitle}</h1>
-      <Filter categories={categories} />
+      <Filter categories={categories} postsCount={postsCount} />
       <Grid posts={posts} currentPage={page} />
       <Pagination defaultUrl='/blog/' currentPage={page} itemCount={posts.length} />
     </Wrapper>

@@ -166,7 +166,7 @@ const Wrapper = styled.section`
         width: 100%;
         font-size: clamp(${24/16}rem, ${30/7.68}vw, ${32/16}rem);
         text-align: center;
-        padding: 0 .5rem 2rem;
+        padding: 2rem 1rem;
       }
       &:nth-child(odd){
         flex-direction: column-reverse;

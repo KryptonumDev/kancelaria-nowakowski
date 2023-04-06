@@ -125,7 +125,7 @@ const Wrapper = styled.main`
 
   *{
     width: fit-content;
-    font-family: 'Literata';
+    font-family: var(--serif);
     font-weight: 400;
     color: #0F3730;
   }

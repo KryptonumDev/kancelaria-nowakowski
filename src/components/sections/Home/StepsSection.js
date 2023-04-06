@@ -56,7 +56,7 @@ const StyledSection = styled.section`
       font-size: ${20 / 16}rem;
 
       em{
-        font-family: 'Literata';
+        font-family: var(--serif);
         font-style: normal;
       }
       &::before {

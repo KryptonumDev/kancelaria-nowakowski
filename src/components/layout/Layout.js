@@ -8,16 +8,17 @@ import { useState } from "react";
 
 const Layout = ({ children, pageContext }) => {
   const isBrowser = typeof window !== "undefined";
+  const orphans = ['a', 'i', 'o', 'u', 'w', 'z', 'np.'];
+  const orphansRegex = new RegExp(` (${orphans.join('|')}) `, 'gi');
   useEffect(() => {
-    const orphans = ['w','W','z','u','o','i','np.'];
-    const paragraphs = document.querySelectorAll('p, h2, h3');
-    paragraphs.forEach(paragraph => {
-      orphans.forEach(orphan => {
-        paragraph.innerHTML = paragraph.innerHTML.replaceAll(` ${orphan} `, ` ${orphan}&nbsp;`);
-      });
-    })
+    const paragraphs = Array.from(document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, li'));
+    paragraphs.forEach(paragraph =>
+      paragraph.childNodes.forEach(node =>
+        node?.nodeType === Node.TEXT_NODE && (node.textContent = node.textContent.replace(orphansRegex, ` $1\u00A0`))
+      )
+    );
   }, [isBrowser ? window.location.pathname : '']);
-
+  
   const [cookiesActive, setCookiesActive] = useState(false)
 
   return (

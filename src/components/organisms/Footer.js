@@ -195,16 +195,17 @@ const Wrapper = styled.footer`
   }
   .footer-bottom {
     border-top: 1px solid var(--neutral-600);
-    padding: ${26 / 16}rem 0 ${32 / 16}rem;
+    padding: ${32 / 16}rem 0 ${42 / 16}rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 34px;
+    gap: 1.5rem 2rem;
     span, svg {
       display: inline-block;
       vertical-align: middle;
     }
     span + a {
+      display: inline-block;
       margin-left: ${10 / 16}rem;
     }
     p:last-child {
@@ -268,7 +269,6 @@ const Wrapper = styled.footer`
     }
     .footer-bottom {
       flex-direction: column;
-      gap: 1rem;
       & > * {
         width: 100%;
       }
@@ -277,6 +277,9 @@ const Wrapper = styled.footer`
         span {
           margin-bottom: ${6 / 16}rem;
           display: block;
+          + a {
+            margin-left: 0;
+          }
         }
       }
       p:last-child {
@@ -290,6 +293,9 @@ const Wrapper = styled.footer`
           }
           display: inline;
         }
+      }
+      .flex-add {
+        order: -1;
       }
     }
   }

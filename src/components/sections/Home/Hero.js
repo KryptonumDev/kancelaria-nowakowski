@@ -44,7 +44,7 @@ const StyledHero = styled.section`
   }
   .no-wrap{
     white-space: nowrap;
-    font-family: 'Literata';
+    font-family: var(--serif);
   }
   .title{
     max-width: 500px;

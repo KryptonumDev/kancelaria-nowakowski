@@ -19,13 +19,13 @@ export const StyledContent = styled.div`
   }
 
   p em {
-    font-family: 'Literata';
+    font-family: var(--serif);
     font-style: normal;
   }
 
   h2{
     margin-bottom: 32px;
-    font-family: 'Literata';
+    font-family: var(--serif);
     font-weight: 400;
     font-size: clamp(${28 / 16}rem, ${36 / 7.68}vw, ${40 / 16}rem);
     line-height: 130%;
@@ -36,7 +36,7 @@ export const StyledContent = styled.div`
 
   h3{
     margin-top: 32px;
-    font-family: 'Literata';
+    font-family: var(--serif);
     font-weight: 400;
     font-size: clamp(${22 / 16}rem, ${24 / 7.68}vw, ${24 / 16}rem);
     line-height: 158%;
@@ -98,7 +98,7 @@ export const StyledContent = styled.div`
     max-width: unset;
     blockquote{
       padding: 75px 0 48px;
-      font-family: 'Literata';
+      font-family: var(--serif);
       font-style: normal;
       font-weight: 400;
       font-size: 24px;
@@ -161,7 +161,7 @@ export const StyledContent = styled.div`
       position: relative;
       counter-increment: my-awesome-counter;
       list-style: none;
-      font-family: 'Literata';
+      font-family: var(--serif);
       font-weight: 400;
       font-size: clamp(18px, ${21 / 768 * 100}vw, 24px);
       line-height: 158%;
@@ -216,25 +216,18 @@ export const StyledContent = styled.div`
     text-align: center;
     margin: 64px 0;
     position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: clamp(24px, ${42/768*100}vw, 42px) 32px clamp(43px, ${43/768*100}vw, 68px);
+    padding: clamp(${42/16}rem, ${42/7.68}vw, ${68/16}rem) clamp(${17/16}rem, ${40/7.68}vw, ${40/16}rem);
     overflow: hidden;
     max-width: 848px;
-
-    span{
+    span {
       display: block;
       svg{
         width: 100%;
       }
     }
-
-
     @media (max-width: 768px) {
       width: calc(100% + 34px);
-      transform: translateX(-17px);
+      margin-left: -17px;
     }
 
     .gatsby-image-wrapper, .inline-gatsby-image-wrapper{
@@ -254,7 +247,7 @@ export const StyledContent = styled.div`
         margin-top: 16px;
         margin-bottom: 20px;
         text-align: center;
-        font-family: 'Literata';
+        font-family: var(--serif);
         font-weight: 400;
         font-size: clamp(${18 / 16}rem, ${21 / 7.68}vw, ${24 / 16}rem);
         line-height: 158%;
@@ -275,7 +268,7 @@ export const StyledContent = styled.div`
   .custom-list-icons{
       .custom-list-icons__title{
         h1,h2,h3,h4,h5,h6{
-          font-family: 'Literata';
+          font-family: var(--serif);
           font-weight: 400;
           font-size: clamp(${28 / 16}rem, ${36 / 7.68}vw, ${40 / 16}rem);
           line-height: 130%;
@@ -283,7 +276,7 @@ export const StyledContent = styled.div`
           color: #0F3730;
         }
         p{
-          font-family: 'Literata';
+          font-family: var(--serif);
           font-size: clamp(${22 / 16}rem, ${24 / 7.68}vw, ${24 / 16}rem);
           line-height: 158%;
           color: #12433A;
@@ -318,7 +311,7 @@ export const StyledContent = styled.div`
     .custom-list{
       .custom-list__title{
         *{
-          font-family: 'Literata';
+          font-family: var(--serif);
           font-weight: 400;
           font-size: clamp(${28 / 16}rem, ${36 / 7.68}vw, ${40 / 16}rem);
           line-height: 130%;
@@ -370,7 +363,7 @@ export const StyledContent = styled.div`
       }
 
       .tabs-list__title{
-        font-family: 'Literata';
+        font-family: var(--serif);
         font-weight: 400;
         font-size: 28px;
         line-height: 164%;
@@ -382,23 +375,24 @@ export const StyledContent = styled.div`
         margin-top: 24px;
         display: grid;
         grid-template-columns: 1fr 1fr;
-
-        @media (max-width: 540px) {
-          grid-template-columns: 1fr;
-        }
-
         button{
           padding: 24px 12px;
-          font-family: 'Literata';
+          font-family: var(--serif);
           font-weight: 400;
           font-size: clamp(${22 / 16}rem, ${24 / 7.68}vw, ${24 / 16}rem);
           line-height: 158%;
           text-align: center;
           color: #0F3730;
           border-bottom: 3px solid #BFCACD;
-
           &.active{
             border-bottom: 3px solid #3DA290;
+          }
+        }
+
+        @media (max-width: 540px) {
+          margin: 0 -17px;
+          button {
+            font-size: 1rem;
           }
         }
       }
@@ -430,7 +424,7 @@ export const StyledContent = styled.div`
 
           p{
             padding-left: 32px;
-            font-family: 'Literata';
+            font-family: var(--serif);
             font-weight: 400;
             font-size: clamp(${22 / 16}rem, ${24 / 7.68}vw, ${24 / 16}rem);
             line-height: 138%;
@@ -441,6 +435,15 @@ export const StyledContent = styled.div`
 
           &::before{
             display: none;
+          }
+        }
+        @media (max-width: 699px){
+          gap: 1rem;
+          li {
+            width: 100%;
+            p {
+              padding-left: 1rem;
+            }
           }
         }
       }

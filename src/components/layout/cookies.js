@@ -332,7 +332,7 @@ const Wrapper = styled(motion.aside)`
     max-height: calc(100vh - 200px);
 
     .content h2{
-      font-family: 'Literata';
+      font-family: var(--serif);
       font-weight: 400;
       font-size: 21px;
       line-height: 162%;
@@ -347,14 +347,14 @@ const Wrapper = styled(motion.aside)`
     }
 
     .content p em strong, .content p strong em {
-      font-family: 'Literata';
+      font-family: var(--serif);
       font-weight: 600;
       font-size: clamp(16px, ${16 / 768 * 100}vw, 20px);
       font-style: normal;
     }
 
     .content a{
-      font-family: 'Literata';
+      font-family: var(--serif);
       font-weight: 600;
       font-size: clamp(16px, ${16 / 768 * 100}vw, 20px);
       text-decoration: underline;
@@ -438,7 +438,7 @@ const TabsControl = styled.div`
         position: relative;
         border-bottom: 1px solid #707778;
 
-        font-family: 'Literata';
+        font-family: var(--serif);
         font-weight: 400;
         font-size: 21px;
         line-height: 162%;
