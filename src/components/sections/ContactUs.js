@@ -8,6 +8,15 @@ import axios from "axios";
 const ContactUs = ({data}) => {
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
   const [sent, setSent] = useState(false);
+
+
+  const isBrowser = typeof window !== "undefined";
+  const formSent = useRef();
+  const getCookie = (cookieName) =>
+    isBrowser
+    ? document.cookie.split("; ").find((row) => row.startsWith(`${cookieName}`))?.split("=")[1]
+    : '';
+
   const url = 'https://kancelaria.headlesshub.com/wp-json/contact-form-7/v1/contact-forms/13/feedback';
   const onSubmit = data => {
     let body = new FormData()
@@ -20,6 +29,7 @@ const ContactUs = ({data}) => {
     axios.post(url, body)
     .then((res) => {
       if(res.status === 200){
+        document.cookie = `sentCount=${getCookie('sentCount') ? Number(getCookie('sentCount'))+1 : 1};max-age=86400;path=/`;
         setSent(true);
         reset();
       } else {
@@ -28,15 +38,7 @@ const ContactUs = ({data}) => {
     })
   }
 
-  const isBrowser = typeof window !== "undefined";
-  const formSent = useRef();
-  const getCookie = (cookieName) =>
-    isBrowser
-    ? document.cookie.split("; ").find((row) => row.startsWith(`${cookieName}`))?.split("=")[1]
-    : '';
-
   const sendAgain = () => {
-    document.cookie = `sentCount=${getCookie('sentCount') ? Number(getCookie('sentCount'))+1 : 1};max-age=86400;path=/`;
     formSent.current.classList.add('hide');
     setTimeout(() => {
       formSent.current.classList.remove('hide');
@@ -59,7 +61,7 @@ const ContactUs = ({data}) => {
               <h3>Wiadomość została wysłana pomyślnie. Oczekuj naszego telefonu.</h3>
               {(!getCookie('sentCount') || getCookie('sentCount') < 3) && (
                 <button className="cta-secondary" onClick={sendAgain}>
-                  <span>Wypełnij formularz ponownie</span>
+                  <span>Wypełnij ponownie</span>
                   <RightArrow />
                 </button>
               )}
@@ -255,16 +257,16 @@ const Wrapper = styled.section`
     }
   }
   .form {
+    width: 100%;
     .form-sent {
       width: calc(100% + 34px);
       height: 100%;
       min-height: 750px;
-      margin: 0 -17px;
+      margin-left: -17px;
       display: flex;
       align-items: center;
       justify-content: center;
       background-color: var(--primary-400);
-      z-index: 3;
       padding: 0 2rem;
       h3 {
         font-size: clamp(${24/16}rem, ${32/7.68}vw, ${32/16}rem);
@@ -274,6 +276,9 @@ const Wrapper = styled.section`
       transition: opacity .4s;
       &.hide {
         opacity: 0 !important;
+      }
+      @media (max-width: 699px){
+        padding: 0 1rem;
       }
     }
     @keyframes formSent {

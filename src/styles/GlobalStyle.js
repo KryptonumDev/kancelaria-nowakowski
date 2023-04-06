@@ -195,7 +195,9 @@ const GlobalStyle = createGlobalStyle`
     font-size: clamp(${18 / 16}rem, ${21 / 7.68}vw, ${24 / 16}rem);
     padding: ${16 / 24}em ${32 / 24}em;
     white-space: nowrap;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     text-align: center;
     position: relative;
     transition: background-color .2s ease-out;
