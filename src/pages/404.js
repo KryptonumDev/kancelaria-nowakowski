@@ -15,7 +15,7 @@ const NotFoundPage = () => {
   return (
     <Wrapper>
       <div>
-        <StaticImage className="image" src='./../resources/images/404.jpg' alt='Mężczyzna uważnie czytający tekst z dokumentu' />
+        <StaticImage className="image" src='./../resources/images/404.jpeg' alt='Skupiona Dominika Sujka-Kujawiak w okularach' />
         <Ornament />
         <h1>
           Niestety nie znaleźliśmy
