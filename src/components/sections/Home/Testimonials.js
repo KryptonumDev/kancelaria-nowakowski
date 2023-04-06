@@ -128,7 +128,7 @@ const Wrapper = styled.section`
     &[data-ifImage="false"] {
       grid-template-columns: 1fr;
       .content {
-        padding-left: clamp(0, ${406/13.66}vw, ${406/16}rem);
+        padding-left: clamp(0px, ${406/13.66}vw, ${406/16}rem);
       }
     }
   }
