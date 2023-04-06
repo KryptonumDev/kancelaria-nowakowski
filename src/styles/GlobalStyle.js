@@ -199,6 +199,7 @@ const GlobalStyle = createGlobalStyle`
     padding: ${16 / 24}em ${32 / 24}em;
     white-space: nowrap;
     display: inline-flex;
+    justify-content: center;
     align-items: center;
     gap: 8px;
     text-align: center;
