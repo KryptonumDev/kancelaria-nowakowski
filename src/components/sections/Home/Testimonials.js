@@ -26,10 +26,12 @@ const Testimonials = ({ data }) => {
     <Wrapper ref={constraintsRef}>
       <Content transition={{ type: "spring", stiffness: 30 }} animate={{ x: -1 * activeSlide * width }} dragConstraints={constraintsRef} drag="x" onDragEnd={dragEndHandler}>
         {data.comments.map((el, index) => (
-          <motion.div className="item" key={index}>
-            <GatsbyImage className="image" image={el.commentImage.localFile.childImageSharp.gatsbyImageData} alt={el.commentImage.altText} />
+          <motion.div className="item" key={index} data-ifImage={el.commentImage?.localFile.childImageSharp.gatsbyImageData ? true : false}>
+            {el.commentImage?.localFile.childImageSharp.gatsbyImageData && (
+              <GatsbyImage className="image" image={el.commentImage.localFile.childImageSharp.gatsbyImageData} alt={el.commentImage.altText} />
+            )}
             <div className="content">
-              <StaticImage className="background" src="./../../../resources/images/backogrund-comment.jpg" alt='tło' />
+              <StaticImage className="background" src="./../../../resources/images/background-comment.jpg" alt='' />
               <h3>{el.commentTitle}</h3>
               <div className="text" dangerouslySetInnerHTML={{ __html: el.commentContent }} />
               <span className="sygn">{el.commentAuthor}</span>
@@ -122,6 +124,12 @@ const Wrapper = styled.section`
     }
     @media (max-width: 520px) {
       grid-template-columns: 1fr;
+    }
+    &[data-ifImage="false"] {
+      grid-template-columns: 1fr;
+      .content {
+        padding-left: clamp(0, ${406/13.66}vw, ${406/16}rem);
+      }
     }
   }
 
