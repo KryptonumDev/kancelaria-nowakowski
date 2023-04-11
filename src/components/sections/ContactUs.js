@@ -92,7 +92,7 @@ const ContactUs = ({data}) => {
                 {errors.email ? (
                   <span role="alert" className="error">Nieprawidłowy adres e-mail</span>
                 ) : (
-                  <span>(ocjonalnie)</span>
+                  <span>(opcjonalnie)</span>
                 )}
                 <div className="input">
                   <input
@@ -378,7 +378,7 @@ const Wrapper = styled.section`
           height: 24px;
           border: 2px solid var(--primary-900);
           &:checked {
-            background: center / 80% no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='13' fill='none'%3E%3Cpath stroke='%230F3730' strokeLinecap='square' strokeWidth='1.5' d='M2 7.5c2.223 1.405 3.884 3.916 3.884 3.916h.033S9.445 5.173 16 1.334'/%3E%3C/svg%3E")
+            background: center / 80% no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='13' fill='none'%3E%3Cpath stroke='%230F3730' stroke-linecap='square' stroke-width='1.5' d='M2 7.5c2.223 1.405 3.884 3.916 3.884 3.916h.033S9.445 5.173 16 1.334'/%3E%3C/svg%3E")
           }
           & + span {
             width: calc(100% - 32px);

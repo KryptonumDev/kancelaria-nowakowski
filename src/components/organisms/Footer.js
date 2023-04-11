@@ -151,6 +151,9 @@ const Wrapper = styled.footer`
         }
         .styled-link {
           background-size: 100% 2px;
+          svg {
+            transform: translateX(5px);
+          }
         }
       }
       img {

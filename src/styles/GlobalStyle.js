@@ -166,15 +166,21 @@ const GlobalStyle = createGlobalStyle`
     display: block;
     position: relative;
     padding-bottom: 3px;
-    transition: background-size 0.3s ease-out;
+    transition: background-size 0.4s ease-out;
     background-image: linear-gradient(currentColor, currentColor);
     background-size: 0% 2px;
     background-position: left bottom;
     background-repeat: no-repeat;
+    svg {
+      transition: transform .3s ease-out;
+    }
     &:hover,
     &:focus-visible {
       outline: none;
       background-size: 100% 2px;
+      svg {
+        transform: translateX(5px);
+      }
     }
   }
 
@@ -228,13 +234,12 @@ const GlobalStyle = createGlobalStyle`
       position: absolute;
       left: 50%;
       top: -8px;
-      transform: translateX(-50%) rotateZ(45deg);
+      transform: translateX(-50%) rotateZ(45deg) scale(0);
       background-color: var(--primary-600);
       width: 16px;
       height: 16px;
-      opacity: 0;
       pointer-events: none;
-      transition: opacity .2s ease-in-out;
+      transition: transform .2s ease-in-out;
     }
     &:hover,
     &:focus-visible {
@@ -243,8 +248,8 @@ const GlobalStyle = createGlobalStyle`
         transition: transform .2s ease-in-out;
       }
       &::after {
-        opacity: 1;
-        transition: opacity .2s ease-in-out .2s;
+        transform: translateX(-50%) rotateZ(45deg) scale(1);
+        transition: transform .2s ease-in-out .2s;
       }
     }
     &:active::before {

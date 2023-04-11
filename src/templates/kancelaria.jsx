@@ -30,7 +30,7 @@ export default function Kancelaria({ data }) {
     <main>
       <Hero data={heroKancelaria} />
       <Purpose data={twoColumnFlexKancelaria} />
-      <Team data={teamKancelaria} />
+      {/* <Team data={teamKancelaria} /> */}
       <Process data={howWeWorkKancelaria} />
       <OrnamentSeciton data={sectionWithImgOnRightKancelaria} />
       <Slider posts={posts} data={sectionBlog} />
