@@ -231,15 +231,16 @@ export const StyledContent = styled.div`
     }
 
     .gatsby-image-wrapper, .inline-gatsby-image-wrapper{
-        position: absolute !important;
+        position: absolute;
         top: 0;
         bottom: 0;
         left: 50%;
         transform: translateX(-50%);
-        height: 100% !important;
-        max-width: unset !important;
+        height: 100%;
+        width: 100%;
         z-index: -1;
         width: 100%;
+        object-fit: cover;
     }
 
     .cta-title{
