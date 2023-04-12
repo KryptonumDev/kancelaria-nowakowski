@@ -5,7 +5,7 @@ import Content from "../components/sections/content-privacy-policy"
 export default function PolityaPrywatnosci({ data }) {
     return (
         <main>
-            <Content data={data.wpPage.content}/>
+            <Content data={data.wpPage.content} />
         </main>
     )
 }

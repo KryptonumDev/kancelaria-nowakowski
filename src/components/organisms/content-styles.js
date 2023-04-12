@@ -148,13 +148,12 @@ export const StyledContent = styled.div`
     }
   }
 
-  ol{
-    max-width: unset;
+  ol {
+    max-width: 100%;
     display: grid;
     grid-gap: 32px;
     margin-top: 32px;
     counter-reset: my-awesome-counter;
-
     > li{
       padding: clamp(16px, ${24 / 768 * 100}vw, 32px);
       border: 2px solid #4FD2BB;

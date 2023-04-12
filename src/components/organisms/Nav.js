@@ -259,6 +259,7 @@ const StyledNav = styled.header`
     width: 48px;
     height: 48px;
     padding: 0 9px;
+    margin: 0 -9px;
     span {
       display: block;
       width: 100%;

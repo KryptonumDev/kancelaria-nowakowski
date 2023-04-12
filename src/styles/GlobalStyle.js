@@ -321,18 +321,18 @@ const GlobalStyle = createGlobalStyle`
         }
       }
     }
-  }
-  .ornament.anim-active path {
-    transition: stroke-dashoffset 1s ease-in;
-    stroke-dashoffset: 0;
-    &:nth-child(1) {
-      transition-delay: .4s;
-    }
-    &:nth-child(2) {
-      stroke-dashoffset: 1500;
-    }
-    &:nth-child(3) {
-      transition-delay: .4s;
+    .ornament.anim-active path {
+      transition: stroke-dashoffset 1s ease-in;
+      stroke-dashoffset: 0;
+      &:nth-child(1) {
+        transition-delay: .4s;
+      }
+      &:nth-child(2) {
+        stroke-dashoffset: 1500;
+      }
+      &:nth-child(3) {
+        transition-delay: .4s;
+      }
     }
   }
 `

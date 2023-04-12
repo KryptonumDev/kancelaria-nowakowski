@@ -98,7 +98,7 @@ export const Ornament = ({className}) => (
     shapeRendering="geometricPrecision"
     textRendering="geometricPrecision"
     viewBox="0 0 627 91"
-    className={`ornament anim animNotTransform ${className}`}
+    className={`ornament anim animNotTransform ${className || ''}`}
     fill="none"
     stroke="#4fd2bb"
     strokeLinecap="round"
