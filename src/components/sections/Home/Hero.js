@@ -9,10 +9,10 @@ const Hero = ({ data }) => {
     <StyledHero className="hero">
       <header>
         <Ornament />
-        <div className="title" dangerouslySetInnerHTML={{__html: data.pageTitle}}></div>
+        <div className="title anim" dangerouslySetInnerHTML={{__html: data.pageTitle}}></div>
         <p className="flex">
           {data.linksToSubpages.map((link, i) => (
-            <span className="no-wrap" key={link.link.title + i}>
+            <span className="no-wrap anim" key={link.link.title + i}>
               <Link to={link.link.url} >{link.link.title}</Link>
               {i !== data.linksToSubpages.length - 1 && (
                 <>&nbsp;/&nbsp;</>
@@ -21,13 +21,13 @@ const Hero = ({ data }) => {
           ))}
         </p>
         <div className="cta">
-          <Link className="cta-primary" to={data.coloredButton.url}><span>{data.coloredButton.title}</span></Link>
-          <Link className="cta-secondary" to={data.transparentButton.url}><span>{data.transparentButton.title}</span></Link>
+          <Link className="cta-primary anim" to={data.coloredButton.url}><span>{data.coloredButton.title}</span></Link>
+          <Link className="cta-secondary anim" to={data.transparentButton.url}><span>{data.transparentButton.title}</span></Link>
         </div>
       </header>
       <div className="hero-img">
-        <GatsbyImage loading="eager" image={data.leftImage.localFile.childImageSharp.gatsbyImageData} alt={data.leftImage.altText || ''} />
-        <GatsbyImage loading="eager" image={data.rightImage.localFile.childImageSharp.gatsbyImageData} alt={data.rightImage.altText || ''} />
+        <GatsbyImage loading="eager" image={data.leftImage.localFile.childImageSharp.gatsbyImageData} alt={data.leftImage.altText || ''} className="anim" />
+        <GatsbyImage loading="eager" image={data.rightImage.localFile.childImageSharp.gatsbyImageData} alt={data.rightImage.altText || ''} className="anim" />
       </div>
     </StyledHero>
   );

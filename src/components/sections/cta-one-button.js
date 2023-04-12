@@ -29,8 +29,8 @@ const Wrapper = styled.section`
     width: 100%;
     margin: 0 auto;
     margin-bottom: 16px;
-    g{
-      fill: #3DA290;
+    path {
+      stroke: #3DA290;
     }
   }
 

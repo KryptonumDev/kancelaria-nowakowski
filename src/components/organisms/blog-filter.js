@@ -37,7 +37,7 @@ export default function Filter({ categories, postsCount }) {
   return (
     <Wrapper>
       <div className="flex">
-        <h2>Kategorie:</h2>
+        <h2 className="anim">Kategorie:</h2>
         {maxbuttonstransform > 0 && (
           <div className="arrows" >
             <button onClick={() => { transform('left', x, maxbuttonstransform) }}>
@@ -59,7 +59,7 @@ export default function Filter({ categories, postsCount }) {
           </div>
         )}
       </div>
-      <SliderWrapper id='control-wrap'>
+      <SliderWrapper id='control-wrap' className="anim">
         <Slider style={{ x }} drag='x' dragConstraints={{ left: maxbuttonstransform > 0 ? -maxbuttonstransform : 0, right: 0 }} maxbuttonstransform={maxbuttonstransform} id='control'>
           <Placeholder/>
           <Link activeClassName="active" to='/blog/'>

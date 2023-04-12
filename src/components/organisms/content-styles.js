@@ -221,7 +221,10 @@ export const StyledContent = styled.div`
     max-width: 848px;
     span {
       display: block;
-      svg{
+      svg {
+        path {
+         stroke: var(--primary-600)
+        }
         width: 100%;
       }
     }

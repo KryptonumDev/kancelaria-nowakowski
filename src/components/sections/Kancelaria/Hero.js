@@ -8,9 +8,10 @@ const Hero = ({data}) => {
     <Wrapper>
       <div className="copy">
         <Ornament />
-        <div dangerouslySetInnerHTML={{__html: data.pageTitle + data.textUnderTitle}}></div>
+        <div dangerouslySetInnerHTML={{__html: data.pageTitle}} className="anim"></div>
+        <div dangerouslySetInnerHTML={{__html: data.textUnderTitle}} className="anim"></div>
       </div>
-      <GatsbyImage image={data.image.localFile.childImageSharp.gatsbyImageData} alt={data.image.altText || ""} className="image"></GatsbyImage>
+      <GatsbyImage image={data.image.localFile.childImageSharp.gatsbyImageData} alt={data.image.altText || ""} className="image anim"></GatsbyImage>
     </Wrapper>
   );
 }

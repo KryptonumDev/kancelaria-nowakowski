@@ -7,16 +7,16 @@ import { OrnamentLogo } from "../atoms/Icons";
 const Rules = ({ data }) => {
   return (
     <StyledSection>
-      <OrnamentLogo className="ornament-logo" />
       <header>
-        <div dangerouslySetInnerHTML={{ __html: data.sectionTitle }}></div>
-        <div className="text" dangerouslySetInnerHTML={{ __html: data.textUnderTitle }}></div>
-        <div className="cta">
+        <div dangerouslySetInnerHTML={{ __html: data.sectionTitle }} className="anim"></div>
+        <div className="text anim" dangerouslySetInnerHTML={{ __html: data.textUnderTitle }}></div>
+        <div className="cta anim">
           <Link to={data.link.url} className="cta-primary"><span>{data.link.title}</span></Link>
           <p>Dobierzemy rozwiązanie <em><strong>najlepsze dla Ciebie</strong></em></p>
         </div>
       </header>
-      <GatsbyImage image={data.imageOnTheRight.localFile.childImageSharp.gatsbyImageData} alt={data.imageOnTheRight.altText} className="img" />
+      <GatsbyImage image={data.imageOnTheRight.localFile.childImageSharp.gatsbyImageData} alt={data.imageOnTheRight.altText} className="img anim" />
+      <OrnamentLogo className="ornament-logo" />
     </StyledSection>
   );
 }

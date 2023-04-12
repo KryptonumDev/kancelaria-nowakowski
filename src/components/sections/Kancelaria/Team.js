@@ -7,19 +7,19 @@ const Team = ({data}) => {
   const {advocates, lawyers, other} = data;
   return (
     <Wrapper>
-      <h2>Nasz zespół</h2>
+      <h2 className="anim">Nasz zespół</h2>
       <div className="team-section">
-        <h3>Adwokaci.</h3>
+        <h3 className="anim">Adwokaci.</h3>
         <Ornament />
         <div className="copy">
-          <p>{advocates.leftTopText}</p>
-          <p>{advocates.rightTopText}</p>
-          <p>{advocates.leftBottomText}</p>
-          <p>{advocates.rightBottomText}</p>
+          <p className="anim">{advocates.leftTopText}</p>
+          <p className="anim">{advocates.rightTopText}</p>
+          <p className="anim">{advocates.leftBottomText}</p>
+          <p className="anim">{advocates.rightBottomText}</p>
         </div>
         <div className="people">
           {advocates.osoby.map((person, i) => (
-            <div className="people-item" key={i}>
+            <div className="people-item anim animNotTransform" key={i}>
               <GatsbyImage image={person.zdjecieOsoby.localFile.childImageSharp.gatsbyImageData} alt={person.zdjecieOsoby.altText || ""} className="people-img"></GatsbyImage>
               {(person.facebookLink || person.linkedinLink || person.instagramLink) && (
                 <div className="social">
@@ -40,9 +40,9 @@ const Team = ({data}) => {
                   )}
                 </div>
               )}
-              <h3>{person.name}</h3>
-              <h4>{person.work}</h4>
-              <p>{person.description}</p>
+              <h3 className="anim">{person.name}</h3>
+              <h4 className="anim">{person.work}</h4>
+              <p className="anim">{person.description}</p>
             </div>
           ))}
         </div>

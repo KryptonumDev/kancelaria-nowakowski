@@ -6,27 +6,27 @@ const Process = ({data}) => {
   return (
     <Wrapper>
       <header>
-        <div dangerouslySetInnerHTML={{__html: data.tytulSekcji}}></div>
+        <div dangerouslySetInnerHTML={{__html: data.tytulSekcji}} className="anim"></div>
         <div className="grid">
-          <div dangerouslySetInnerHTML={{__html: data.leftText}}></div>
-          <div dangerouslySetInnerHTML={{__html: data.rightText}}></div>
+          <div dangerouslySetInnerHTML={{__html: data.leftText}} className="anim"></div>
+          <div dangerouslySetInnerHTML={{__html: data.rightText}} className="anim"></div>
         </div>
       </header>
       <div className="advantages">
         {data.advantages.map((advantage, i) => (
-          <div className="advantages-item" key={i}>
-            <h3>
+          <div className="advantages-item anim animNotTransform" key={i}>
+            <h3 className="anim">
               <GatsbyImage image={advantage.icon.localFile.childImageSharp.gatsbyImageData} alt={advantage.icon.altText || ""} objectFit="contain"></GatsbyImage>
               <span>{advantage.title}</span>
             </h3>
-            <p>{advantage.text}</p>
+            <p className="anim">{advantage.text}</p>
           </div>
         ))}
       </div>
       <div className="advantages-keynote">
         {data.advantagesWithImg.map((advantage, i) => (
-          <div className="advantagesKeynote-item" key={i}>
-            <h3>{advantage.title}</h3>
+          <div className="advantagesKeynote-item anim animNotTransform" key={i}>
+            <h3 className="anim">{advantage.title}</h3>
             <GatsbyImage image={advantage.image.localFile.childImageSharp.gatsbyImageData} alt={advantage.image.altText || ""} className="advantagesKeynote-img"></GatsbyImage>
           </div>
         ))}

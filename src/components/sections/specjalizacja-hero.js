@@ -8,10 +8,10 @@ export default function Hero({ title, excerpt, featuredImage }) {
     <Wrapper>
       <Ornament />
       <div className="text">
-        <div dangerouslySetInnerHTML={{__html: title}}/>
-        <div className="text" dangerouslySetInnerHTML={{__html: excerpt}}/>
+        <div className="anim" dangerouslySetInnerHTML={{__html: title}}/>
+        <div className="text anim" dangerouslySetInnerHTML={{__html: excerpt}}/>
       </div>
-      <GatsbyImage className="image" image={featuredImage.node.localFile.childImageSharp.gatsbyImageData} alt={featuredImage.node.altText} />
+      <GatsbyImage className="image anim" image={featuredImage.node.localFile.childImageSharp.gatsbyImageData} alt={featuredImage.node.altText} />
     </Wrapper>
   )
 }

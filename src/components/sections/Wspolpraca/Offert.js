@@ -8,34 +8,34 @@ const Offert = ({data}) => {
   return (
     <Wrapper data-option={switcher === 1 ? '1' : '0'}>
       <header>
-        <div dangerouslySetInnerHTML={{__html: data.sectionTitle}}></div>
-        <p>{data.textUnderTitle}</p>
+        <div className="anim" dangerouslySetInnerHTML={{__html: data.sectionTitle}}></div>
+        <p className="anim">{data.textUnderTitle}</p>
       </header>
       <div className="switcher-desktop">
-        <div>
+        <div className="anim">
           <GatsbyImage image={data.leftContentPart.partIcon.localFile.childImageSharp.gatsbyImageData} alt={data.leftContentPart.partIcon.altText} />
           <span>{data.leftContentPart.partName}</span>
         </div>
-        <div>
+        <div className="anim">
           <GatsbyImage image={data.rightContentPart.partIcon.localFile.childImageSharp.gatsbyImageData} alt={data.rightContentPart.partIcon.altText} />
           <span>{data.rightContentPart.partName}</span>
         </div>
       </div>
       <div className="switcher-mobile">
-        <button onClick={() => setSwitcher(0)}>{data.leftContentPart.partName}</button>
-        <button onClick={() => setSwitcher(1)}>{data.rightContentPart.partName}</button>
+        <button className="anim" onClick={() => setSwitcher(0)}>{data.leftContentPart.partName}</button>
+        <button className="anim" onClick={() => setSwitcher(1)}>{data.rightContentPart.partName}</button>
       </div>
       <div className="content">
         {data.leftContentPart.contentRepeater.map((item, i) => (
           <div key={item.subpartName + i} className="item-left">
-            <h3>{item.subpartName}</h3>
-            <div dangerouslySetInnerHTML={{__html: item.subpartContent}}></div>
+            <h3 className="anim">{item.subpartName}</h3>
+            <div className="anim" dangerouslySetInnerHTML={{__html: item.subpartContent}}></div>
           </div>
         ))}
         {data.rightContentPart.contentRepeater.map((item, i) => (
           <div key={item.subpartName + i} className="item-right">
-            <h3>{item.subpartName}</h3>
-            <div dangerouslySetInnerHTML={{__html: item.subpartContent}}></div>
+            <h3 className="anim">{item.subpartName}</h3>
+            <div className="anim" dangerouslySetInnerHTML={{__html: item.subpartContent}}></div>
           </div>
         ))}
       </div>

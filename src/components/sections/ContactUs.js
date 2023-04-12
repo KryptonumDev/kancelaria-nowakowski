@@ -50,9 +50,9 @@ const ContactUs = ({data}) => {
     <Wrapper>
       <header className="header">
         <Ornament />
-        <div dangerouslySetInnerHTML={{__html: data.sectionTitle}}></div>
+        <div className="anim" dangerouslySetInnerHTML={{__html: data.sectionTitle}}></div>
       </header>
-      <div className="content" dangerouslySetInnerHTML={{__html: data.contentUnderTitle}}>
+      <div className="content anim" dangerouslySetInnerHTML={{__html: data.contentUnderTitle}}>
       </div>
       <div className="form">
         {(sent || getCookie('sentCount') >= 3) ? (
@@ -69,8 +69,8 @@ const ContactUs = ({data}) => {
           </div>
         ) : (
           <form onSubmit={handleSubmit(onSubmit)}>
-            <h3>Dane kontaktowe</h3>
-            <div className="form-input">
+            <h3 className="anim">Dane kontaktowe</h3>
+            <div className="form-input anim">
               <label>
                 <span>Imię i nazwisko</span>
                 {errors.name && (
@@ -86,7 +86,7 @@ const ContactUs = ({data}) => {
                 </div>
               </label>
             </div>
-            <div className="form-input">
+            <div className="form-input anim">
               <label>
                 <span>Adres e-mail</span>
                 {errors.email ? (
@@ -104,7 +104,7 @@ const ContactUs = ({data}) => {
                 </div>
               </label>
             </div>
-            <div className="form-input">
+            <div className="form-input anim">
               <label>
                 <span>Telefon</span>
                 {errors.tel && (
@@ -120,8 +120,8 @@ const ContactUs = ({data}) => {
                 </div>
               </label>
             </div>
-            <h3>Temat i termin</h3>
-            <div className="form-input">
+            <h3 className="anim">Temat i termin</h3>
+            <div className="form-input anim">
               <label>
                 <span>Wybierz temat:</span>
                 {errors.subject && (
@@ -148,7 +148,7 @@ const ContactUs = ({data}) => {
                 </div>
               </label>
             </div>
-            <div className="form-input">
+            <div className="form-input anim">
               <label>
                 <span>Wybierz datę i godzinę</span>
                 {errors.date && (
@@ -165,7 +165,7 @@ const ContactUs = ({data}) => {
                 </div>
               </label>
             </div>
-            <div className="form-input legal">
+            <div className="form-input legal anim">
               {errors.legal && (
                 <span role="alert" className="error">To pole jest wymagane</span>
               )}
@@ -178,7 +178,7 @@ const ContactUs = ({data}) => {
                 <span>Wyrażam zgodę na przetwarzanie moich danych osobowych na zasadach określonych w <Link to="/polityka-prywatnosci/">Polityce prywatności</Link></span>
               </label>
             </div>
-            <button className="cta-primary" type="submit">
+            <button className="cta-primary anim" type="submit">
               <span>Wyślij</span>
               <RightArrow />
             </button>

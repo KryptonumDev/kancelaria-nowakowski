@@ -23,10 +23,10 @@ const Testimonials = ({ data }) => {
   const width = constraintsRef?.current?.offsetWidth || 350
 
   return (
-    <Wrapper ref={constraintsRef}>
+    <Wrapper ref={constraintsRef} className="anim">
       <Content transition={{ type: "spring", stiffness: 30 }} animate={{ x: -1 * activeSlide * width }} dragConstraints={constraintsRef} drag="x" onDragEnd={dragEndHandler}>
         {data.comments.map((el, index) => (
-          <motion.div className="item" key={index} data-ifImage={el.commentImage?.localFile.childImageSharp.gatsbyImageData ? true : false}>
+          <motion.div className="item" key={index} data-if-image={el.commentImage?.localFile.childImageSharp.gatsbyImageData ? true : false}>
             {el.commentImage?.localFile.childImageSharp.gatsbyImageData && (
               <GatsbyImage className="image" image={el.commentImage.localFile.childImageSharp.gatsbyImageData} alt={el.commentImage.altText} />
             )}
@@ -125,7 +125,7 @@ const Wrapper = styled.section`
     @media (max-width: 520px) {
       grid-template-columns: 1fr;
     }
-    &[data-ifImage="false"] {
+    &[data-if-image="false"] {
       grid-template-columns: 1fr;
       .content {
         padding-left: clamp(0px, ${406/13.66}vw, ${406/16}rem);

@@ -17,6 +17,35 @@ const Layout = ({ children, pageContext }) => {
         node?.nodeType === Node.TEXT_NODE && (node.textContent = node.textContent.replace(orphansRegex, ` $1\u00A0`))
       )
     );
+
+
+    document.body.classList.add('animate');
+    const animElements = document.querySelectorAll('.anim');
+    let offset = 0;
+    const offsetDelay = 100;
+    function runAnimation(init) {
+      animElements.forEach((el) => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top <= window.innerHeight) {
+          if (el.classList.contains('anim-active')) {
+            offset = 0;
+          }
+          setTimeout(() => {
+            el.classList.add('anim-active');
+          }, offset);
+
+          init
+          ? rect.bottom <= 0 ? (offset = 0) : (offset += offsetDelay)
+          : offset += offsetDelay;
+        }
+      });
+    }
+    const handleScroll = (init) => requestAnimationFrame(() => runAnimation(init));
+
+    window.addEventListener('scroll', () => handleScroll(false));
+    handleScroll(true);
+
+
   }, [isBrowser ? window.location.pathname : '']);
   
   const [cookiesActive, setCookiesActive] = useState(false)

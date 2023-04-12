@@ -6,15 +6,15 @@ import styled from "styled-components";
 const Purpose = ({data}) => {
   return (
     <Wrapper>
-      <div dangerouslySetInnerHTML={{__html: data.sectionTitle}}></div>
+      <div dangerouslySetInnerHTML={{__html: data.sectionTitle}} className="anim"></div>
       <div className="grid">
         {data.flexRepeater.map((item, i) => (
           <div className="grid-item" key={i}>
             <div className="girdItem-copy">
-              <h3>{item.rowTitle}</h3>
-              <p>{item.rowText}</p>
+              <h3 className="anim">{item.rowTitle}</h3>
+              <p className="anim">{item.rowText}</p>
             </div>
-            <GatsbyImage className="gridItem-img" image={item.image.localFile.childImageSharp.gatsbyImageData} alt={item.altText || ""}></GatsbyImage>
+            <GatsbyImage className="gridItem-img anim" image={item.image.localFile.childImageSharp.gatsbyImageData} alt={item.altText || ""}></GatsbyImage>
           </div>
         ))}
       </div>

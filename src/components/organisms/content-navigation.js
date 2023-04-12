@@ -28,7 +28,7 @@ export default function Navigation({ headings }) {
   }, [])
 
   return (
-    <Wrapper>
+    <Wrapper className="anim">
       <svg width="116" height="97" viewBox="0 0 116 97" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect width="85" height="81" transform="translate(15.5 8)" fill="white" />
         <path d="M89.5448 17.0039V59.6749H68.5153V38.3329H47.4922V17.0039H89.5448Z" fill="#3BBD9A" />

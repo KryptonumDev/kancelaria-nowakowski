@@ -5,14 +5,14 @@ const HowWeWork = ({data}) => {
   return (
     <Wrapper>
       <header>
-        <div dangerouslySetInnerHTML={{__html: data.sectionTitle}}></div>
-        <p>{data.textUnderTitle}</p>
+        <div dangerouslySetInnerHTML={{__html: data.sectionTitle}} className="anim"></div>
+        <p className="anim">{data.textUnderTitle}</p>
       </header>
       <div className="steps">
         {data.steps.map((step, i) => (
-          <div className="steps-item" key={i}>
-            <h3>{step.name}</h3>
-            <div dangerouslySetInnerHTML={{__html: step.text}}></div>
+          <div className="steps-item anim animNotTransform" key={i}>
+            <h3 className="anim">{step.name}</h3>
+            <div className="anim" dangerouslySetInnerHTML={{__html: step.text}}></div>
           </div>
         ))}
       </div>

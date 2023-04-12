@@ -9,9 +9,9 @@ export default function Hero({ data }) {
     <Wrapper>
       <Ornament />
       <Grid>
-        <div className="title" dangerouslySetInnerHTML={{ __html: data.pageTitle }} />
+        <div className="title anim" dangerouslySetInnerHTML={{ __html: data.pageTitle }} />
         {data.linksToSubpages.map((el, index) => (
-          <Link key={el.link.title + index} to={el.link.url} className={`item item-${index}`}>
+          <Link key={el.link.title + index} to={el.link.url} className={`item item-${index} anim`}>
             <p>{el.link.title}</p>
             <GatsbyImage className="image" image={el.backgroundImage.localFile.childImageSharp.gatsbyImageData} alt={el.backgroundImage.altText} />
           </Link>
@@ -93,7 +93,6 @@ const Grid = styled.div`
   .item{
     position: relative;
     border: 2px solid transparent;
-    transition: all .3s ease-out;
 
     &:hover{
       .image{

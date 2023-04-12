@@ -13,7 +13,7 @@ export default function OtherPosts({ posts }) {
 
   return (
     <Wrapper>
-      <h2>Sprawdź podobne <em>artykuły.</em></h2>
+      <h2 className="anim">Sprawdź podobne <em>artykuły.</em></h2>
       <Grid>
         {posts.map((el, i) => (
           <Card
