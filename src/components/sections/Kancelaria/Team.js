@@ -47,7 +47,7 @@ const Team = ({data}) => {
           ))}
         </div>
       </div>
-      <div className="team-section">
+      {/* <div className="team-section">
         <h3>Radcy prawni.</h3>
         <Ornament />
         <div className="copy">
@@ -85,8 +85,8 @@ const Team = ({data}) => {
             </div>
           ))}
         </div>
-      </div>
-      <div className="team-section">
+      </div> */}
+      {/* <div className="team-section">
         <h3>Zespół kancelarii.</h3>
         <Ornament />
         <div className="copy">
@@ -124,7 +124,7 @@ const Team = ({data}) => {
             </div>
           ))}
         </div>
-      </div>
+      </div> */}
     </Wrapper>
   );
 }
@@ -143,8 +143,8 @@ const Wrapper = styled.section`
     margin: clamp(${20/16}rem, ${24/7.68}vw, ${24/16}rem) auto;
     display: block;
   }
-  .team-section:nth-of-type(2) > svg g {fill: #2F80ED}
-  .team-section:nth-of-type(3) > svg g {fill: var(--secondary-600)}
+  .team-section:nth-of-type(2) > svg path {stroke: #2F80ED}
+  .team-section:nth-of-type(3) > svg path {stroke: var(--secondary-600)}
   .team-section {
     &:not(:first-of-type){
       margin-top: ${108/16}rem;
