@@ -9,10 +9,8 @@ import { Ornament } from "../atoms/Icons"
 
 const Layout = ({ children, pageContext }) => {
   const isBrowser = typeof window !== "undefined";
-  const orphansRegex = useMemo(() => {
-    const orphans = ['a', 'i', 'o', 'u', 'w', 'z', 'np.'];
-    new RegExp(` (${orphans.join('|')}) `, 'gi')
-  }, []);
+  const orphans = ['a', 'i', 'o', 'u', 'w', 'z', 'np.'];
+  const orphansRegex = new RegExp(` (${orphans.join('|')}) `, 'gi');
 
   const locationPath = isBrowser ? window.location.pathname : '';
 
@@ -49,7 +47,7 @@ const Layout = ({ children, pageContext }) => {
     window.addEventListener('scroll', () => handleScroll(false));
     handleScroll(true);
 
-  }, [locationPath, orphansRegex]);
+  }, [isBrowser ? window.location.pathname : '']);
   
   const [cookiesActive, setCookiesActive] = useState(false)
 

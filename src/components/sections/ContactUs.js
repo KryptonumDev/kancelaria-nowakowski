@@ -108,7 +108,7 @@ const ContactUs = ({data}) => {
               <label>
                 <span>Telefon</span>
                 {errors.tel && (
-                  <span role="alert" className="error">To pole jest wymagane</span>
+                  <span role="alert" className="error">Wprowadź prawidłowy numer telefonu</span>
                 )}
                 <div className="input">
                   <input
@@ -311,10 +311,14 @@ const Wrapper = styled.section`
       label {
         display: flex;
         justify-content: space-between;
+        align-items: center;
         flex-wrap: wrap;
+        span {
+          padding: ${4 / 16}rem;
+          padding-top: 0;
+        }
         span:first-child {
           font-size: ${20 / 16}rem;
-          margin: 0 0 ${4 / 16}rem ${4 / 16}rem;
         }
         span:last-child {
           font-size: 1rem;
