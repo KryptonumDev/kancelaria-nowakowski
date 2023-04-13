@@ -68,7 +68,7 @@ export default function Content({ content }) {
     <Wrapper>
       <Navigation headings={headings} />
       <div>
-        <StyledContent id='content' dangerouslySetInnerHTML={{ __html: content.replaceAll(/<style\b[^>]*>(.*?)<\/style>/gs, '') }} />
+        <StyledContent id='content' dangerouslySetInnerHTML={{ __html: content.replaceAll(/<style\b[^>]*>(.*?)<\/style>/gs, '')}} />
         <Contact>
           <h3 className="anim">Jesteśmy do Twojej dyspozycji. Zacznij działać.</h3>
           <Link to="/kontakt/" className="cta-secondary anim"><span>Jestem zainteresowany</span></Link>
