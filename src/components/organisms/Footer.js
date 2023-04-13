@@ -126,14 +126,14 @@ const Wrapper = styled.footer`
     }
     h3 {
       margin-bottom: 1rem;
-      font-size: clamp(${18/16}rem, ${21/7.68}vw, ${24/16}rem);
+      font-size: clamp(${20/16}rem, ${21/7.68}vw, ${24/16}rem);
     }
     a {
       display: block;
     }
     li {
       & > a {
-        font-size: ${20 / 16}rem;
+        font-size: ${18 / 16}rem;
         &:not(:last-child) {
           margin-bottom: .5rem;
         }
@@ -271,6 +271,7 @@ const Wrapper = styled.footer`
       }
     }
     .footer-bottom {
+      padding-bottom: 5rem;
       flex-direction: column;
       & > * {
         width: 100%;

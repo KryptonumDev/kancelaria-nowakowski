@@ -62,6 +62,10 @@ const StyledHero = styled.section`
       font-size: clamp(${18 / 16}rem, ${24 / 13.66}vw, ${24 / 16}rem);
       a {
         text-decoration: underline;
+        transition: opacity .3s;
+        &:hover {
+          opacity: .8;
+        }
       }
     }
     .cta {

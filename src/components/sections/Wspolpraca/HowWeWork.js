@@ -51,13 +51,26 @@ const Wrapper = styled.section`
         position: absolute;
         right: -100%;
         top: 50%;
-        transform: translate(2rem, -50%);
+        transform: translate(2rem, -50%) scaleX(0);
+        transform-origin: left;
+        transition: transform 1.5s cubic-bezier(0.17, 0.67, 0.5, 1) .5s;
       }
       &:nth-child(even){
         margin-left: calc(50% + 1rem);
         ::after {
           left: -100%;
-          transform: translate(-2rem, -50%);
+          transform: translate(-2rem, -50%) scaleX(0);
+          transform-origin: right;
+        }
+      }
+      &.anim-active {
+        &:nth-child(even){
+          ::after {
+            transform: translate(-2rem, -50%) scaleX(1);
+          }
+        }
+        ::after {
+          transform: translate(2rem, -50%) scaleX(1);
         }
       }
       &:not(:last-child){

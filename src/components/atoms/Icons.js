@@ -92,13 +92,13 @@ export const KryptonumLogo = () => (
     </g>
   </svg>
 )
-export const Ornament = ({className}) => (
+export const Ornament = ({anim, className}) => (
   <OrnamentWrapper
     xmlns="http://www.w3.org/2000/svg"
     shapeRendering="geometricPrecision"
     textRendering="geometricPrecision"
     viewBox="0 0 627 91"
-    className={`ornament anim animNotTransform ${className || ''}`}
+    className={`ornament anim animNotTransform ${className || ''} ${anim ? 'anim-active' : ''}`}
     fill="none"
     stroke="#4fd2bb"
     strokeLinecap="round"

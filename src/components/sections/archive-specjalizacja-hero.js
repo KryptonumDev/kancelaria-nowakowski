@@ -59,16 +59,8 @@ const Grid = styled.div`
 
   .title{
     grid-area: t;
-    *{
-      font-size: clamp(${36 / 16}rem, ${36 / 7.68}vw, ${54 / 16}rem);
-    }
-
     @media (max-width: 850px){
       margin-bottom: clamp(40px, ${60 / 768 * 100}vw, 60px);
-
-      *{
-        font-size: clamp(${36 / 16}rem, ${50 / 7.68}vw, ${54 / 16}rem);
-      }
     }
   }
   .item-0{

@@ -9,7 +9,7 @@ const Team = ({data}) => {
     <Wrapper>
       <h2 className="anim">Nasz zespół</h2>
       <div className="team-section">
-        <h3 className="anim">Adwokaci.</h3>
+        <h3 className="anim">Adwokaci</h3>
         <Ornament />
         <div className="copy">
           <p className="anim">{advocates.leftTopText}</p>
@@ -48,7 +48,7 @@ const Team = ({data}) => {
         </div>
       </div>
       {/* <div className="team-section">
-        <h3>Radcy prawni.</h3>
+        <h3>Radcy prawni</h3>
         <Ornament />
         <div className="copy">
           <p>{lawyers.leftTopText}</p>
@@ -87,7 +87,7 @@ const Team = ({data}) => {
         </div>
       </div> */}
       {/* <div className="team-section">
-        <h3>Zespół kancelarii.</h3>
+        <h3>Zespół kancelarii</h3>
         <Ornament />
         <div className="copy">
           <p>{other.leftTopText}</p>

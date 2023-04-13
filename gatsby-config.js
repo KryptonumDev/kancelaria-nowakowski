@@ -10,15 +10,14 @@ module.exports = {
       resolve: `gatsby-plugin-sharp`,
       options: {
         defaults: {
-          placeholder: `blurred`,
+          placeholder: `none`,
           quality: 90,
-          backgroundColor: `transparent`,
+          backgroundColor: "#ECFFFC",
         }
       }
     },
     "gatsby-plugin-styled-components",
     "gatsby-plugin-sitemap",
-    "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
     {
       resolve: 'gatsby-source-filesystem',

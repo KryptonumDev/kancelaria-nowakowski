@@ -148,7 +148,7 @@ const GlobalStyle = createGlobalStyle`
     letter-spacing: -0.01em;
   }
   h1 {
-    font-size: clamp(${36 / 16}rem, ${50 / 7.68}vw, ${54 / 16}rem);
+    font-size: clamp(${32 / 16}rem, ${50 / 7.68}vw, ${54 / 16}rem);
   }
   h2 {
     font-size: clamp(${28 / 16}rem, ${36 / 7.68}vw, ${40 / 16}rem);
@@ -230,7 +230,6 @@ const GlobalStyle = createGlobalStyle`
     font-family: var(--serif);
     font-size: clamp(${18 / 16}rem, ${21 / 7.68}vw, ${24 / 16}rem);
     padding: ${16 / 24}em ${32 / 24}em;
-    white-space: nowrap;
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -333,6 +332,25 @@ const GlobalStyle = createGlobalStyle`
       &:nth-child(3) {
         transition-delay: .4s;
       }
+    }
+  }
+  .noScript {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    background-color: var(--primary-100);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    div {
+      max-width: ${610/16}rem;
+    }
+    h1 {
+      margin: 2rem 0 1rem;
     }
   }
 `

@@ -217,6 +217,9 @@ const Wrapper = styled.section`
     a {
       text-decoration: underline;
       text-decoration-color: var(--secondary-500);
+      &:hover {
+        text-decoration-color: var(--primary-500);
+      }
     }
     ul {
       list-style-type: none;
@@ -344,6 +347,13 @@ const Wrapper = styled.section`
             color: var(--secondary-600);
             transition: fill .4s;
           }
+          &[type="datetime-local"]::-webkit-calendar-picker-indicator {
+            width: 21px;
+            height: 21px;
+            padding: 13px;
+            cursor: pointer;
+            background: center / 21px no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='25' fill='none'%3E%3Cpath stroke='%230F3730' stroke-linecap='square' stroke-width='1.5' d='M3.762 10.134h16.487M16.108 13.746h.008M12.004 13.746h.009M7.891 13.746H7.9M16.108 17.341h.008M12.004 17.341h.009M7.891 17.341H7.9M15.741 3.285v3.044M8.268 3.285v3.044'/%3E%3Cpath stroke='%230F3730' stroke-linecap='square' stroke-width='1.5' d='M20.326 4.745H3.676v17.04h16.65V4.744Z' clip-rule='evenodd'/%3E%3C/svg%3E");
+          }
           &:hover {
             border-color: var(--secondary-800);
             + svg .ornament {
@@ -351,6 +361,7 @@ const Wrapper = styled.section`
             }
           }
           &:focus-visible {
+            box-shadow: none;
             border-color: var(--primary-800);
             + svg .ornament {
               fill: var(--primary-800);
@@ -367,6 +378,7 @@ const Wrapper = styled.section`
           right: 10px;
           top: 50%;
           transform: translateY(-50%);
+          pointer-events: none;
         }
       }
       &.legal {
@@ -385,6 +397,9 @@ const Wrapper = styled.section`
             font-size: ${14 / 16}rem;
             a {
               text-decoration: underline;
+              &:hover {
+                text-decoration-color: var(--primary-500);
+              }
             }
           }
         }

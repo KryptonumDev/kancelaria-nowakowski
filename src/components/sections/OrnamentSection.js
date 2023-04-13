@@ -22,13 +22,12 @@ const Rules = ({ data }) => {
 }
 
 const StyledSection = styled.section`
-  padding: ${100 / 16}rem 0;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  gap: 32px;
+  gap: 36px;
   position: relative;
-  padding-right: 173px;
+  padding: ${100/16}rem min(${106/13.66}vw, ${106/16}rem);
   .text {
     ul {
       margin: ${12/16}rem 0 ${24/16}rem;
@@ -61,15 +60,15 @@ const StyledSection = styled.section`
   ::before {
     content: '';
     position: absolute;
-    right: 67px;
+    right: 0;
     top: 0;
-    width: 120%;
+    width: 100%;
     height: 100%;
     border: 2px solid var(--primary-400);
     z-index: -1;
   }
   header {
-    width: 55%;
+    width: 65%;
     h2 {
       margin-bottom: ${48 / 16}rem;
       font-size: clamp(${24/16}rem, ${36/7.68}, ${40/16}rem);
@@ -95,7 +94,7 @@ const StyledSection = styled.section`
       }
     }
   }
-  @media (max-width: 999px){
+  @media (max-width: 1099px){
     padding: 0;
     align-items: center;
     gap: 32px;

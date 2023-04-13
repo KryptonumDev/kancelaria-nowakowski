@@ -156,7 +156,7 @@ export const StyledContent = styled.div`
     counter-reset: my-awesome-counter;
     > li{
       padding: clamp(16px, ${24 / 768 * 100}vw, 32px);
-      border: 2px solid #4FD2BB;
+      border: 1px solid #4FD2BB;
       position: relative;
       counter-increment: my-awesome-counter;
       list-style: none;

@@ -44,11 +44,17 @@ const Wrapper = styled.div`
     font-weight: 400;
     font-size: 14px;
     line-height: 24px;
-    color: rgb(113, 120, 120);
+    color: var(--secondary-900);
     white-space: nowrap;
-
+    transition: opacity .3s;
+    &:not(:last-child){
+      opacity: .6;
+    }
+    &:hover {
+      opacity: 1;
+    }
     &:last-child{
-      color: #016250;
+      color: var(--primary-700);
       text-overflow: ellipsis;
       overflow: hidden; 
       white-space: nowrap;

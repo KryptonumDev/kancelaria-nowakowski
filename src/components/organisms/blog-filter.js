@@ -139,7 +139,7 @@ const Slider = styled(motion.div)`
 
 const SliderWrapper = styled.div`
     margin: 24px auto 48px auto;
-    overflow: hidden;
+    overflow-x: hidden;
     width: calc(100% + 40px);
     position: relative;
 
@@ -153,15 +153,13 @@ const SliderWrapper = styled.div`
     }
 
     @media (max-width: 1366px) {
-      width: 100%;
-
       width: calc(100% + 80px);
-      transform: translateX(-40px);
+      margin-left: -40px;
     }
 
     @media (max-width: 768px) {
       width: calc(100% + 34px);
-      transform: translateX(-17px);
+      margin-left: -17px;
     }
 
 `
