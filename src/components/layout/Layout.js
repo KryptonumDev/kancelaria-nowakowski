@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import GlobalStyle from "../../styles/GlobalStyle";
 import Nav from "../organisms/Nav";
 import Footer from "../organisms/Footer";
@@ -9,8 +9,13 @@ import { Ornament } from "../atoms/Icons"
 
 const Layout = ({ children, pageContext }) => {
   const isBrowser = typeof window !== "undefined";
-  const orphans = ['a', 'i', 'o', 'u', 'w', 'z', 'np.'];
-  const orphansRegex = new RegExp(` (${orphans.join('|')}) `, 'gi');
+  const orphansRegex = useMemo(() => {
+    const orphans = ['a', 'i', 'o', 'u', 'w', 'z', 'np.'];
+    new RegExp(` (${orphans.join('|')}) `, 'gi')
+  }, []);
+
+  const locationPath = isBrowser ? window.location.pathname : '';
+
   useEffect(() => {
     const paragraphs = Array.from(document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, li, a, button'));
     paragraphs.forEach(paragraph =>
@@ -44,7 +49,7 @@ const Layout = ({ children, pageContext }) => {
     window.addEventListener('scroll', () => handleScroll(false));
     handleScroll(true);
 
-  }, [isBrowser ? window.location.pathname : '']);
+  }, [locationPath, orphansRegex]);
   
   const [cookiesActive, setCookiesActive] = useState(false)
 

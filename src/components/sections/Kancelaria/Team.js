@@ -4,7 +4,8 @@ import styled from "styled-components";
 import { Facebook, Instagram, Linkedin, Ornament } from "../../atoms/Icons";
 
 const Team = ({data}) => {
-  const {advocates, lawyers, other} = data;
+  // const {advocates, lawyers, other} = data;
+  const { advocates } = data;
   return (
     <Wrapper>
       <h2 className="anim">Nasz zespół</h2>

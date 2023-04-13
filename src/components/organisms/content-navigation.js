@@ -35,9 +35,9 @@ export default function Navigation({ headings }) {
         <path d="M89.5412 81H26.4688V17L47.4887 38.329V59.6677H68.5118L89.5412 81Z" fill="#15957E" />
       </svg>
       <div>
-        {headings?.map(el => (
+        {headings?.map((el, i) => (
           <button
-            key={slugTransform(htmlDelete(el))}
+            key={i}
             className={
               activePart === (isBrowser ? slugTransform(new DOMParser().parseFromString(el, "text/html").body.textContent || "") : '')
               ? 'active'
@@ -45,6 +45,7 @@ export default function Navigation({ headings }) {
             }
             onClick={(e) => { scroll(e)}}
             dangerouslySetInnerHTML={{__html: htmlDelete(el)}}
+            aria-label={isBrowser ? new DOMParser().parseFromString(el, "text/html").body.textContent || "" : ''}
           ></button>
         ))}
       </div>
