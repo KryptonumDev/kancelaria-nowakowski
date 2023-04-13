@@ -20,10 +20,10 @@ const Team = ({data}) => {
         </div>
         <div className="people">
           {advocates.osoby.map((person, i) => (
-            <div className="people-item anim animNotTransform" key={i}>
-              <GatsbyImage image={person.zdjecieOsoby.localFile.childImageSharp.gatsbyImageData} alt={person.zdjecieOsoby.altText || ""} className="people-img"></GatsbyImage>
+            <div className="people-item" key={i}>
+              <GatsbyImage image={person.zdjecieOsoby.localFile.childImageSharp.gatsbyImageData} alt={person.zdjecieOsoby.altText || ""} className="people-img anim animNotTransform"></GatsbyImage>
               {(person.facebookLink || person.linkedinLink || person.instagramLink) && (
-                <div className="social">
+                <div className="social anim animNotTransform">
                   {person.facebookLink && (
                     <a aria-label="Link do Facebook" href={person.facebookLink} target="_blank" rel="noreferrer">
                       <Facebook />
