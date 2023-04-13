@@ -311,10 +311,10 @@ const GlobalStyle = createGlobalStyle`
       will-change: opacity, transform;
       &.anim-active {
         opacity: 1;
-        transition: opacity .8s cubic-bezier(0.17, 0.67, 0.5, 1), transform 1s cubic-bezier(0.17, 0.67, 0.5, 1);
+        transition: opacity 1s cubic-bezier(0.17, 0.67, 0.5, 1), transform 1.2s cubic-bezier(0.17, 0.67, 0.5, 1);
       }
       &:not(.animNotTransform) {
-        transform: translateY(21px);
+        transform: translateY(13px);
         &.anim-active {
           transform: translateY(0);
         }

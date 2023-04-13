@@ -22,11 +22,11 @@ const Layout = ({ children, pageContext }) => {
     document.body.classList.add('animate');
     const animElements = document.querySelectorAll('.anim');
     let offset = 0;
-    const offsetDelay = 100;
+    const offsetDelay = 60;
     function runAnimation(init) {
       animElements.forEach((el) => {
         const rect = el.getBoundingClientRect();
-        if (rect.top <= window.innerHeight * .97) {
+        if (rect.top <= window.innerHeight * .95) {
           if (el.classList.contains('anim-active')) {
             offset = 0;
           }
