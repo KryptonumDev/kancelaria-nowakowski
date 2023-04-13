@@ -6,7 +6,7 @@ const Process = ({data}) => {
   return (
     <Wrapper>
       <header>
-        <div dangerouslySetInnerHTML={{__html: data.tytulSekcji}}></div>
+        <div dangerouslySetInnerHTML={{__html: data.advantagesTitle}}></div>
         <div className="grid">
           <div dangerouslySetInnerHTML={{__html: data.leftText}}></div>
           <div dangerouslySetInnerHTML={{__html: data.rightText}}></div>

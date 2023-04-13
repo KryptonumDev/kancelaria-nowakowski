@@ -222,7 +222,7 @@ export const query = graphql`
                 }
               }
               howWeWorkKancelaria {
-                tytulSekcji
+                advantagesTitle
                 rightText
                 leftText
                 advantages {
