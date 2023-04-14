@@ -10,7 +10,6 @@ export const Head = () => {
     <title>Błąd 404 – Niestety ta strona nie istnieje</title>
   )
 }
-
 const NotFoundPage = () => {
   return (
     <Wrapper>
@@ -37,6 +36,7 @@ const NotFoundPage = () => {
 export default NotFoundPage
 
 const Wrapper = styled.main`
+  padding: ${22 / 16}rem 0;
   display: flex;
   gap: 32px;
 
