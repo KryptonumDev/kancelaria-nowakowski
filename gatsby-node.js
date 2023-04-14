@@ -1,9 +1,21 @@
 const path = require(`path`)
+const redirects = require("./redirects.json");
 
 exports.createPages = async ({
   graphql,
+  actions,
   actions: { createPage }
 }) => {
+
+  const { createRedirect } = actions;
+  redirects.forEach(redirect => 
+    createRedirect({
+      fromPath: redirect.fromPath,
+      toPath: redirect.toPath,
+      isPermanent: isPermanent || false
+    })
+  );
+
   const createPageInstance = async (TEMPLATE_FILE_NAME, PAGE_ID) => {
     const { data: { wpPage: pageData } } = await graphql(`
             query getPageData ($id: String!){
