@@ -1,9 +1,12 @@
 import React, { useEffect } from "react";
 import { GatsbyImage } from "gatsby-plugin-image";
 import styled from "styled-components";
+import { useState } from "react";
 
 const Process = ({data}) => {
+  const [ lastAdvantagesItemHeight, setLastAdvantagesItemHeight ] = useState(0);
   useEffect(() => {
+    setLastAdvantagesItemHeight(document.querySelector('.advantages-item:last-child').offsetHeight);
     const advantagesItem = document.querySelectorAll('.advantages-item');
     const advantageAnim = () => {
       advantagesItem.forEach(advantage => {
@@ -19,7 +22,7 @@ const Process = ({data}) => {
   }, [])
 
   return (
-    <Wrapper>
+    <Wrapper data-linecut={lastAdvantagesItemHeight}>
       <header>
         <div className="anim" dangerouslySetInnerHTML={{__html: data.sectionTitle}}></div>
         <div className="anim underTitle" dangerouslySetInnerHTML={{__html: data.textUnderTitle}}></div>
@@ -95,18 +98,18 @@ const Wrapper = styled.section`
     ::before {
       content: '';
       width: 1px;
-      height: calc(100% - 1em);
+      height: calc(100% - ${props => `${props['data-linecut']}px`});
       background-color: var(--neutral-600);
       position: absolute;
       left: 50%;
-      top: 50%;
+      top: 1rem;
       transform-origin: top;
       transition: 5s cubic-bezier(0.17, 0.67, 0.5, 1) 1s;
-      transform: translate(-50%,-50%) scaleY(0);
+      transform: translate(-50%,0) scaleY(0);
     }
     &.anim-active {
       ::before {
-        transform: translate(-50%,-50%) scaleY(1);
+        transform: translate(-50%,0) scaleY(1);
       }
     }
     .advantages-item:nth-child(1){grid-area:a};
