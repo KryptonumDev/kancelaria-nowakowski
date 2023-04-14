@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from "react";
+import React, { useEffect } from "react";
 import GlobalStyle from "../../styles/GlobalStyle";
 import Nav from "../organisms/Nav";
 import Footer from "../organisms/Footer";
@@ -47,7 +47,7 @@ const Layout = ({ children, pageContext }) => {
     window.addEventListener('scroll', () => handleScroll(false));
     handleScroll(true);
 
-  }, [isBrowser ? window.location.pathname : '']);
+  }, [locationPath]);
   
   const [cookiesActive, setCookiesActive] = useState(false)
 

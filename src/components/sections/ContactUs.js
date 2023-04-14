@@ -37,12 +37,17 @@ const ContactUs = ({data}) => {
       }
     })
   }
-
+  
   const sendAgain = () => {
     formSent.current.classList.add('hide');
     setTimeout(() => {
       formSent.current.classList.remove('hide');
       setSent(false);
+      setTimeout(() => {
+        document.querySelectorAll('form .anim').forEach(el => {
+          el.classList.add('anim-active');
+        })
+      }, 1000);
     }, 400);
   }
 

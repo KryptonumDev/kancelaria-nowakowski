@@ -13,11 +13,10 @@ export default function Organization({ siteMetadata }) {
           "image": siteMetadata.image,
           "url": siteMetadata.siteUrl,
           "telephone": [
-            "+48 43 677 70 87",
-            "+48 600 533 697"
+            "+48 600 500 697",
+            "+48 733 203 210"
           ],
           "email": [
-            "piotr.nowakowski@adwokatura.pl",
             "kancelaria@kancelaria-nowakowski.com"
           ],
           "address": {

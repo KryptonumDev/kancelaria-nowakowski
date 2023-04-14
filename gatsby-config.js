@@ -2,8 +2,8 @@ module.exports = {
   siteMetadata: {
     title: `Kancelaria Nowakowski - Kancelaria Adwokacka`,
     description: 'Odszkodowania / Nieruchomości / Spadki / Kredyty frankowe / Rozwody / Prawo dla firm. Kancelaria adwokacka z wieloletnim doświadczeniem.',
-    siteUrl: `https://kancelaria.gatsbyjs.io`,
-    image: 'https://kancelaria.gatsbyjs.io/social.jpg',
+    siteUrl: `https://www.kancelaria-nowakowski.com.pl/`,
+    image: 'https://www.kancelaria-nowakowski.com.pl//social.jpg',
   },
   plugins: [
     {
@@ -48,14 +48,14 @@ module.exports = {
       resolve: "gatsby-plugin-yoast-sitemap",
       options: {
         baseUrl : "https://kancelaria.headlesshub.com",
-        gatsbyUrl : 'https://kancelaria.gatsbyjs.io',
+        gatsbyUrl : 'https://www.kancelaria-nowakowski.com.pl',
       },
     },
     {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
-        host: 'https://kancelaria.gatsbyjs.io',
-        sitemap: 'https://kancelaria.gatsbyjs.io/sitemap-index.xml',
+        host: 'https://www.kancelaria-nowakowski.com.pl',
+        sitemap: 'https://www.kancelaria-nowakowski.com.pl/sitemap-index.xml',
         policy: [{userAgent: '*', allow: '/'}]
       }
     },
