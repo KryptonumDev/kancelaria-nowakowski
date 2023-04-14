@@ -9,9 +9,9 @@ export default function Hero({ categories, title, excerpt, featuredImage }) {
     <Wrapper>
       <div>
         <Ornament />
-        <div dangerouslySetInnerHTML={{__html: title}}/>
-        <div dangerouslySetInnerHTML={{ __html: excerpt }} />
-        <Categories>
+        <div className="anim" dangerouslySetInnerHTML={{__html: title}}/>
+        <div className="anim" dangerouslySetInnerHTML={{ __html: excerpt }} />
+        <Categories className="anim">
           {categories.nodes.map(el => (
             <Link key={el.name} to={el.uri}>
               {el.name}
@@ -19,7 +19,7 @@ export default function Hero({ categories, title, excerpt, featuredImage }) {
           ))}
         </Categories>
       </div>
-      <GatsbyImage image={featuredImage.node.localFile.childImageSharp.gatsbyImageData} alt={featuredImage.node.altText} />
+      <GatsbyImage image={featuredImage.node.localFile.childImageSharp.gatsbyImageData} alt={featuredImage.node.altText} className="anim" />
     </Wrapper>
   )
 }
@@ -34,8 +34,8 @@ const Wrapper = styled.section`
     flex-direction: column-reverse;
   }
 
-  h1{
-    margin-top: 16px;
+  h1 {
+    margin: 1rem 0 clamp(${24/16}rem, ${34/7.68}vw, 3rem);
     font-size: clamp(${32 / 16}rem, ${48 / 7.68}vw, ${48 / 16}rem);
     position: relative;
   }

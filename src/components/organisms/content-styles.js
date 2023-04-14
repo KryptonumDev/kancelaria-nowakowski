@@ -148,16 +148,15 @@ export const StyledContent = styled.div`
     }
   }
 
-  ol{
-    max-width: unset;
+  ol {
+    max-width: 100%;
     display: grid;
     grid-gap: 32px;
     margin-top: 32px;
     counter-reset: my-awesome-counter;
-
     > li{
       padding: clamp(16px, ${24 / 768 * 100}vw, 32px);
-      border: 2px solid #4FD2BB;
+      border: 1px solid #4FD2BB;
       position: relative;
       counter-increment: my-awesome-counter;
       list-style: none;
@@ -221,7 +220,10 @@ export const StyledContent = styled.div`
     max-width: 848px;
     span {
       display: block;
-      svg{
+      svg {
+        path {
+         stroke: var(--primary-600)
+        }
         width: 100%;
       }
     }
@@ -231,7 +233,7 @@ export const StyledContent = styled.div`
     }
 
     .gatsby-image-wrapper, .inline-gatsby-image-wrapper{
-        position: absolute;
+        position: absolute !important;
         top: 0;
         bottom: 0;
         left: 50%;

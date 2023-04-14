@@ -101,7 +101,7 @@ export default function Cookies({ isActive, setIsActive }) {
     return () => {
       scrollLock.disable('cookie')
     }
-  }, [])
+  }, [setIsActive])
 
   const acceptAll = () => {
     activeCookie.forEach(el => {
@@ -204,7 +204,14 @@ export default function Cookies({ isActive, setIsActive }) {
                         return (
                           <div key={el.partName + index} className="parts">
                             <div className="name">
-                              <button tabIndex={isActive ? '0' : '-1'} className={activeCookie[index].isActive ? "radio active" : 'radio'} onClick={() => { changeTabs(index) }}><span /></button>
+                              <button
+                                tabIndex={isActive ? '0' : '-1'}
+                                className={activeCookie[index].isActive ? "radio active" : 'radio'}
+                                onClick={() => { changeTabs(index) }}
+                                aria-label={el.partName}
+                              >
+                                <span></span>
+                              </button>
                               {el.partName} {count > 0 && `(${count})`}
                             </div>
                             <p className="description">
@@ -253,13 +260,13 @@ export default function Cookies({ isActive, setIsActive }) {
 const Grid = ({ isActive, active, el: data }) => {
 
   const [showAll, setShowAll] = useState(false)
+  let isButtonRendered = false
 
   return (
     <div className={active ? 'active item-wrapper' : 'item-wrapper'}>
       <p className="grid-name">{data.innerPartName}</p>
       <div className="grid">
         {data.innerPartCookies.map((el, index) => {
-          let isButtonRendered = false
           if (showAll ? true : index < 2) {
             return (
               <div key={el.cookieName + index} className={showAll ? "item" : 'item no-show'}>
@@ -290,6 +297,7 @@ const Grid = ({ isActive, active, el: data }) => {
                 </button>
               )
             }
+            return null;
           }
         })}
       </div>

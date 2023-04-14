@@ -50,9 +50,9 @@ const ContactUs = ({data}) => {
     <Wrapper>
       <header className="header">
         <Ornament />
-        <div dangerouslySetInnerHTML={{__html: data.sectionTitle}}></div>
+        <div className="anim" dangerouslySetInnerHTML={{__html: data.sectionTitle}}></div>
       </header>
-      <div className="content" dangerouslySetInnerHTML={{__html: data.contentUnderTitle}}>
+      <div className="content anim" dangerouslySetInnerHTML={{__html: data.contentUnderTitle}}>
       </div>
       <div className="form">
         {(sent || getCookie('sentCount') >= 3) ? (
@@ -69,8 +69,8 @@ const ContactUs = ({data}) => {
           </div>
         ) : (
           <form onSubmit={handleSubmit(onSubmit)}>
-            <h3>Dane kontaktowe</h3>
-            <div className="form-input">
+            <h3 className="anim">Dane kontaktowe</h3>
+            <div className="form-input anim">
               <label>
                 <span>Imię i nazwisko</span>
                 {errors.name && (
@@ -86,7 +86,7 @@ const ContactUs = ({data}) => {
                 </div>
               </label>
             </div>
-            <div className="form-input">
+            <div className="form-input anim">
               <label>
                 <span>Adres e-mail</span>
                 {errors.email ? (
@@ -104,11 +104,11 @@ const ContactUs = ({data}) => {
                 </div>
               </label>
             </div>
-            <div className="form-input">
+            <div className="form-input anim">
               <label>
                 <span>Telefon</span>
                 {errors.tel && (
-                  <span role="alert" className="error">To pole jest wymagane</span>
+                  <span role="alert" className="error">Wprowadź prawidłowy numer telefonu</span>
                 )}
                 <div className="input">
                   <input
@@ -120,8 +120,8 @@ const ContactUs = ({data}) => {
                 </div>
               </label>
             </div>
-            <h3>Temat i termin</h3>
-            <div className="form-input">
+            <h3 className="anim">Temat i termin</h3>
+            <div className="form-input anim">
               <label>
                 <span>Wybierz temat:</span>
                 {errors.subject && (
@@ -148,7 +148,7 @@ const ContactUs = ({data}) => {
                 </div>
               </label>
             </div>
-            <div className="form-input">
+            <div className="form-input anim">
               <label>
                 <span>Wybierz datę i godzinę</span>
                 {errors.date && (
@@ -165,7 +165,7 @@ const ContactUs = ({data}) => {
                 </div>
               </label>
             </div>
-            <div className="form-input legal">
+            <div className="form-input legal anim">
               {errors.legal && (
                 <span role="alert" className="error">To pole jest wymagane</span>
               )}
@@ -178,7 +178,7 @@ const ContactUs = ({data}) => {
                 <span>Wyrażam zgodę na przetwarzanie moich danych osobowych na zasadach określonych w <Link to="/polityka-prywatnosci/">Polityce prywatności</Link></span>
               </label>
             </div>
-            <button className="cta-primary" type="submit">
+            <button className="cta-primary anim" type="submit">
               <span>Wyślij</span>
               <RightArrow />
             </button>
@@ -217,6 +217,9 @@ const Wrapper = styled.section`
     a {
       text-decoration: underline;
       text-decoration-color: var(--secondary-500);
+      &:hover {
+        text-decoration-color: var(--primary-500);
+      }
     }
     ul {
       list-style-type: none;
@@ -308,10 +311,14 @@ const Wrapper = styled.section`
       label {
         display: flex;
         justify-content: space-between;
+        align-items: center;
         flex-wrap: wrap;
+        span {
+          padding: ${4 / 16}rem;
+          padding-top: 0;
+        }
         span:first-child {
           font-size: ${20 / 16}rem;
-          margin: 0 0 ${4 / 16}rem ${4 / 16}rem;
         }
         span:last-child {
           font-size: 1rem;
@@ -344,6 +351,13 @@ const Wrapper = styled.section`
             color: var(--secondary-600);
             transition: fill .4s;
           }
+          &[type="datetime-local"]::-webkit-calendar-picker-indicator {
+            width: 21px;
+            height: 21px;
+            padding: 13px;
+            cursor: pointer;
+            background: center / 21px no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='25' fill='none'%3E%3Cpath stroke='%230F3730' stroke-linecap='square' stroke-width='1.5' d='M3.762 10.134h16.487M16.108 13.746h.008M12.004 13.746h.009M7.891 13.746H7.9M16.108 17.341h.008M12.004 17.341h.009M7.891 17.341H7.9M15.741 3.285v3.044M8.268 3.285v3.044'/%3E%3Cpath stroke='%230F3730' stroke-linecap='square' stroke-width='1.5' d='M20.326 4.745H3.676v17.04h16.65V4.744Z' clip-rule='evenodd'/%3E%3C/svg%3E");
+          }
           &:hover {
             border-color: var(--secondary-800);
             + svg .ornament {
@@ -351,6 +365,7 @@ const Wrapper = styled.section`
             }
           }
           &:focus-visible {
+            box-shadow: none;
             border-color: var(--primary-800);
             + svg .ornament {
               fill: var(--primary-800);
@@ -367,6 +382,7 @@ const Wrapper = styled.section`
           right: 10px;
           top: 50%;
           transform: translateY(-50%);
+          pointer-events: none;
         }
       }
       &.legal {
@@ -385,6 +401,9 @@ const Wrapper = styled.section`
             font-size: ${14 / 16}rem;
             a {
               text-decoration: underline;
+              &:hover {
+                text-decoration-color: var(--primary-500);
+              }
             }
           }
         }

@@ -7,28 +7,27 @@ import { OrnamentLogo } from "../atoms/Icons";
 const Rules = ({ data }) => {
   return (
     <StyledSection>
-      <OrnamentLogo className="ornament-logo" />
       <header>
-        <div dangerouslySetInnerHTML={{ __html: data.sectionTitle }}></div>
-        <div className="text" dangerouslySetInnerHTML={{ __html: data.textUnderTitle }}></div>
-        <div className="cta">
+        <div dangerouslySetInnerHTML={{ __html: data.sectionTitle }} className="anim"></div>
+        <div className="text anim" dangerouslySetInnerHTML={{ __html: data.textUnderTitle }}></div>
+        <div className="cta anim">
           <Link to={data.link.url} className="cta-primary"><span>{data.link.title}</span></Link>
           <p>Dobierzemy rozwiązanie <em><strong>najlepsze dla Ciebie</strong></em></p>
         </div>
       </header>
-      <GatsbyImage image={data.imageOnTheRight.localFile.childImageSharp.gatsbyImageData} alt={data.imageOnTheRight.altText} className="img" />
+      <GatsbyImage image={data.imageOnTheRight.localFile.childImageSharp.gatsbyImageData} alt={data.imageOnTheRight.altText} className="img anim" />
+      <OrnamentLogo className="ornament-logo" />
     </StyledSection>
   );
 }
 
 const StyledSection = styled.section`
-  padding: ${100 / 16}rem 0;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  gap: 32px;
+  gap: 36px;
   position: relative;
-  padding-right: 173px;
+  padding: ${100/16}rem min(${106/13.66}vw, ${106/16}rem);
   .text {
     ul {
       margin: ${12/16}rem 0 ${24/16}rem;
@@ -61,15 +60,15 @@ const StyledSection = styled.section`
   ::before {
     content: '';
     position: absolute;
-    right: 67px;
+    right: 0;
     top: 0;
-    width: 120%;
+    width: 100%;
     height: 100%;
     border: 2px solid var(--primary-400);
     z-index: -1;
   }
   header {
-    width: 55%;
+    width: 65%;
     h2 {
       margin-bottom: ${48 / 16}rem;
       font-size: clamp(${24/16}rem, ${36/7.68}, ${40/16}rem);
@@ -95,7 +94,7 @@ const StyledSection = styled.section`
       }
     }
   }
-  @media (max-width: 999px){
+  @media (max-width: 1099px){
     padding: 0;
     align-items: center;
     gap: 32px;

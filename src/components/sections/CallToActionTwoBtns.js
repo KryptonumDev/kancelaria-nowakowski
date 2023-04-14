@@ -6,21 +6,21 @@ import { GatsbyImage } from "gatsby-plugin-image";
 
 const CallToActionTwoBtns = ({ data }) => {
   return (
-    <Wrapper>
+    <Wrapper className="anim animNotTransform"> 
       <GatsbyImage className="image" image={data.backgroundImage.localFile.childImageSharp.gatsbyImageData} alt={data.backgroundImage.altText} />
       <div className="blog">
         <div>
           <Ornament />
-          <h3>{data.leftTitle}</h3>
+          <h3 className="anim">{data.leftTitle}</h3>
         </div>
-        <Link to={data.leftLink.url} className="cta-secondary"><span>{data.leftLink.title}</span></Link>
+        <Link to={data.leftLink.url} className="cta-secondary anim"><span>{data.leftLink.title}</span></Link>
       </div>
       <div className="contact">
         <div>
           <Ornament />
-          <h3>{data.rightTitle}</h3>
+          <h3 className="anim">{data.rightTitle}</h3>
         </div>
-        <Link to={data.rightLink.url} className="cta-primary"><span>{data.rightLink.title}</span></Link>
+        <Link to={data.rightLink.url} className="cta-primary anim"><span>{data.rightLink.title}</span></Link>
       </div>
     </Wrapper>
   );
@@ -39,8 +39,8 @@ const Wrapper = styled.section`
     z-index: -1;
     height: 100%;
   }
-  svg g {
-    fill: #3DA290;
+  svg path {
+    stroke: var(--primary-600);
   }
   h3 {
     margin: 1rem 0 ${20 / 16}rem;

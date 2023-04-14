@@ -24,8 +24,8 @@ const Wrapper = styled.section`
     inset: 0;
     z-index: -1;
   }
-  svg g{
-    fill: #3DA290;
+  svg path {
+    stroke: #3DA290;
   }
   h3 {
     margin: clamp(${4 / 16}rem, ${16 / 7.68}vw, 1rem) 0 clamp(${8 / 16}rem, ${42 / 7.68}vw, ${20 / 16}rem);

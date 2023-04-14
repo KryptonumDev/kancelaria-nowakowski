@@ -9,22 +9,19 @@ const Hero = ({ data }) => {
     <StyledHero className="hero">
       <header>
         <Ornament />
-        <div dangerouslySetInnerHTML={{__html: data.pageTitle}}></div>
-        <div dangerouslySetInnerHTML={{__html: data.textUnderTitle}}></div>
+        <div dangerouslySetInnerHTML={{__html: data.pageTitle}} className="anim"></div>
+        <div dangerouslySetInnerHTML={{__html: data.textUnderTitle}} className="anim"></div>
         <div className="cta">
-          <Link className="cta-primary" to={data.leftButton.url}><span>{data.leftButton.title}</span></Link>
-          <Link className="cta-secondary" to={data.rightButton.url}><span>{data.rightButton.title}</span></Link>
+          <Link className="cta-primary anim" to={data.leftButton.url}><span>{data.leftButton.title}</span></Link>
+          <Link className="cta-secondary anim" to={data.rightButton.url}><span>{data.rightButton.title}</span></Link>
         </div>
       </header>
-      <div className="hero-img">
-        <GatsbyImage loading="eager" image={data.image.localFile.childImageSharp.gatsbyImageData} alt={data.image.altText || ''} />
-      </div>
+      <GatsbyImage loading="eager" image={data.image.localFile.childImageSharp.gatsbyImageData} alt={data.image.altText || ''} className="hero-img anim" />
     </StyledHero>
   );
 }
 
 const StyledHero = styled.section`
-  padding: ${22/16}rem 0;
   display: flex;
   align-items: center;
   gap: 32px;
@@ -35,6 +32,9 @@ const StyledHero = styled.section`
     }
     width: 50%;
     max-width: ${627 / 13.66}vw;
+    h1 {
+      margin: 1rem 0 clamp(${24/16}rem, ${34/7.68}vw, 3rem);
+    }
     p {
       margin: ${48 / 16}rem 0;
       font-size: clamp(${18/16}rem, ${26/7.68}vw, ${24 / 16}rem);

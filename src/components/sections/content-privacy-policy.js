@@ -3,7 +3,7 @@ import styled from "styled-components"
 
 export default function Content({ data }) {
   return (
-    <Wrapper dangerouslySetInnerHTML={{ __html: data }} />
+    <Wrapper className="anim" dangerouslySetInnerHTML={{ __html: data }} />
   )
 }
 

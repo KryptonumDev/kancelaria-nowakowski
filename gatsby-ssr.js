@@ -7,7 +7,7 @@ import LiterataRegular from "./src/resources/fonts/Literata-Regular.woff2"
 import LiterataSemiBold from "./src/resources/fonts/Literata-SemiBold.woff2"
 import LiterataItalic from "./src/resources/fonts/Literata-Italic.woff2"
 
-export const onRenderBody = ({ setHtmlAttributes, setHeadComponents }) => {
+export const onRenderBody = ({ setHtmlAttributes, setHeadComponents, setBodyAttributes }) => {
   setHtmlAttributes({ lang: "pl" })
   setHeadComponents([
     <link
@@ -59,6 +59,9 @@ export const onRenderBody = ({ setHtmlAttributes, setHeadComponents }) => {
       key="interFont"
     />,
   ])
+  setBodyAttributes({
+    className: "animate",
+  });
 }
 
 export const wrapPageElement = ({ props, element }) => {

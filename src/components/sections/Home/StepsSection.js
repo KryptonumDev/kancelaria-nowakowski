@@ -6,19 +6,19 @@ const StepsSection = ({ data }) => {
   return (
     <StyledSection>
       <header>
-        <div dangerouslySetInnerHTML={{ __html: data.sectionTitle }}></div>
-        <div className="h3" dangerouslySetInnerHTML={{ __html: data.textOnTheRight }}></div>
+        <div dangerouslySetInnerHTML={{ __html: data.sectionTitle }} className="anim"></div>
+        <div className="h3 anim" dangerouslySetInnerHTML={{ __html: data.textOnTheRight }}></div>
       </header>
       <ol className="steps">
         {data.steps.map((step, i) => (
-          <li key={i} dangerouslySetInnerHTML={{ __html: step.stepText }}></li>
+          <li key={i} dangerouslySetInnerHTML={{ __html: step.stepText }} className="anim"></li>
         ))}
       </ol>
       <div className="underSteps">
-        <div className="h3" dangerouslySetInnerHTML={{ __html: data.textOnTheLeftUnderSteps }}></div>
+        <div className="h3 anim" dangerouslySetInnerHTML={{ __html: data.textOnTheLeftUnderSteps }}></div>
         <div>
-          <div className="h3" dangerouslySetInnerHTML={{ __html: data.titleAboveButtonUnderSteps }}></div>
-          <Link to={data.linkUnderSteps.url} className="cta-primary"><span>{data.linkUnderSteps.title}</span></Link>
+          <div className="h3 anim" dangerouslySetInnerHTML={{ __html: data.titleAboveButtonUnderSteps }}></div>
+          <Link to={data.linkUnderSteps.url} className="cta-primary anim"><span>{data.linkUnderSteps.title}</span></Link>
         </div>
       </div>
     </StyledSection>

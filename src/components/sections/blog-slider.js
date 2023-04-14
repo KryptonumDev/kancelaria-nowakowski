@@ -14,10 +14,10 @@ export default function Slider({ posts, data }) {
 
   return (
     <Wrapper>
-      <div dangerouslySetInnerHTML={{ __html: data.sectionTitle }}></div>
+      <div dangerouslySetInnerHTML={{ __html: data.sectionTitle }} className="anim"></div>
       <div className="flex">
-        <div dangerouslySetInnerHTML={{ __html: data.leftTextUnderTitle }} />
-        <div dangerouslySetInnerHTML={{ __html: data.rightTextUnderTitle }} />
+        <div dangerouslySetInnerHTML={{ __html: data.leftTextUnderTitle }} className="anim" />
+        <div dangerouslySetInnerHTML={{ __html: data.rightTextUnderTitle }} className="anim" />
       </div>
       <Grid>
         {posts.map((el, i) => (

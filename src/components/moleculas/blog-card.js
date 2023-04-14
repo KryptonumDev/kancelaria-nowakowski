@@ -11,7 +11,7 @@ export default function Card({ index, data, scrollProgresValue }) {
     : 0 + (scrollProgresValue * 120)
 
   return (
-    <Wrapper initial={{ y: scrollValue }} transition={{ type: "spring", stiffness: 10 }} style={{ y: scrollValue }}>
+    <Wrapper initial={{ y: scrollValue }} transition={{ type: "spring", stiffness: 10 }} style={{ y: scrollValue }} className="anim">
       <Link aria-label={`blog post: ${htmlDelete(data.gutenberg.title)}`} className="link" to={data.uri} >
         <Image>
           <GatsbyImage className="image" image={data.featuredImage.node.localFile.childImageSharp.gatsbyImageData} alt={data.featuredImage.node.altText} />

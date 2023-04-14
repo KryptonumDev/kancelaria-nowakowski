@@ -5,7 +5,7 @@ import ContactUs from "../components/sections/ContactUs";
 import Hero from "../components/sections/Kancelaria/Hero";
 import Purpose from "../components/sections/Kancelaria/Purpose";
 import Team from "../components/sections/Kancelaria/Team";
-import Process from "../components/sections/Kancelaria/Process";
+import Process from "../components/sections/Process";
 import OrnamentSeciton from "../components/sections/OrnamentSection";
 
 export default function Kancelaria({ data }) {

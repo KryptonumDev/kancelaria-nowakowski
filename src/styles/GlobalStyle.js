@@ -86,31 +86,58 @@ const GlobalStyle = createGlobalStyle`
     font-style: italic !important;
     font-family: var(--serif);
   }
-  h1 em, h2 em, h3 em, h4 em, h5 em, h6 em{
-    position: relative;
-    font-style: normal;
-    white-space: nowrap;
-    
-    &::after{
-      content: "";
-      position: absolute;
-      transform: translate(-50%, 50%) rotateZ(45deg);
-      left: 0;
-      bottom: -3px;
-      width: 6px;
-      height: 6px;
-      background-color: #4FD2BB;
+  h1, h2, h3, h4, h5, h6 {
+    em {
+      position: relative;
+      font-style: normal;
+      white-space: nowrap;
+      &::before, &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        background-color: var(--primary-400);
+      }
+      &::before {
+        bottom: -2px;
+        transform: translate(-50%, 50%) rotate(45deg);
+        width: 6px;
+        height: 6px;
+      }
+      &::after {
+        bottom: -3px;
+        width: 100%;
+        height: 2px;
+        transform-origin: left;
+      }
     }
-
-    &::before{
-      content: "";
-      position: absolute;
-      transform: translate(0, 50%);
-      left: 0;
-      bottom: -3px;
-      width: 100%;
-      height: 2px;
-      background-color: #4FD2BB;
+  }
+  body.animate {
+    h1, h2, h3, h4, h5, h6 {
+      em {
+        &::before {
+          transform: translate(-50%, 50%) rotate(45deg) scale(0);
+        }
+        &::after {
+          transform: scaleX(0);
+        }
+      }
+    }
+    .anim-active {
+      h1, h2, h3, h4, h5, h6 {
+        em {
+          &::before, &::after {
+            transition: transform .8s cubic-bezier(0.17, 0.67, 0.5, 1);
+          }
+          &::before {
+            transition-delay: .2s;
+            transform: translate(-50%, 50%) rotate(45deg) scale(1);
+          }
+          &::after {
+            transition-delay: .4s;
+            transform: scaleX(1);
+          }
+        }
+      }
     }
   }
   h1, h2, h3, h4, h5, h6, .h3 {
@@ -121,7 +148,7 @@ const GlobalStyle = createGlobalStyle`
     letter-spacing: -0.01em;
   }
   h1 {
-    font-size: clamp(${36 / 16}rem, ${50 / 7.68}vw, ${54 / 16}rem);
+    font-size: clamp(${32 / 16}rem, ${50 / 7.68}vw, ${54 / 16}rem);
   }
   h2 {
     font-size: clamp(${28 / 16}rem, ${36 / 7.68}vw, ${40 / 16}rem);
@@ -203,7 +230,6 @@ const GlobalStyle = createGlobalStyle`
     font-family: var(--serif);
     font-size: clamp(${18 / 16}rem, ${21 / 7.68}vw, ${24 / 16}rem);
     padding: ${16 / 24}em ${32 / 24}em;
-    white-space: nowrap;
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -277,6 +303,55 @@ const GlobalStyle = createGlobalStyle`
   .cta-white {
     background-color: var(--primary-100);
     color: #0F3730;
+  }
+
+  body.animate {
+    .anim {
+      opacity: 0;
+      will-change: opacity, transform;
+      &.anim-active {
+        opacity: 1;
+        transition: opacity 1s cubic-bezier(0.17, 0.67, 0.5, 1), transform 1.2s cubic-bezier(0.17, 0.67, 0.5, 1);
+      }
+      &:not(.animNotTransform) {
+        transform: translateY(21px);
+        &.anim-active {
+          transform: translateY(0);
+        }
+      }
+    }
+    .ornament.anim-active path {
+      transition: stroke-dashoffset 1s ease-in;
+      stroke-dashoffset: 0;
+      &:nth-child(1) {
+        transition-delay: .4s;
+      }
+      &:nth-child(2) {
+        stroke-dashoffset: 1500;
+      }
+      &:nth-child(3) {
+        transition-delay: .4s;
+      }
+    }
+  }
+  .noScript {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    background-color: var(--primary-100);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    div {
+      max-width: ${610/16}rem;
+    }
+    h1 {
+      margin: 2rem 0 1rem;
+    }
   }
 `
 
