@@ -165,6 +165,10 @@ const GlobalStyle = createGlobalStyle`
     gap: 10px;
     justify-content: center;
     padding: 1rem 2rem;
+    &[disabled] {
+      opacity: .8 !important;
+      pointer-events: none;
+    }
   }
 
   main {

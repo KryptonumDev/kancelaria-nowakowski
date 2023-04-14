@@ -8,7 +8,7 @@ import axios from "axios";
 const ContactUs = ({data}) => {
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
   const [sent, setSent] = useState(false);
-
+  const [formIsSending, setFormIsSending] = useState(false);
 
   const isBrowser = typeof window !== "undefined";
   const formSent = useRef();
@@ -25,14 +25,17 @@ const ContactUs = ({data}) => {
     body.append('fullname', data.name)
     body.append('subject', data.subject)
     body.append('date', data.date)
+    setFormIsSending(true);
 
     axios.post(url, body)
     .then((res) => {
       if(res.status === 200){
         document.cookie = `sentCount=${getCookie('sentCount') ? Number(getCookie('sentCount'))+1 : 1};max-age=86400;path=/`;
         setSent(true);
+        setFormIsSending(false);
         reset();
       } else {
+        setFormIsSending(false);
         window.alert('Coś poszło nie tak. Proszę spróbować ponownie później.');
       }
     })
@@ -47,7 +50,7 @@ const ContactUs = ({data}) => {
         document.querySelectorAll('form .anim').forEach(el => {
           el.classList.add('anim-active');
         })
-      }, 1000);
+      }, 400);
     }, 400);
   }
 
@@ -183,8 +186,8 @@ const ContactUs = ({data}) => {
                 <span>Wyrażam zgodę na przetwarzanie moich danych osobowych na zasadach określonych w <Link to="/polityka-prywatnosci/">Polityce prywatności</Link></span>
               </label>
             </div>
-            <button className="cta-primary anim" type="submit">
-              <span>Wyślij</span>
+            <button className="cta-primary anim" type="submit" disabled={formIsSending ? true : false}>
+              <span>{formIsSending ? 'Wysyłanie...' : 'Wyślij'}</span>
               <RightArrow />
             </button>
           </form>
