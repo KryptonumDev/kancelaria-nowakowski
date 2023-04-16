@@ -9,13 +9,12 @@ const createBreadcrumbs = (siteMetadata, breadCrumbs) => {
       "item": siteMetadata.siteUrl
     }
   ]
-
   breadCrumbs.forEach((el, index) => {
     items.push({
       "@type": "ListItem",
       "position": index + 2,
       "name": el.name,
-      "item": el.url
+      "item": `${siteMetadata.siteUrl + el.url}`
     })
   });
 
@@ -23,7 +22,7 @@ const createBreadcrumbs = (siteMetadata, breadCrumbs) => {
 }
 
 export default function BreadCrumbs({ siteMetadata, pageContext }) {
-  const breadCrumbsItems = createBreadcrumbs(siteMetadata, pageContext.breadcrumbs)
+  const breadCrumbsItems = createBreadcrumbs(siteMetadata, pageContext.breadcrumbs);
   return (
     <>
       {breadCrumbsItems.length > 1 && (

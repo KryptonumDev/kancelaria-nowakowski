@@ -12,7 +12,7 @@ exports.createPages = async ({
     createRedirect({
       fromPath: redirect.fromPath,
       toPath: redirect.toPath,
-      isPermanent: isPermanent || false
+      isPermanent: redirect.isPermanent || false
     })
   );
 
