@@ -8,6 +8,7 @@ import { slugTransform } from "../../helpers/slug-transform"
 import useHeadings from "../../hooks/create-headings"
 import { Link } from "gatsby"
 import { Ornament } from "../atoms/Icons"
+import ReactHtmlParser from 'react-html-parser';
 
 export default function Content({ content }) {
   useEffect(() => {
@@ -68,13 +69,14 @@ export default function Content({ content }) {
     <Wrapper>
       <Navigation headings={headings} />
       <div>
-        <StyledContent id='content' dangerouslySetInnerHTML={{ __html: content.replaceAll(/<style\b[^>]*>(.*?)<\/style>/gs, '')}} />
+        {/* dangerouslySetInnerHTML={{ __html: content.replaceAll(/<style\b[^>]*>(.*?)<\/style>/gs, '')}} */}
+        <StyledContent id='content'>{ReactHtmlParser(content.replaceAll(/<style\b[^>]*>(.*?)<\/style>/gs, ''))}</StyledContent>
         <Contact>
           <h3 className="anim">Jesteśmy do Twojej dyspozycji. Zacznij działać.</h3>
           <Link to="/kontakt/" className="cta-secondary anim"><span>Jestem zainteresowany</span></Link>
         </Contact>
       </div>
-    </Wrapper>
+    </Wrapper >
   )
 }
 
@@ -91,7 +93,7 @@ const Contact = styled.div`
   margin-top: 32px;
   h3 {
     text-align: center;
-    font-size: clamp(22px, ${26/768*100}, 24px);
+    font-size: clamp(22px, ${26 / 768 * 100}, 24px);
   }
   a {
     display: block;

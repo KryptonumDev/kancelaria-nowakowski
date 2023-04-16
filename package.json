@@ -34,6 +34,7 @@
     "react-datepicker": "^4.11.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.43.9",
+    "react-html-parser": "^2.0.2",
     "styled-components": "^5.3.9",
     "yarn-upgrade-all": "^0.7.2"
   }
