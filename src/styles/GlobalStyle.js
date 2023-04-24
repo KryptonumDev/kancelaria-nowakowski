@@ -316,7 +316,6 @@ const GlobalStyle = createGlobalStyle`
       &.anim-desctop{
         @media (max-width: 640px) {
           opacity: 1 !important;
-          transform: unset !important;
         }
       }
       &.anim-active {
