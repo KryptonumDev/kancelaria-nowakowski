@@ -9,7 +9,7 @@ const Hero = ({ data }) => {
     <StyledHero className="hero">
       <header>
         <Ornament />
-        <div className="title anim" dangerouslySetInnerHTML={{ __html: data.pageTitle }}></div>
+        <div className="title anim" dangerouslySetInnerHTML={{__html: data.pageTitle}}></div>
         <p className="flex">
           {data.linksToSubpages.map((link, i) => (
             <span className="no-wrap anim" key={link.link.title + i}>
@@ -22,12 +22,12 @@ const Hero = ({ data }) => {
         </p>
         <div className="cta">
           <Link className="cta-primary anim" to={data.coloredButton.url}><span>{data.coloredButton.title}</span></Link>
-          <Link className="cta-secondary anim " to={data.transparentButton.url}><span>{data.transparentButton.title}</span></Link>
+          <Link className="cta-secondary anim" to={data.transparentButton.url}><span>{data.transparentButton.title}</span></Link>
         </div>
       </header>
       <div className="hero-img">
-        <GatsbyImage loading="eager" image={data.leftImage.localFile.childImageSharp.gatsbyImageData} alt={data.leftImage.altText || ''} className="anim anim-desctop" />
-        <GatsbyImage loading="eager" image={data.rightImage.localFile.childImageSharp.gatsbyImageData} alt={data.rightImage.altText || ''} className="anim anim-desctop" />
+        <GatsbyImage loading="eager" image={data.leftImage.localFile.childImageSharp.gatsbyImageData} alt={data.leftImage.altText || ''} className="anim" />
+        <GatsbyImage loading="eager" image={data.rightImage.localFile.childImageSharp.gatsbyImageData} alt={data.rightImage.altText || ''} className="anim" />
       </div>
     </StyledHero>
   );
