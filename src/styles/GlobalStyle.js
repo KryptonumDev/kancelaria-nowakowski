@@ -311,14 +311,15 @@ const GlobalStyle = createGlobalStyle`
 
   body.animate {
     .anim {
-      opacity: 0.01;
       will-change: opacity, transform;
+      animation: anim 1s cubic-bezier(0.17, 0.67, 0.5, 1) forwards;
+      animation-play-state: paused;
       &.anim-active {
-        opacity: 1;
-        transition: opacity 1s cubic-bezier(0.17, 0.67, 0.5, 1), transform 1.2s cubic-bezier(0.17, 0.67, 0.5, 1);
+        animation-play-state: running;
       }
       &:not(.animNotTransform) {
         transform: translateY(21px);
+        transition: transform 1s cubic-bezier(0.17, 0.67, 0.5, 1);
         &.anim-active {
           transform: translateY(0);
         }
@@ -335,6 +336,14 @@ const GlobalStyle = createGlobalStyle`
       }
       &:nth-child(3) {
         transition-delay: .4s;
+      }
+    }
+    @keyframes anim {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
       }
     }
   }
