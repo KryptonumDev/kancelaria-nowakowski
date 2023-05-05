@@ -80,6 +80,7 @@ exports.createPages = async ({
                 id
                 uri
                 name
+                description
               }
             }
         }
@@ -96,6 +97,7 @@ exports.createPages = async ({
         uri: pageData.uri,
         page: 1,
         category: null,
+        description: null,
         breadcrumbs: [
           {
             name: pageData.title,
@@ -120,6 +122,7 @@ exports.createPages = async ({
             uri: pageData.uri,
             page: page,
             category: null,
+            description: null,
             breadcrumbs: [
               {
                 name: pageData.title,
@@ -144,6 +147,7 @@ exports.createPages = async ({
           uri: categoryData.uri,
           page: 1,
           category: categoryData.name,
+          description: categoryData.description,
           breadcrumbs: [
             {
               name: pageData.title,
@@ -172,6 +176,7 @@ exports.createPages = async ({
               uri: categoryData.uri,
               page: page,
               category: categoryData.name,
+              description: categoryData.description,
               breadcrumbs: [
                 {
                   name: pageData.title,

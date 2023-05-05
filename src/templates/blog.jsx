@@ -5,8 +5,6 @@ import CallToAction from "../components/sections/cta-one-button"
 
 export default function Blog({ pageContext, data }) {
   const { blogContent, callToActionBlog } = data.wpPage.blog
-
-
   const posts = React.useMemo(() => {
     if (!pageContext.category) {
       return data.allWpPost.nodes
@@ -27,7 +25,7 @@ export default function Blog({ pageContext, data }) {
 
   return (
     <main>
-      <Content categories={data.allWpCategory.nodes} posts={posts} page={pageContext.page} data={blogContent} postsCount={data.allWpPost.nodes.length} />
+      <Content categories={data.allWpCategory.nodes} posts={posts} context={pageContext} data={blogContent} postsCount={data.allWpPost.nodes.length} />
       <CallToAction data={callToActionBlog} />
     </main>
   )
