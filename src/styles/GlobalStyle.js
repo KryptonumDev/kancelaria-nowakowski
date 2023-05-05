@@ -319,7 +319,6 @@ const GlobalStyle = createGlobalStyle`
   body.animate {
     .anim {
       opacity: 0.01;
-      will-change: opacity, transform;
       &.anim-active {
         opacity: 1;
         transition: opacity 1s cubic-bezier(0.17, 0.67, 0.5, 1), transform 1.2s cubic-bezier(0.17, 0.67, 0.5, 1);
