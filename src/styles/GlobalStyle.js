@@ -318,7 +318,7 @@ const GlobalStyle = createGlobalStyle`
 
   body.animate {
     .anim {
-      opacity: 0;
+      opacity: 0.01;
       will-change: opacity, transform;
       &.anim-active {
         opacity: 1;
