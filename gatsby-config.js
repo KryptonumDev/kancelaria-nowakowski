@@ -26,12 +26,22 @@ module.exports = {
         "path": "./src/resources/images/"
       },
       __key: "images"
-    }, 
-    { 
+    },
+    {
       resolve: 'gatsby-source-wordpress',
       options: {
+        html: {
+          useGatsbyImage: false,
+        },
         schema: {
           timeout: 3000000,
+        },
+        type: {
+          MediaItem: {
+            localFile: {
+              maxFileSizeBytes: 52428800, // 50Mb
+            },
+          },
         },
         "url": "https://kancelaria.headlesshub.com/graphql"
       }
@@ -46,8 +56,8 @@ module.exports = {
     {
       resolve: "gatsby-plugin-yoast-sitemap",
       options: {
-        baseUrl : "https://kancelaria.headlesshub.com",
-        gatsbyUrl : 'https://www.kancelaria-nowakowski.com.pl',
+        baseUrl: "https://kancelaria.headlesshub.com",
+        gatsbyUrl: 'https://www.kancelaria-nowakowski.com.pl',
       },
     },
     {
@@ -55,7 +65,7 @@ module.exports = {
       options: {
         host: 'https://www.kancelaria-nowakowski.com.pl',
         sitemap: 'https://www.kancelaria-nowakowski.com.pl/sitemap-index.xml',
-        policy: [{userAgent: '*', allow: '/'}]
+        policy: [{ userAgent: '*', allow: '/' }]
       }
     },
     {

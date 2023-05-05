@@ -232,7 +232,7 @@ export const StyledContent = styled.div`
       margin-left: -17px;
     }
 
-    .gatsby-image-wrapper, .inline-gatsby-image-wrapper{
+    img{
         position: absolute !important;
         top: 0;
         bottom: 0;

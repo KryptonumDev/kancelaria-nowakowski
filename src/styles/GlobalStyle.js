@@ -50,6 +50,13 @@ const GlobalStyle = createGlobalStyle`
     font-family: var(--sans-serif);
     color: var(--primary-800);
   }
+  body >*{
+    display: none;
+  }
+
+  body #___gatsby{
+    display: block !important;
+  }
   *:focus {
     outline: none
   }
