@@ -346,6 +346,16 @@ const GlobalStyle = createGlobalStyle`
   }
   @media (prefers-reduced-motion) {
     body.animate {
+      h1, h2, h3, h4, h5, h6 {
+        em {
+          &::before {
+            transform: translate(-50%, 50%) rotate(45deg) scale(1);
+          }
+          &::after {
+            transform: scaleX(1);
+          }
+        }
+      }
       .anim-active {
         h1, h2, h3, h4, h5, h6 {
           em {
@@ -361,13 +371,14 @@ const GlobalStyle = createGlobalStyle`
           transform: translateY(0);
         }
         &.anim-active {
-          opacity: 1;
           transition: none;
         }
       }
+      .ornament path {
+        stroke-dashoffset: 0;
+      }
       .ornament.anim-active path {
         transition: none;
-        stroke-dashoffset: 0;
       }
     }
   }
