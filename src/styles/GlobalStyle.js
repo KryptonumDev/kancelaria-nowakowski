@@ -344,6 +344,33 @@ const GlobalStyle = createGlobalStyle`
       }
     }
   }
+  @media (prefers-reduced-motion) {
+    body.animate {
+      .anim-active {
+        h1, h2, h3, h4, h5, h6 {
+          em {
+            &::before, &::after {
+              transition: none
+            }
+          }
+        }
+      }
+      .anim {
+        opacity: 1;
+        &:not(.animNotTransform) {
+          transform: translateY(0);
+        }
+        &.anim-active {
+          opacity: 1;
+          transition: none;
+        }
+      }
+      .ornament.anim-active path {
+        transition: none;
+        stroke-dashoffset: 0;
+      }
+    }
+  }
   .noScript {
     position: fixed;
     left: 0;
