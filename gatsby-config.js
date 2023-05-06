@@ -39,7 +39,7 @@ module.exports = {
         type: {
           MediaItem: {
             localFile: {
-              maxFileSizeBytes: 52428800, // 50Mb
+              maxFileSizeBytes: 52428800,
             },
           },
         },
@@ -79,6 +79,12 @@ module.exports = {
         display: `standalone`,
         icon: `static/logo.png`,
       },
+    },
+    {
+      resolve: 'gatsby-plugin-brotli',
+      options: {
+        extensions: ['css', 'html', 'js', 'svg']
+      }
     }
   ]
 }
