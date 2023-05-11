@@ -85,23 +85,6 @@ module.exports = {
       options: {
         extensions: ['css', 'html', 'js', 'svg']
       }
-    },
-    {
-      resolve: `gatsby-plugin-postbuild`,
-      options: {
-        events: {
-          html: {
-            node: ({ node }) => {
-              const orphans = ['a', 'i', 'o', 'u', 'w', 'z', 'np.'];
-              const orphansRegex = new RegExp(` (${orphans.join('|')}) `, 'gi');
-              if (node.nodeName === "#text") {
-                node.value = node.value.replace(orphansRegex, ` $1\u00A0`)
-              }
-              return node
-            }
-          }
-        }
-      }
     }
   ]
 }
