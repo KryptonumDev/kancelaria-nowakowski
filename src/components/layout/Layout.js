@@ -7,21 +7,8 @@ import Cookies from "./cookies";
 import { useState } from "react";
 import { Ornament } from "../atoms/Icons"
 
-const Layout = ({ children, pageContext }) => {
-  const isBrowser = typeof window !== "undefined";
-  const orphans = ['a', 'i', 'o', 'u', 'w', 'z', 'np.'];
-  const orphansRegex = new RegExp(` (${orphans.join('|')}) `, 'gi');
-
-  const locationPath = isBrowser ? window.location.pathname : '';
-
+const Layout = ({ children, pageContext, location }) => {
   useEffect(() => {
-    const paragraphs = Array.from(document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, li, a, button'));
-    paragraphs.forEach(paragraph =>
-      paragraph.childNodes.forEach(node =>
-        node?.nodeType === Node.TEXT_NODE && (node.textContent = node.textContent.replace(orphansRegex, ` $1\u00A0`))
-      )
-    );
-
     document.body.classList.add('animate');
     const animElements = document.querySelectorAll('.anim');
     let offset = 0;
@@ -38,8 +25,8 @@ const Layout = ({ children, pageContext }) => {
           }, offset);
 
           init
-          ? rect.bottom <= 0 ? (offset = 0) : (offset += offsetDelay)
-          : offset += offsetDelay;
+            ? rect.bottom <= 0 ? (offset = 0) : (offset += offsetDelay)
+            : offset += offsetDelay;
         }
       });
     }
@@ -47,8 +34,8 @@ const Layout = ({ children, pageContext }) => {
     window.addEventListener('scroll', () => handleScroll(false));
     handleScroll(true);
 
-  }, [locationPath]);
-  
+  }, [location]);
+
   const [cookiesActive, setCookiesActive] = useState(false)
 
   return (
