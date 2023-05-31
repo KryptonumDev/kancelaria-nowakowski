@@ -71,6 +71,7 @@ const Wrapper = styled.section`
   .image{
     grid-area: image;
     width: fit-content;
+    max-width: 405px;
 
     @media (max-width: 640px){
       margin: 0 auto;
