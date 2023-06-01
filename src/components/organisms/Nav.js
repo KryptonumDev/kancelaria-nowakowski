@@ -415,6 +415,8 @@ const StyledNav = styled.header`
       text-align: center;
     }
   }
+
+
   @media (max-width: 349px){
     .nav-links ul {
       font-size: ${20 / 16}rem;
