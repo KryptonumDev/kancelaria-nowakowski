@@ -32,21 +32,27 @@ const Grid = styled.div`
   grid-template-areas: 
   't t c e'
   'a b c f'
-  'a b d f';
+  'a b d f'
+  'g g h h';
 
   @media (max-width: 850px) {
-    grid-template-columns: 1fr 1fr ;
+    grid-template-columns: 1fr 1fr;
     grid-template-areas:
     't t'
     'a b'
     'a b'
     'c d'
     'c f'
-    'e f';
+    'e f'
+    'g g'
+    'h h';
   }
 
   @media (max-width: 440px) {
     grid-template-columns: 1fr;
+    .item {
+      min-height: 230px;
+    }
     grid-template-areas: 
     't'
     'a'
@@ -54,7 +60,9 @@ const Grid = styled.div`
     'c'
     'd'
     'e'
-    'f' ;
+    'f'
+    'g'
+    'h';
   }
 
   .title{
@@ -80,6 +88,12 @@ const Grid = styled.div`
   }
   .item-5{
     grid-area: f;
+  }
+  .item-6{
+    grid-area: g;
+  }
+  .item-7{
+    grid-area: h;
   }
 
   .item{
