@@ -1,21 +1,25 @@
 const path = require(`path`)
+const fs = require('fs')
 const redirects = require("./redirects.json");
+
+exports.onPostBuild = async () => {
+    // Сформируйте конфигурацию редиректов в формате TOML
+    const redirectConfig = redirects.map(redirect => (
+      `[[redirects]]
+        from = "${redirect.fromPath}"
+        to = "${redirect.toPath}"
+        status = ${redirect.isPermanent ? 301 : 302}
+        force = ${redirect.force || false}`
+    ));
+  
+    // Запишите конфигурацию редиректов в netlify.toml
+    fs.writeFileSync('netlify.toml', redirectConfig.join('\n'));
+  };
 
 exports.createPages = async ({
   graphql,
-  actions,
   actions: { createPage }
 }) => {
-
-  const { createRedirect } = actions;
-  redirects.forEach(redirect => 
-    createRedirect({
-      fromPath: redirect.fromPath,
-      toPath: redirect.toPath,
-      isPermanent: redirect.isPermanent || false
-    })
-  );
-
   const createPageInstance = async (TEMPLATE_FILE_NAME, PAGE_ID) => {
     const { data: { wpPage: pageData } } = await graphql(`
             query getPageData ($id: String!){
