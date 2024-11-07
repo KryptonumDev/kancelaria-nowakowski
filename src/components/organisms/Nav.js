@@ -99,7 +99,7 @@ const Nav = () => {
       </NavAnnotation>
       <Overlay onClick={handleNavClick} ref={overlay} />
       <StyledNav className="nav" ref={nav}>
-        <a className="no-focus" href="#main" aria-label='skip link to main content' > </a>
+        <a className="no-focus" href="#main" aria-label='Przejdź do głównej treści'></a>
         <nav className="max-width-header">
           <Link to="/" aria-label="Strona główna" onClick={handleNavClick} className="nav-logo">
             <Logo />
