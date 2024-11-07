@@ -3,18 +3,18 @@ const fs = require('fs')
 const redirects = require("./redirects.json");
 
 exports.onPostBuild = async () => {
-    // Сформируйте конфигурацию редиректов в формате TOML
-    const redirectConfig = redirects.map(redirect => (
-      `[[redirects]]
+  // Сформируйте конфигурацию редиректов в формате TOML
+  const redirectConfig = redirects.map(redirect => (
+    `[[redirects]]
         from = "${redirect.fromPath}"
         to = "${redirect.toPath}"
         status = ${redirect.isPermanent ? 301 : 302}
         force = ${redirect.force || false}`
-    ));
-  
-    // Запишите конфигурацию редиректов в netlify.toml
-    fs.writeFileSync('netlify.toml', redirectConfig.join('\n'));
-  };
+  ));
+
+  // Запишите конфигурацию редиректов в netlify.toml
+  fs.writeFileSync('netlify.toml', redirectConfig.join('\n'));
+};
 
 exports.createPages = async ({
   graphql,
@@ -43,7 +43,7 @@ exports.createPages = async ({
           {
             name: pageData.title,
             url: pageData.uri
-          } 
+          }
         ]
       },
       ownerNodeId: pageData.id // Upgrade Gatsby cloud page render logic
@@ -223,7 +223,7 @@ exports.createPages = async ({
     })
   }
 
-  // create pages  
+  // create pages
 
   createPageInstance('homepage.jsx', 'cG9zdDoxOQ==')
   createPageInstance('kontakt.jsx', 'cG9zdDo0NA==')
@@ -235,7 +235,7 @@ exports.createPages = async ({
 
   createBlogInstance('blog-post.jsx', 'blog.jsx', 'cG9zdDo4Mw==')
 
-  // create specialisations 
+  // create specialisations
 
   const { data: { allWpSpecjalizacja, arhive } } = await graphql(`
     query getSpecialisationData {
@@ -245,13 +245,13 @@ exports.createPages = async ({
       }
       allWpSpecjalizacja  {
         nodes{
-          slug 
+          slug
           id
           uri
           title
         }
       }
-    } 
+    }
   `)
 
   allWpSpecjalizacja.nodes.forEach(el => {
@@ -263,7 +263,7 @@ exports.createPages = async ({
         slug: el.slug,
         uri: el.uri,
         breadcrumbs: [
-          { 
+          {
             name: arhive.title,
             url: arhive.uri
           },
@@ -276,4 +276,4 @@ exports.createPages = async ({
       ownerNodeId: el.id
     })
   })
-} 
+}

@@ -1,10 +1,10 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useCallback } from "react";
 import { graphql, Link, useStaticQuery } from "gatsby";
 import styled from "styled-components";
 import { Logo } from '../atoms/Icons';
 
 const Nav = () => {
-  const { allWpSpecjalizacja: { nodes: specjalizacji } } = useStaticQuery(graphql`
+  const { allWpSpecjalizacja: { nodes: specjalizacji }, global: { global: { navAnnotation } } } = useStaticQuery(graphql`
     query {
       allWpSpecjalizacja {
         nodes {
@@ -12,11 +12,20 @@ const Nav = () => {
           title
         }
       }
+      global: wpPage(id: { eq: "cG9zdDoxNjg=" }) {
+        global {
+          navAnnotation {
+            tel
+            email
+          }
+        }
+      }
     }
   `)
 
   const nav = useRef();
   const overlay = useRef();
+  const annotationRef = useRef();
 
   const handleToggle = () => {
     nav.current.classList.toggle('expand');
@@ -32,6 +41,37 @@ const Nav = () => {
     }, 100);
   }
 
+  const closeAnnotation = () => {
+    if (annotationRef.current) {
+      annotationRef.current.style.display = 'none';
+    }
+  };
+
+  const handleAnnotationClose = useCallback(() => {
+    closeAnnotation();
+    localStorage.setItem('navAnnotation', JSON.stringify({
+      tel: navAnnotation.tel,
+      email: navAnnotation.email,
+      timestamp: new Date().getTime(),
+    }));
+  }, [navAnnotation]);
+
+  useEffect(() => {
+    const storedAnnotation = localStorage.getItem('navAnnotation');
+    if (storedAnnotation) {
+      const parsedAnnotation = JSON.parse(storedAnnotation);
+      const currentTime = new Date().getTime();
+      const expiration = 24 * 60 * 60 * 1000;
+      if (parsedAnnotation.tel !== navAnnotation.tel ||
+        parsedAnnotation.email !== navAnnotation.email ||
+        (currentTime - parsedAnnotation.timestamp >= expiration)) {
+        localStorage.removeItem('navAnnotation');
+      } else {
+        closeAnnotation();
+      }
+    }
+  }, [navAnnotation]);
+
   useEffect(() => {
     if (typeof window !== 'undefined') {
       document.onkeydown = function (e) {
@@ -44,8 +84,20 @@ const Nav = () => {
 
   return (
     <>
+      <NavAnnotation ref={annotationRef}>
+        <div>
+          <a href={`tel:${navAnnotation.tel}`}>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20"><path stroke="#9D977A" strokeLinecap="square" strokeWidth="1.5" d="M14.847 17.697c-7.624.35-13.302-8.295-12.513-12.513.724-1.244 1.651-2.165 2.893-2.893l2.7 3.71-1.369 2.378s.378 1.588 1.801 3.01c1.494 1.495 3.16 1.952 3.16 1.952l2.38-1.37 3.841 2.833c-.714 1.277-1.616 2.179-2.893 2.893Z" /></svg>
+            {navAnnotation.tel}</a>
+          <a href={`mailto:${navAnnotation.email}`}>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20"><path stroke="#9D977A" strokeLinecap="square" strokeWidth="1.5" d="m14.836 7.375-4.803 3.903-4.804-3.903" /><path stroke="#9D977A" strokeLinecap="square" strokeWidth="1.5" d="M1.667 3.334h16.667v13.333H1.667z" /></svg>
+            {navAnnotation.email}</a>
+        </div>
+        <button aria-label="Ukryj informacje kontaktowe" onClick={handleAnnotationClose}>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20"><path stroke="#555959" strokeLinecap="round" d="M15.833 4.166 4.167 15.833m0-11.667 11.666 11.667" /></svg>
+        </button>
+      </NavAnnotation>
       <Overlay onClick={handleNavClick} ref={overlay} />
-      <Placeholder />
       <StyledNav className="nav" ref={nav}>
         <a className="no-focus" href="#main" aria-label='skip link to main content' > </a>
         <nav className="max-width-header">
@@ -102,17 +154,66 @@ const Nav = () => {
           </button>
         </nav>
       </StyledNav>
+      <NavSpacer />
     </>
   );
 }
 
-const Placeholder = styled.div`
-  height: 105px;
-  @media (max-width: 1149px){
-    height: 89px;
+const NavAnnotation = styled.aside`
+  display: grid;
+  grid-template-columns: auto auto auto;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  background: var(--neutral-500, #F6F5F0);
+  font-size: 0.875rem;
+  margin: 0 -40px;
+  padding: 0 40px;
+  width: calc(100% + 80px);
+  @media (max-width: 768px){
+    margin: 0 -17px;
+    width: calc(100% + 34px);
+    padding: 0 17px;
   }
-  @media (max-width: 699px){
-    height: 67px;
+  @media (min-width: 1366px) {
+    margin: 0 calc((100vw - 1286px) / -2);
+    width: calc(100% + (100vw - 1286px));
+  }
+  &::before {
+    content: '';
+    width: 2.75rem;
+  }
+  div {
+    padding: 0.5rem 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.5rem;
+    align-items: center;
+    a {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      align-items: center;
+      gap: 0.5rem;
+    }
+  }
+  button {
+    width: 2.75rem;
+    height: 2.75rem;
+    display: grid;
+    place-items: center;
+    transition: background-color 300ms ease-out;
+    &:hover {
+      background-color: #dcdace;
+    }
+    &:active {
+      background-color: #c3bfac;
+    }
+  }
+  @media (max-width: 38rem) {
+    grid-template-columns: 1fr auto;
+    &::before {
+      display: none;
+    }
   }
 `
 
@@ -126,18 +227,33 @@ const Overlay = styled.div`
   transition: opacity .5s;
   opacity: 0;
   pointer-events: none;
-  
-  &.expand{
+
+  &.expand {
     opacity: 1;
     pointer-events: all;
   }
 `
 
 const StyledNav = styled.header`
-  position: fixed;
+  position: sticky;
   left: 0;
   top: 0;
-  width: 100%;
+  margin: 0 -40px;
+  width: calc(100% + 80px);
+  .max-width-header {
+    width: calc(100% - 80px);
+  }
+  @media (max-width: 768px){
+    margin: 0 -17px;
+    width: calc(100% + 34px);
+    .max-width-header {
+      width: calc(100% - 34px);
+    }
+  }
+  @media (min-width: 1366px) {
+    margin: 0 calc((100vw - 1286px) / -2);
+    width: calc(100% + (100vw - 1286px));
+  }
   background-color: var(--neutral-100);
   height: 105px;
   z-index: 9;
@@ -175,7 +291,7 @@ const StyledNav = styled.header`
     .drop-down{
       display: flex;
       align-items: center;
-      gap: 2px; 
+      gap: 2px;
       svg{
         margin-bottom: -3px;
         transition: transform .2s ease-out;
@@ -216,15 +332,15 @@ const StyledNav = styled.header`
           transition: opacity .4s ease-out;
           opacity: 0;
           pointer-events: none;
-          z-index: 2;
+          z-index: -1;
           &::before {
             content: '';
             width: 150vw;
-            height: 100%;
+            height: 120%;
             background: var(--neutral-100);
             position: absolute;
             left: -50vw;
-            top: 1rem;
+            top: -1rem;
             z-index: -1;
           }
           &::after {
@@ -273,6 +389,14 @@ const StyledNav = styled.header`
       &:not(:last-child){
         margin-bottom: 10px;
       }
+    }
+  }
+  &.expand {
+    position: fixed;
+    width: 100%;
+    margin: 0;
+    + div {
+      display: block;
     }
   }
   &.expand #nav-toggle {
@@ -349,7 +473,7 @@ const StyledNav = styled.header`
     #nav-toggle {
       display: block;
     }
-    
+
   }
   @media (max-width: 699px){
     height: 67px;
@@ -424,6 +548,17 @@ const StyledNav = styled.header`
       font-size: ${18 / 16}rem;
       }
     }
+  }
+`
+
+const NavSpacer = styled.div`
+  display: none;
+  height: 105px;
+  @media (max-width: 1149px){
+    height: 89px;
+  }
+  @media (max-width: 699px){
+    height: 67px;
   }
 `
 
