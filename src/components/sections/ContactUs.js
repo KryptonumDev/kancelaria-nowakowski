@@ -5,7 +5,7 @@ import { Link } from "gatsby";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 
-const ContactUs = ({data}) => {
+const ContactUs = ({ data }) => {
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
   const [sent, setSent] = useState(false);
   const [formIsSending, setFormIsSending] = useState(false);
@@ -14,8 +14,8 @@ const ContactUs = ({data}) => {
   const formSent = useRef();
   const getCookie = (cookieName) =>
     isBrowser
-    ? document.cookie.split("; ").find((row) => row.startsWith(`${cookieName}`))?.split("=")[1]
-    : '';
+      ? document.cookie.split("; ").find((row) => row.startsWith(`${cookieName}`))?.split("=")[1]
+      : '';
 
   const url = 'https://kancelaria.headlesshub.com/wp-json/contact-form-7/v1/contact-forms/13/feedback';
   const onSubmit = data => {
@@ -28,19 +28,19 @@ const ContactUs = ({data}) => {
     setFormIsSending(true);
 
     axios.post(url, body)
-    .then((res) => {
-      if(res.status === 200){
-        document.cookie = `sentCount=${getCookie('sentCount') ? Number(getCookie('sentCount'))+1 : 1};max-age=86400;path=/`;
-        setSent(true);
-        setFormIsSending(false);
-        reset();
-      } else {
-        setFormIsSending(false);
-        window.alert('Coś poszło nie tak. Proszę spróbować ponownie później.');
-      }
-    })
+      .then((res) => {
+        if (res.status === 200) {
+          document.cookie = `sentCount=${getCookie('sentCount') ? Number(getCookie('sentCount')) + 1 : 1};max-age=86400;path=/`;
+          setSent(true);
+          setFormIsSending(false);
+          reset();
+        } else {
+          setFormIsSending(false);
+          window.alert('Coś poszło nie tak. Proszę spróbować ponownie później.');
+        }
+      })
   }
-  
+
   const sendAgain = () => {
     formSent.current.classList.add('hide');
     setTimeout(() => {
@@ -58,9 +58,9 @@ const ContactUs = ({data}) => {
     <Wrapper>
       <header className="header">
         <Ornament />
-        <div className="anim" dangerouslySetInnerHTML={{__html: data.sectionTitle}}></div>
+        <div className="anim" dangerouslySetInnerHTML={{ __html: data.sectionTitle }}></div>
       </header>
-      <div className="content anim" dangerouslySetInnerHTML={{__html: data.contentUnderTitle}}>
+      <div className="content anim" dangerouslySetInnerHTML={{ __html: data.contentUnderTitle }}>
       </div>
       <div className="form">
         {(sent || getCookie('sentCount') >= 3) ? (
@@ -87,7 +87,7 @@ const ContactUs = ({data}) => {
                 <div className="input">
                   <input
                     type="text"
-                    {...register("name", {required: true, maxLength: 80})}
+                    {...register("name", { required: true, maxLength: 80 })}
                     aria-invalid={errors.name ? "true" : "false"}
                   />
                   <InputBorder />
@@ -105,7 +105,7 @@ const ContactUs = ({data}) => {
                 <div className="input">
                   <input
                     type="email"
-                    {...register("email", {pattern: /^\S+@\S+$/i})}
+                    {...register("email", { pattern: /^\S+@\S+$/i })}
                     aria-invalid={errors.email ? "true" : "false"}
                   />
                   <InputBorder />
@@ -121,7 +121,7 @@ const ContactUs = ({data}) => {
                 <div className="input">
                   <input
                     type="tel"
-                    {...register("tel", {required: true, pattern: /(\(?(\+|00)?48\)?)?[ -]?\d{3}[ -]?\d{3}[ -]?\d{3}(?!\w)/})}
+                    {...register("tel", { required: true, pattern: /(\(?(\+|00)?48\)?)?[ -]?\d{3}[ -]?\d{3}[ -]?\d{3}(?!\w)/ })}
                     aria-invalid={errors.tel ? "true" : "false"}
                   />
                   <InputBorder />
@@ -137,7 +137,7 @@ const ContactUs = ({data}) => {
                 )}
                 <div className="input">
                   <select
-                    {...register("subject", {required: true})}
+                    {...register("subject", { required: true })}
                     aria-invalid={errors.subject ? "true" : "false"}
                     defaultValue=""
                   >
@@ -164,7 +164,7 @@ const ContactUs = ({data}) => {
                 )}
                 <div className="input">
                   <input
-                    min={new Date().toISOString().slice(0,new Date().toISOString().lastIndexOf(":"))}
+                    min={new Date().toISOString().slice(0, new Date().toISOString().lastIndexOf(":"))}
                     type="datetime-local"
                     {...register("date")}
                     aria-invalid={errors.date ? "true" : "false"}
@@ -180,7 +180,7 @@ const ContactUs = ({data}) => {
               <label>
                 <input
                   type="checkbox"
-                  {...register("legal", {required: true})}
+                  {...register("legal", { required: true })}
                   aria-invalid={errors.legal ? "true" : "false"}
                 />
                 <span>Wyrażam zgodę na przetwarzanie moich danych osobowych na zasadach określonych w <Link to="/polityka-prywatnosci/">Polityce prywatności</Link></span>
@@ -201,12 +201,12 @@ const Wrapper = styled.section`
   display: grid;
   grid-template-areas: "header form" "content form";
   grid-template-columns: 1.2fr 1fr;
-  column-gap: ${140/13.66}vw;
+  column-gap: ${140 / 13.66}vw;
   row-gap: 42px;
   .header {
     grid-area: header;
     h2 {
-      margin-top: ${32/16}rem;
+      margin-top: ${32 / 16}rem;
     }
   }
   .content {
@@ -214,11 +214,11 @@ const Wrapper = styled.section`
     p {
       margin: 1rem 0;
       font-family: var(--serif);
-      font-size: clamp(${22/16}rem, ${26/7.68}vw, ${24/16}rem);
+      font-size: clamp(${22 / 16}rem, ${26 / 7.68}vw, ${24 / 16}rem);
       &:nth-of-type(2){
-        font-size: clamp(${22/16}rem, ${26/7.68}vw, ${28/16}rem);
+        font-size: clamp(${22 / 16}rem, ${26 / 7.68}vw, ${28 / 16}rem);
         em {
-          font-size: clamp(${22/16}rem, ${26/7.68}vw, ${24/16}rem);
+          font-size: clamp(${22 / 16}rem, ${26 / 7.68}vw, ${24 / 16}rem);
         }
       }
     }
@@ -251,10 +251,13 @@ const Wrapper = styled.section`
           margin-bottom: 1rem;
         }
         &::before {
-          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='33' fill='none'%3E%3Cpath stroke='%230F3730' strokeLinecap='round' stroke-linejoin='round' strokeWidth='1.5' d='M19.2 13.282a3.2 3.2 0 1 0-6.399-.002 3.2 3.2 0 0 0 6.4.002Z' clip-rule='evenodd'/%3E%3Cpath stroke='%230F3730' strokeLinecap='round' strokeWidth='1.5' d='M16 29.814c0-4.804-9.364-8.958-9.6-16.568C6.235 7.902 10.697 3.147 16 3.147c5.302 0 9.763 4.755 9.6 10.099-.238 7.766-9.6 11.636-9.6 16.568Z' clip-rule='evenodd'/%3E%3C/svg%3E");
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='33' fill='none' viewBox='0 0 32 33'%3E%3Cpath stroke='%230F3730' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M19.2 12.88a3.2 3.2 0 1 0-6.4-.001 3.2 3.2 0 0 0 6.4.001Z' clip-rule='evenodd'/%3E%3Cpath stroke='%230F3730' stroke-linecap='round' stroke-width='1.5' d='M16 29.413c0-4.804-9.364-8.959-9.6-16.569C6.235 7.502 10.697 2.746 16 2.746c5.302 0 9.763 4.755 9.6 10.098C25.362 20.61 16 24.48 16 29.413Z' clip-rule='evenodd'/%3E%3C/svg%3E");
         }
-        &:first-of-type::before {
-          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='25' fill='none' viewBox='0 0 24 25'%3E%3Cpath stroke='%230F3730' stroke-linecap='square' stroke-width='1' d='M17.817 21.842C8.667 22.26 1.854 11.887 2.8 6.826c.868-1.493 1.982-2.598 3.472-3.472l3.24 4.451L7.87 10.66s.453 1.906 2.161 3.614c1.793 1.792 3.793 2.34 3.793 2.34l2.854-1.643 4.61 3.4c-.857 1.532-1.939 2.614-3.471 3.472Z'/%3E%3C/svg%3E");
+        &:nth-of-type(1)::before {
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='33' fill='none' viewBox='0 0 32 33'%3E%3Cpath stroke='%230F3730' stroke-linecap='square' stroke-width='1.5' d='m23.738 11.88-7.685 6.246-7.686-6.245'/%3E%3Cpath stroke='%230F3730' stroke-linecap='square' stroke-width='1.5' d='M2.667 5.414h26.667v21.333H2.667z'/%3E%3C/svg%3E");
+        }
+        &:nth-of-type(2)::before {
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='33' fill='none' viewBox='0 0 32 33'%3E%3Cpath stroke='%230F3730' stroke-linecap='square' stroke-width='1.5' d='M23.756 28.396c-12.2.559-21.284-13.273-20.022-20.02 1.158-1.99 2.643-3.465 4.63-4.63l4.32 5.935-2.191 3.806s.605 2.54 2.882 4.817c2.39 2.39 5.056 3.121 5.056 3.121l3.806-2.191 6.148 4.533c-1.144 2.044-2.586 3.486-4.63 4.63Z'/%3E%3C/svg%3E");
         }
         > ul {
           margin-top: ${8 / 16}rem;
@@ -283,7 +286,7 @@ const Wrapper = styled.section`
       background-color: var(--primary-400);
       padding: 0 2rem;
       h3 {
-        font-size: clamp(${24/16}rem, ${32/7.68}vw, ${32/16}rem);
+        font-size: clamp(${24 / 16}rem, ${32 / 7.68}vw, ${32 / 16}rem);
         margin-bottom: 1em;
       }
       animation: formSent .4s;
@@ -342,7 +345,7 @@ const Wrapper = styled.section`
           input,
           select {
             border-color: var(--error-800);
-          } 
+          }
           .ornament {
             fill: var(--error-800);
           }
@@ -422,7 +425,7 @@ const Wrapper = styled.section`
     }
   }
   @media (max-width: 999px){
-    grid-template-areas: "header" "form" "content";  
+    grid-template-areas: "header" "form" "content";
     grid-template-columns: 1fr;
     row-gap: ${42 / 16}rem;
     .header {
