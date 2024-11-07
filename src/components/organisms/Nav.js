@@ -236,6 +236,7 @@ const Overlay = styled.div`
 
 const StyledNav = styled.header`
   position: sticky;
+  position: -webkit-sticky;
   left: 0;
   top: 0;
   margin: 0 -40px;
