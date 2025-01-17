@@ -1,12 +1,11 @@
-import { graphql } from "gatsby"
-import * as React from "react"
-import Hero from "../components/sections/Home/Hero"
-import StepsSection from "../components/sections/Home/StepsSection";
-import OrnamentSection from "../components/sections/OrnamentSection";
-import Testimonials from "../components/sections/Home/Testimonials";
-import Slider from "../components/sections/blog-slider";
-import ContactUs from "../components/sections/ContactUs";
-
+import { graphql } from 'gatsby';
+import * as React from 'react';
+import Hero from '../components/sections/Home/Hero';
+import StepsSection from '../components/sections/Home/StepsSection';
+import OrnamentSection from '../components/sections/OrnamentSection';
+import Testimonials from '../components/sections/Home/Testimonials';
+import Slider from '../components/sections/blog-slider';
+import ContactUs from '../components/sections/ContactUs';
 
 export default function Homepage({ data }) {
   const { heroHome, stepsSection, sectionWithImgOnRightHome, sectionWithCommentsHome } = data.wpPage.homepage;
@@ -20,20 +19,20 @@ export default function Homepage({ data }) {
       <Slider posts={data.allWpPost.nodes} data={sectionBlog} />
       <ContactUs data={sectionContact} />
     </main>
-  )
+  );
 }
 
-export { Head } from "./../components/sections/seo"
+export { Head } from './../components/sections/seo';
 
 export const query = graphql`
   query homepage($id: String!) {
-    allWpPost(limit: 3, sort: {date: DESC}) {
+    allWpPost(limit: 3, sort: { date: DESC }) {
       nodes {
         id
         uri
         gutenberg {
           excerpt
-          title : tytulStrony
+          title: tytulStrony
         }
         featuredImage {
           node {
@@ -53,7 +52,7 @@ export const query = graphql`
         }
       }
     }
-    global : wpPage(id: {eq: "cG9zdDoxNjg="}) {
+    global: wpPage(id: { eq: "cG9zdDoxNjg=" }) {
       global {
         sectionContact {
           sectionTitle
@@ -76,10 +75,10 @@ export const query = graphql`
               title
               url
             }
-            backgroundImage{
+            backgroundImage {
               altText
-              localFile{
-                childImageSharp{
+              localFile {
+                childImageSharp {
                   gatsbyImageData
                 }
               }
@@ -88,7 +87,7 @@ export const query = graphql`
         }
       }
     }
-    wpPage(id: {eq: $id}) {
+    wpPage(id: { eq: $id }) {
       ...SEO
       homepage {
         heroHome {
@@ -110,7 +109,7 @@ export const query = graphql`
             title
             url
           }
-          leftImage {
+          imageFirst {
             altText
             localFile {
               childImageSharp {
@@ -118,7 +117,15 @@ export const query = graphql`
               }
             }
           }
-          rightImage {
+          imageSecond {
+            altText
+            localFile {
+              childImageSharp {
+                gatsbyImageData
+              }
+            }
+          }
+          imageThird {
             altText
             localFile {
               childImageSharp {
@@ -176,4 +183,4 @@ export const query = graphql`
       }
     }
   }
-`
+`;

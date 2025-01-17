@@ -9,7 +9,7 @@ const Hero = ({ data }) => {
     <StyledHero className="hero">
       <header>
         <Ornament />
-        <div className="title anim" dangerouslySetInnerHTML={{__html: data.pageTitle}}></div>
+        <div className="title anim" dangerouslySetInnerHTML={{ __html: data.pageTitle }}></div>
         <p className="flex">
           {data.linksToSubpages.map((link, i) => (
             <span className="no-wrap anim" key={link.link.title + i}>
@@ -26,8 +26,9 @@ const Hero = ({ data }) => {
         </div>
       </header>
       <div className="hero-img">
-        <GatsbyImage loading="eager" image={data.leftImage.localFile.childImageSharp.gatsbyImageData} alt={data.leftImage.altText || ''} className="anim" />
-        <GatsbyImage loading="eager" image={data.rightImage.localFile.childImageSharp.gatsbyImageData} alt={data.rightImage.altText || ''} className="anim" />
+        <GatsbyImage loading="eager" image={data.imageFirst.localFile.childImageSharp.gatsbyImageData} alt={data.leftImage?.altText || ''} className="anim img" />
+        <GatsbyImage loading="eager" image={data.imageSecond.localFile.childImageSharp.gatsbyImageData} alt={data.rightImage?.altText || ''} className="anim img" />
+        <GatsbyImage loading="eager" image={data.imageThird.localFile.childImageSharp.gatsbyImageData} alt={data.rightImage?.altText || ''} className="anim img" />
       </div>
     </StyledHero>
   );
@@ -35,10 +36,10 @@ const Hero = ({ data }) => {
 
 const StyledHero = styled.section`
   padding: ${22 / 16}rem 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  .flex{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  .flex {
     display: flex;
     flex-wrap: wrap;
   }
@@ -55,7 +56,6 @@ const StyledHero = styled.section`
       height: auto;
       margin-bottom: 1rem;
     }
-    width: 50%;
     max-width: ${627 / 13.66}vw;
     p {
       margin: ${48 / 16}rem 0;
@@ -75,32 +75,37 @@ const StyledHero = styled.section`
     }
   }
   .hero-img {
-    min-width: 360px;
-    width: 37.5%;
-    display: flex;
-    gap: 32px;
-    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: clamp(0.5rem, calc(1vw / 0.48), 1rem);
+    align-self: center;
+    .img {
+      aspect-ratio: 205 / 332;
+      &:nth-child(1),
+      &:nth-child(3) {
+        margin-top: clamp(3rem, calc(4vw / 0.48), 5rem);
+      }
+      img {
+        object-position: top;
+      }
+    }
   }
-  @media (max-width: 840px){
-    flex-direction: column;
-    align-items: flex-start;
+  @media (max-width: 69rem){
+    grid-template-columns: 1fr;
     header {
       width: 100%;
       max-width: ${627 / 16}rem;
-      margin-bottom: ${32 / 16}rem;
       p {
         margin: ${42 / 16}rem 0 ${24 / 16}rem 0;
       }
     }
     .hero-img {
-      width: 100%;
-      min-width: unset;
+      max-width: ${627 / 16}rem;
     }
   }
   @media (max-width: 549px){
     flex-direction: column-reverse;
     align-items: flex-start;
-
     h1{
       margin-top: 8px;
     }
@@ -119,10 +124,6 @@ const StyledHero = styled.section`
           flex-grow: 1;
         }
       }
-    }
-    .hero-img {
-      width: 100%;
-      gap: 16px;
     }
   }
 `;
