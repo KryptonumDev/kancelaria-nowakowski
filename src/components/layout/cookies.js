@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react"
 import styled from "styled-components"
 import scrollLock from './../../helpers/scroll-lock'
 import { getCookie, setCookie } from "./../../helpers/cookie-manager"
+import { isGtmLoaded, loadGtm, removeAnalyticsCookies } from "./../../helpers/gtm"
 import { AnimatePresence, motion } from "framer-motion"
 
 function datalayerArguments() {
@@ -70,6 +71,19 @@ export default function Cookies({ isActive, setIsActive }) {
     setActiveCookie(arr)
   }
 
+  // GTM (and Google Analytics inside it) runs only with consent for statistics cookies.
+  // After consent is withdrawn, GA cookies are removed and the page reloads without GTM.
+  const applyStatisticsConsent = () => {
+    if (getCookie('statistics') === 'granted') {
+      loadGtm()
+      return
+    }
+    removeAnalyticsCookies()
+    if (isGtmLoaded()) {
+      window.location.reload()
+    }
+  }
+
   useEffect(() => {
     if (getCookie('necessary')) {
       datalayerArguments("consent", "default", {
@@ -81,6 +95,7 @@ export default function Cookies({ isActive, setIsActive }) {
         'wait_for_update': 2500
       });
       datalayerArguments("set", "ads_data_redaction", true);
+      applyStatisticsConsent()
       setIsActive(false)
       scrollLock.disable('cookie')
     } else {
@@ -94,6 +109,7 @@ export default function Cookies({ isActive, setIsActive }) {
         'wait_for_update': 2500
       });
       datalayerArguments("set", "ads_data_redaction", true);
+      removeAnalyticsCookies()
       setIsActive(true)
       scrollLock.enable('cookie')
     }
@@ -114,6 +130,7 @@ export default function Cookies({ isActive, setIsActive }) {
       'personalization_storage': "granted",
       'unclassified_storage': "granted",
     });
+    applyStatisticsConsent()
 
     setIsActive(false)
   }
@@ -129,6 +146,7 @@ export default function Cookies({ isActive, setIsActive }) {
       'personalization_storage': getCookie('preferences'),
       'unclassified_storage': getCookie('unclassified'),
     });
+    applyStatisticsConsent()
 
     setIsActive(false)
   }
@@ -143,6 +161,7 @@ export default function Cookies({ isActive, setIsActive }) {
       'functionality_storage': "denied",
       'personalization_storage': "denied",
     });
+    applyStatisticsConsent()
 
     setIsActive(false)
   }

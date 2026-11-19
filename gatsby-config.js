@@ -47,13 +47,6 @@ module.exports = {
       }
     },
     {
-      resolve: "gatsby-plugin-google-tagmanager",
-      options: {
-        id: "GTM-T89S9LL",
-        includeInDevelopment: false,
-      },
-    },
-    {
       resolve: "gatsby-plugin-yoast-sitemap",
       options: {
         baseUrl: "https://kancelaria.headlesshub.com",
