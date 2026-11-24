@@ -148,7 +148,7 @@ const ContactUs = ({ data }) => {
                     <option value="Sprawy Rozwodowe">Sprawy rozwodowe</option>
                     <option value="Proces sądowy">Proces sądowy</option>
                     <option value="Sprawy spadkowe">Sprawy spadkowe</option>
-                    <option value="Odzkodowania">Odszkodowania</option>
+                    <option value="Odszkodowania">Odszkodowania</option>
                     <option value="Inne">Inne</option>
                   </select>
                   <InputBorder />
